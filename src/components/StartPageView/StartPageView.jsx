@@ -15,8 +15,12 @@ function StartPageView() {
         Pro - Don't wait, start achieving your goals now!
       </p>
       <div className={css.startPageLinksBox}>
-        <NavLink className={css.startPageLinks}>Registration</NavLink>
-        <NavLink className={css.startPageLinks}>Log In</NavLink>
+        <NavLink to="register" className={css.startPageLinks}>
+          Registration
+        </NavLink>
+        <NavLink to="login" className={css.startPageLinks}>
+          Log In
+        </NavLink>
       </div>
     </div>
   );
