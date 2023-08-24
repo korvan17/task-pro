@@ -1,0 +1,102 @@
+.startPageSection {
+  text-align: center;
+  color: #161616;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: 0.02em;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 375px) {
+  .startPageSection {
+    width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .startPageSection {
+    width: 473px;
+  }
+}
+
+.startPageImage {
+  margin: 0 auto;
+  width: 124px;
+  height: 124px;
+  margin-bottom: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .startPageImage {
+    width: 162px;
+    height: 162px;
+    margin-bottom: 24px;
+  }
+}
+
+.startPageTitile {
+  color: #161616;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (min-width: 768px) {
+  .startPageTitile {
+    font-size: 40px;
+    letter-spacing: -1.6px;
+  }
+}
+
+.startPageTitileBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.startPageDescr {
+  margin-bottom: 48px;
+}
+.startPageIcon {
+  width: 40px;
+  height: 40px;
+  margin-right: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .startPageIcon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.startPageLinksBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+}
+
+.startPageLinks {
+  width: 100%;
+  font-weight: 500;
+  border-radius: 8px;
+  color: #161616;
+  text-decoration: none;
+}
+
+.startPageLinks:active {
+  color: #fff;
+  background-color: #161616;
+  padding: 14px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .startPageLinks {
+    width: 344px;
+  }
+}
