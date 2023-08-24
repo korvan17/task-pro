@@ -1,0 +1,71 @@
+.wrapper {
+  max-width: 335px;
+  font-size: 12px;
+  /* just dev color, will be changed later */
+  background-color: grey;
+  padding: 21px 14px;
+  border-left: 4px solid var(--priority-color);
+}
+
+.overWrapper {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.wihtout {
+  background-color: rgba(22, 22, 22, 0.3);
+  border-color: rgba(22, 22, 22, 0.3);
+}
+
+.additionWrapper {
+  display: flex;
+  border-top: 1px solid rgba(22, 22, 22, 0.1);
+  padding-top: 14px;
+  text-transform: capitalize;
+  font-size: 10px;
+}
+
+.additionInfo:first-child {
+  margin-right: 14px;
+}
+
+.additionInfoHeading {
+  font-size: 8px;
+  color: rgba(22, 22, 22, 0.5);
+  margin-bottom: 4px;
+}
+
+.priority {
+  display: flex;
+  align-items: center;
+}
+
+.priority::before {
+  content: '';
+  background-color: inherit;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 4px;
+  background-color: var(--priority-color);
+}
+
+.title {
+  /* temp solution before we reset styling from basic html components */
+  /* margin: 0; */
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+}
+
+.desc {
+  /* temp solution before we reset styling from basic html components */
+  margin: 0;
+
+  margin-bottom: 14px;
+
+  font-size: 12px;
+  color: rgba(22, 22, 22, 0.7);
+}
