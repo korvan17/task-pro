@@ -1,4 +1,4 @@
-import { AuthPageView } from 'components';
+import { StartPageView } from 'components';
 
 import { StartPageWrapper } from 'components';
 
@@ -7,8 +7,8 @@ import React from 'react';
 function StartPage() {
   return (
     <StartPageWrapper>
-      {/* <StartPageView /> */}
-      <AuthPageView />
+      <StartPageView />
+      {/* <AuthPageView /> */}
     </StartPageWrapper>
   );
 }
