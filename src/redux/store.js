@@ -1,7 +1,5 @@
-import '../../index.css';
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { phoneBookApi } from './contactSlice';
 import { filtersReducer } from './filterSlice';
 import { authReducer } from './authSlice';
 import {

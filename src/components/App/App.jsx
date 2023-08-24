@@ -1,19 +1,22 @@
+import PrivateRoute from 'components/PrivatRoute/PrivateRoute';
+import { Home, Login } from 'pages';
+import { Route, Routes } from 'react-router-dom';
+
 export default function App() {
   return (
     <>
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
-        Welcome to TASK PRO
-      </div>
-      <p>TEST</p>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route
+          path="/privathomepage"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
     </>
   );
 }
