@@ -1,5 +1,5 @@
 import PrivateRoute from 'components/PrivatRoute/PrivateRoute';
-import { Home, Login } from 'pages';
+import { Main, Login } from 'pages';
 import { Route, Routes } from 'react-router-dom';
 
 export default function App() {
@@ -7,12 +7,12 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Main />} />
         <Route
           path="/privathomepage"
           element={
             <PrivateRoute>
-              <Home />
+              <Main />
             </PrivateRoute>
           }
         />
