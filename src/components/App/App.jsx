@@ -1,4 +1,4 @@
-export const App = () => {
+export default function App() {
   return (
     <div
       style={{
@@ -13,4 +13,4 @@ export const App = () => {
       Welcome to TASK PRO
     </div>
   );
-};
+}
