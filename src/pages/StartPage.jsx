@@ -3,7 +3,7 @@ import { StartPageView } from 'components';
 import { StartPageWrapper } from 'components';
 
 import React from 'react';
-import AuthPage from './AuthPage';
+// import AuthPage from './AuthPage';
 
 function StartPage() {
   return (
