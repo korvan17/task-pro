@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './AuthPageView.module.css';
 // import { LoginForm } from 'components/LoginForm';
-import { RegisterForm } from 'components/RegisterForm';
+import { RegisterForm } from 'components';
 import { NavLink, Outlet } from 'react-router-dom';
 
 function AuthPageView() {
