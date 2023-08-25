@@ -10,18 +10,25 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/main/:dashboardId" element={<ScreensPage />} />
-        <Route path="/main" element={<MainPage />} />
-        {/* <Route
+        {/* Auth Routes */}
+        <Route path="/" element={<StartPage />}>
+          <Route index element={<StartPageView />} />
 
+          <Route path="/auth" element={<AuthPage />}>
+            <Route path="register" element={<RegisterForm />} />
+            <Route path="login" element={<LoginForm />} />
+          </Route>
+        </Route>
+
+        {/* Private Routes */}
+        <Route
           path="/privathomepage"
           element={
             <PrivateRoute>
               <Main />
             </PrivateRoute>
-          } */}
-        {/* /> */}
+          }
+        />
       </Routes>
     </>
   );
