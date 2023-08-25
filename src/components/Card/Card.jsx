@@ -3,6 +3,7 @@ import css from './Card.module.css';
 import iconDefs from '../../icons/symbol-defs-edit.svg';
 import convertDate from 'utlis/convertDate';
 import { IconButton } from 'components';
+import CardMoveModal from './CardMoveModal/CardMoveModal';
 
 export default function Card({ title, desc, priority, deadline }) {
   const getColor = () => {
@@ -46,7 +47,6 @@ export default function Card({ title, desc, priority, deadline }) {
           {isDeadlineToday && (
             <svg
               className={`${css.icon} ${css.iconBell}`}
-              stroke="rgba(82, 85, 188, 1)"
               width="16"
               height="16"
             >
@@ -56,7 +56,7 @@ export default function Card({ title, desc, priority, deadline }) {
 
           <ul className={css.iconButtsList}>
             <li className={css.iconButtonItem}>
-              <IconButton
+              <CardMoveModal
                 svg={<use xlinkHref={`${iconDefs}#icon-move`} />}
                 size={16}
                 className={css.icon}
