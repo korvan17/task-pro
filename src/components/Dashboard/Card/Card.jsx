@@ -35,13 +35,16 @@ export default function Card({ title, desc, priority, deadline }) {
         <div className={css.additionWrapper}>
           <div className={css.additionInfo}>
             <p className={css.additionInfoHeading}>priority</p>
-            <p className={css.priority} style={priorityStyle}>
+            <p
+              className={`${css.priority} ${css.additionInfoSubheading}`}
+              style={priorityStyle}
+            >
               {priority}
             </p>
           </div>
           <div className={css.additionInfo}>
             <p className={css.additionInfoHeading}>deadline</p>
-            <p>{deadline}</p>
+            <p className={css.additionInfoSubheading}>{deadline}</p>
           </div>
 
           {isDeadlineToday && (
@@ -54,7 +57,11 @@ export default function Card({ title, desc, priority, deadline }) {
             </svg>
           )}
 
-          <ul className={`${css.iconButtsList} ${isDeadlineToday && css.iconButtsList_Deadline}`}>
+          <ul
+            className={`${css.iconButtsList} ${
+              isDeadlineToday && css.iconButtsList_Deadline
+            }`}
+          >
             <li className={css.iconButtonItem}>
               <CardMoveModal
                 svg={<use xlinkHref={`${iconDefs}#icon-move`} />}
