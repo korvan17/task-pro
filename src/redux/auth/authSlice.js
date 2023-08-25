@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout } from './authOperations';
+import { register, login, logout, updateTheme } from './authOperations';
 
 const authInitialState = {
   user: {
@@ -46,7 +46,10 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.error = null;
-      }),
+      })
+      .addCase(updateTheme.fulfilled, (state, { payload }) => {
+        state.user.theme = payload.theme;
+      })
 });
 
 export const { setAuth } = authSlice.actions;
