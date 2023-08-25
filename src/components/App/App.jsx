@@ -1,4 +1,4 @@
-import PrivateRoute from 'components/PrivatRoute/PrivateRoute';
+// import PrivateRoute from 'components/PrivatRoute/PrivateRoute';
 
 import { Login } from 'pages';
 import MainPage from 'pages/MainPage/MainPage';
