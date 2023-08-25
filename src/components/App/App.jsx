@@ -12,8 +12,13 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<Login />} />
+<<<<<<< Updated upstream
         <Route path="/kak" element={<ScreensPage />} />
         <Route path="/home" element={<HomePage />} />
+=======
+        <Route path="/kaka" element={<ScreensPage />} />
+        <Route path="/main" element={<HomePage />} />
+>>>>>>> Stashed changes
         {/* <Route
 
           path="/privathomepage"
