@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Tooltip } from '@mui/material';
-import iconDefs from '../../../icons/sprite.svg';
+import iconDefs from '../../../../icons/sprite.svg';
 
 import css from './CardMoveModal.module.css';
 

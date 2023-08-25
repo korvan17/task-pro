@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './Card.module.css';
-import iconDefs from '../../icons/sprite.svg';
+import iconDefs from '../../../icons/sprite.svg';
 import convertDate from 'utlis/convertDate';
 import { IconButton } from 'components';
 import CardMoveModal from './CardMoveModal/CardMoveModal';

@@ -1,8 +1,8 @@
-// import PrivateRoute from 'components/PrivatRoute/PrivateRoute';
 
-import { Login } from 'pages';
-import MainPage from 'pages/MainPage/MainPage';
-import ScreensPage from 'pages/ScreenPage/ScreenPage';
+import { LoginForm, RegisterForm, StartPageView } from 'components';
+import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
+import {  Main, StartPage } from 'pages';
+import AuthPage from 'pages/AuthPage';
 
 import { Route, Routes } from 'react-router-dom';
 
