@@ -1,0 +1,43 @@
+.button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.button {
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 14px;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.button:hover {
+  color: rgba(82, 85, 188, 1);
+}
+
+.icon {
+  stroke: currentColor;
+  stroke-width: 1px;
+  fill: none;
+}
