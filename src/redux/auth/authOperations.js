@@ -47,3 +47,15 @@ export const logout = createAsyncThunk(
     }
   }
 );
+
+export const updateTheme = createAsyncThunk(
+  'users/updateThemes',
+  async (theme, thunkAPI) => {
+    try {
+      const { data } = await axios.patch('/users/themes', { theme });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
