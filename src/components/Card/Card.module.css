@@ -21,7 +21,7 @@
   padding-top: 14px;
 
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 
   text-transform: capitalize;
   font-size: 10px;
@@ -83,7 +83,7 @@
 
 .iconButtonItem {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .iconButtonItem:not(:last-child) {
