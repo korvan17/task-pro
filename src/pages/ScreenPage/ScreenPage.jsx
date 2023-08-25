@@ -1,5 +1,5 @@
-import HeaderDashboard from 'components/HeaderDashboard/HeaderDashboard';
-import { MainDashboard } from 'components/MainDashboard/MainDashboard';
+import HeaderDashboard from 'components/Dashboard/HeaderDashboard/HeaderDashboard';
+import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard';
 
 const ScreensPage = () => {
   return (
