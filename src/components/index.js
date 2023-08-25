@@ -20,3 +20,4 @@ export { default as StartPageView } from './StartPageView/StartPageView.jsx';
 export { default as StartPageWrapper } from './StartPageWrapper/StartPageWrapper.jsx';
 export { default as Theme } from './Theme/Theme.jsx';
 export { default as TopBar } from './TopBar/TopBar.jsx';
+export { default as IconButton } from './IconButton/IconButton.jsx';
