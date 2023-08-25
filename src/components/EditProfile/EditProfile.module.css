@@ -29,6 +29,13 @@
   gap: 4px;
   border-radius: 8px;
   border: 1px solid #bedbb0;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
 }
 button {
   width: 352px;
