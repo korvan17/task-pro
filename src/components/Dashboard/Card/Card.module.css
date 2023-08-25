@@ -79,6 +79,11 @@
 .iconButtsList {
   display: flex;
   list-style: none;
+  margin-left: auto;
+}
+
+.iconButtsList_Deadline{
+  margin-left: 0;
 }
 
 .iconButtonItem {

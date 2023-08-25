@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './Card.module.css';
-import iconDefs from '../../icons/sprite.svg';
+import iconDefs from '../../../icons/sprite.svg';
 import convertDate from 'utlis/convertDate';
 import { IconButton } from 'components';
 import CardMoveModal from './CardMoveModal/CardMoveModal';
@@ -54,7 +54,7 @@ export default function Card({ title, desc, priority, deadline }) {
             </svg>
           )}
 
-          <ul className={css.iconButtsList}>
+          <ul className={`${css.iconButtsList} ${isDeadlineToday && css.iconButtsList_Deadline}`}>
             <li className={css.iconButtonItem}>
               <CardMoveModal
                 svg={<use xlinkHref={`${iconDefs}#icon-move`} />}
@@ -64,7 +64,7 @@ export default function Card({ title, desc, priority, deadline }) {
             </li>
             <li className={css.iconButtonItem}>
               <IconButton
-                svg={<use xlinkHref={`${iconDefs}#icon-pencil`} />}
+                svg={<use xlinkHref={`${iconDefs}#icon-edit`} />}
                 size={16}
                 className={css.icon}
               />
