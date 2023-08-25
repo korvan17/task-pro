@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import css from './MainPage.module.css';
+import css from './HomePage.module.css';
 
-const MainPage = () => {
+const HomePage = () => {
   const setIsOpenModal = useState(false);
   const handleAddDashBoard = () => {
     setIsOpenModal(true);
@@ -26,4 +26,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default HomePage;
