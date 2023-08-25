@@ -5,17 +5,7 @@
     justify-content: space-between;
 }
 
-@media screen and (min-width: 768px) {
-    .boardHeader {
-        padding: 26px 32px;
-    }
-}
 
-@media screen and (min-width: 1440px) {
-    .boardHeader {
-        padding: 10px 24px;
-    }
-}
 
 .title {
     position: relative;
@@ -28,39 +18,3 @@
     border-radius: 8px;
 }
 
-@media screen and (min-width: 768px) {
-    .title {
-        font-size: 18px;
-    }
-}
-
-.wrapperPriopity {
-    position: absolute;
-    right: 0;
-    top: 40px;
-    padding: 20px;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    background-color: #151515;
-    border-radius: 8px;
-    border: 1px solid #bedbb0;
-}
-
-.none {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.low {
-    background-color: #8fa1d0;
-}
-
-.medium {
-    background-color: #e09cb5;
-}
-
-.high {
-    background-color: #bedbb0;
-}
