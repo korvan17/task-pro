@@ -4,7 +4,7 @@ export { default as AddEditCard } from './Modals/AddEditCard/AddEditCard.jsx';
 export { default as AddEditColumn } from './Modals/AddEditColumn/AddEditColumn.jsx';
 export { default as AuthPageView } from './Auth/AuthPageView/AuthPageView.jsx';
 export { default as Board } from './Dashboard/Board/Board.jsx';
-export { default as Buttons } from './UIelements/Buttons/Buttons.jsx';
+export { default as Buttons } from './UIelements/Buttons/Button.jsx';
 export { default as Calendar } from './UIelements/Calendar/Calendar.jsx';
 export { default as Card } from './Dashboard/Card/Card.jsx';
 export { default as Column } from './Dashboard/Column/Column.jsx';
@@ -20,4 +20,5 @@ export { default as StartPageView } from './Auth/StartPageView/StartPageView.jsx
 export { default as StartPageWrapper } from './Auth/StartPageWrapper/StartPageWrapper.jsx';
 export { default as Theme } from './Controllers/Theme/Theme.jsx';
 export { default as TopBar } from './AppShell/TopBar/TopBar.jsx';
-export { default as IconButton } from './UIelements/IconButton/IconButton.jsx';
+export { default as IconButton } from './UIelements/Buttons/IconButton/IconButton.jsx';
+export { default as AddIconButton } from './UIelements/Buttons/AddIconButton/AddIconButton.jsx';
