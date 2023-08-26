@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import Notiflix from 'notiflix';
 
-axios.defaults.baseURL = 'https://task-pro-backend-4y7p.onrender.com/api-docs/';
+axios.defaults.baseURL = 'https://task-pro-backend-4y7p.onrender.com';
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -23,7 +22,6 @@ export const register = createAsyncThunk(
     }
   }
 );
-
 export const login = createAsyncThunk(
   'auth/login',
   async (userData, thunkAPI) => {
@@ -59,3 +57,24 @@ export const updateTheme = createAsyncThunk(
     }
   }
 );
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      setToken(persistedToken);
+      const res = await axios.get('/users/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+

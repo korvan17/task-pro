@@ -1,19 +1,34 @@
-import { useState } from 'react';
-import css from './HomePage.module.css';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
-  const setIsOpenModal = useState(false);
-  const handleAddDashBoard = () => {
-    setIsOpenModal(true);
+import css from './HomePage.module.css';
+import { selectBoards } from 'redux/boards/selectors';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+
+const ScreenPage = () => {
+  const boards = useSelector(selectBoards);
+  const navigate = useNavigate();
+  const [isOpenModalAdd, setIsOpenModalAdd] = useState(false);
+  const handleAddBoard = () => {
+    setIsOpenModalAdd(true);
   };
 
+  useEffect(() => {
+    if (boards.length > 0) {
+      navigate(`/home/${boards[0]._id}`);
+    }
+  }, [boards, navigate]);
   return (
+    // <Header/>
+    // <Sidebar/>
+    // <ScreenPage></ScreenPage>
     <section className={css.section}>
-      <div className={css.text_main}>
+      <div className={css.text__home}>
         <p>
           Before starting your project, it is essential
           {
-            <button onClick={() => handleAddDashBoard()} className={css.button}>
+            <button onClick={() => handleAddBoard()} className={css.button}>
               to create a board
             </button>
           }
@@ -22,8 +37,21 @@ const HomePage = () => {
           effective collaboration among team members.
         </p>
       </div>
+      {isOpenModalAdd && (
+        <BasicModal
+          handleClose={() => {
+            setIsOpenModalAdd(false);
+          }}
+        >
+          {/* <NewBoard
+            handleClose={() => {
+              setIsOpenModalAdd(false);
+            }}
+          /> */}
+        </BasicModal>
+      )}
     </section>
   );
 };
 
-export default HomePage;
+export default ScreenPage;

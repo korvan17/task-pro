@@ -9,7 +9,7 @@ export default function PrivateRoute({ children }) {
 
   React.useEffect(() => {
     if (!isLoggedIn) {
-      navigate('/login');
+      navigate('/auth');
     }
   }, [isLoggedIn, navigate]);
   return isLoggedIn ? children : navigate('/');

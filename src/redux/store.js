@@ -13,6 +13,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { boardsReducer } from './boards/slice';
 
 const persistConfig = {
   key: 'root',
@@ -20,11 +21,16 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
-
+const boardsPersistConfig = {
+  key: 'boards',
+  storage,
+  whitelist: ['items', 'currentBoard'],
+};
 export const store = configureStore({
   reducer: {
     filters: filtersReducer,
     auth: persistedReducer,
+    boards: persistReducer(boardsPersistConfig, boardsReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

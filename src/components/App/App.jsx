@@ -2,8 +2,8 @@
 // import HomePage from 'pages/HomePage/HomePage';
 // import ScreensPage from 'pages/ScreenPage/ScreenPage';
 import { LoginForm, RegisterForm } from 'components';
-import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
-import { Main } from 'pages';
+// import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
+import HomePage from '../../pages/HomePage/HomePage';
 import AuthPage from 'pages/AuthPage';
 
 import { Route, Routes } from 'react-router-dom';
@@ -14,7 +14,7 @@ export default function App() {
       <Routes>
         {/* <Route path="/" element={<Login />} />
         <Route path="/kak" element={<ScreensPage />} />
-        <Route path="/home" element={<HomePage />} />
+        
         <Route path="/kaka" element={<ScreensPage />} />
         <Route path="/main" element={<HomePage />} />
          <Route
@@ -22,21 +22,16 @@ export default function App() {
         <Route path="/" element={<StartPage />}>
           <Route index element={<StartPageView />} />
          */}
-        <Route path="/auth" element={<AuthPage />}>
+        <Route path="/" element={<AuthPage />} />
+        <Route path="/home" element={<HomePage />} />
+
+        <Route path="/auth/*" element={<AuthPage />}>
           <Route path="register" element={<RegisterForm />} />
           <Route path="login" element={<LoginForm />} />
         </Route>
-        {/* </Route> */}
-
-        {/* Private Routes */}
-        <Route
-          path="/privathomepage"
-          element={
-            <PrivateRoute>
-              <Main />
-            </PrivateRoute>
-          }
-        />
+        {/* <PrivateRoute path="/home">
+          <HomePage />
+        </PrivateRoute> */}
       </Routes>
     </>
   );
