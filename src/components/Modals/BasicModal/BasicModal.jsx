@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import css from './BasicModal.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 //   const [showModal, setShowModal] = useState(true);
 //   const toggleModal = () => {
@@ -32,15 +32,7 @@ export default function BasicModal({ onClose, children }) {
 
   return createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div className={css.modal}>
-        {children}
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus a
-          ullam repudiandae magni, mollitia doloremque eveniet quod et excepturi
-          in totam corporis, reiciendis, beatae distinctio debitis optio nihil
-          omnis natus.
-        </p>
-      </div>
+      <div className={css.modal}>{children}</div>
     </div>,
     modalRoot
   );

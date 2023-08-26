@@ -1,4 +1,5 @@
 .section {
+    
     background-color: #1f1f1f;
     display: flex;
     justify-content: center;
@@ -9,12 +10,12 @@
 
 @media screen and (min-width: 1440px) {
     .section {
-        padding-left: 256px;
+        padding-left: 260px;
         height: calc(100vh - 68px);
     }
 }
 
-.text__home {
+.text_main {
     color: rgba(255, 255, 255, 0.5);
     width: 486px;
     text-align: center;
@@ -34,7 +35,7 @@
 }
 
 .button:hover {
-    color: red;
+    color: #9dc888;
 }
 
 @media screen and (max-width: 374px) {
@@ -43,11 +44,11 @@
         height: 100vh;
     }
 
-    .text__home {
+    .text__wrapp {
         width: 100%;
         font-size: 12px;
         line-height: 16px;
-        
+        width: 335px;
     }
 }
 
@@ -64,10 +65,7 @@
 @media screen and (min-width: 768px) and (max-width: 1439px) {
 
 
-    .text__home {
+    .text__wrapp {
         width: 486px;
     }
-}
-
-@media screen and (min-width: 1440px) {
 }

@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #ffffff 25%, #bedbb0 92.19%);
+}
+
+/* @media (max-width: 375px) {
+  .wrapper {
+    padding: 0;
+  }
+} */

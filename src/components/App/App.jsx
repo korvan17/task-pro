@@ -23,7 +23,7 @@ export default function App() {
         </Route>
         {/* <Route path="/" element={<Login />} />
         <Route path="/kak" element={<ScreensPage />} />
-        <Route path="/home" element={<HomePage />} />
+        
         <Route path="/kaka" element={<ScreensPage />} />
         <Route path="/main" element={<HomePage />} />
          <Route
