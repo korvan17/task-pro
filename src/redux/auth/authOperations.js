@@ -50,7 +50,7 @@ export const updateTheme = createAsyncThunk(
   'users/updateThemes',
   async (theme, thunkAPI) => {
     try {
-      const { data } = await axios.patch('/users/themes', { theme });
+      const { data } = await axios.patch('/users/theme', { theme });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
