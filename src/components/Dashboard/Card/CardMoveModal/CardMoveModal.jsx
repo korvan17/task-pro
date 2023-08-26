@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Tooltip } from '@mui/material';
-import iconDefs from '../../../icons/sprite.svg';
+import iconDefs from '../../../../icons/sprite.svg';
 
 import css from './CardMoveModal.module.css';
 
@@ -50,7 +50,6 @@ export default function CardMoveModal({ svg, className, size }) {
           sx: {
             backgroundColor: '#fff',
             boxShadow: '0px 4px 16px 0px rgba(17, 17, 17, 0.10)',
-            maxWidth: '135px',
             padding: '18px',
           },
         },
