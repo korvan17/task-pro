@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-
-
 axios.defaults.baseURL = 'https://task-pro-backend-4y7p.onrender.com';
 
 const setToken = token => {
@@ -17,7 +15,7 @@ export const fetchBoards = createAsyncThunk(
   'boards/fetchBoards',
   async (_, thunkAPI) => {
     try {
-      const state = thunkApi.getState();
+      const state = thunkAPI.getState();
       setToken(state.auth.token);
       const res = await axios.get('/boards');
       return res.data;
@@ -35,7 +33,7 @@ export const addBoard = createAsyncThunk(
   'boards/addBoard',
   async (body, thunkAPI) => {
     try {
-      const state = thunkApi.getState();
+      const state = thunkAPI.getState();
       setToken(state.auth.token);
       const response = await axios.post('/boards', { ...body });
       return { ...body, ...response.data };
@@ -51,7 +49,7 @@ export const updateBoardById = createAsyncThunk(
     const { _id, title, icon, background } = board;
 
     try {
-      const state = thunkApi.getState();
+      const state = thunkAPI.getState();
       setToken(state.auth.token);
       await axios.put(`/boards/${_id}`, {
         title,
@@ -68,7 +66,7 @@ export const updateBoardById = createAsyncThunk(
 export const updateBoardBgById = createAsyncThunk(
   'boards/updateBoardBgById',
   async (board, thunkAPI) => {
-    const state = thunkApi.getState();
+    const state = thunkAPI.getState();
     setToken(state.auth.token);
     const { _id, background } = board;
     try {
@@ -86,7 +84,7 @@ export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
   async (_id, thunkAPI) => {
     try {
-      const state = thunkApi.getState();
+      const state = thunkAPI.getState();
       setToken(state.auth.token);
       await axios.delete(`/boards/${_id}`);
       return _id;
@@ -100,7 +98,7 @@ export const getBoard = createAsyncThunk(
   'boards/getBoard',
   async (id, thunkAPI) => {
     try {
-      const state = thunkApi.getState();
+      const state = thunkAPI.getState();
       setToken(state.auth.token);
       const res = await axios.get(`/boards/${id}`);
       return res.data;
