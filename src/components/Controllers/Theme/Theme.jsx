@@ -18,14 +18,15 @@ export default function Theme() {
           <use xlinkHref={`${iconDefs}#icon-theme`} />
         </svg>
       </button>
-      <div
-        className={`${css.themeListContainer}`}
-        hidden={!isThemeListVisible}
-      >
+      <div className={`${css.themeListContainer}`} hidden={!isThemeListVisible}>
         <ul className={css.themeList}>
           {themes.map(theme => (
             <li key={theme + 1} className={css.themeListButton}>
-              <button className={css.themeListButton} onClick={toggleThemeList}>
+              <button
+                style={{ color: 'red' }}
+                className={css.themeListButton}
+                onClick={toggleThemeList}
+              >
                 {theme[0].toUpperCase() + theme.slice(1)}
               </button>
             </li>
