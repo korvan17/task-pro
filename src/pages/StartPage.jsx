@@ -1,15 +1,14 @@
-import { StartPageView } from 'components';
-
 import { StartPageWrapper } from 'components';
-
-import React from 'react';
+import React, { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 // import AuthPage from './AuthPage';
 
 function StartPage() {
   return (
     <StartPageWrapper>
-      <StartPageView />
-      {/* <AuthPage /> */}
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </StartPageWrapper>
   );
 }

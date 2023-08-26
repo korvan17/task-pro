@@ -1,12 +1,11 @@
 import React from 'react';
 import css from './Card.module.css';
 import iconDefs from '../../../icons/sprite.svg';
+import convertDate from 'utlis/convertDate';
 import { IconButton } from 'components';
 import CardMoveModal from './CardMoveModal/CardMoveModal';
-import { convertDate } from 'utlis';
 
 export default function Card({ title, desc, priority, deadline }) {
-
   const convertedPriority = priority.toLowerCase();
 
   const getColor = () => {

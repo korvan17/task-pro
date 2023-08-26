@@ -1,7 +1,11 @@
-// import css from './HeaderDashboard.module.css';
+import css from './HeaderDashboard.module.css';
 
-const HeaderDashboard = () => {
-  return <div>ttt</div>;
+const HeaderDashboard = ({ title }) => {
+  return (
+    <div className={css.boardHeader}>
+      <h1 className={css.title}>{title}</h1>
+      <div className={`${css.title}`}>{/* <Filter /> */}</div>
+    </div>
+  );
 };
-
 export default HeaderDashboard;

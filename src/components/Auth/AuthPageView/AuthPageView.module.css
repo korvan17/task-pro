@@ -1,11 +1,9 @@
-.authForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  width: 100%;
+.authBox {
+  padding: 24px;
+  border-radius: 8px;
+  background: #151515;
+  position: relative;
 }
-
 @media screen and (min-width: 375px) {
   .authBox {
     width: 287px;
@@ -14,7 +12,16 @@
 @media screen and (min-width: 768px) {
   .authBox {
     width: 344px;
+    padding: 40px;
   }
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  width: 100%;
 }
 
 .authFormInputBox {
@@ -24,18 +31,6 @@
   width: 100%;
   gap: 14px;
   margin-bottom: 24px;
-}
-
-.authBox {
-  padding: 24px;
-  border-radius: 8px;
-  background: #151515;
-}
-
-@media screen and (min-width: 768px) {
-  .authBox {
-    padding: 40px;
-  }
 }
 
 .authFormInput {
@@ -103,4 +98,22 @@
 
 .authLink:active {
   color: #fff;
+}
+.svg {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  fill: currentColor;
+  cursor: pointer;
+}
+
+.authFormPassword {
+  width: 100%;
+  position: relative;
+  color: rgba(22, 22, 22, 0.5);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.authFormPassword svg:hover path {
+  fill: #ffffff;
 }
