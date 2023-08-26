@@ -99,21 +99,34 @@
 .authLink:active {
   color: #fff;
 }
-.svg {
-  position: absolute;
-  top: 16px;
-  right: 18px;
-  fill: currentColor;
-  cursor: pointer;
-}
 
-.authFormPassword {
+.authFormInpWrap {
   width: 100%;
-  position: relative;
-  color: rgba(22, 22, 22, 0.5);
+  /* position: relative; */
+  color: rgba(255, 255, 255, 0.3);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.authFormPassword svg:hover path {
-  fill: #ffffff;
+.authFormInpWrap svg:hover,
+.authFormInpWrap svg:active {
+  stroke: #ffffff;
+}
+
+.errorMessage {
+  color: rgba(234, 84, 84, 0.859);
+  margin: 0 0 5px 0;
+  text-align-last: left;
+}
+
+.iconWrapper {
+  position: relative;
+  top: -50px;
+}
+svg {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  stroke: currentColor;
+  fill: none;
+  cursor: pointer;
 }
