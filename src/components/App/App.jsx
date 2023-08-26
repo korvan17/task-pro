@@ -5,6 +5,7 @@ import { LoginForm, RegisterForm } from 'components';
 import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
 import { Main } from 'pages';
 import AuthPage from 'pages/AuthPage';
+import HomePage from 'pages/HomePage/HomePage';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/" element={<StartPage />}>
           <Route index element={<StartPageView />} />
          */}
+        <Route path="/home" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />}>
           <Route path="register" element={<RegisterForm />} />
           <Route path="login" element={<LoginForm />} />
