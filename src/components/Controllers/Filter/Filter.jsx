@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
 import iconDefs from '../../../icons/sprite.svg';
 import css from './Filter.module.css';
 
 export default function FIlter() {
-  const colors = [
-    { id: 1, priority: 'low', color: '#8FA1D0' },
-    { id: 2, priority: 'medium', color: '#E09CB5' },
-    { id: 3, priority: 'high', color: '#BEDBB0' },
-    { id: 4, priority: 'without', color: '#1616164D' },
-  ];
+  // const colors = [
+  //   { id: 1, priority: 'low', color: '#8FA1D0' },
+  //   { id: 2, priority: 'medium', color: '#E09CB5' },
+  //   { id: 3, priority: 'high', color: '#BEDBB0' },
+  //   { id: 4, priority: 'without', color: '#1616164D' },
+  // ];
 
-  const defaultColor = colors.find(color => color.priority === 'without').color;
+  // const defaultColor = colors.find(color => color.priority === 'without').color;
 
-  const [selectedColor, setSelectedColor] = useState(defaultColor);
+  // const [selectedColor, setSelectedColor] = useState(defaultColor);
 
-  const handleColorChange = color => {
-    setSelectedColor(color);
-  };
+  // const handleColorChange = color => {
+  //   setSelectedColor(color);
+  // };
 
   return (
     <div className={css.filtersContainer}>
