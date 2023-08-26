@@ -2,7 +2,7 @@
 // import HomePage from 'pages/HomePage/HomePage';
 // import ScreensPage from 'pages/ScreenPage/ScreenPage';
 import { LoginForm, RegisterForm } from 'components';
-import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
+// import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
 import HomePage from '../../pages/HomePage/HomePage';
 import AuthPage from 'pages/AuthPage';
 
@@ -22,14 +22,16 @@ export default function App() {
         <Route path="/" element={<StartPage />}>
           <Route index element={<StartPageView />} />
          */}
+        <Route path="/" element={<AuthPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/auth" element={<AuthPage />}>
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/login" element={<LoginForm />} />
+
+        <Route path="/auth/*" element={<AuthPage />}>
+          <Route path="register" element={<RegisterForm />} />
+          <Route path="login" element={<LoginForm />} />
         </Route>
-        <PrivateRoute path="/home">
+        {/* <PrivateRoute path="/home">
           <HomePage />
-        </PrivateRoute>
+        </PrivateRoute> */}
       </Routes>
     </>
   );
