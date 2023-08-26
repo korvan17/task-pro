@@ -3,7 +3,7 @@
 // import ScreensPage from 'pages/ScreenPage/ScreenPage';
 import { LoginForm, RegisterForm, StartPageView } from 'components';
 // import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
-import HomePage from '../../pages/HomePage/HomePage';
+// import HomePage from '../../pages/HomePage/HomePage';
 import AuthPage from 'pages/AuthPage';
 
 import { Route, Routes } from 'react-router-dom';
