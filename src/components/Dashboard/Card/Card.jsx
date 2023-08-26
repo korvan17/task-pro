@@ -1,13 +1,16 @@
 import React from 'react';
 import css from './Card.module.css';
-import iconDefs from '../../icons/sprite.svg';
-import convertDate from 'utlis/convertDate';
+import iconDefs from '../../../icons/sprite.svg';
 import { IconButton } from 'components';
 import CardMoveModal from './CardMoveModal/CardMoveModal';
+import { convertDate } from 'utlis';
 
 export default function Card({ title, desc, priority, deadline }) {
+
+  const convertedPriority = priority.toLowerCase();
+
   const getColor = () => {
-    switch (priority) {
+    switch (convertedPriority) {
       case 'high':
         return '#bedbb0';
       case 'medium':
@@ -35,13 +38,16 @@ export default function Card({ title, desc, priority, deadline }) {
         <div className={css.additionWrapper}>
           <div className={css.additionInfo}>
             <p className={css.additionInfoHeading}>priority</p>
-            <p className={css.priority} style={priorityStyle}>
+            <p
+              className={`${css.priority} ${css.additionInfoSubheading}`}
+              style={priorityStyle}
+            >
               {priority}
             </p>
           </div>
           <div className={css.additionInfo}>
             <p className={css.additionInfoHeading}>deadline</p>
-            <p>{deadline}</p>
+            <p className={css.additionInfoSubheading}>{deadline}</p>
           </div>
 
           {isDeadlineToday && (
@@ -54,7 +60,11 @@ export default function Card({ title, desc, priority, deadline }) {
             </svg>
           )}
 
-          <ul className={css.iconButtsList}>
+          <ul
+            className={`${css.iconButtsList} ${
+              isDeadlineToday && css.iconButtsList_Deadline
+            }`}
+          >
             <li className={css.iconButtonItem}>
               <CardMoveModal
                 svg={<use xlinkHref={`${iconDefs}#icon-move`} />}
@@ -64,7 +74,7 @@ export default function Card({ title, desc, priority, deadline }) {
             </li>
             <li className={css.iconButtonItem}>
               <IconButton
-                svg={<use xlinkHref={`${iconDefs}#icon-pencil`} />}
+                svg={<use xlinkHref={`${iconDefs}#icon-edit`} />}
                 size={16}
                 className={css.icon}
               />
