@@ -8,6 +8,9 @@ const HomePage = () => {
   };
 
   return (
+    // <Header/>
+    // <Sidebar/>
+    // <ScreenPage></ScreenPage>
     <section className={css.section}>
       <div className={css.text_main}>
         <p>

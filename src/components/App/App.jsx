@@ -3,7 +3,7 @@
 // import ScreensPage from 'pages/ScreenPage/ScreenPage';
 import { LoginForm, RegisterForm } from 'components';
 import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
-import { Main } from 'pages';
+import { HomePage } from 'pages';
 import AuthPage from 'pages/AuthPage';
 
 import { Route, Routes } from 'react-router-dom';
@@ -23,20 +23,12 @@ export default function App() {
           <Route index element={<StartPageView />} />
          */}
         <Route path="/auth" element={<AuthPage />}>
-          <Route path="register" element={<RegisterForm />} />
-          <Route path="login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
         </Route>
-        {/* </Route> */}
-
-        {/* Private Routes */}
-        <Route
-          path="/privathomepage"
-          element={
-            <PrivateRoute>
-              <Main />
-            </PrivateRoute>
-          }
-        />
+        <PrivateRoute path="/home">
+          <HomePage />
+        </PrivateRoute>
       </Routes>
     </>
   );
