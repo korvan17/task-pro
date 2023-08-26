@@ -66,14 +66,16 @@ function RegisterForm() {
               name="password"
               placeholder="Create a password"
             />
-            <svg
-              width={18}
-              height={18}
-              className={css.svg}
-              onClick={handleTogglePassword}
-            >
-              <use href={svgSprite + '#icon-eye'} />
-            </svg>
+            <div className={css.iconWrapper}>
+              <svg
+                width={18}
+                height={18}
+                className={css.svg}
+                onClick={handleTogglePassword}
+              >
+                <use href={svgSprite + '#icon-eye'} />
+              </svg>
+            </div>
           </div>
         </div>
 

@@ -102,7 +102,7 @@
 
 .authFormInpWrap {
   width: 100%;
-  position: relative;
+  /* position: relative; */
   color: rgba(255, 255, 255, 0.3);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -118,6 +118,10 @@
   text-align-last: left;
 }
 
+.iconWrapper {
+  position: relative;
+  top: -50px;
+}
 svg {
   position: absolute;
   top: 16px;
