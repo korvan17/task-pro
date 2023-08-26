@@ -2,6 +2,13 @@ import iconDefs from '../../../icons/sprite.svg';
 import css from './Filter.module.css';
 
 export default function FIlter() {
+  const colors = [
+    { id: 1, priority: 'low', color: '#8FA1D0' },
+    { id: 2, priority: 'medium', color: '#E09CB5' },
+    { id: 3, priority: 'high', color: '#BEDBB0' },
+    { id: 4, priority: 'without', color: '#1616164D' },
+  ];
+
   return (
     <div className={css.filtersContainer}>
       <div className={css.filtersButtonContainer}>
