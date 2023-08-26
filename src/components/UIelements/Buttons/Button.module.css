@@ -1,0 +1,55 @@
+/* colors must be changed as soos as theme is added */
+
+/* common button styles */
+.button {
+  min-width: fit-content;
+
+  padding: 14px;
+
+  font-size: 14px;
+  font-family: Poppins;
+
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* button types */
+.buttonMain {
+  background-color: rgba(190, 219, 176, 1);
+}
+
+.buttonDark {
+  background-color: #161616;
+  color: #ffffff;
+}
+
+.buttonTransparent {
+  padding: 0;
+  min-width: fit-content;
+
+  background-color: transparent;
+}
+
+/* button themes (just for develop) */
+.violet {
+  background-color: #5255bc;
+  color: #ffffff;
+}
+.violet:hover {
+  background-color: #7b7ede;
+}
+
+.light,
+.dark {
+  color: #161616;
+  background-color: #bedbb0;
+}
+
+.light:hover,
+.dark:hover {
+  background-color: #9dc888;
+}
