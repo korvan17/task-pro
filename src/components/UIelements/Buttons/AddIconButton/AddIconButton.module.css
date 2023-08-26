@@ -35,9 +35,6 @@
   background-color: white;
 }
 
-.violetNoTxt {
-  stroke: white;
-}
 
 /* without text */
 .buttonNoTxt {
@@ -49,4 +46,8 @@
   stroke: black;
   padding: 0;
   margin-right: 0;
+}
+
+.violetNoTxt {
+  stroke: white;
 }

@@ -22,3 +22,4 @@ export { default as Theme } from './Controllers/Theme/Theme.jsx';
 export { default as TopBar } from './AppShell/TopBar/TopBar.jsx';
 export { default as IconButton } from './UIelements/Buttons/IconButton/IconButton.jsx';
 export { default as AddIconButton } from './UIelements/Buttons/AddIconButton/AddIconButton.jsx';
+export { default as CreateBoardButton } from './AppShell/SideBar/CreateBoardButton/CreateBoardButton.jsx';
