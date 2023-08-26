@@ -1,19 +1,72 @@
 import React from 'react';
+
 import css from '../AuthPageView/AuthPageView.module.css';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { registerSchema } from '../userSchemas';
+
+const initialValues = {
+  name: '',
+  email: '',
+  password: '',
+};
 
 function RegisterForm() {
-  return (
-    <form className={css.authForm}>
-      <div className={css.authFormInputBox}>
-        <input className={css.authFormInput} placeholder="Enter your name" />
-        <input className={css.authFormInput} placeholder="Enter your email" />
-        <input className={css.authFormInput} placeholder="Create a password" />
-      </div>
+  const handleFormSubmit = (values, { resetForm }) => {
+    console.log('values:', values);
+    resetForm();
+  };
 
-      <button className={css.authFormInputButton} type="submit">
-        Register Now
-      </button>
-    </form>
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleFormSubmit}
+      validationSchema={registerSchema}
+    >
+      <Form className={css.authForm} autoComplete="off">
+        <div className={css.authFormInputBox}>
+          <div className={css.authFormInpWrap}>
+            <ErrorMessage
+              name="name"
+              render={message => <p className={css.errorMessage}>{message}</p>}
+            />
+            <Field
+              className={css.authFormInput}
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div className={css.authFormInpWrap}>
+            <ErrorMessage
+              name="email"
+              render={message => <p className={css.errorMessage}>{message}</p>}
+            />
+            <Field
+              className={css.authFormInput}
+              type="text"
+              name="email"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className={css.authFormInpWrap}>
+            <ErrorMessage
+              name="password"
+              render={message => <p className={css.errorMessage}>{message}</p>}
+            />
+            <Field
+              className={css.authFormInput}
+              type="password"
+              name="password"
+              placeholder="Create a password"
+            />
+          </div>
+        </div>
+
+        <button className={css.authFormInputButton} type="submit">
+          Register Now
+        </button>
+      </Form>
+    </Formik>
   );
 }
 
