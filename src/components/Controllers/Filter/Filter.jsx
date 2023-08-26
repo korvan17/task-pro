@@ -3,20 +3,26 @@ import css from './Filter.module.css';
 
 export default function FIlter() {
   return (
-    <div>
-      <div>
-        <button>
-          <svg className={css} width="16" height="16">
-            <use xlinkHref={`${iconDefs}#icon-theme`} />
+    <div className={css.filtersContainer}>
+      <div className={css.filtersButtonContainer}>
+        <button className={css.filtersButton}>
+          <svg className={css.filtersButtonIcon} width="16" height="16">
+            <use xlinkHref={`${iconDefs}#icon-filter`} />
           </svg>
-          <h3>Filter</h3>
+          <h3>Filters</h3>
         </button>
       </div>
-      <div>
-        <svg className={css} width="16" height="16">
-          <use xlinkHref={`${iconDefs}#icon-theme`} />
-        </svg>
-        <p>Filters</p>
+      <div className={css.filtersChangerContainer}>
+        <button className={css.filtersChangerContainerCloseButton}>
+          <svg
+            className={css.filtersChangerContainerCloseIcon}
+            width="16"
+            height="16"
+          >
+            <use xlinkHref={`${iconDefs}#icon-close`} />
+          </svg>
+        </button>
+        <p className={css.filtersChangerHeader}>Filters</p>
         <div></div>
         <div>
           <p></p>

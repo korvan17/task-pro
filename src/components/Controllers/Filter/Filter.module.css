@@ -1,0 +1,67 @@
+.filtersContainer {
+}
+
+.filtersButtonContainer {
+  width: 75px;
+  height: 20px;
+  /* outline: 1px solid blue; */
+}
+
+.filtersButton {
+  width: 80px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(22, 22, 22, 0.8);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  cursor: pointer;
+}
+
+.filtersButtonIcon {
+  margin-right: 8px;
+  stroke-width: 1.5px;
+  stroke: rgba(22, 22, 22, 0.8);
+}
+
+.filtersChangerContainer {
+  padding: 14px;
+  width: 300px;
+  height: 235px;
+  border-radius: 8px;
+  background: #fcfcfc;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+  outline: 1px solid blue;
+}
+
+.filtersChangerContainerCloseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: none;
+  border-radius: 0;
+}
+
+.filtersChangerContainerCloseIcon {
+  stroke-width: 1.5px;
+  stroke: #161616;
+}
+
+.filtersChangerHeader {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.36px;
+}
