@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import css from '../AuthPageView/AuthPageView.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { registerSchema } from '../userSchemas';
+import svgSprite from '../../../icons/sprite.svg';
 
 const initialValues = {
   name: '',
@@ -11,6 +12,12 @@ const initialValues = {
 };
 
 function RegisterForm() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleFormSubmit = (values, { resetForm }) => {
     console.log('values:', values);
     resetForm();
@@ -55,10 +62,22 @@ function RegisterForm() {
             />
             <Field
               className={css.authFormInput}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Create a password"
             />
+            <svg
+              width={18}
+              height={18}
+              className={css.svg}
+              onClick={handleTogglePassword}
+            >
+              <use
+                href={
+                  svgSprite + (showPassword ? '#icon-eye-slash' : '#icon-eye')
+                }
+              />
+            </svg>
           </div>
         </div>
 
