@@ -72,11 +72,7 @@ function RegisterForm() {
               className={css.svg}
               onClick={handleTogglePassword}
             >
-              <use
-                href={
-                  svgSprite + (showPassword ? '#icon-eye-slash' : '#icon-eye')
-                }
-              />
+              <use href={svgSprite + '#icon-eye'} />
             </svg>
           </div>
         </div>
