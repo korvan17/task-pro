@@ -23,16 +23,36 @@ export default function FIlter() {
           </svg>
         </button>
         <p className={css.filtersChangerHeader}>Filters</p>
-        <div></div>
-        <div>
-          <p></p>
-          <button></button>
+        <div className={css.filtersChangerLine}></div>
+        <div className={css.filterChangerTitleAndButtonContainer}>
+          <p className={css.filterChangerTitle}>Label color</p>
+          <button className={css.filterChangerShowButton}>Show all</button>
         </div>
-        <div>
-          <input type="radio" title="Without priority" />
-          <input type="radio" title="Low" />
-          <input type="radio" title="Medium" />
-          <input type="radio" title="High" />
+        <div className={css.filtersChangerSelectorsContainer}>
+          <div className={css.filtersChangerSelectorsInput}>
+            <input
+              type="radio"
+              id="withoutpriority"
+              name="without priority"
+              value="without priority"
+            />
+            <label htmlFor="withoutpriority">Without priority</label>
+          </div>
+
+          <div className={css.filtersChangerSelectorsInput}>
+            <input type="radio" id="low" name="low" value="low" />
+            <label htmlFor="low">Low</label>
+          </div>
+
+          <div className={css.filtersChangerSelectorsInput}>
+            <input type="radio" id="medium" name="medium" value="medium" />
+            <label htmlFor="medium">Medium</label>
+          </div>
+
+          <div className={css.filtersChangerSelectorsInput}>
+            <input type="radio" id="high" name="high" value="high" />
+            <label htmlFor="high">High</label>
+          </div>
         </div>
       </div>
     </div>
