@@ -5,7 +5,6 @@ import { LoginForm, RegisterForm } from 'components';
 import PrivateRoute from 'components/Routes/PrivatRoute/PrivateRoute';
 import HomePage from '../../pages/HomePage/HomePage';
 import AuthPage from 'pages/AuthPage';
-import HomePage from 'pages/HomePage/HomePage';
 
 import { Route, Routes } from 'react-router-dom';
 

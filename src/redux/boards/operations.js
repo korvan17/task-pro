@@ -1,15 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-<<<<<<< Updated upstream
 /*
  * GET @ /boards
  * headers: Authorization: Bearer token
  */
-=======
-//  GET @ /boards
-
->>>>>>> Stashed changes
 export const fetchBoards = createAsyncThunk(
   'boards/fetchBoards',
   async (_, thunkAPI) => {
@@ -22,14 +17,10 @@ export const fetchBoards = createAsyncThunk(
   }
 );
 
-<<<<<<< Updated upstream
 /*
  * POST @ /boards
  * headers: Authorization: Bearer token
  */
-=======
-// POST @ /boards
->>>>>>> Stashed changes
 export const addBoard = createAsyncThunk(
   'boards/addBoard',
   async (body, thunkAPI) => {
@@ -42,14 +33,6 @@ export const addBoard = createAsyncThunk(
   }
 );
 
-/*
- * PUT @ /boards
-<<<<<<< Updated upstream
- * headers: Authorization: Bearer token
-=======
-
->>>>>>> Stashed changes
- */
 export const updateBoardById = createAsyncThunk(
   'boards/updateBoardById',
   async (board, thunkAPI) => {
@@ -68,14 +51,6 @@ export const updateBoardById = createAsyncThunk(
   }
 );
 
-/*
- * PATCH @ /boards
-<<<<<<< Updated upstream
- * headers: Authorization: Bearer token
-=======
-
->>>>>>> Stashed changes
- */
 export const updateBoardBgById = createAsyncThunk(
   'boards/updateBoardBgById',
   async (board, thunkAPI) => {
@@ -91,14 +66,6 @@ export const updateBoardBgById = createAsyncThunk(
   }
 );
 
-/*
- * DELETE @ /boards/:id
-<<<<<<< Updated upstream
- * headers: Authorization: Bearer token
-=======
-
->>>>>>> Stashed changes
- */
 export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
   async (_id, thunkAPI) => {
@@ -110,15 +77,6 @@ export const deleteBoard = createAsyncThunk(
     }
   }
 );
-
-<<<<<<< Updated upstream
-/*
- * GET @ /boards/:id
- * headers: Authorization: Bearer token
- */
-=======
-//  GET @ /boards/:id
->>>>>>> Stashed changes
 
 export const getBoard = createAsyncThunk(
   'boards/getBoard',

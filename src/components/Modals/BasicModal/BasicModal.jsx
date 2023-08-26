@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import css from './BasicModal.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 //   const [showModal, setShowModal] = useState(true);
 //   const toggleModal = () => {

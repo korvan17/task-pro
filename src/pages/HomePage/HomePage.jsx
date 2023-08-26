@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-import ScreenPage from 'pages/ScreenPage/ScreenPage';
-
-const HomePage = () => {
-  return <ScreenPage />;
-=======
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -58,7 +52,6 @@ const ScreenPage = () => {
       )}
     </section>
   );
->>>>>>> Stashed changes
 };
 
 export default ScreenPage;

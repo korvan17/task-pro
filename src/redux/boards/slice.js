@@ -5,11 +5,7 @@ import {
   deleteBoard,
   updateBoardById,
   updateBoardBgById,
-<<<<<<< Updated upstream
 } from './operations';
-=======
-} from '../boards/operations';
->>>>>>> Stashed changes
 
 const handlePending = state => {
   state.isLoading = true;
@@ -46,10 +42,7 @@ const boardsSlice = createSlice({
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-<<<<<<< Updated upstream
-=======
         state.items.push({ ...action.payload });
->>>>>>> Stashed changes
       })
       .addCase(addBoard.pending, handlePending)
       .addCase(addBoard.rejected, handleRejected)
@@ -92,9 +85,5 @@ const boardsSlice = createSlice({
       .addCase(deleteBoard.rejected, handleRejected),
 });
 
-<<<<<<< Updated upstream
 export const { selectBoard, setFilter } = boardsSlice.actions;
-=======
-export const { selectBoard } = boardsSlice.actions;
->>>>>>> Stashed changes
 export const boardsReducer = boardsSlice.reducer;
