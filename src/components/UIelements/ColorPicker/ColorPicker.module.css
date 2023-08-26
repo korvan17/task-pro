@@ -1,0 +1,23 @@
+.labelTitle {
+    display: block;
+    margin-bottom: 4px;
+    color: rgba(22, 22, 22, 0.50);
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.24px;
+}
+
+.radioBtn {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: pointer,
+}
+
+.colorPickerBlock {
+    margin-bottom: 14px;
+}
