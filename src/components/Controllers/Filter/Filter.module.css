@@ -1,0 +1,125 @@
+.filtersContainer {
+}
+
+.filtersButtonContainer {
+  width: 75px;
+  height: 20px;
+  /* outline: 1px solid blue; */
+}
+
+.filtersButton {
+  width: 80px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(22, 22, 22, 0.8);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  cursor: pointer;
+}
+
+.filtersButtonIcon {
+  margin-right: 8px;
+  stroke-width: 1.5px;
+  stroke: rgba(22, 22, 22, 0.8);
+}
+
+.filtersChangerContainer {
+  position: relative;
+  padding: 24px;
+  width: 300px;
+  height: 235px;
+  border-radius: 8px;
+  background: #fcfcfc;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+}
+
+.filtersChangerContainerCloseButton {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.filtersChangerContainerCloseIcon {
+  stroke-width: 1.5px;
+  stroke: #161616;
+}
+
+.filtersChangerHeader {
+  padding: 0;
+  margin-bottom: 14px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.36px;
+}
+
+.filtersChangerLine {
+  width: 252px;
+  padding-top: 0.5px;
+  margin-bottom: 14px;
+  background-color: rgba(22, 22, 22, 0.1);
+  /* outline: 1px solid blue; */
+}
+
+.filterChangerTitleAndButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.filterChangerTitle {
+  color: #161616;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+}
+
+.filterChangerShowButton {
+  width: 58px;
+  height: 18px;
+  background: none;
+  border-radius: 0;
+  border: 0;
+  color: rgba(22, 22, 22, 0.5);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  text-decoration-line: underline;
+}
+
+.filtersChangerSelectorsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.filtersChangerSelectorsInput {
+  display: flex;
+  gap: 8px;
+}
+
+.filtersChangerSelectorsInput:not(:last-child) {
+  margin-bottom: 8px;
+}
