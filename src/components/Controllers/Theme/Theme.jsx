@@ -19,9 +19,8 @@ export default function Theme() {
         </svg>
       </button>
       <div
-        className={`${css.themeListContainer}${
-          isThemeListVisible ? '.active' : ''
-        }`}
+        className={`${css.themeListContainer}`}
+        hidden={!isThemeListVisible}
       >
         <ul className={css.themeList}>
           {themes.map(theme => (
