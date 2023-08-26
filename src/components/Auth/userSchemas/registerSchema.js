@@ -1,7 +1,11 @@
 import * as yup from 'yup';
 
 const registerSchema = yup.object({
-  name: yup.string().trim().max(50, 'Name must be no more than 50 characters'),
+  name: yup
+    .string()
+    .trim()
+    .min(2, 'Name must be at least 2 characters')
+    .max(50, 'Name must be no more than 50 characters'),
   email: yup
     .string()
     .trim()

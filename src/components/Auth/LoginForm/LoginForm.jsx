@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import css from '../AuthPageView/AuthPageView.module.css';
 import svgSprite from '../../../icons/sprite.svg';
@@ -10,6 +10,11 @@ const initialValues = {
 };
 
 function LoginForm() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   const handleFormSubmit = (values, { resetForm }) => {
     console.log('values:', values);
     resetForm();
@@ -42,16 +47,15 @@ function LoginForm() {
             />
             <Field
               className={css.authFormInput}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Confirm a password"
             />
-
             <svg
               width={18}
               height={18}
               className={css.svg}
-              // onClick={на клике открыть пароль}
+              onClick={handleTogglePassword}
             >
               <use href={svgSprite + '#icon-eye'} />
             </svg>
