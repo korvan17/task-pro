@@ -8,7 +8,7 @@ export const tree = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957366/backgrounds/tree-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957365/backgrounds/tree-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957365/backgrounds/tree-desktop.jpg',
 };
 
@@ -22,7 +22,7 @@ export const triler = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957365/backgrounds/trailer-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957365/backgrounds/trailer-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957363/backgrounds/trailer-desktop.jpg',
 };
 
@@ -36,7 +36,7 @@ export const spheres = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957362/backgrounds/spheres-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957362/backgrounds/spheres-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957362/backgrounds/spheres-desktop.jpg',
 };
 
@@ -50,7 +50,7 @@ export const semimoon = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957361/backgrounds/semimoon-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957361/backgrounds/semimoon-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957361/backgrounds/semimoon-desktop.jpg',
 };
 
@@ -64,7 +64,7 @@ export const sea = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957360/backgrounds/sea-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957361/backgrounds/sea-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957360/backgrounds/sea-desktop.jpg',
 };
 
@@ -78,7 +78,7 @@ export const rocks = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957360/backgrounds/rocks-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957360/backgrounds/rocks-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957360/backgrounds/rocks-desktop.jpg',
 };
 
@@ -92,7 +92,7 @@ export const mountains = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957358/backgrounds/mountains-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957357/backgrounds/mountains-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957357/backgrounds/mountains-desktop.jpg ',
 };
 
@@ -106,7 +106,7 @@ export const leaves = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957356/backgrounds/leaves-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957356/backgrounds/leaves-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957356/backgrounds/leaves-desktop.jpg',
 };
 
@@ -120,7 +120,7 @@ export const fullmoon = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957356/backgrounds/fullmoon-mob-2x.jpg,',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957355/backgrounds/fullmoon-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957355/backgrounds/fullmoon-desktop.jpg',
 };
 
@@ -134,7 +134,7 @@ export const flowers = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957355/backgrounds/flowers-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957355/backgrounds/flowers-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957355/backgrounds/flowers-desktop.jpg',
 };
 
@@ -148,7 +148,7 @@ export const clouds = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957354/backgrounds/clouds-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957354/backgrounds/clouds-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957354/backgrounds/clouds-desktop.jpg',
 };
 
@@ -162,7 +162,7 @@ export const cave = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957354/backgrounds/cave-mob-2x.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957354/backgrounds/cave-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957353/backgrounds/cave-desktop.jpg',
 };
 
@@ -176,7 +176,7 @@ export const boat = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957353/backgrounds/boat-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957353/backgrounds/boat-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957353/backgrounds/boat-desktop.jpg',
 };
 
@@ -190,7 +190,7 @@ export const balloonFar = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957352/backgrounds/balloonFar-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957352/backgrounds/balloonFar-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957352/backgrounds/balloonFar-desktop.jpg',
 };
 
@@ -204,6 +204,6 @@ export const balloonClose = {
   mob: 'https://res.cloudinary.com/task-pro/image/upload/v1692957352/backgrounds/balloonClose-mob.jpg',
   desktop2x:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957352/backgrounds/balloonClose-desktop-2x.jpg',
-  desctop:
+  desktop:
     'https://res.cloudinary.com/task-pro/image/upload/v1692957351/backgrounds/balloonClose-desktop.jpg',
 };
