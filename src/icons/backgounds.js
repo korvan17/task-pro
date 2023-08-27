@@ -76,7 +76,7 @@ export const fullmoon = {
   tablet2x: `${BASE_URL}56/backgrounds/fullmoon-tablet.jpg`,
   tablet: `${BASE_URL}56/backgrounds/fullmoon-tablet-2x.jpg`,
   mob2x: `${BASE_URL}56/backgrounds/fullmoon-mob.jpg`,
-  mob: `${BASE_URL}56/backgrounds/fullmoon-mob-2x.jpg,`,
+  mob: `${BASE_URL}56/backgrounds/fullmoon-mob-2x.jpg`,
   desktop2x: `${BASE_URL}55/backgrounds/fullmoon-desktop-2x.jpg`,
   desktop: `${BASE_URL}55/backgrounds/fullmoon-desktop.jpg`,
 };

@@ -53,10 +53,33 @@
 .btn {
     display: flex;
     width: 100%;
+    gap: 8px;
     padding: 10px 0px 11px 0px;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
     border: none;
     background: #BEDBB0;
+}
+
+.btnSumbitIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #161616;
+    border-radius: 6px;
+    flex-shrink: 0;
+    stroke: white;
+    width: 28px;
+    height: 28px;
+}
+
+.btnSumbitAction {
+    color: #161616;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
 }
