@@ -78,3 +78,27 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
+export const needHelp = createAsyncThunk('help', async (user, thunkAPI) => {
+  try {
+    const response = await axios.post('/help', {
+      replyEmail: user.email,
+      comment: user.text,
+    });
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const updateUser = createAsyncThunk(
+  'auth/prifile',
+  async (credintials, thunkAPI) => {
+    try {
+      const { data } = await axios.put('/users/update', credintials);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
