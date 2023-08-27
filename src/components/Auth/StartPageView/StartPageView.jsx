@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './StartPageView.module.css';
+import svgSprite from '../../../icons/sprite.svg';
 // import img from '../../../images/mob-boy-img-1x.png';
 
 function StartPageView() {
@@ -68,7 +69,9 @@ function StartPageView() {
       </picture>
 
       <div className={css.startPageTitileBox}>
-        <p>Logo icon svg</p>
+        <svg className={css.icon} width={40} height={40}>
+          <use href={svgSprite + '#icon-logo'} />
+        </svg>
         <h1 className={css.startPageTitile}>Task Pro</h1>
       </div>
       <p className={css.startPageDescr}>

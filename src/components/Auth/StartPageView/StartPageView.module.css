@@ -58,7 +58,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 24px;
+  gap: 14px;
+  /* margin-bottom: 24px; */
 }
 .startPageDescr {
   margin-bottom: 48px;
