@@ -1,8 +1,9 @@
 import { AddEditColumn } from 'components';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import css from './MainDashboard.module.css';
 
 export function MainDashboard() {
-  return;
+  return(
   <>
     <div>
       {/* <Card/> */}
@@ -12,4 +13,5 @@ export function MainDashboard() {
       </BasicModal>
     </div>
   </>;
+  )
 }
