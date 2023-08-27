@@ -108,6 +108,7 @@
   stroke: rgba(22, 22, 22, 0.5);
   stroke-width: 1px;
   fill: none;
+  position: static;
 }
 
 .iconContainer {
@@ -127,4 +128,5 @@
   stroke-width: 2px;
 
   filter: drop-shadow(0 0 2px rgba(82, 85, 188, 0.5));
+  cursor: auto;
 }
