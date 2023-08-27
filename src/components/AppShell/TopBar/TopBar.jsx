@@ -25,17 +25,21 @@ export default function TopBar() {
   return (
     <div className={css.container}>
       {windowWidth < 1440 ? (
-        <svg className={css.themeIcon} width="32" height="32">
-          <use xlinkHref={`${sprite}#icon-menu`} />
-        </svg>
+        <button className={css.menuBtn} type="button">
+          <svg className={css.menuIcon} width="32" height="32">
+            <use xlinkHref={`${sprite}#icon-menu`} />
+          </svg>
+        </button>
       ) : null}
 
       <div className={css.options}>
         <div className={css.themeContainer}>
           <p className={css.themeTitle}>Theme</p>
-          <svg className={css.themeIcon} width="16" height="16">
-            <use xlinkHref={`${sprite}#icon-theme`} />
-          </svg>
+          <button className={css.themeBtn} type="button">
+            <svg className={css.themeIcon} width="16" height="16">
+              <use xlinkHref={`${sprite}#icon-theme`} />
+            </svg>
+          </button>
         </div>
         <ul className={css.userInfo}>
           <li className={css.userName}>Ivetta</li>

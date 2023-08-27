@@ -21,6 +21,16 @@
   }
 }
 
+.menuBtn {
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+}
+
+.menuIcon {
+  stroke: #ffffff;
+}
+
 .options {
   margin-left: auto;
   display: flex;
@@ -28,8 +38,14 @@
   gap: 14px;
 }
 
+.themeBtn {
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+}
+
 .themeIcon {
-  fill: #ffffff;
+  stroke: #ffffff;
 }
 
 .themeContainer {
