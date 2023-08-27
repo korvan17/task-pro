@@ -2,11 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './StartPageView.module.css';
 import svgSprite from '../../../icons/sprite.svg';
+import UserImg from './UserImg/UserImg.js';
 
 function StartPageView() {
   return (
     <div className={css.startPageSection}>
-      <picture className={css.startPageImage}>
+      {/* <picture className={css.startPageImage}>
         <source
           srcSet={
             require('../../../images/mob-boy-img-1x.png') +
@@ -39,8 +40,9 @@ function StartPageView() {
           alt="user"
           height="124"
         />
-      </picture>
+      </picture> */}
 
+      <UserImg />
       <div className={css.startPageTitileBox}>
         <svg className={css.icon} width={40} height={40}>
           <use href={svgSprite + '#icon-logo'} />
