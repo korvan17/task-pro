@@ -1,11 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
 import css from './Card.module.css';
-import iconDefs from '../../../icons/sprite.svg';
 import convertDate from 'utlis/convertDate';
-import { IconButton } from 'components';
-import CardMoveModal from './CardMoveModal/CardMoveModal';
+import { CardIconsList, DeadlineIcon } from './CardIcons';
+import CardAdditionInfList from './CardAdditionInfList/CardAdditionInfList';
+
+// ! set a constant later
+const MAX_DESC_VISIBLE_LEN = 86;
 
 export default function Card({ title, desc, priority, deadline }) {
+  const [isDescHidden, setDescHidden] = useState('true');
+
+  const toggleDesc = () => {
+    setDescHidden(!isDescHidden);
+  };
+
+  const displayedDesc = isDescHidden
+    ? desc.slice(0, MAX_DESC_VISIBLE_LEN)
+    : desc;
+
   const convertedPriority = priority.toLowerCase();
 
   const getColor = () => {
@@ -33,59 +46,26 @@ export default function Card({ title, desc, priority, deadline }) {
     <div className={css.overWrapper}>
       <div className={css.wrapper} style={priorityStyle}>
         <h4 className={css.title}>{title}</h4>
-        <p className={css.desc}>{desc}</p>
+        <p className={css.desc}>
+          {displayedDesc}
+          <span
+            onClick={toggleDesc}
+            className={`${css.dotsToHide} ${!isDescHidden && css.dotsOnShown}`}
+          >
+            {isDescHidden ? '...' : ' hide'}
+          </span>
+        </p>
         <div className={css.additionWrapper}>
-          <div className={css.additionInfo}>
-            <p className={css.additionInfoHeading}>priority</p>
-            <p
-              className={`${css.priority} ${css.additionInfoSubheading}`}
-              style={priorityStyle}
-            >
-              {priority}
-            </p>
-          </div>
-          <div className={css.additionInfo}>
-            <p className={css.additionInfoHeading}>deadline</p>
-            <p className={css.additionInfoSubheading}>{deadline}</p>
-          </div>
+          <CardAdditionInfList deadline={deadline} priority={priority} />
 
-          {isDeadlineToday && (
-            <svg
-              className={`${css.icon} ${css.iconBell}`}
-              width="16"
-              height="16"
-            >
-              <use xlinkHref={`${iconDefs}#icon-bell`} />
-            </svg>
-          )}
+          {/* icon-beel shows if deadline day is today */}
+          {isDeadlineToday && <DeadlineIcon />}
 
-          <ul
+          <CardIconsList
             className={`${css.iconButtsList} ${
               isDeadlineToday && css.iconButtsList_Deadline
             }`}
-          >
-            <li className={css.iconButtonItem}>
-              <CardMoveModal
-                svg={<use xlinkHref={`${iconDefs}#icon-move`} />}
-                size={16}
-                className={css.icon}
-              />
-            </li>
-            <li className={css.iconButtonItem}>
-              <IconButton
-                svg={<use xlinkHref={`${iconDefs}#icon-edit`} />}
-                size={16}
-                className={css.icon}
-              />
-            </li>
-            <li className={css.iconButtonItem}>
-              <IconButton
-                svg={<use xlinkHref={`${iconDefs}#icon-trash`} />}
-                size={16}
-                className={css.icon}
-              />
-            </li>
-          </ul>
+          />
         </div>
       </div>
     </div>
