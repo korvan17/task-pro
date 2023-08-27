@@ -1,17 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout, updateTheme, refreshUser } from './authOperations';
+import { register, login, logout, updateTheme, refreshUser, needHelp, updateUser } from './authOperations';
 
 const authInitialState = {
   user: {
     email: '',
     name: '',
+    avatarURL: '',
+    theme: 'dark',
+    password: '',
   },
   token: '',
   isLoggedIn: false,
   isRefreshing: false,
-  avatarURL: '',
-  theme: 'dark',
   error: null,
+  replyEmail: '',
+  comment: '',
 };
 
 const authSlice = createSlice({
@@ -60,6 +63,30 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
+      })
+      .addCase(needHelp.rejected, state => {
+        state.error = true;
+      })
+      .addCase(needHelp.pending, state => {
+        state.error = false;
+      })
+      .addCase(needHelp.fulfilled, (state, { payload }) => {
+        state.replyEmail = payload.replyEmail;
+        state.comment = payload.comment;
+      })
+      .addCase(updateUser.rejected, state => {
+        state.isRefreshing = false;
+      })
+      .addCase(updateUser.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        state.user.password = payload.password;
+        state.user.avatarURL = payload.avatarURL;
+        state.isRefreshing = true;
+        state.error = null;
       })
 });
 
