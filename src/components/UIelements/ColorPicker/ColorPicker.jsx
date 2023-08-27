@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import css from './ColorPicker.module.css';
 
-const ColorPicker = () => {
+const ColorPicker = ({ onSelectedColorChange }) => {
   const colors = [
     { id: 1, priority: 'low', color: '#8FA1D0' },
     { id: 2, priority: 'medium', color: '#E09CB5' },
@@ -15,6 +15,7 @@ const ColorPicker = () => {
 
   const handleColorChange = color => {
     setSelectedColor(color);
+    onSelectedColorChange(color);
   };
 
   return (
