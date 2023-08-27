@@ -26,6 +26,11 @@ export const light = {
   },
   header: {
     background: '#FCFCFC',
+    themeSelectorColor: 'rgba(22, 22, 22, 0.8)',
+    themeListBackground: '#FCFCFC',
+    themeListItemColor: '#161616',
+    themeListItemHoverColor: '#BEDBB0',
+    userNameColor: '#161616',
   },
   screensPage: {},
   // primaryBackground: '#F6F6F7',
