@@ -12,6 +12,6 @@ export function MainDashboard() {
         <AddEditColumn />
       </BasicModal>
     </div>
-  </>;
-  )
+  </>
+  );
 }
