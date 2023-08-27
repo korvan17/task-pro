@@ -6,12 +6,12 @@ import css from './HomePage.module.css';
 import { selectBoards } from 'redux/boards/selectors';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 
-const ScreenPage = () => {
+const HomePage = () => {
   const boards = useSelector(selectBoards);
   const navigate = useNavigate();
-  const [isOpenModalAdd, setIsOpenModalAdd] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const handleAddBoard = () => {
-    setIsOpenModalAdd(true);
+    setIsOpenModal(true);
   };
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const ScreenPage = () => {
   return (
     // <Header/>
     // <Sidebar/>
-    // <ScreenPage></ScreenPage>
+    //  <ScreenPage />
     <section className={css.section}>
       <div className={css.text__home}>
         <p>
@@ -37,15 +37,15 @@ const ScreenPage = () => {
           effective collaboration among team members.
         </p>
       </div>
-      {isOpenModalAdd && (
+      {isOpenModal && (
         <BasicModal
           handleClose={() => {
-            setIsOpenModalAdd(false);
+            setIsOpenModal(false);
           }}
         >
           {/* <NewBoard
             handleClose={() => {
-              setIsOpenModalAdd(false);
+              setIsOpenModal(false);
             }}
           /> */}
         </BasicModal>
@@ -54,4 +54,4 @@ const ScreenPage = () => {
   );
 };
 
-export default ScreenPage;
+export default HomePage;
