@@ -8,6 +8,7 @@ import AuthPage from 'pages/AuthPage';
 
 import { Route, Routes } from 'react-router-dom';
 import { StartPage } from 'pages';
+import HomePage from 'pages/HomePage/HomePage';
 
 export default function App() {
   return (
@@ -15,8 +16,8 @@ export default function App() {
       <Routes>
         {/* Auth Routes */}
         <Route path="/" element={<StartPage />}>
+          <Route path="/home" element={<HomePage />} />
           <Route index element={<StartPageView />} />
-
           <Route path="/auth/*" element={<AuthPage />}>
             <Route path="register" element={<RegisterForm />} />
             <Route path="login" element={<LoginForm />} />
@@ -26,7 +27,7 @@ export default function App() {
         <Route path="/kak" element={<ScreensPage />} />
         
         <Route path="/kaka" element={<ScreensPage />} />
-        <Route path="/main" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
          <Route
         {/* Auth Routes 
         <Route path="/" element={<StartPage />}>
