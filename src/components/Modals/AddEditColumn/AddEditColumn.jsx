@@ -6,10 +6,10 @@ import { useState } from 'react';
 export default function AddEditColumn({
   title,
   onClose,
-  isEditing = false,
+  isEditing,
   onInputSubmit,
 }) {
-  const [inputValue, setInputValue] = useState(null);
+  const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
