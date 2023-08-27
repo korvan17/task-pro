@@ -1,27 +1,13 @@
-import css from './MainDashboard.module.css';
-import { useSelector } from 'react-redux';
-// import { useState } from 'react';
-import Card from '../Card/Card';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
 
-export const MainDashboard = ({ id }) => {
-  const board = useSelector();
-
-  return (
-    <>
-      <div className={css.board}>
-        {board.length > 0 && (
-          <ul className={css.columnList}>
-            {board.map(column => (
-              <li key={column._id}>
-                <Card column={column} />
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <div className={''}>{/* кнопка календарь */}</div>
-      </div>
-      {/* модалка */}
-    </>
-  );
-};
+export function MainDashboard() {
+  return;
+  <>
+    <div>
+      {/* <Card/> */}
+      <button className="css.button">Add another column</button>
+      {/* <BasicModal /> */}
+      {/* <AddColumn /> */}
+    </div>
+  </>;
+}
