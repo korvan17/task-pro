@@ -33,8 +33,6 @@ export const light = {
     userNameColor: '#161616',
   },
   screensPage: {},
-  // primaryBackground: '#F6F6F7',
-  // sideBarBackground: '#FFFFFF',
 };
 
 export const dark = {
