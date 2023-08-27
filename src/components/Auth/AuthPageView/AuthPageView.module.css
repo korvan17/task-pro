@@ -122,7 +122,7 @@
   position: relative;
   top: -50px;
 }
-svg {
+.authIcons {
   position: absolute;
   top: 16px;
   right: 18px;

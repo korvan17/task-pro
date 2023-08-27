@@ -8,6 +8,9 @@
   line-height: 1.28;
   letter-spacing: 0.02em;
   padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 375px) {
