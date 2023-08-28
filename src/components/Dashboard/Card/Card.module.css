@@ -47,6 +47,11 @@
   color: rgba(22, 22, 22, 0.7);
 }
 
+.descShown {
+  display: flex;
+  flex-direction: column;
+}
+
 .dotsToHide {
   cursor: pointer;
 }

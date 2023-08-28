@@ -46,7 +46,7 @@ export default function Card({ title, desc, priority, deadline }) {
     <div className={css.overWrapper}>
       <div className={css.wrapper} style={priorityStyle}>
         <h4 className={css.title}>{title}</h4>
-        <p className={css.desc}>
+        <p className={`${css.desc} ${!isDescHidden && css.descShown}`}>
           {displayedDesc}
           <span
             onClick={toggleDesc}
