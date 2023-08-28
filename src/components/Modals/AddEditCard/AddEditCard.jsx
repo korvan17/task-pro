@@ -1,7 +1,7 @@
 import css from './AddEditCard.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 import ColorPicker from 'components/UIelements/ColorPicker/ColorPicker';
-import { AddIconButton, Buttons, Calendar } from 'components';
+import { AddIconButton, Calendar } from 'components';
 import { useState } from 'react';
 
 export default function AddEditCard({
