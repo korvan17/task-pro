@@ -40,7 +40,7 @@ const HomePage = () => {
         </div>
         {showModal && (
           <BasicModal onClose={toggleModal}>
-            <AddEditBoard />
+            <AddEditBoard onClose={toggleModal} />
           </BasicModal>
         )}
       </section>

@@ -5,6 +5,7 @@ import {
   deleteBoard,
   updateBoardById,
   updateBoardBgById,
+  getBoardByID, // Импорт этой операции
 } from './operations';
 
 const handlePending = state => {
@@ -12,6 +13,15 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
+  state.error = action.payload;
+  state.isLoading = false;
+};
+
+const handlePendingGetBoardId = state => {
+  state.isLoading = true;
+};
+
+const handleRejectedGetBoardById = (state, action) => {
   state.error = action.payload;
   state.isLoading = false;
 };
@@ -28,6 +38,9 @@ const boardsSlice = createSlice({
   reducers: {
     selectBoard(state, action) {
       state.currentBoard = action.payload;
+    },
+    setFilter(state, action) {
+      state.filter = action.payload;
     },
   },
   extraReducers: builder =>
@@ -82,7 +95,9 @@ const boardsSlice = createSlice({
           state.currentBoard = 0;
         }
       })
-      .addCase(deleteBoard.rejected, handleRejected),
+      .addCase(deleteBoard.rejected, handleRejected)
+      .addCase(getBoardByID.pending, handlePendingGetBoardId) // Добавление этого кейса
+      .addCase(getBoardByID.rejected, handleRejectedGetBoardById), // Добавление этого кейса
 });
 
 export const { selectBoard, setFilter } = boardsSlice.actions;
