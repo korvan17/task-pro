@@ -1,6 +1,6 @@
 import css from './AddEditColumn.module.css';
 import iconDefs from '../../../icons/sprite.svg';
-import { AddIconButton, Buttons } from 'components';
+import { AddIconButton } from 'components';
 import { useState } from 'react';
 
 export default function AddEditColumn({
