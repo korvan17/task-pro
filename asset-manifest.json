@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/task-pro/static/css/main.7c8deedf.css",
-    "main.js": "/task-pro/static/js/main.afa9005d.js",
+    "main.css": "/task-pro/static/css/main.10c4ef66.css",
+    "main.js": "/task-pro/static/js/main.835f6c35.js",
     "static/media/desk-boy-img-2x.png": "/task-pro/static/media/desk-boy-img-2x.85ff1ceebffd6ac3a88e.png",
     "static/media/tablet-boy-img-2x.png": "/task-pro/static/media/tablet-boy-img-2x.85ff1ceebffd6ac3a88e.png",
     "static/media/mob-boy-img-2x.png": "/task-pro/static/media/mob-boy-img-2x.6917064cc6ab875894da.png",
     "static/media/desk-boy-img-1x.png": "/task-pro/static/media/desk-boy-img-1x.96cc3ab5fcfec29a1606.png",
     "static/media/tablet-boy-img-1x.png": "/task-pro/static/media/tablet-boy-img-1x.96cc3ab5fcfec29a1606.png",
-    "static/media/sprite.svg": "/task-pro/static/media/sprite.8f59f0f07a2431eac389dc8855953ae6.svg",
     "static/media/mob-boy-img-1x.png": "/task-pro/static/media/mob-boy-img-1x.c44fa053d6a82a454bbb.png",
+    "static/media/sprite.svg": "/task-pro/static/media/sprite.002536a469384f206dac3fde27b96320.svg",
     "index.html": "/task-pro/index.html",
-    "main.7c8deedf.css.map": "/task-pro/static/css/main.7c8deedf.css.map",
-    "main.afa9005d.js.map": "/task-pro/static/js/main.afa9005d.js.map"
+    "main.10c4ef66.css.map": "/task-pro/static/css/main.10c4ef66.css.map",
+    "main.835f6c35.js.map": "/task-pro/static/js/main.835f6c35.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c8deedf.css",
-    "static/js/main.afa9005d.js"
+    "static/css/main.10c4ef66.css",
+    "static/js/main.835f6c35.js"
   ]
 }
