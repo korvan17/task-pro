@@ -1,0 +1,203 @@
+.sideBar {
+  padding: 14px;
+  /* height: 812px; */
+  width: 225px;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: #121212;
+
+  @media screen and (min-width: 768px) {
+    padding: 24px;
+    width: 260px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 260px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconLogo {
+}
+
+.headerTitle {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.64px;
+}
+.boards {
+  margin-top: 70px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+  }
+}
+.boardsTitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+}
+.createBoard {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 14px 0 14px;
+  /* display: inline-block; */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.createBoardText {
+  width: 76px;
+
+  display: block;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+}
+.createBoardButton {
+  width: 40px;
+  height: 36px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 6px;
+  background: #bedbb0;
+}
+.addIcon {
+  stroke: black;
+}
+
+.boardsList {
+  margin-top: 40px;
+  color: white;
+  /* position: absolute; */
+}
+
+.boardsItem {
+  padding: 20px 0 20px;
+  /* position: relative; */
+
+  /* &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      &:hover {
+        background-color: #bedbb0;
+      }
+    } */
+
+  &:hover {
+    background-color: #1f1f1f;
+  }
+}
+
+.containerHelpLogout {
+  position: fixed;
+  bottom: 24px;
+}
+
+.help {
+  /* margin-top: 116px; */
+  padding: 14px 0 0 14px;
+  width: 197px;
+  height: 238px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #1f1f1f;
+
+  @media screen and (min-width: 768px) {
+    /* margin-top: 294px; */
+
+    width: 212px;
+    height: 272px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (min-width: 1440px) {
+    /* margin-top: 40px; */
+  }
+}
+.helpText {
+  margin-top: 14px;
+
+  width: 168px;
+  height: 80px;
+  flex-shrink: 0;
+
+  color: #fff;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+  letter-spacing: -0.24px;
+
+  @media screen and (min-width: 768px) {
+    width: 172px;
+    height: 102px;
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: -0.28px;
+  }
+}
+
+.taskProSpan {
+  color: #bedbb0;
+}
+
+.helpBtn {
+  margin-top: 19px;
+  padding: 0;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+.helpIcon {
+  stroke: white;
+  fill: transparent;
+}
+.helpBtnText {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.24px;
+}
+.logoutBtn {
+  margin-top: 24px;
+  gap: 14px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.iconLogout {
+  stroke: #bedbb0;
+  fill: transparent;
+}

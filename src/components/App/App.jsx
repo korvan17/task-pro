@@ -10,6 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 import { StartPage } from 'pages';
 import HomePage from 'pages/HomePage/HomePage';
 import ScreenPage from 'pages/ScreenPage/ScreenPage';
+import Page from 'pages/SideBarTopBar';
 
 export default function App() {
   return (
@@ -25,6 +26,8 @@ export default function App() {
             <Route path="login" element={<LoginForm />} />
           </Route>
         </Route>
+
+        <Route path="/SideBarTopBar" element={<Page />} />
         {/* <Route path="/" element={<Login />} />
         
         <Route path=":boardId" element={<ScreensPage />} /> />
