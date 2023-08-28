@@ -24,9 +24,8 @@ export default function App() {
           </Route>
         </Route>
         {/* <Route path="/" element={<Login />} />
-        <Route path="/kak" element={<ScreensPage />} />
         
-        <Route path="/kaka" element={<ScreensPage />} />
+        <Route path="/scr" element={<ScreenPage />} />
         <Route path="/home" element={<HomePage />} />
          <Route
         {/* Auth Routes 

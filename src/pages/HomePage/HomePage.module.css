@@ -52,7 +52,7 @@
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {
-    .text__wrapp {
+    .text__home {
         font-size: 12px;
         line-height: 16px;
         width: 335px;
@@ -67,7 +67,4 @@
     .text__home {
         width: 486px;
     }
-}
-
-@media screen and (min-width: 1440px) {
 }
