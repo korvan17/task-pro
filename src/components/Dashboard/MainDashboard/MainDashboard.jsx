@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
-import { AddEditColumn, Buttons, Card } from 'components';
+import { AddEditColumn, Card } from 'components';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
 
-export function MainDashboard() {
+export function MainDashboard({ id }) {
   const [showModal, setShowModal] = useState(false);
-  const [board, setBoard] = useState([]); // Используйте стейт для хранения данных о колонках
+  // const [board, setBoard] = useState([]); // Используйте стейт для хранения данных о колонках
+  const [board] = useState([]); // Используйте стейт для хранения данных о колонках
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
-  const handleAddСolumn = () => {
-    // Логика добавления колонки в стейт board
-    const newColumn = {
-      _id: generateUniqueId(), // Генерация уникального ID
-      // Дополнительные свойства колонки
-    };
-    setBoard([...board, newColumn]); // Добавление новой колонки в массив
-    toggleModal(); // Закрытие модального окна после добавления колонки
-  };
+  // const handleAddСolumn = () => {
+  //   // Логика добавления колонки в стейт board
+  //   const newColumn = {
+  //     _id: generateUniqueId(), // Генерация уникального ID
+  //     // Дополнительные свойства колонки
+  //   };
+  //   setBoard([...board, newColumn]); // Добавление новой колонки в массив
+  //   toggleModal(); // Закрытие модального окна после добавления колонки
+  // };
 
-  const generateUniqueId = () => {
-    // Ваш код для генерации уникального ID
-  };
+  // const generateUniqueId = () => {
+  //   // Ваш код для генерации уникального ID
+  // };
 
   return (
     <div className={css.board}>
