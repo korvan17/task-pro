@@ -8,7 +8,7 @@ function SideBar() {
 
   useEffect(() => {
     function handleResize() {
-      setIsMenuOpen(window.innerWidth > 1440);
+      setIsMenuOpen(window.innerWidth >= 1440);
     }
 
     window.addEventListener('resize', handleResize);
