@@ -59,7 +59,10 @@ export default function AddEditCard({
           />
         </label>
         <ColorPicker onSelectedColorChange={handleSelectedColorChange} />
-        <Calendar />
+        <div>
+          <span className={css.calendarTitle}>Deadline</span>
+          <Calendar />
+        </div>
         <Buttons className={css.btn} theme={'light'}>
           <div className={css.btnSumbitIcon}>
             <svg width="14" height="14">

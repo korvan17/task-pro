@@ -16,4 +16,13 @@
     padding: 24px;
     border-radius: 8px;
     background: #FCFCFC;
+
+    @media (max-width: 375px) {
+        max-width: 325px;
+    }
+    
+    @media (min-width: 375px)  {
+        width: 350px;
+    }
+    
 }
