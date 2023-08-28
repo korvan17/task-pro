@@ -1,56 +1,89 @@
 import React, { useState } from 'react';
-import { AddEditColumn, Card } from 'components';
+import { AddEditColumn, Buttons, Card } from 'components';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
+import { v4 as uuidv4 } from 'uuid';
 
 export function MainDashboard({ id }) {
+  // Стан для відображення модального вікна
   const [showModal, setShowModal] = useState(false);
-  // const [board, setBoard] = useState([]); // Используйте стейт для хранения данных о колонках
-  const [board] = useState([]); // Используйте стейт для хранения данных о колонках
 
+  // Стан для дошки, що містить колонки та їх карти
+  const [board, setBoard] = useState([]);
+
+  // Функція для зміни стану модального вікна
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
-  // const handleAddСolumn = () => {
-  //   // Логика добавления колонки в стейт board
-  //   const newColumn = {
-  //     _id: generateUniqueId(), // Генерация уникального ID
-  //     // Дополнительные свойства колонки
-  //   };
-  //   setBoard([...board, newColumn]); // Добавление новой колонки в массив
-  //   toggleModal(); // Закрытие модального окна после добавления колонки
-  // };
+  // Функція для додавання нової колонки
+  const handleAddColumn = () => {
+    const newColumn = {
+      _id: generateUniqueId(),
+      cards: [],
+    };
+    setBoard([...board, newColumn]);
+    toggleModal();
+  };
 
-  // const generateUniqueId = () => {
-  //   // Ваш код для генерации уникального ID
-  // };
+  // Функція для додавання нової карти в колонку
+  const handleAddCard = columnId => {
+    const newCard = {
+      _id: generateUniqueId(),
+      // Додаткові дані для карти
+    };
+
+    // Оновлюємо стан дошки з новою картою
+    const updatedBoard = board.map(column =>
+      column._id === columnId
+        ? { ...column, cards: [...column.cards, newCard] }
+        : column
+    );
+
+    setBoard(updatedBoard);
+  };
+
+  // Генеруємо унікальний ідентифікатор
+  const generateUniqueId = () => {
+    return uuidv4();
+  };
 
   return (
     <div className={css.board}>
+      {/* Відображаємо колонки і карти */}
       {board.length > 0 && (
         <ul className={css.list__column}>
           {board.map(column => (
             <li key={column._id}>
-              <Card column={column} />
+              {/* Передаємо функцію handleAddCard як властивість */}
+              <Card
+                column={column}
+                onAddCard={() => handleAddCard(column._id)}
+              />
             </li>
           ))}
         </ul>
       )}
 
       <div className={css.button__column}>
-        {/* <Buttons
+        {/* Відображаємо кнопку для додавання нової колонки */}
+        <Buttons
           isContrast={false}
           type={'button'}
           text={'Add another column'}
-          action={handleAddСolumn}
-        /> */}
-        <button>jdasjd</button>
+          action={handleAddColumn}
+        />
       </div>
 
+      {/* Відображаємо модальне вікно для додавання колонки */}
       {showModal && (
         <BasicModal onClose={toggleModal}>
-          <AddEditColumn isEditing={false} boardId={id} />
+          {/* Передаємо функцію handleAddCard як властивість */}
+          <AddEditColumn
+            isEditing={false}
+            boardId={id}
+            onAddCard={handleAddCard}
+          />
         </BasicModal>
       )}
     </div>

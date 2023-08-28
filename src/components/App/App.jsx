@@ -9,6 +9,7 @@ import AuthPage from 'pages/AuthPage';
 import { Route, Routes } from 'react-router-dom';
 import { StartPage } from 'pages';
 import HomePage from 'pages/HomePage/HomePage';
+import ScreenPage from 'pages/ScreenPage/ScreenPage';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         {/* Auth Routes */}
         <Route path="/" element={<StartPage />}>
           <Route path="/home" element={<HomePage />} />
+          <Route path=":boardId" element={<ScreenPage />} />
           <Route index element={<StartPageView />} />
           <Route path="/auth/*" element={<AuthPage />}>
             <Route path="register" element={<RegisterForm />} />
@@ -25,7 +27,7 @@ export default function App() {
         </Route>
         {/* <Route path="/" element={<Login />} />
         
-        <Route path="/scr" element={<ScreenPage />} />
+        <Route path=":boardId" element={<ScreensPage />} /> />
         <Route path="/home" element={<HomePage />} />
          <Route
         {/* Auth Routes 
