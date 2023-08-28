@@ -59,7 +59,7 @@ function LoginForm() {
               <svg
                 width={18}
                 height={18}
-                className={css.svg}
+                className={css.authIcons}
                 onClick={handleTogglePassword}
               >
                 <use href={svgSprite + '#icon-eye'} />
