@@ -6,11 +6,14 @@ import css from './HomePage.module.css';
 import { selectBoards } from 'redux/boards/selectors';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { AddEditBoard } from 'components';
-import { getBoard } from 'redux/boards/operations';
+import { addBoard, getBoard } from 'redux/boards/operations';
 
 const HomePage = () => {
   // Використовуємо useSelector для отримання списку дошок зі стану Redux
   const boards = useSelector(selectBoards);
+  // const [title, setTitle] = useSelector();
+  // const [icon, setIcon] = useSelector();
+  // const [background, setBackground] = useSelector();
 
   // Використовуємо useNavigate для навігації між сторінками
   const navigate = useNavigate();
@@ -45,7 +48,12 @@ const HomePage = () => {
       setCompletedInitialRedirect(true);
     }
   }, [boards, completedInitialRedirect, navigate]);
-
+  const handleAddBoard = (title, background, icon) => {
+    setTitle(title);
+    setIcon(icon);
+    setBackground(background);
+  };
+  // зробити логіку і прокинути стейти!
   return (
     <>
       {/* <Header />
@@ -67,7 +75,7 @@ const HomePage = () => {
         {showModal && (
           <BasicModal onClose={toggleModal}>
             {/* Передаємо toggleModal в AddEditBoard, щоб закрити модальне вікно */}
-            <AddEditBoard onClose={toggleModal} />
+            <AddEditBoard onClose={toggleModal} onSubmit={handleAddBoard} />
           </BasicModal>
         )}
       </section>
