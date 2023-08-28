@@ -1,14 +1,16 @@
 .authBox {
+  position: relative;
   padding: 24px;
   border-radius: 8px;
   background: #151515;
-  position: relative;
 }
+
 @media screen and (min-width: 375px) {
   .authBox {
     width: 287px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .authBox {
     width: 344px;
@@ -20,7 +22,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   width: 100%;
 }
 
@@ -36,11 +37,11 @@
 .authFormInput {
   width: 100%;
   padding: 14px 18px;
-  color: #fff;
   font-family: Poppins;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.28px;
+  color: #fff;
   border-radius: 8px;
   border: 1px solid #bedbb0;
   background: #1f1f1f;
@@ -70,12 +71,8 @@
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   padding: 14px 0;
-
   color: #161616;
   background-color: #bedbb0;
-
-  margin: 0;
-  padding: 0;
 }
 
 .linksBox {
@@ -89,20 +86,17 @@
   font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.36px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
-}
-.authLink:hover {
-  color: #fff;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.authLink:hover,
 .authLink:active {
   color: #fff;
 }
 
 .authFormInpWrap {
   width: 100%;
-  /* position: relative; */
   color: rgba(255, 255, 255, 0.3);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -123,3 +117,11 @@
   top: -50px;
 }
 
+.authIcons {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  stroke: currentColor;
+  fill: none;
+  cursor: pointer;
+}
