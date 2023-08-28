@@ -1,6 +1,6 @@
-export const selectBoards = state => state.boards.items;
+export const selectBoards = state => state.boards;
 
 export const selectCurrentBoard = state => state.boards.currentBoard;
 
 export const selectCurrentBoardData = state =>
-  state.boards.items[state.boards.currentBoard];
+  state.boards[state.boards.currentBoard];
