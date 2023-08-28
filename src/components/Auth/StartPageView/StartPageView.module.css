@@ -84,14 +84,27 @@
   align-items: center;
   gap: 14px;
   justify-content: center;
+  width: 100%;
 }
 
 .startPageLinks {
   width: 100%;
-  font-weight: 500;
-  border-radius: 8px;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
   color: #161616;
-  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  padding: 14px 0px;
+  border-radius: 8px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: #fff;
+    background-color: #161616;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -100,8 +113,16 @@
   }
 }
 
-.startPageLinks:active {
+.startPageRegLink {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
   color: #fff;
   background-color: #161616;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
   padding: 14px 0px;
+  border-radius: 8px;
 }
