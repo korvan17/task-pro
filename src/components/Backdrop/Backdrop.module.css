@@ -12,7 +12,8 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-color: #15151580;
+  /* background-color: #15151580; */
+  backdrop-filter: blur(2px);
 
   @media screen and (min-width: 768px) {
     left: 260px;
