@@ -26,15 +26,20 @@ const handleRejectedGetBoardById = (state, action) => {
   state.isLoading = false;
 };
 
+const boardsInitialState = {
+  boards: {
+    id: '',
+    title: '',
+    icon: '',
+    background: '',
+    boardUrl: '',
+  },
+};
+
 const boardsSlice = createSlice({
   name: 'boards',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-    currentBoard: null,
-    filter: null,
-  },
+  initialState: boardsInitialState,
+
   reducers: {
     selectBoard(state, action) {
       state.currentBoard = action.payload;
@@ -52,21 +57,23 @@ const boardsSlice = createSlice({
       })
       .addCase(fetchBoards.pending, handlePending)
       .addCase(fetchBoards.rejected, handleRejected)
+
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items.push({ ...action.payload });
+        state.boards.push({ ...action.payload });
       })
       .addCase(addBoard.pending, handlePending)
       .addCase(addBoard.rejected, handleRejected)
-      .addCase(updateBoardById.fulfilled, (state, action) => {
+
+      .addCase(updateBoardById.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.items.findIndex(
-          board => board._id === action.payload._id
-        );
+        // const index = state.items.findIndex(
+        //   board => board._id === action.payload._id
+        // );
 
-        state.items[index] = action.payload;
+        state.board = payload._id;
       })
       .addCase(updateBoardById.pending, handlePending)
       .addCase(updateBoardById.rejected, handleRejected)
