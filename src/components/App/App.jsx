@@ -25,7 +25,7 @@ export default function App() {
         </Route>
         {/* <Route path="/" element={<Login />} />
         
-        <Route path="/scr" element={<ScreenPage />} />
+        <Route path=":boardId" element={<ScreensPage />} /> />
         <Route path="/home" element={<HomePage />} />
          <Route
         {/* Auth Routes 
