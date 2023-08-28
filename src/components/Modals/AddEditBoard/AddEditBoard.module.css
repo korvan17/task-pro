@@ -51,15 +51,7 @@
 }
 
 .btn {
-    display: flex;
     width: 100%;
-    gap: 8px;
-    padding: 10px 0px 11px 0px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    border: none;
-    background: #BEDBB0;
 }
 
 .btnSumbitIcon {

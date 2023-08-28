@@ -1,7 +1,7 @@
 import css from './AddEditCard.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 import ColorPicker from 'components/UIelements/ColorPicker/ColorPicker';
-import { Buttons, Calendar } from 'components';
+import { AddIconButton, Buttons, Calendar } from 'components';
 import { useState } from 'react';
 
 export default function AddEditCard({
@@ -9,6 +9,7 @@ export default function AddEditCard({
   description,
   isEditing,
   onSubmit,
+  onClose,
 }) {
   const [inputValue, setInputValue] = useState('');
   const [textareaValue, setTextareaValue] = useState('');
@@ -25,6 +26,7 @@ export default function AddEditCard({
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit(inputValue, textareaValue, color);
+    onClose();
   };
 
   const handleSelectedColorChange = selectedColor => {
@@ -33,7 +35,7 @@ export default function AddEditCard({
 
   return (
     <>
-      <button className={css.closeBtn}>
+      <button className={css.closeBtn} onClick={onClose}>
         <svg width="18" height="18">
           <use xlinkHref={`${iconDefs}#icon-close`} />
         </svg>
@@ -63,16 +65,11 @@ export default function AddEditCard({
           <span className={css.calendarTitle}>Deadline</span>
           <Calendar />
         </div>
-        <Buttons className={css.btn} theme={'light'}>
-          <div className={css.btnSumbitIcon}>
-            <svg width="14" height="14">
-              <use xlinkHref={`${iconDefs}#icon-add`} />
-            </svg>
-          </div>
+        <AddIconButton className={css.btn} theme={'light'}>
           <span className={css.btnSumbitAction}>
             {!isEditing ? 'Add' : 'Edit'}
           </span>
-        </Buttons>
+        </AddIconButton>
       </form>
     </>
   );
