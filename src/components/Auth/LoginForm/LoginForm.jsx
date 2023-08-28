@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/authOperations';
 import svgSprite from '../../../icons/sprite.svg';
 import css from '../AuthPageView/AuthPageView.module.css';
+import getDisplayType from '../getDisplayType';
 import { loginSchema } from '../userSchemas';
 
 const initialValues = {
   email: '',
   password: '',
+  display: getDisplayType(),
 };
 
 function LoginForm() {

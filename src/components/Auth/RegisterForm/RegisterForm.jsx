@@ -1,27 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/authOperations';
 import svgSprite from '../../../icons/sprite.svg';
 import css from '../AuthPageView/AuthPageView.module.css';
+import getDisplayType from '../getDisplayType';
 import { registerSchema } from '../userSchemas';
-import { register } from 'redux/auth/authOperations';
-
-const getDisplayType = () => {
-  const displayWidth = window.innerWidth;
-  const isRetina =
-    window.matchMedia &&
-    window.matchMedia(
-      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
-    ).matches;
-  switch (displayWidth) {
-    case displayWidth >= 1440:
-      return isRetina ? 'desktop-2x' : 'desktop';
-    case displayWidth >= 768:
-      return isRetina ? 'table-2x' : 'table';
-    default:
-      return isRetina ? 'mobile-2x' : 'mobile';
-  }
-};
 
 const initialValues = {
   name: '',
@@ -39,7 +23,6 @@ function RegisterForm() {
   };
 
   const handleFormSubmit = async (values, { resetForm }) => {
-    console.log('values:', values);
     await dispatch(register(values));
     resetForm();
   };
