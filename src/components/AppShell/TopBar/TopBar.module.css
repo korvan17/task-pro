@@ -13,7 +13,7 @@
     align-items: center;
   
     @media screen and (min-width: 1440px) {
-      /* position: fixed; */
+      position: fixed;
       right: 0;
       top: 0;
       width: calc(100%-260px);

@@ -2,13 +2,12 @@ import sprite from '../../../icons/sprite.svg';
 import iconCactus from '../../../icons/cactus.png';
 import css from './SideBar.module.css';
 import { useEffect, useRef } from 'react';
-import Backdrop from '../../Backdrop/Backdrop';
 
-function SideBar({ setIsMenuOpen }) {
+function SideBar({ setIsMenuOpen, isMenuOpen }) {
   const menuRef = useRef(null);
 
   const handleClickOutside = event => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
+    if (menuRef.current && !menuRef.current.contains(event.target) && window.innerWidth < 1440) {
       setIsMenuOpen(false);
     }
   };
@@ -24,8 +23,7 @@ function SideBar({ setIsMenuOpen }) {
   });
 
   return (
-    <div className={css.sideBar} ref={menuRef}>
-      <Backdrop />
+    <div className={isMenuOpen ? css.openSideBar : css.sideBar} ref={menuRef}>
       <div className={css.header}>
         <svg width="32" height="32">
           <use xlinkHref={`${sprite}#icon-logo`} />

@@ -1,3 +1,4 @@
+import Backdrop from '../components/Backdrop/Backdrop';
 import { SideBar, TopBar } from 'components';
 import React, { useEffect, useState } from 'react';
 
@@ -22,7 +23,8 @@ function SideBarTopBar() {
   return (
     <>
       <TopBar toggleMenu={toggleMenu}></TopBar>
-      {isMenuOpen ? <SideBar setIsMenuOpen={setIsMenuOpen}></SideBar> : null}
+      <SideBar setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}></SideBar>
+      {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
     </>
   );
 }
