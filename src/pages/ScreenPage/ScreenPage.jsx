@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import HeaderDashboard from 'components/Dashboard/HeaderDashboard/HeaderDashboard';
-import MainDashboard from 'components/Dashboard/MainDashboard/MainDashboard';
+
 import { selectBoards } from 'redux/boards/selectors';
-import { getIDBoard } from 'redux/boards/actions'; // Подставьте правильный путь к действию
+
+import { getBoardByID } from 'redux/boards/operations';
+import HeaderDashboard from 'components/Dashboard/HeaderDashboard/HeaderDashboard';
+import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard';
 
 const ScreenPage = () => {
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const ScreenPage = () => {
   const board = boards.find(item => item._id === boardId);
 
   useEffect(() => {
-    dispatch(getIDBoard(boardId));
+    dispatch(getBoardByID(boardId));
   }, [boardId, dispatch]);
 
   useEffect(() => {

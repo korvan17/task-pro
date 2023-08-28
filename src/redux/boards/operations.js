@@ -107,3 +107,16 @@ export const getBoard = createAsyncThunk(
     }
   }
 );
+export const getBoardByID = createAsyncThunk(
+  'boards/getBoardByID',
+  async (id, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      const { data } = await axios.get(`/api/board/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
