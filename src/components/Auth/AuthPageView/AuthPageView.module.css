@@ -122,11 +122,4 @@
   position: relative;
   top: -50px;
 }
-svg {
-  position: absolute;
-  top: 16px;
-  right: 18px;
-  stroke: currentColor;
-  fill: none;
-  cursor: pointer;
-}
+

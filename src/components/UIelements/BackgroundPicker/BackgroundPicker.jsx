@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import css from './BackgroundPicker.module.css';
 import * as BackgroundImages from '../../../icons/backgounds';
 
-const BackgroundPicker = () => {
+const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
   const backgrounds = [
     { id: 1, name: 'tree' },
     { id: 2, name: 'triler' },
@@ -23,13 +23,14 @@ const BackgroundPicker = () => {
 
   const [selectedBackground, setSelectedBackground] = useState(null);
 
-  const handleBackgroundClick = backgroundName => {
+  const handleBackground = backgroundName => {
     setSelectedBackground(backgroundName);
+    onSelectedBackgroundChange(backgroundName);
   };
 
   return (
     <div className={css.backgroundsPickerBlock}>
-      <span className={css.backgroundsTitle}>Icons</span>
+      <span className={css.backgroundsTitle}>Background</span>
       <div className={css.backgroundsField}>
         {backgrounds.map(background => (
           <button
@@ -45,12 +46,16 @@ const BackgroundPicker = () => {
               borderRadius: '6px',
               cursor: 'pointer',
             }}
-            onClick={() => handleBackgroundClick(background.name)}
+            onClick={() => handleBackground(background.name)}
           >
             <img
-              src={BackgroundImages[background.name]?.mob}
+              src={BackgroundImages[background.name]?.tablet}
               alt={background.name}
-              className={css.backgroundsImg}
+              className={`${css.backgroundsImg} ${
+                selectedBackground === background.name
+                  ? css.selectedBackground
+                  : ''
+              }`}
             />
           </button>
         ))}

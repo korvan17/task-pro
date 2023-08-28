@@ -14,3 +14,19 @@
     object-fit: cover;
     border-radius: 6px;
 }
+
+.backgroundsTitle {
+    display: block;
+    margin-bottom: 14px;
+    color: #161616;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+}
+
+.selectedBackground {
+    transform: scale(1.1);
+}

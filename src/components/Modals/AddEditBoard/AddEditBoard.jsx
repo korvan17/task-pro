@@ -18,6 +18,10 @@ export default function AddEditBoard({ title, isEditing, onSubmit }) {
     setIcon(selectedIcon);
   };
 
+  const handleSelectedBackgroundChange = selectedBackground => {
+    setBackground(selectedBackground);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit(inputValue, background, icon);
@@ -44,7 +48,9 @@ export default function AddEditBoard({ title, isEditing, onSubmit }) {
           />
         </label>
         <IconPicker onSelectedIconChange={handleSelectedIconChange} />
-        <BackgroundPicker></BackgroundPicker>
+        <BackgroundPicker
+          onSelectedBackgroundChange={handleSelectedBackgroundChange}
+        />
         <Buttons className={css.btn} theme={'light'}>
           <div className={css.btnSumbitIcon}>
             <svg width="14" height="14">
