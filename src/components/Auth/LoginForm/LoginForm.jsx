@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from 'redux/auth/authOperations';
 import svgSprite from '../../../icons/sprite.svg';
 import css from '../AuthPageView/AuthPageView.module.css';
+import getDisplayType from '../getDisplayType';
 import { loginSchema } from '../userSchemas';
 import { isLoggedIn } from 'redux/auth/authSelectors';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const initialValues = {
   email: '',
   password: '',
+  display: getDisplayType(),
 };
 
 function LoginForm() {
