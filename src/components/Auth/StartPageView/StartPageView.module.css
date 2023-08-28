@@ -107,12 +107,6 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .startPageLinks {
-    width: 344px;
-  }
-}
-
 .startPageRegLink {
   width: 100%;
   margin: 0 auto;
@@ -125,4 +119,13 @@
   letter-spacing: -0.28px;
   padding: 14px 0px;
   border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .startPageLinks {
+    width: 344px;
+  }
+  .startPageRegLink {
+    width: 344px;
+  }
 }
