@@ -32,7 +32,7 @@ const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
     <div className={css.backgroundsPickerBlock}>
       <span className={css.backgroundsTitle}>Background</span>
       <div className={css.backgroundsField}>
-        {backgrounds.map(background => (
+        {backgrounds.map((background, index) => (
           <button
             type="button"
             key={background.id}

@@ -3,9 +3,10 @@
 }
 
 .backgroundsField {
+    width: 94%;
     display: flex;
-        gap: 4px;
-        flex-wrap: wrap;
+    gap: 4px;
+    flex-wrap: wrap;
 }
 
 .backgroundsImg {
