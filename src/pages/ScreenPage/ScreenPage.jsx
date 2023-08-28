@@ -10,15 +10,25 @@ import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard'
 
 const ScreenPage = () => {
   const navigate = useNavigate();
+
+  // Отримуємо параметр boardId з URL
   const { boardId } = useParams();
+
+  // Використовуємо useDispatch для виклику Redux-дій
   const dispatch = useDispatch();
+
+  // Використовуємо useSelector для отримання списку дошок зі стану Redux
   const boards = useSelector(selectBoards);
+
+  // Знаходимо дошку за допомогою boardId
   const board = boards.find(item => item._id === boardId);
 
+  // Викликаємо дію getBoardByID(boardId) під час монтажу компонента
   useEffect(() => {
     dispatch(getBoardByID(boardId));
   }, [boardId, dispatch]);
 
+  // Перенаправляємо на /home, якщо дошка не знайдена
   useEffect(() => {
     if (!board) {
       navigate('/home');
@@ -27,9 +37,12 @@ const ScreenPage = () => {
 
   return (
     <>
+      {/* Відображаємо заголовок та основний вміст сторінки, якщо дошка знайдена */}
       {board && (
         <>
+          {/* Передаємо заголовок дошки в HeaderDashboard */}
           <HeaderDashboard title={board.title} />
+          {/* Передаємо айді дошки в MainDashboard */}
           <MainDashboard id={board._id} />
         </>
       )}
