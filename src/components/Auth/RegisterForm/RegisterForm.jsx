@@ -6,10 +6,28 @@ import css from '../AuthPageView/AuthPageView.module.css';
 import { registerSchema } from '../userSchemas';
 import { register } from 'redux/auth/authOperations';
 
+const getDisplayType = () => {
+  const displayWidth = window.innerWidth;
+  const isRetina =
+    window.matchMedia &&
+    window.matchMedia(
+      '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+    ).matches;
+  switch (displayWidth) {
+    case displayWidth >= 1440:
+      return isRetina ? 'desktop-2x' : 'desktop';
+    case displayWidth >= 768:
+      return isRetina ? 'table-2x' : 'table';
+    default:
+      return isRetina ? 'mobile-2x' : 'mobile';
+  }
+};
+
 const initialValues = {
   name: '',
   email: '',
   password: '',
+  display: getDisplayType(),
 };
 
 function RegisterForm() {
@@ -21,6 +39,7 @@ function RegisterForm() {
   };
 
   const handleFormSubmit = async (values, { resetForm }) => {
+    console.log('values:', values);
     await dispatch(register(values));
     resetForm();
   };
