@@ -1,10 +1,31 @@
 import sprite from '../../../icons/sprite.svg';
 import iconCactus from '../../../icons/cactus.png';
 import css from './SideBar.module.css';
+import { useEffect, useRef } from 'react';
+import Backdrop from '../../Backdrop/Backdrop';
 
-function SideBar() {
+function SideBar({ setIsMenuOpen }) {
+  const menuRef = useRef(null);
+
+  const handleClickOutside = event => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  // Добавляем обработчик события клика при монтировании компонента
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Убираем обработчик события клика при размонтировании компонента
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  });
+
   return (
-    <div className={css.sideBar}>
+    <div className={css.sideBar} ref={menuRef}>
+      <Backdrop />
       <div className={css.header}>
         <svg width="32" height="32">
           <use xlinkHref={`${sprite}#icon-logo`} />

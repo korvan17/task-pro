@@ -1,10 +1,16 @@
 .sideBar {
+  position: absolute;
+  top: 0;
   padding: 14px;
   /* height: 812px; */
   width: 225px;
   height: 100vh;
   flex-shrink: 0;
   background-color: #121212;
+  z-index: 2;
+
+  /* transition: 0.5s;
+  transform: translateX(-100%); */
 
   @media screen and (min-width: 768px) {
     padding: 24px;
@@ -15,6 +21,10 @@
     width: 260px;
   }
 }
+
+/* .sideBar.open {
+  transform: translateX(0);
+} */
 
 .header {
   display: flex;

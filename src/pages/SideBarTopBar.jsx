@@ -22,7 +22,7 @@ function SideBarTopBar() {
   return (
     <>
       <TopBar toggleMenu={toggleMenu}></TopBar>
-      {isMenuOpen ? <SideBar></SideBar> : null}
+      {isMenuOpen ? <SideBar setIsMenuOpen={setIsMenuOpen}></SideBar> : null}
     </>
   );
 }

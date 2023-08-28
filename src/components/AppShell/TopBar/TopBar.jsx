@@ -5,6 +5,7 @@ import css from './TopBar.module.css';
 
 export default function TopBar({ toggleMenu }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateWindowWidth = () => {
@@ -15,6 +16,11 @@ export default function TopBar({ toggleMenu }) {
       window.removeEventListener('resize', updateWindowWidth);
     };
   }, []);
+
+  const toggleTheme = () => {
+    console.log('toggle theme menu');
+    setIsThemeMenuOpen(!isThemeMenuOpen);
+  };
 
   return (
     <div className={css.container}>
@@ -29,7 +35,7 @@ export default function TopBar({ toggleMenu }) {
       <div className={css.options}>
         <div className={css.themeContainer}>
           <p className={css.themeTitle}>Theme</p>
-          <button className={css.themeBtn} type="button">
+          <button onClick={toggleTheme} className={css.themeBtn} type="button">
             <svg className={css.themeIcon} width="16" height="16">
               <use xlinkHref={`${sprite}#icon-theme`} />
             </svg>
