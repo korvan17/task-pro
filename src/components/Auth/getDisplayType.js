@@ -9,7 +9,7 @@ const getDisplayType = () => {
     case displayWidth >= 1440:
       return isRetina ? 'desktop-2x' : 'desktop';
     case displayWidth >= 768:
-      return isRetina ? 'table-2x' : 'table';
+      return isRetina ? 'tablet-2x' : 'tablet';
     default:
       return isRetina ? 'mobile-2x' : 'mobile';
   }
