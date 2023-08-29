@@ -102,7 +102,12 @@
   flex-shrink: 0;
   border: none;
   border-radius: 6px;
-  background: #bedbb0;
+  background-color: #bedbb0;
+  transition: 250ms;
+
+  &:hover {
+    background-color: #9dc888;
+  }
 }
 .addIcon {
   stroke: black;

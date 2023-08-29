@@ -34,6 +34,9 @@ const HomePage = () => {
 
   const toggleModal = () => {
     setShowModal(!showModal);
+    if (window.innerWidth < 1440) {
+      toggleMenu();
+    }
   };
 
   const toggleMenu = () => {
