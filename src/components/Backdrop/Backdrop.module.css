@@ -1,0 +1,20 @@
+.backdrop {
+  /* width: 100vw;
+  height: 100vh;
+  background-color: #15151580;
+  position: absolute;
+  left: 225px;
+  pointer-events: none; */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-color: #15151580;
+
+  @media screen and (min-width: 768px) {
+    left: 260px;
+  }
+}
