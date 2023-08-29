@@ -4,12 +4,11 @@ import * as React from 'react';
 import { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { TextField } from '@mui/material';
+
 
 export default function Calendar() {
 
   const date = new Date();
-  const [value, setValue] = useState(dayjs(date));
 
   const theme = createTheme({
     palette: {
@@ -19,39 +18,65 @@ export default function Calendar() {
         dark: '#85997b',
         contrastText: '#fff',
       },
-      secondary: {
-        light: '#ff7961',
-        main: '#f44336',
-        dark: '#ba000d',
-        contrastText: '#000',
+    },
+    components: {
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundColor: 'transparent',
+            color: '#fff',
+          },
+        },
+      },
+      MuiPickersDay: {
+        styleOverrides: {
+          root: {
+            color: '#fff',
+          },
+        },
+      },
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            color: '#fff',
+            fill: '#fff',
+          },
+        },
+      },
+
+      MuiOutlinedInput: {
+        styleOverrides: {
+          notchedOutline: {
+            border: 0,
+          },
+        },
       },
     },
   });
 
+  const [value, setValue] = useState(dayjs(date));
 
   return (
-    <ThemeProvider theme={theme}>
-      <DatePicker
-        components={{
-          OpenPickerIcon: ExpandMoreIcon,
-        }}
-        value={value}
-        label="Deadline"
-        views={['month', 'day']}
-        disablePast
-        onChange={newValue => setValue(newValue)}
-        showDaysOutsideCurrentMonth
-        renderInput={props => <TextField {...props} />}
-        sx={{
-          svg: { fill: '#BEDBB0' },
-          input: { color: '#BEDBB0' },
-          label: { color: 'rgba(255, 255, 255, 0.50)' },
-          '& .MuiOutlinedInput-notchedOutline': {
-            border: 0,
-            '&:focus': { border: 0 },
-          },
-        }}
-      />
-    </ThemeProvider>
+    <div>
+      <ThemeProvider theme={theme}>
+        <DatePicker
+          components={{
+            OpenPickerIcon: ExpandMoreIcon,
+          }}
+          value={value}
+          label="Deadline"
+          views={['month', 'day']}
+          disablePast
+          onChange={newValue => setValue(newValue)}
+          showDaysOutsideCurrentMonth
+          sx={{
+            width: '150px',
+            svg: { fill: '#BEDBB0' },
+            input: { color: '#BEDBB0' },
+            label: { color: 'rgba(255, 255, 255, 0.50)' },
+          }}
+        />
+      </ThemeProvider>
+    </div>
   );
 }

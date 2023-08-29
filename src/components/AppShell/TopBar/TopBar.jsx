@@ -22,10 +22,12 @@ export default function TopBar({ toggleMenu }) {
     setIsThemeMenuOpen(!isThemeMenuOpen);
   };
 
+
   return (
     <div className={css.container}>
       {windowWidth < 1440 ? (
         <button onClick={toggleMenu} className={css.menuBtn} type="button">
+
           <svg className={css.menuIcon} width="32" height="32">
             <use xlinkHref={`${sprite}#icon-menu`} />
           </svg>
@@ -36,6 +38,7 @@ export default function TopBar({ toggleMenu }) {
         <div className={css.themeContainer}>
           <p className={css.themeTitle}>Theme</p>
           <button onClick={toggleTheme} className={css.themeBtn} type="button">
+
             <svg className={css.themeIcon} width="16" height="16">
               <use xlinkHref={`${sprite}#icon-theme`} />
             </svg>

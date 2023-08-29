@@ -1,0 +1,52 @@
+.additionWrapper {
+  padding-top: 14px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  text-transform: capitalize;
+  font-size: 10px;
+
+  border-top: 1px solid rgba(22, 22, 22, 0.1);
+}
+
+.additionList{
+  display: flex;
+}
+
+.additioItem:first-child {
+  margin-right: 14px;
+}
+
+.priority {
+  display: flex;
+  align-items: center;
+}
+
+.priority::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+
+  margin-right: 4px;
+
+  background-color: inherit;
+  background-color: var(--priority-color);
+  border-radius: 50%;
+}
+
+.additionInfoHeading {
+  margin-bottom: 4px;
+
+  font-family: Poppins;
+  font-size: 8px;
+
+  color: rgba(22, 22, 22, 0.5);
+}
+
+.additionInfoSubheading {
+  font-family: Poppins;
+  font-size: 10px;
+}

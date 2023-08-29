@@ -1,6 +1,6 @@
 import css from './AddEditColumn.module.css';
 import iconDefs from '../../../icons/sprite.svg';
-import { Buttons } from 'components';
+import { AddIconButton } from 'components';
 import { useState } from 'react';
 
 export default function AddEditColumn({
@@ -18,10 +18,11 @@ export default function AddEditColumn({
   const handleSubmit = e => {
     e.preventDefault();
     onInputSubmit(inputValue);
+    onClose();
   };
   return (
     <>
-      <button className={css.closeBtn}>
+      <button className={css.closeBtn} onClick={onClose}>
         <svg width="18" height="18">
           <use xlinkHref={`${iconDefs}#icon-close`} />
         </svg>
@@ -39,14 +40,9 @@ export default function AddEditColumn({
             onChange={handleInputChange}
           />
         </label>
-        <Buttons className={css.btn} theme={'light'}>
-          <div className={css.btnSumbitIcon}>
-            <svg width="14" height="14">
-              <use xlinkHref={`${iconDefs}#icon-add`} />
-            </svg>
-          </div>
+        <AddIconButton className={css.btn} theme={'light'}>
           <span className={css.btnSumbitAction}>Add</span>
-        </Buttons>
+        </AddIconButton>
       </form>
     </>
   );

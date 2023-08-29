@@ -16,6 +16,7 @@ const authInitialState = {
     avatarURL: '',
     theme: 'dark',
     password: '',
+    displays: '',
   },
   token: '',
   isLoggedIn: false,
@@ -115,7 +116,7 @@ const authSlice = createSlice({
         state.user.password = payload.password;
         state.user.avatarURL = payload.avatarURL;
         state.isRefreshing = false;
-      })
+      }),
 });
 
 export const { setAuth } = authSlice.actions;

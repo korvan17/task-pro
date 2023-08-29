@@ -67,17 +67,8 @@
 }
 
 .btn {
-    display: flex;
     margin-top: 40px;
-    gap: 8px;
     width: 100%;
-    padding: 10px 0px 11px 0px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    border: none;
-    background: #BEDBB0;
-    stroke: #161616;
 }
 
 .btnSumbitIcon {

@@ -1,20 +1,35 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
 import svgSprite from '../../../icons/sprite.svg';
 import css from '../AuthPageView/AuthPageView.module.css';
+import getDisplayType from '../getDisplayType';
 import { registerSchema } from '../userSchemas';
+
 import { register } from 'redux/auth/authOperations';
+import { isLoggedIn } from 'redux/auth/authSelectors';
+import { useNavigate } from 'react-router-dom';
+
 
 const initialValues = {
   name: '',
   email: '',
   password: '',
+  display: getDisplayType(),
 };
 
 function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+
+  const isLogin = useSelector(isLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLogin) navigate('/home', { replace: true });
+  }, [isLogin, navigate]);
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);

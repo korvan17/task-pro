@@ -5,13 +5,18 @@ const registerSchema = yup.object({
     .string()
     .trim()
     .min(2, 'Name must be at least 2 characters')
-    .max(50, 'Name must be no more than 50 characters'),
+    .max(32, 'Name must be no more than 32 characters')
+    .matches(
+      /^[a-zA-Z0-9\s]*$/,
+      'Name can only contain letters, numbers, and spaces'
+    ),
   email: yup
     .string()
     .trim()
+    .email()
     .required('Email is required')
     .matches(
-      /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      /^[a-zA-Z0-9.-_]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/,
       'Invalid email format'
     ),
   password: yup
