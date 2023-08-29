@@ -16,6 +16,7 @@ const authInitialState = {
     avatarURL: '',
     theme: 'dark',
     password: '',
+    displays: '',
   },
   token: '',
   isLoggedIn: false,
