@@ -28,7 +28,7 @@ const columnsInitialState = {
 
 const columnsSlice = createSlice({
   name: 'columns',
-  columnsInitialState,
+  initialState: columnsInitialState,
   reducers: {
     selectPriority(state, action) {
       state.selectedPriority = action.payload;
@@ -36,14 +36,6 @@ const columnsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
-      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected)
-      .addCase(addColumn.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.currentDashboard.columns.push(action.payload);
-        state.error = null;
-        state.columnsLength = state.currentDashboard.columns.length;
-      })
 
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -68,7 +60,15 @@ const columnsSlice = createSlice({
         );
 
         state.currentDashboard.columns[columnIndex].title = title;
-      });
+      })
+      .addCase(addColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentDashboard.columns.push(action.payload);
+        state.error = null;
+        state.columnsLength = state.currentDashboard.columns.length;
+      })
+      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
+      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected);
   },
 });
 

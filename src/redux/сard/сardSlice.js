@@ -24,13 +24,10 @@ const cardsInitialState = {
 
 const cardsSlice = createSlice({
   name: 'cards',
-  cardsInitialState,
+  initialState: cardsInitialState,
 
   extraReducers: builder => {
     builder
-      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
-      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected)
-
       .addCase(addCard.fulfilled, (state, action) => {
         state.isLoading = false;
 
@@ -61,7 +58,9 @@ const cardsSlice = createSlice({
 
         state.currentDashboard.columns[indexColumn].cards.splice(indexCard, 1);
         state.columnsLength = state.currentDashboard.columns.length;
-      });
+      })
+      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
+      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected);
   },
 });
 

@@ -105,11 +105,10 @@ const boardsSlice = createSlice({
           state.currentBoard = 0;
         }
       })
-      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
-      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected)
-
       .addCase(getBoardByID.pending, handlePendingGetBoardId) // Добавление этого кейса
-      .addCase(getBoardByID.rejected, handleRejectedGetBoardById), // Добавление этого кейса
+      .addCase(getBoardByID.rejected, handleRejectedGetBoardById) // Добавление этого кейса
+      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
+      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected),
 });
 
 export const { selectBoard, setFilter } = boardsSlice.actions;
