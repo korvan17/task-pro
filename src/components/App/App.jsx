@@ -66,7 +66,7 @@
 
 import { ThemeProvider } from '@emotion/react';
 import { dark, light, violet } from 'components/Controllers/Theme/theme';
-import { StartPage } from 'pages';
+import { HomePage, ScreenPage, StartPage } from 'pages';
 // import { HomePage, ScreenPage } from 'pages';
 import { lazy, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -112,16 +112,17 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <Routes>
+          <Route path="/home" element={<HomePage />} />
+          <Route path=":boardId" element={<ScreenPage />} />
           {/* Auth Routes */}
           <Route path="/" element={<StartPage />}>
-            {/* <Route path="/home" element={<HomePage />} /> */}
-            {/* <Route path=":boardId" element={<ScreenPage />} /> */}
             <Route index element={<StartPageView />} />
             <Route path="/auth/*" element={<AuthPage />}>
               <Route path="register" element={<RegisterForm />} />
               <Route path="login" element={<LoginForm />} />
             </Route>
           </Route>
+
           {/* <Route path="/" element={<Login />} />
 
         <Route path=":boardId" element={<ScreensPage />} /> />

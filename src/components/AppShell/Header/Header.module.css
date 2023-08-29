@@ -7,8 +7,7 @@
   padding-right: 16px;
   margin-right: 0;
 
-  min-height: 60px;
-  /* width: 100%; */
+  height: 60px;
 
   align-items: center;
 
@@ -18,13 +17,14 @@
     top: 0;
     width: calc(100%-260px);
     left: 260px;
+    height: 68px;
   }
 }
 
 .menuBtn {
+  padding: 0;
   background-color: transparent;
   border: transparent;
-  padding: 0;
 }
 
 .menuIcon {
@@ -32,16 +32,16 @@
 }
 
 .options {
-  margin-left: auto;
   display: flex;
-  align-items: center;
   gap: 14px;
+  margin-left: auto;
+  align-items: center;
 }
 
 .themeBtn {
+  padding: 0;
   background-color: transparent;
   border: transparent;
-  padding: 0;
 }
 
 .themeIcon {
@@ -50,12 +50,11 @@
 
 .themeContainer {
   display: flex;
-  align-items: flex-end;
   gap: 4px;
+  align-items: flex-end;
 }
 .themeTitle {
   color: rgba(255, 255, 255, 0.8);
-  /* font-family: Poppins; */
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -73,7 +72,6 @@
 }
 .userName {
   color: #fff;
-  /* font-family: Poppins; */
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -82,5 +80,6 @@
 
   color: #ffffff;
 }
+
 .userAvatar {
 }
