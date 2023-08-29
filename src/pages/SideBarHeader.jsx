@@ -1,5 +1,6 @@
 import Backdrop from '../components/Backdrop/Backdrop';
-import { SideBar, TopBar } from 'components';
+import { SideBar } from 'components';
+import Header from 'components/AppShell/Header/Header';
 import React, { useEffect, useState } from 'react';
 
 function SideBarTopBar() {
@@ -22,7 +23,7 @@ function SideBarTopBar() {
 
   return (
     <>
-      <TopBar toggleMenu={toggleMenu}></TopBar>
+      <Header toggleMenu={toggleMenu}></Header>
       <SideBar setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}></SideBar>
       {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
     </>

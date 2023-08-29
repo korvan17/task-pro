@@ -41,16 +41,17 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <Routes>
-          {/* Auth Routes */}
-          <Route path="/" element={<StartPage />}>
             <Route path="/home" element={<HomePage />} />
             <Route path=":boardId" element={<ScreenPage />} />
+          {/* Auth Routes */}
+          <Route path="/" element={<StartPage />}>
             <Route index element={<StartPageView />} />
             <Route path="/auth/*" element={<AuthPage />}>
               <Route path="register" element={<RegisterForm />} />
               <Route path="login" element={<LoginForm />} />
             </Route>
           </Route>
+
           {/* <Route path="/" element={<Login />} />
         
         <Route path=":boardId" element={<ScreensPage />} /> />

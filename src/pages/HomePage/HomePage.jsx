@@ -5,10 +5,30 @@ import { useNavigate } from 'react-router-dom';
 import css from './HomePage.module.css';
 import { selectBoards } from 'redux/boards/selectors';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import { AddEditBoard } from 'components';
+import { AddEditBoard, SideBar } from 'components';
 import { getBoard } from 'redux/boards/operations';
+import Backdrop from 'components/Backdrop/Backdrop';
+import Header from 'components/AppShell/Header/Header';
 
 const HomePage = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMenuOpen(window.innerWidth >= 1440);
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  
   // Використовуємо useSelector для отримання списку дошок зі стану Redux
   const boards = useSelector(selectBoards);
   // const [title, setTitle] = useSelector();
@@ -56,8 +76,9 @@ const HomePage = () => {
   // зробити логіку і прокинути стейти!
   return (
     <>
-      {/* <Header />
-      <Sidebar /> */}
+      <Header toggleMenu={toggleMenu}></Header>
+      <SideBar setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}></SideBar>
+      {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
       <section className={css.section}>
         <div className={css.text__home}>
           <p>

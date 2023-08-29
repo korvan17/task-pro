@@ -1,0 +1,85 @@
+.container {
+  background-color: #161616;
+  color: #ffffffcc;
+
+  display: flex;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-right: 0;
+
+  height: 60px;
+
+  align-items: center;
+
+  @media screen and (min-width: 1440px) {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: calc(100%-260px);
+    left: 260px;
+    height: 68px;
+  }
+}
+
+.menuBtn {
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+}
+
+.menuIcon {
+  stroke: #ffffff;
+}
+
+.options {
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+  align-items: center;
+}
+
+.themeBtn {
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+}
+
+.themeIcon {
+  stroke: #ffffff;
+}
+
+.themeContainer {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+}
+.themeTitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+}
+.themeIcon {
+  stroke: #ffffffcc;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.userName {
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+
+  color: #ffffff;
+}
+
+.userAvatar {
+}

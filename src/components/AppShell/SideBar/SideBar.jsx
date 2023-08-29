@@ -15,12 +15,8 @@ function SideBar({ setIsMenuOpen, isMenuOpen }) {
       setIsMenuOpen(false);
     }
   };
-
-  // Добавляем обработчик события клика при монтировании компонента
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-
-    // Убираем обработчик события клика при размонтировании компонента
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
