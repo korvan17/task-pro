@@ -7,7 +7,11 @@ function SideBar({ setIsMenuOpen, isMenuOpen }) {
   const menuRef = useRef(null);
 
   const handleClickOutside = event => {
-    if (menuRef.current && !menuRef.current.contains(event.target) && window.innerWidth < 1440) {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target) &&
+      window.innerWidth < 1440
+    ) {
       setIsMenuOpen(false);
     }
   };
@@ -69,5 +73,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen }) {
         </button>
       </div>
     </div>
+  );
+}
 
 export default SideBar;
