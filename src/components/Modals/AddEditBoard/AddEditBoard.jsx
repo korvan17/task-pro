@@ -7,13 +7,7 @@ import BackgroundPicker from 'components/UIelements/BackgroundPicker/BackgroundP
 import { useDispatch } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
 
-export default function AddEditBoard({
-  title,
-  isEditing,
-  onSubmit,
-  onClose,
-  boardId,
-}) {
+export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [icon, setIcon] = useState(null);

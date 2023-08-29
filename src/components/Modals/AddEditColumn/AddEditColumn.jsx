@@ -2,24 +2,31 @@ import css from './AddEditColumn.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 import { AddIconButton } from 'components';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addColumn, editColumn } from 'redux/columns/columnsOperations';
 
-export default function AddEditColumn({
-  title,
-  onClose,
-  isEditing,
-  onInputSubmit,
-}) {
+export default function AddEditColumn({ title, onClose, isEditing, columnId }) {
+  const dispatch = useDispatch();
+
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    onInputSubmit(inputValue);
-    onClose();
+    try {
+      if (!isEditing) {
+        await dispatch(addColumn({ title: inputValue }));
+      }
+      await dispatch(editColumn({ title: inputValue, id: columnId }));
+      onClose();
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
     <>
       <button className={css.closeBtn} onClick={onClose}>
