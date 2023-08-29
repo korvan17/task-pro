@@ -6,7 +6,7 @@ import css from './HomePage.module.css';
 import { selectBoards } from 'redux/boards/selectors';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { AddEditBoard } from 'components';
-import { addBoard, getBoard } from 'redux/boards/operations';
+import { getBoard } from 'redux/boards/operations';
 
 const HomePage = () => {
   // Використовуємо useSelector для отримання списку дошок зі стану Redux
@@ -49,9 +49,9 @@ const HomePage = () => {
     }
   }, [boards, completedInitialRedirect, navigate]);
   const handleAddBoard = (title, background, icon) => {
-    setTitle(title);
-    setIcon(icon);
-    setBackground(background);
+    // setTitle(title);
+    // setIcon(icon);
+    // setBackground(background);
   };
   // зробити логіку і прокинути стейти!
   return (
