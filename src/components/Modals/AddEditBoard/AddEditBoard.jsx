@@ -33,7 +33,6 @@ export default function AddEditBoard({
 
   const handleSubmit = async e => {
     e.preventDefault();
-
     try {
       if (!isEditing) {
         await dispatch(addBoard({ title: inputValue, background, icon }));
