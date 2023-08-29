@@ -1,0 +1,26 @@
+/* var 3 */
+.loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to right, transparent, #36c773, transparent);
+  overflow: hidden;
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  translate: -200px 0;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #3fe104, transparent);
+  animation: slide 1s infinite;
+}
+
+@keyframes slide {
+  100% {
+    translate: 1000px 0;
+  }
+}

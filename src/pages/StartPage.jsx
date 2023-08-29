@@ -1,4 +1,4 @@
-import { StartPageWrapper } from 'components';
+import { Loader, StartPageWrapper } from 'components';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 // import AuthPage from './AuthPage';
@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 function StartPage() {
   return (
     <StartPageWrapper>
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </StartPageWrapper>
