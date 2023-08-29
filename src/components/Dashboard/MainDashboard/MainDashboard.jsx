@@ -79,11 +79,7 @@ export function MainDashboard({ id }) {
       {showModal && (
         <BasicModal onClose={toggleModal}>
           {/* Передаємо функцію handleAddCard як властивість */}
-          <AddEditColumn
-            isEditing={false}
-            boardId={id}
-            onAddCard={handleAddCard}
-          />
+          <AddEditColumn isEditing={false} boardId={id} onClose={toggleModal} />
         </BasicModal>
       )}
     </div>

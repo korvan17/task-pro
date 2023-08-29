@@ -2,6 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { filtersReducer } from './filterSlice';
 import { authReducer } from './auth/authSlice';
+import { boardsReducer } from './boards/slice';
+import { columnsReducer } from './columns/columnsSlice';
+import { cardsReducer } from './сard/сardSlice';
 import {
   persistStore,
   persistReducer,
@@ -13,7 +16,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { boardsReducer } from './boards/slice';
 
 const persistConfig = {
   key: 'root',
@@ -26,10 +28,13 @@ const boardsPersistConfig = {
   storage,
   whitelist: ['items', 'currentBoard'],
 };
+
 export const store = configureStore({
   reducer: {
     filters: filtersReducer,
     auth: persistedReducer,
+    columns: columnsReducer,
+    cards: cardsReducer,
     boards: persistReducer(boardsPersistConfig, boardsReducer),
   },
   middleware: getDefaultMiddleware =>

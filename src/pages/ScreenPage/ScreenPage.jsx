@@ -7,6 +7,7 @@ import { selectBoards } from 'redux/boards/selectors';
 import { getBoardByID } from 'redux/boards/operations';
 import HeaderDashboard from 'components/Dashboard/HeaderDashboard/HeaderDashboard';
 import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard';
+import { Background } from 'components/Background/Background';
 
 const ScreenPage = () => {
   const navigate = useNavigate();
@@ -40,10 +41,12 @@ const ScreenPage = () => {
       {/* Відображаємо заголовок та основний вміст сторінки, якщо дошка знайдена */}
       {board && (
         <>
-          {/* Передаємо заголовок дошки в HeaderDashboard */}
-          <HeaderDashboard title={board.title} />
-          {/* Передаємо айді дошки в MainDashboard */}
-          <MainDashboard id={board._id} />
+          <Background img={board.background}>
+            {/* Передаємо заголовок дошки в HeaderDashboard */}
+            <HeaderDashboard title={board.title} />
+            {/* Передаємо айді дошки в MainDashboard */}
+            <MainDashboard id={board._id} />
+          </Background>
         </>
       )}
     </>
