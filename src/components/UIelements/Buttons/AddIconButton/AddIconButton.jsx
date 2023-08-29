@@ -3,7 +3,7 @@ import css from './AddIconButton.module.css';
 import sprite from '../../../../icons/sprite.svg';
 
 export default function AddIconButton({
-  buttonType = 'button',
+  buttonType = 'submit',
   children,
   theme = 'violet',
   className,
