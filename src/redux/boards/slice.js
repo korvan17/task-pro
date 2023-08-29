@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   fetchBoards,
   addBoard,
@@ -105,8 +105,8 @@ const boardsSlice = createSlice({
           state.currentBoard = 0;
         }
       })
-      .addMatcher(isAnyOf(...fnStatus(pending)), handlePending)
-      .addMatcher(isAnyOf(...fnStatus(rejected)), handleRejected)
+      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
+      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected)
 
       .addCase(getBoardByID.pending, handlePendingGetBoardId) // Добавление этого кейса
       .addCase(getBoardByID.rejected, handleRejectedGetBoardById), // Добавление этого кейса

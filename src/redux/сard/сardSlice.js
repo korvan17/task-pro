@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addCard, deleteCard } from './сardOperations';
 const customArr = [addCard, deleteCard];
 
@@ -28,8 +28,8 @@ const cardsSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addMatcher(isAnyOf(...fnStatus(pending)), handlePending)
-      .addMatcher(isAnyOf(...fnStatus(rejected)), handleRejected)
+      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
+      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected)
 
       .addCase(addCard.fulfilled, (state, action) => {
         state.isLoading = false;
