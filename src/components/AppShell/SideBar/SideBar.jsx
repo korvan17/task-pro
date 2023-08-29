@@ -3,7 +3,7 @@ import iconCactus from '../../../icons/cactus.png';
 import css from './SideBar.module.css';
 import { useEffect, useRef } from 'react';
 
-function SideBar({ setIsMenuOpen, isMenuOpen }) {
+function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
   const menuRef = useRef(null);
 
   const handleClickOutside = event => {
@@ -34,7 +34,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen }) {
         <h3 className={css.boardsTitle}>My boards</h3>
         <div className={css.createBoard}>
           <span className={css.createBoardText}>Create a new board</span>
-          <button className={css.createBoardButton}>
+          <button onClick={toggleModal} className={css.createBoardButton}>
             <svg width="20" height="20">
               <use className={css.addIcon} xlinkHref={`${sprite}#icon-add`} />
             </svg>
