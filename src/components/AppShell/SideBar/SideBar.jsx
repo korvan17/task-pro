@@ -69,7 +69,6 @@ function SideBar({ setIsMenuOpen, isMenuOpen }) {
         </button>
       </div>
     </div>
-=======
 import React, { useState, useEffect } from 'react';
 import sprite from '../../../icons/sprite.svg';
 import iconCactus from '../../../icons/cactus.png';
