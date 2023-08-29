@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 
 import css from './HomePage.module.css';
-import { selectBoards } from 'redux/boards/selectors';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { AddEditBoard, SideBar } from 'components';
 import { getBoard } from 'redux/boards/operations';
