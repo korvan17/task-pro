@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 function StartPage() {
   return (
     <StartPageWrapper>
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </StartPageWrapper>

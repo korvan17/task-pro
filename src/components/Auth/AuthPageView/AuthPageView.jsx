@@ -29,7 +29,7 @@ function AuthPageView() {
           </NavLink>
         </div>
       </div>
-      <Suspense>
+      <Suspense fallback={<Loader/>}>
         <Outlet />
       </Suspense>
     </div>
