@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import sprite from '../../../icons/sprite.svg';
 import css from './Header.module.css';
 
-export default function TopBar({ toggleMenu }) {
+export default function Header({ toggleMenu }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
 
