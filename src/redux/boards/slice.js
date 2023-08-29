@@ -8,6 +8,18 @@ import {
   getBoardByID, // Импорт этой операции
 } from './operations';
 
+const customArr = [
+  updateBoardBgById,
+  updateBoardById,
+  deleteBoard,
+  addBoard,
+  fetchBoards,
+];
+
+const fnStatus = status => {
+  return customArr.map(el => el[status]);
+};
+
 const handlePending = state => {
   state.isLoading = true;
 };
@@ -47,24 +59,18 @@ const boardsSlice = createSlice({
   },
   extraReducers: builder =>
     builder
-      .addCase(fetchBoards.pending, handlePending)
-      .addCase(fetchBoards.rejected, handleRejected)
       .addCase(fetchBoards.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
 
-      .addCase(addBoard.pending, handlePending)
-      .addCase(addBoard.rejected, handleRejected)
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.boards.push({ ...action.payload });
       })
 
-      .addCase(deleteBoard.rejected, handleRejected)
-      .addCase(deleteBoard.pending, handlePending)
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -74,8 +80,6 @@ const boardsSlice = createSlice({
         state.boards.splice(index, 1);
       })
 
-      .addCase(updateBoardById.pending, handlePending)
-      .addCase(updateBoardById.rejected, handleRejected)
       .addCase(updateBoardById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -86,8 +90,6 @@ const boardsSlice = createSlice({
         state.boards[index] = action.payload;
       })
 
-      .addCase(updateBoardBgById.pending, handlePending)
-      .addCase(updateBoardBgById.rejected, handleRejected)
       .addCase(updateBoardBgById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -103,6 +105,8 @@ const boardsSlice = createSlice({
           state.currentBoard = 0;
         }
       })
+      .addMatcher(isAnyOf(...fnStatus(pending)), handlePending)
+      .addMatcher(isAnyOf(...fnStatus(rejected)), handleRejected)
 
       .addCase(getBoardByID.pending, handlePendingGetBoardId) // Добавление этого кейса
       .addCase(getBoardByID.rejected, handleRejectedGetBoardById), // Добавление этого кейса
