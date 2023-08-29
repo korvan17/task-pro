@@ -6,6 +6,7 @@ import { useState } from 'react';
 import BackgroundPicker from 'components/UIelements/BackgroundPicker/BackgroundPicker';
 import { useDispatch } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddEditBoard({
   title,
@@ -22,7 +23,7 @@ export default function AddEditBoard({
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
-
+  const navigate = useNavigate();
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
   };
@@ -38,9 +39,15 @@ export default function AddEditBoard({
         await dispatch(addBoard({ title: inputValue, background, icon }));
       }
       await dispatch(
-        updateBoardById({ title: inputValue, background, icon, id: boardId })
+        updateBoardById({
+          title: inputValue,
+          background,
+          icon,
+          boardId: boardId,
+        })
       );
       onClose();
+      navigate(`/${boardId}`);
     } catch (err) {
       console.log(err);
     }
