@@ -12,7 +12,7 @@
   height: calc(100% - 9.9px);
   border: 5px solid transparent;
   border-radius: 50%;
-  border-top-color: #fff;
+  border-top-color: #39c217;
   animation: spin 5s cubic-bezier(0.17, 0.49, 0.96, 0.79) infinite;
 }
 
@@ -34,4 +34,227 @@
 }
 .foreground {
   backdrop-filter: blur(10px);
+}
+
+/* var 2 */
+.cssloadContainer * {
+  box-sizing: border-box;
+}
+
+.cssloadContainer {
+  margin: 38px auto 0 auto;
+  max-width: 1048px;
+}
+
+.cssloadContainer ul li {
+  list-style: none;
+}
+
+.cssloadFlexContainer {
+  display: flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.cssloadFlexContainer li {
+  padding: 19px;
+  height: 188px;
+  width: 188px;
+  margin: 56px 38px;
+  position: relative;
+  text-align: center;
+}
+
+.cssloadLoadingCenter {
+  display: inline-block;
+  position: absolute;
+  /* The color can be custmized, This color is for center cube.*/
+  background: #ff0000;
+  height: 56px;
+  width: 56px;
+  left: 68px;
+  top: 69px;
+  transform: rotate(45deg);
+  border-radius: 6px;
+  animation: pulse 1.3s ease infinite;
+}
+
+.cssloadLoading {
+  display: inline-block;
+  position: relative;
+  width: 141px;
+  height: 141px;
+  margin-top: 6px;
+  transform: rotate(45deg);
+}
+
+.cssloadLoading:after,
+.cssloadLoading:before {
+  position: absolute;
+  content: '';
+  height: 19px;
+  width: 19px;
+  display: block;
+  top: 0;
+  /* The color can be custmized, This color is for 4 cubes.*/
+  background: #ff5252;
+  border-radius: 6px;
+}
+
+.cssloadLoading:after {
+  right: 0;
+  animation: square-tr 2.6s ease infinite;
+  animation-delay: 0.162.5s;
+}
+
+.cssloadLoading:before {
+  animation: square-tl 2.6s ease infinite;
+  animation-delay: 0.162.5s;
+}
+
+.cssloadLoading.cssloadTwo {
+  position: relative;
+  top: -150px;
+}
+
+.cssloadLoading.cssloadTwo:after,
+.cssloadLoading.cssloadTwo:before {
+  bottom: 0;
+  top: initial;
+}
+
+.cssloadLoading.cssloadTwo:after {
+  animation: square-br 2.6s ease infinite;
+  animation-direction: reverse;
+}
+
+.cssloadLoading.cssloadTwo:before {
+  animation: square-bl 2.6s ease infinite;
+  animation-direction: reverse;
+}
+
+@keyframes square-tl {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(0, 117.5px);
+  }
+
+  50% {
+    transform: translate(117.5px, 117.5px);
+  }
+
+  75% {
+    transform: translate(117.5px, 0);
+  }
+}
+
+@keyframes square-bl {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(0, -117.5px);
+  }
+
+  50% {
+    transform: translate(117.5px, -117.5px);
+  }
+
+  75% {
+    transform: translate(117.5px, 0);
+  }
+}
+
+@keyframes square-tr {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-117.5px, 0);
+  }
+
+  50% {
+    transform: translate(-117.5px, 117.5px);
+  }
+
+  75% {
+    transform: translate(0, 117.5px);
+  }
+}
+
+@keyframes square-br {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-117.5px, 0);
+  }
+
+  50% {
+    transform: translate(-117.5px, -117.5px);
+  }
+
+  75% {
+    transform: translate(0, -117.5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(inherit) rotate(45deg);
+  }
+
+  75% {
+    transform: scale(0.25) rotate(45deg);
+  }
+}
+
+/* var 3 */
+.loader {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 1000px;
+  width: 300px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #28ae60, transparent);
+  overflow: hidden;
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  translate: -200px 0;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #212121, transparent);
+  animation: slide 1s infinite;
+}
+
+@keyframes slide {
+  100% {
+    translate: 300px 0;
+  }
 }

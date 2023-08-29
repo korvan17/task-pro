@@ -1,6 +1,8 @@
 import React from 'react';
 import css from './AuthPageView.module.css';
 import { NavLink, Outlet } from 'react-router-dom';
+import { Loader } from 'components';
+import { Suspense } from 'react';
 
 function AuthPageView() {
   return (
@@ -26,8 +28,10 @@ function AuthPageView() {
             Log In
           </NavLink>
         </div>
-        <Outlet />
       </div>
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

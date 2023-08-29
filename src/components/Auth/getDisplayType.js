@@ -1,6 +1,5 @@
 const getDisplayType = () => {
   const displayWidth = window.innerWidth;
-  console.log('displayWidth:', displayWidth);
   const isRetina =
     window.matchMedia &&
     window.matchMedia(
