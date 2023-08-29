@@ -20,6 +20,8 @@
 
 .openSideBar {
   position: absolute;
+  z-index: 2;
+
   top: 0;
   padding: 14px;
   width: 225px;

@@ -6,8 +6,4 @@
   height: 100%;
   pointer-events: none;
   background-color: #15151580;
-
-  @media screen and (min-width: 768px) {
-    left: 260px;
-  }
 }

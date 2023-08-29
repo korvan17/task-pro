@@ -16,7 +16,6 @@ import { useSelector } from 'react-redux';
 import { getTheme } from 'redux/auth/authSelectors';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import SideBarHeader from '../../pages/SideBarHeader'
 
 export default function App() {
   const userTheme = useSelector(getTheme);
@@ -42,10 +41,10 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <Routes>
-          {/* Auth Routes */}
-          <Route path="/" element={<StartPage />}>
             <Route path="/home" element={<HomePage />} />
             <Route path=":boardId" element={<ScreenPage />} />
+          {/* Auth Routes */}
+          <Route path="/" element={<StartPage />}>
             <Route index element={<StartPageView />} />
             <Route path="/auth/*" element={<AuthPage />}>
               <Route path="register" element={<RegisterForm />} />
@@ -53,7 +52,6 @@ export default function App() {
             </Route>
           </Route>
 
-          <Route path="/SideBarHeader" element={<SideBarHeader />} />
           {/* <Route path="/" element={<Login />} />
         
         <Route path=":boardId" element={<ScreensPage />} /> />
