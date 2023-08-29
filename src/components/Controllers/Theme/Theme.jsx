@@ -2,14 +2,21 @@ import { useState } from 'react';
 
 import iconDefs from '../../../icons/sprite.svg';
 import css from './Theme.module.css';
+import { useTheme } from "@emotion/react";
 
 export default function Theme() {
   const themes = ['light', 'dark', 'violet'];
   const [isThemeListVisible, setIsThemeListVisible] = useState(false);
 
+  const theme = useTheme();
+
   const toggleThemeList = () => {
     setIsThemeListVisible(!isThemeListVisible);
   };
+
+  const hadleThemeSelect = () => {
+    console.log(theme);
+  }
 
   return (
     <div className={css.themeContainer}>
@@ -26,7 +33,7 @@ export default function Theme() {
               <button
                 style={{ color: 'red' }}
                 className={css.themeListButton}
-                onClick={toggleThemeList}
+                onClick={hadleThemeSelect}
               >
                 {theme[0].toUpperCase() + theme.slice(1)}
               </button>
