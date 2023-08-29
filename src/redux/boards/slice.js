@@ -27,13 +27,10 @@ const handleRejectedGetBoardById = (state, action) => {
 };
 
 const boardsInitialState = {
-  boards: {
-    id: '',
-    title: '',
-    icon: '',
-    background: '',
-    boardUrl: '',
-  },
+  boards: [],
+  isLoading: false,
+  error: null,
+  currentBoard: null,
 };
 
 const boardsSlice = createSlice({
@@ -50,59 +47,63 @@ const boardsSlice = createSlice({
   },
   extraReducers: builder =>
     builder
+      .addCase(fetchBoards.pending, handlePending)
+      .addCase(fetchBoards.rejected, handleRejected)
       .addCase(fetchBoards.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(fetchBoards.pending, handlePending)
-      .addCase(fetchBoards.rejected, handleRejected)
 
+      .addCase(addBoard.pending, handlePending)
+      .addCase(addBoard.rejected, handleRejected)
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.boards.push({ ...action.payload });
       })
-      .addCase(addBoard.pending, handlePending)
-      .addCase(addBoard.rejected, handleRejected)
 
-      .addCase(updateBoardById.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        // const index = state.items.findIndex(
-        //   board => board._id === action.payload._id
-        // );
-
-        state.board = payload._id;
-      })
-      .addCase(updateBoardById.pending, handlePending)
-      .addCase(updateBoardById.rejected, handleRejected)
-      .addCase(updateBoardBgById.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        const index = state.items.findIndex(
-          board => board._id === action.payload._id
-        );
-
-        state.items[index].background = action.payload.background;
-      })
-      .addCase(updateBoardBgById.pending, handlePending)
-      .addCase(updateBoardBgById.rejected, handleRejected)
+      .addCase(deleteBoard.rejected, handleRejected)
       .addCase(deleteBoard.pending, handlePending)
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.items.findIndex(
+        const index = state.boards.findIndex(
+          item => item._id === action.payload.deletedBoard._id
+        );
+        state.boards.splice(index, 1);
+      })
+
+      .addCase(updateBoardById.pending, handlePending)
+      .addCase(updateBoardById.rejected, handleRejected)
+      .addCase(updateBoardById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.boards.findIndex(
+          board => board._id === action.payload._id
+        );
+
+        state.boards[index] = action.payload;
+      })
+
+      .addCase(updateBoardBgById.pending, handlePending)
+      .addCase(updateBoardBgById.rejected, handleRejected)
+      .addCase(updateBoardBgById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const index = state.boards.findIndex(
           board => board._id === action.payload
         );
-        state.items.splice(index, 1);
-        if (state.items.length === 0) {
+        state.boards.splice(index, 1);
+
+        if (state.boards.length === 0) {
           state.currentBoard = null;
         } else {
           state.currentBoard = 0;
         }
       })
-      .addCase(deleteBoard.rejected, handleRejected)
+
       .addCase(getBoardByID.pending, handlePendingGetBoardId) // Добавление этого кейса
       .addCase(getBoardByID.rejected, handleRejectedGetBoardById), // Добавление этого кейса
 });
