@@ -19,7 +19,7 @@ export { default as SideBar } from './AppShell/SideBar/SideBar.jsx';
 export { default as StartPageView } from './Auth/StartPageView/StartPageView.jsx';
 export { default as StartPageWrapper } from './Auth/StartPageWrapper/StartPageWrapper.jsx';
 export { default as Theme } from './Controllers/Theme/Theme.jsx';
-export { default as TopBar } from './AppShell/TopBar/TopBar.jsx';
+export { default as TopBar } from './AppShell/Header/Header.jsx';
 export { default as IconButton } from './UIelements/Buttons/IconButton/IconButton.jsx';
 export { default as AddIconButton } from './UIelements/Buttons/AddIconButton/AddIconButton.jsx';
 export { default as CreateBoardButton } from './AppShell/SideBar/CreateBoardButton/CreateBoardButton.jsx';
