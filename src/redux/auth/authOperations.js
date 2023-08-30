@@ -50,6 +50,8 @@ export const updateTheme = createAsyncThunk(
   'users/updateThemes',
   async (theme, thunkAPI) => {
     try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
       const { data } = await axios.patch('/users/theme', { theme });
       return data;
     } catch (error) {
@@ -94,6 +96,8 @@ export const updateUser = createAsyncThunk(
   'auth/prifile',
   async (credintials, thunkAPI) => {
     try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
       const { data } = await axios.put('/users/update', credintials);
 
       return data;

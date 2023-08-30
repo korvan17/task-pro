@@ -8,12 +8,12 @@ const setToken = token => {
 };
 
 export const addCard = createAsyncThunk(
-  'boards/addCard',
-  async ({ _id, body }, thunkAPI) => {
+  'cards/addCard',
+  async (cardData, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
-      const response = await axios.post(`/cards/${_id}`, { ...body });
+      const response = await axios.post('/cards', cardData);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -22,7 +22,7 @@ export const addCard = createAsyncThunk(
 );
 
 export const deleteCard = createAsyncThunk(
-  'boards/deleteCard',
+  'cards/deleteCard',
   async (task, thunkAPI) => {
     const { _id } = task;
     try {
@@ -30,6 +30,20 @@ export const deleteCard = createAsyncThunk(
       setToken(state.auth.token);
       await axios.delete(`/cards/${_id}`);
       return task;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editCard = createAsyncThunk(
+  'cards/editCard',
+  async (task, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+      const response = await axios.put(`/cards/${task._id}`, task);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
