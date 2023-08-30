@@ -31,15 +31,16 @@ export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
     try {
       if (!isEditing) {
         await dispatch(addBoard({ title: inputValue, background, icon }));
+      } else {
+        await dispatch(
+          updateBoardById({
+            title: inputValue,
+            background,
+            icon,
+            boardId: boardId,
+          })
+        );
       }
-      await dispatch(
-        updateBoardById({
-          title: inputValue,
-          background,
-          icon,
-          boardId: boardId,
-        })
-      );
       onClose();
       navigate(`/${boardId}`);
     } catch (err) {
