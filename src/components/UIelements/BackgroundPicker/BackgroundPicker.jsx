@@ -30,6 +30,8 @@ const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
     onSelectedBackgroundChange(backgroundName);
   };
 
+  const theme = useTheme();
+
   return (
     <div className={css.backgroundsPickerBlock}>
       <span
