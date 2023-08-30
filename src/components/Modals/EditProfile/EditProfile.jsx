@@ -1,9 +1,14 @@
+import { useTheme } from '@emotion/react';
+
 import css from './EditProfile.module.css';
 import sprite from '../../../icons/sprite.svg';
 export default function EditProfile() {
+  const theme = useTheme();
   return (
     <div className={css.conteiner}>
-      <h2 className={css.title}>Edit profile</h2>
+      <h2 style={{ color: theme.popUp.titleColor }} className={css.title}>
+        Edit profile
+      </h2>
       <svg className={css.userImg}>
         <use xlinkHref={`${sprite}#icon-user`} />
       </svg>
@@ -11,6 +16,11 @@ export default function EditProfile() {
       <form className={css.form}>
         <div className={css.blockInputs}>
           <input
+            style={{
+              color: theme.popUp.titleColor,
+              borderColor: theme.popUp.inputBorderColor,
+              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
+            }}
             type="text"
             id="name"
             name="name"
@@ -19,6 +29,11 @@ export default function EditProfile() {
           />
 
           <input
+            style={{
+              color: theme.popUp.titleColor,
+              borderColor: theme.popUp.inputBorderColor,
+              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
+            }}
             type="email"
             id="email"
             name="email"
@@ -27,6 +42,11 @@ export default function EditProfile() {
           />
 
           <input
+            style={{
+              color: theme.popUp.titleColor,
+              borderColor: theme.popUp.inputBorderColor,
+              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
+            }}
             type="password"
             id="password"
             name="password"
@@ -34,7 +54,15 @@ export default function EditProfile() {
             className={css.input}
           />
         </div>
-        <button type="submit">Send</button>
+        <button
+          style={{
+            backgroundColor: theme.popUp.buttonBackground,
+            color: theme.popUp.buttonTextColor,
+          }}
+          type="submit"
+        >
+          Send
+        </button>
       </form>
     </div>
   );

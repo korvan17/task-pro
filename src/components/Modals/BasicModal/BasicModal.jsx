@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom';
 import css from './BasicModal.module.css';
 import { useEffect } from 'react';
+import { useTheme } from '@emotion/react';
 
 //   const [showModal, setShowModal] = useState(true);
 //   const toggleModal = () => {
@@ -10,6 +11,7 @@ import { useEffect } from 'react';
 const modalRoot = document.querySelector('#modal-root');
 
 export default function BasicModal({ onClose, children }) {
+    const theme = useTheme();
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -32,7 +34,9 @@ export default function BasicModal({ onClose, children }) {
 
   return createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div className={css.modal}>{children}</div>
+      <div style={{ background: theme.popUp.background }} className={css.modal}>
+        {children}
+      </div>
     </div>,
     modalRoot
   );
