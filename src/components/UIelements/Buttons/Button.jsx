@@ -1,6 +1,5 @@
 import React from 'react';
 import css from './Button.module.css';
-import { useTheme } from '@emotion/react';
 
 /**
  * A functional component representing a customizable button.
@@ -10,7 +9,6 @@ import { useTheme } from '@emotion/react';
  * @param {"button" | "submit | "reset"} [props.buttonType='button'] - The type attribute for the button element.
  * @param {className} propsclassname - Additional custom styles for Button component.
  * @param {("color" | "transparent" | "dark")} props.stylization - Stilization types of button.
- * @param {("violet" | "light" | "dark")} props.theme - Temporary soution, it must be changed as soos as theme is added.
  * @param {ReactNode} props.children
  * @returns {JSX.Element}
  * @example
@@ -24,10 +22,6 @@ export default function Buttons({
   stylization = 'color',
   children,
 }) {
-  const { palette } = useTheme();
-  const theme = palette.mode;
-  console.log('theme :', theme);
-
   const getBtnStyle = () => {
     switch (stylization) {
       case 'dark':
@@ -39,23 +33,9 @@ export default function Buttons({
     }
   };
 
-  //temp solution
-  const getTheme = () => {
-    switch (theme) {
-      case 'light':
-        return css.light;
-      case 'dark':
-        return css.dark;
-      default:
-        return css.violet;
-    }
-  };
-
   return (
     <button
-      className={`${
-        stylization === 'color' && getTheme()
-      } ${getBtnStyle()} ${className} ${css.button}`}
+      className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}
     >
       {children}
