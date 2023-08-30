@@ -9,7 +9,9 @@
   transition: 250ms;
 
   @media screen and (min-width: 768px) {
-    /* padding: 22px 24px 22px 24px; */
+    width: 260px;
+
+    padding: 22px 24px 22px 24px;
     gap: 58px;
   }
 
