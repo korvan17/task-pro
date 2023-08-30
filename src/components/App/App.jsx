@@ -110,6 +110,10 @@ export default function App() {
     }
   }, [userTheme]);
 
+  // useEffect(() => {
+
+  // }, )
+
   return (
     <>
       <ThemeProviderMUI theme={createTheme({})}>
