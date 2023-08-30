@@ -1,17 +1,7 @@
-/* colors must be changed as soos as theme is added */
-
 /* button */
 .button {
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.buttonViolet {
-  background-color: #b8bcfd;
-}
-
-.buttonViolet:hover {
-  background-color: #979cea;
 }
 
 /* icon */
@@ -21,20 +11,9 @@
   padding: 7px;
   border-radius: 6px;
   margin-right: 8px;
+  stroke: #ffffff;
+  background-color: #000000;
 }
-
-/* themes */
-.dark,
-.light {
-  stroke: white;
-  background-color: black;
-}
-
-.violet {
-  stroke: black;
-  background-color: white;
-}
-
 
 /* without text */
 .buttonNoTxt {
@@ -43,11 +22,7 @@
 
 .iconNoTxt {
   background-color: transparent;
-  stroke: black;
+  stroke: #000000;
   padding: 0;
   margin-right: 0;
-}
-
-.violetNoTxt {
-  stroke: white;
 }

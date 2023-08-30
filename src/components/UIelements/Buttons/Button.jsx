@@ -9,7 +9,6 @@ import css from './Button.module.css';
  * @param {"button" | "submit | "reset"} [props.buttonType='button'] - The type attribute for the button element.
  * @param {className} propsclassname - Additional custom styles for Button component.
  * @param {("color" | "transparent" | "dark")} props.stylization - Stilization types of button.
- * @param {("violet" | "light" | "dark")} props.theme - Temporary soution, it must be changed as soos as theme is added.
  * @param {ReactNode} props.children
  * @returns {JSX.Element}
  * @example
@@ -21,7 +20,6 @@ export default function Buttons({
   className,
   buttonType = 'button',
   stylization = 'color',
-  theme = 'violet',
   children,
 }) {
   const getBtnStyle = () => {
@@ -35,23 +33,9 @@ export default function Buttons({
     }
   };
 
-  //temp solution
-  const getTheme = () => {
-    switch (theme) {
-      case 'light':
-        return css.light;
-      case 'dark':
-        return css.dark;
-      default:
-        return css.violet;
-    }
-  };
-
   return (
     <button
-      className={`${
-        stylization === 'color' && getTheme()
-      } ${getBtnStyle()} ${className} ${css.button}`}
+      className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}
     >
       {children}
