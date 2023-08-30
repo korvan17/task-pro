@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import css from './BackgroundPicker.module.css';
-import * as BackgroundImages from '../../../icons/backgounds';
+// import * as BackgroundImages from '../../../icons/backgounds';
 
 const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
   const backgrounds = [
@@ -28,7 +28,7 @@ const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
     setSelectedBackground(backgroundName);
     onSelectedBackgroundChange(backgroundName);
   };
-
+  // BackgroundImages[background.name]?.tablet;
   return (
     <div className={css.backgroundsPickerBlock}>
       <span className={css.backgroundsTitle}>Background</span>
