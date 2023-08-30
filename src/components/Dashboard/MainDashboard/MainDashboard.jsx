@@ -32,6 +32,7 @@ export function MainDashboard({ id }) {
   };
 
   const toggleModalColumn = () => {
+    console.log('pushToggal');
     setShowModalColumn(!showModalColumn);
   };
 
@@ -160,11 +161,8 @@ export function MainDashboard({ id }) {
           ))}
         </ul>
       )}
-      <AddIconButton
-        className={css.btn__card}
-        // action={handleAddColumn}
-      >
-        <span className={css.btn__text}>Add another card</span>
+      <AddIconButton className={css.btn__alonecolumn}>
+        <span className={css.btn__text}>Add another column</span>
       </AddIconButton>
       {showModalColumn && (
         <BasicModal onClose={toggleModalColumn}>
