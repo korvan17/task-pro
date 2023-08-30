@@ -44,6 +44,7 @@ export const light = {
   },
   header: {
     background: colors.backgroundWhiteColor,
+    menuButtonColor: colors.blackColor,
     themeSelectorColor: colors.buttonsGrayColor,
     themeListBackground: colors.backgroundWhiteColor,
     themeListItemColor: colors.blackColor,
@@ -136,6 +137,7 @@ export const dark = {
   },
   header: {
     background: colors.blackColor,
+    menuButtonColor: colors.whiteColor,
     themeSelectorColor: colors.whiteColor,
     themeListBackground: colors.blackColor,
     themeListItemColor: colors.halfWhiteColor,
@@ -228,6 +230,7 @@ export const violet = {
   },
   header: {
     background: colors.whiteColor,
+    menuButtonColor: colors.blackColor,
     themeSelectorColor: colors.buttonsGrayColor,
     themeListBackground: colors.whiteColor,
     themeListItemColor: colors.blackColor,
