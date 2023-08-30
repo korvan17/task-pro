@@ -3,12 +3,10 @@ import { NavLink } from 'react-router-dom';
 import css from './StartPageView.module.css';
 import svgSprite from '../../../icons/sprite.svg';
 import UserImg from './UserImg/UserImg.js';
-import ScreenSizeInfo from 'components/App/ScreenSiziInfo';
 
 function StartPageView() {
   return (
     <div className={css.startPageSection}>
-      <ScreenSizeInfo />
       <UserImg />
       <div className={css.startPageTitileBox}>
         <svg className={css.icon} width={40} height={40}>
