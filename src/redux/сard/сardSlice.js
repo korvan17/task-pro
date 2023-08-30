@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addCard, deleteCard } from './сardOperations';
-const customArr = [addCard, deleteCard];
+import { addCard, deleteCard, editCard } from './сardOperations';
+const customArr = [addCard, deleteCard, editCard];
 
 const fnStatus = status => {
   return customArr.map(el => el[status]);
@@ -16,7 +16,7 @@ const handleRejected = (state, action) => {
 };
 
 const cardsInitialState = {
-  currentDashboard: {},
+  cards: [],
   isLoading: false,
   error: null,
   columnsLength: 0,
@@ -30,34 +30,25 @@ const cardsSlice = createSlice({
     builder
       .addCase(addCard.fulfilled, (state, action) => {
         state.isLoading = false;
-
-        const index = state.currentDashboard.columns.findIndex(
-          item => item._id === action.payload.owner
-        );
-
-        if (!state.currentDashboard.columns[index].cards) {
-          state.currentDashboard.columns[index].cards = [];
-        }
-
-        state.currentDashboard.columns[index].cards.push(action.payload);
-
         state.error = null;
+        state.cards.push({ ...action.payload });
       })
 
       .addCase(deleteCard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-
-        const indexColumn = state.currentDashboard.columns.findIndex(
-          item => item._id === action.payload.owner
+        const index = state.cards.findIndex(
+          item => item._id === action.payload.deletedСards._id
         );
-
-        const indexCard = state.currentDashboard.columns[
-          indexColumn
-        ].cards.findIndex(item => item._id === action.payload._id);
-
-        state.currentDashboard.columns[indexColumn].cards.splice(indexCard, 1);
-        state.columnsLength = state.currentDashboard.columns.length;
+        state.cards.splice(index, 1);
+      })
+      .addCase(editCard.fulfilled, (state, action) => {
+        const updatedCardIndex = state.findIndex(
+          card => card._id === action.payload._id
+        );
+        if (updatedCardIndex !== -1) {
+          state[updatedCardIndex] = action.payload;
+        }
       })
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected);
