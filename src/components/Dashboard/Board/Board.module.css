@@ -1,7 +1,21 @@
 .board {
   display: flex;
+  position: absolute;
+  gap: 43px;
   justify-content: space-between;
-  padding: 22px 24px;
+  width: 225px;
+  padding: 22px 18px 22px 14px;
+  left: 0px;
+  transition: 250ms;
+
+  @media screen and (min-width: 768px) {
+    /* padding: 22px 24px 22px 24px; */
+    gap: 58px;
+  }
+
+  &:hover {
+    background-color: #1f1f1f;
+  }
 }
 .boardIconTittleContainer {
   display: flex;
@@ -16,6 +30,13 @@
 }
 
 .boardTittle {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
   margin-left: 4px;
 
   @media screen and (min-width: 768px) {
