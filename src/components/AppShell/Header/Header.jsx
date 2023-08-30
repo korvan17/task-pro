@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useTheme } from '@emotion/react';
 import sprite from '../../../icons/sprite.svg';
 import css from './Header.module.css';
 import { Theme } from 'components';
 
 export default function Header({ toggleMenu }) {
+  const theme = useTheme();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   // const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
 
@@ -24,10 +26,18 @@ export default function Header({ toggleMenu }) {
   // };
 
   return (
-    <div className={css.container}>
+    <div
+      style={{ backgroundColor: theme.header.background }}
+      className={css.container}
+    >
       {windowWidth < 1440 ? (
         <button onClick={toggleMenu} className={css.menuBtn} type="button">
-          <svg className={css.menuIcon} width="32" height="32">
+          <svg
+            style={{ stroke: theme.header.menuButtonColor }}
+            className={css.menuIcon}
+            width="32"
+            height="32"
+          >
             <use xlinkHref={`${sprite}#icon-menu`} />
           </svg>
         </button>
@@ -45,7 +55,12 @@ export default function Header({ toggleMenu }) {
         </div> */}
         <Theme />
         <ul className={css.userInfo}>
-          <li className={css.userName}>Ivetta</li>
+          <li
+            style={{ color: theme.header.userNameColor }}
+            className={css.userName}
+          >
+            Ivetta
+          </li>
           <li className={css.userAvatart}>Avatar</li>
         </ul>
       </div>
