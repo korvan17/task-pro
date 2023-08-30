@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addCard, deleteCard, editCard } from './сardOperations';
-const customArr = [addCard, deleteCard, editCard];
+import { addCard, deleteCard, editCard, moveCard } from './сardOperations';
+const customArr = [addCard, deleteCard, editCard, moveCard];
 
 const fnStatus = status => {
   return customArr.map(el => el[status]);
@@ -43,11 +43,19 @@ const cardsSlice = createSlice({
         state.cards.splice(index, 1);
       })
       .addCase(editCard.fulfilled, (state, action) => {
-        const updatedCardIndex = state.findIndex(
+        const updatedCardIndex = state.cards.findIndex(
           card => card._id === action.payload._id
         );
         if (updatedCardIndex !== -1) {
-          state[updatedCardIndex] = action.payload;
+          state.cards[updatedCardIndex] = action.payload;
+        }
+      })
+      .addCase(moveCard.fulfilled, (state, action) => {
+        const updatedCardIndex = state.cards.findIndex(
+          card => card._id === action.payload._id
+        );
+        if (updatedCardIndex !== -1) {
+          state.cards[updatedCardIndex].column = action.payload.column;
         }
       })
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
