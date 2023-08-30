@@ -10,6 +10,8 @@ import { getTheme } from 'redux/auth/authSelectors';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { selectIsLoading } from 'redux/boards/selectors';
+import { Loader } from 'components';
 
 const StartPageView = lazy(() =>
   import('components/Auth/StartPageView/StartPageView')
@@ -23,6 +25,7 @@ const LoginForm = lazy(() => import('components/Auth/LoginForm/LoginForm'));
 
 export default function App() {
   const userTheme = useSelector(getTheme);
+  const isLoad = useSelector(selectIsLoading);
   const [theme, setTheme] = useState(light);
 
   useEffect(() => {
@@ -45,6 +48,7 @@ export default function App() {
 
   return (
     <>
+      {isLoad && <Loader />}
       <ThemeProviderMUI theme={createTheme({})}>
         <ThemeProvider theme={theme}>
           <Routes>
