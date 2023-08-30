@@ -23,7 +23,7 @@
   z-index: 2;
 
   top: 0;
-  padding: 14px;
+  /* padding: 14px; */
   width: 225px;
   height: 100vh;
   flex-shrink: 0;
@@ -33,7 +33,7 @@
   transform: translateX(0);
 
   @media screen and (min-width: 768px) {
-    padding: 24px;
+    /* padding: 24px; */
     width: 260px;
   }
 
@@ -109,13 +109,10 @@
     background-color: #9dc888;
   }
 }
-.addIcon {
-  stroke: black;
-}
 
 .boardsList {
-  margin-top: 40px;
   color: white;
+  /* position: relative; */
 }
 
 .boardsItem {

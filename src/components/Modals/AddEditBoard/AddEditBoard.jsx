@@ -38,16 +38,16 @@ export default function AddEditBoard({
       if (!isEditing) {
         await dispatch(addBoard({ title: inputValue, background, icon }));
       }
-      await dispatch(
-        updateBoardById({
-          title: inputValue,
-          background,
-          icon,
-          boardId: boardId,
-        })
-      );
+      // await dispatch(
+      //   updateBoardById({
+      //     title: inputValue,
+      //     background,
+      //     icon,
+      //     boardId: boardId,
+      //   })
+      // );
       onClose();
-      navigate(`/${boardId}`);
+      // navigate(`/${boardId}`);
     } catch (err) {
       console.log(err);
     }
