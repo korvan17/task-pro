@@ -19,9 +19,7 @@
 }
 
 .themeListContainer {
-  /* position: absolute; */
-  /* top: calc(100% + 5px); */
-  /* left: 0; */
+  position: absolute;
   height: 105px;
   width: 100px;
   border-radius: 8px;
@@ -34,11 +32,11 @@
   /* transition: 0.3s; */
 }
 
-/* .themeListContainer.active {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-} */
+/* .themeListContainer.active { */
+  /* transform: translateY(0); */
+  /* opacity: 1; */
+  /* visibility: visible; */
+/* } */
 
 .themeList {
   padding: 18px;
@@ -58,6 +56,7 @@
   border: 0px;
   background: none;
   color: rgba(255, 255, 255, 0.5);
+  text-transform: capitalize;
 }
 
 .themeListButton:hover {
