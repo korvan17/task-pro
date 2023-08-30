@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTheme } from '@emotion/react';
+// import { useTheme } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import iconDefs from '../../../icons/sprite.svg';
@@ -13,7 +13,7 @@ export default function Theme() {
   const themes = ['light', 'dark', 'violet'];
   const [isThemeListVisible, setIsThemeListVisible] = useState(false);
 
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const toggleThemeList = () => {
     setIsThemeListVisible(!isThemeListVisible);

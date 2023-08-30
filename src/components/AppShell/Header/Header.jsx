@@ -6,7 +6,7 @@ import { Theme } from 'components';
 
 export default function Header({ toggleMenu }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
+  // const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateWindowWidth = () => {
@@ -18,10 +18,10 @@ export default function Header({ toggleMenu }) {
     };
   }, []);
 
-  const toggleTheme = () => {
-    console.log('toggle theme menu');
-    setIsThemeMenuOpen(!isThemeMenuOpen);
-  };
+  // const toggleTheme = () => {
+  //   console.log('toggle theme menu');
+  //   setIsThemeMenuOpen(!isThemeMenuOpen);
+  // };
 
   return (
     <div className={css.container}>
