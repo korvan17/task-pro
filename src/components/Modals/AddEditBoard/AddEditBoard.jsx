@@ -8,13 +8,7 @@ import { useDispatch } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
 import { useNavigate } from 'react-router-dom';
 
-export default function AddEditBoard({
-  title,
-  isEditing,
-  onSubmit,
-  onClose,
-  boardId,
-}) {
+export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [icon, setIcon] = useState(null);
@@ -37,15 +31,16 @@ export default function AddEditBoard({
     try {
       if (!isEditing) {
         await dispatch(addBoard({ title: inputValue, background, icon }));
+      } else {
+        await dispatch(
+          updateBoardById({
+            title: inputValue,
+            background,
+            icon,
+            boardId: boardId,
+          })
+        );
       }
-      await dispatch(
-        updateBoardById({
-          title: inputValue,
-          background,
-          icon,
-          boardId: boardId,
-        })
-      );
       onClose();
       navigate(`/${boardId}`);
     } catch (err) {
