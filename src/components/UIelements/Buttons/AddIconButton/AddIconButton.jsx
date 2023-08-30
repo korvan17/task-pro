@@ -1,13 +1,15 @@
 import Buttons from '../Button';
 import css from './AddIconButton.module.css';
 import sprite from '../../../../icons/sprite.svg';
+import { useTheme } from '@emotion/react';
 
 export default function AddIconButton({
   buttonType = 'submit',
   children,
-  theme = 'violet',
   className,
 }) {
+  const { palette } = useTheme();
+  const theme = palette.mode;
   //temp solution
   const getTheme = () => {
     switch (theme) {
