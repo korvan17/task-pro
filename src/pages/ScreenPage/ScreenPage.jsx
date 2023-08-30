@@ -10,7 +10,7 @@ import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard'
 import { Background } from 'components/Background/Background';
 import css from './ScreenPage.module.css';
 
-const ScreenPage = ({}) => {
+const ScreenPage = () => {
   const dispatch = useDispatch();
   const board = useSelector(selectBoards);
 

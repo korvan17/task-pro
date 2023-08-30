@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from '@emotion/react';
 import css from './IconPicker.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 
@@ -21,9 +22,16 @@ const IconPicker = ({ onSelectedIconChange }) => {
     onSelectedIconChange(icon);
   };
 
+  const theme = useTheme();
+
   return (
     <div className={css.iconsPickerBlock}>
-      <span className={css.iconsTitle}>Icons</span>
+      <span
+        style={{ color: theme.popUp.iconsTextColor }}
+        className={css.iconsTitle}
+      >
+        Icons
+      </span>
       <div className={css.iconsField}>
         {icons.map(icon => (
           <button
@@ -37,7 +45,10 @@ const IconPicker = ({ onSelectedIconChange }) => {
               backgroundColor: 'transparent',
               border: 'none',
               cursor: 'pointer',
-              stroke: selectedIcon === icon.name ? '#161616' : '#16161680',
+              stroke:
+                selectedIcon === icon.name
+                  ? theme.popUp.selectedIconFill
+                  : theme.popUp.iconsFill,
             }}
             onClick={() => handleIcon(icon.name)}
           >
