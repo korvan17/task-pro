@@ -1,10 +1,15 @@
 import { useState } from 'react';
+import { useTheme } from '@emotion/react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import iconDefs from '../../../icons/sprite.svg';
 import css from './Theme.module.css';
-import { useTheme } from "@emotion/react";
+import { updateTheme } from '../../../redux/auth/authOperations';
+import { getTheme } from 'redux/auth/authSelectors';
 
 export default function Theme() {
+  const selectedTheme = useSelector(getTheme);
+  const dispatch = useDispatch();
   const themes = ['light', 'dark', 'violet'];
   const [isThemeListVisible, setIsThemeListVisible] = useState(false);
 
@@ -14,28 +19,54 @@ export default function Theme() {
     setIsThemeListVisible(!isThemeListVisible);
   };
 
-  const hadleThemeSelect = () => {
-    console.log(theme);
-  }
+  const hadleThemeSelect = newUserTheme => {
+    dispatch(updateTheme(newUserTheme));
+    toggleThemeList();
+    // console.log(newUserTheme);
+  };
 
   return (
     <div className={css.themeContainer}>
-      <button className={css.themeChangerButton} onClick={toggleThemeList}>
+      <button
+        style={{ color: theme.header.themeSelectorColor }}
+        className={css.themeChangerButton}
+        onClick={toggleThemeList}
+      >
         <h3>Theme</h3>
-        <svg className={css.themeChangerIcon} width="16" height="16">
+        <svg
+          style={{ stroke: theme.header.themeSelectorColor }}
+          className={`${css.themeChangerIcon}`}
+          width="16"
+          height="16"
+        >
           <use xlinkHref={`${iconDefs}#icon-theme`} />
         </svg>
       </button>
-      <div className={`${css.themeListContainer}`} hidden={!isThemeListVisible}>
+      <div
+        style={{ background: theme.header.themeListBackground }}
+        className={`${css.themeListContainer}`}
+        hidden={!isThemeListVisible}
+      >
         <ul className={css.themeList}>
-          {themes.map(theme => (
-            <li key={theme + 1} className={css.themeListButton}>
+          {themes.map(themeName => (
+            <li key={themeName + 1} className={css.themeListButton}>
               <button
-                style={{ color: 'red' }}
+                style={
+                  selectedTheme === themeName
+                    ? { color: theme.header.themeListItemHoverColor }
+                    : { color: theme.header.themeListItemColor }
+                }
                 className={css.themeListButton}
-                onClick={hadleThemeSelect}
+                onClick={() => {
+                  if (selectedTheme === themeName) {
+                    return;
+                  } else {
+                    hadleThemeSelect(themeName);
+                  }
+                }}
               >
-                {theme[0].toUpperCase() + theme.slice(1)}
+                {/* {themeName[0].toUpperCase() + themeName.slice(1)} */}
+                {themeName}
               </button>
             </li>
           ))}

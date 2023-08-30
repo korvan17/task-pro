@@ -12,7 +12,6 @@ import { register } from 'redux/auth/authOperations';
 import { isLoggedIn } from 'redux/auth/authSelectors';
 import { useNavigate } from 'react-router-dom';
 
-
 const initialValues = {
   name: '',
   email: '',
@@ -36,6 +35,7 @@ function RegisterForm() {
   };
 
   const handleFormSubmit = async (values, { resetForm }) => {
+    console.log('values:', values);
     await dispatch(register(values));
     resetForm();
   };

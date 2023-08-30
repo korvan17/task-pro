@@ -5,6 +5,7 @@ import { authReducer } from './auth/authSlice';
 import { boardsReducer } from './boards/slice';
 import { columnsReducer } from './columns/columnsSlice';
 import { cardsReducer } from './сard/сardSlice';
+import { displayReducer } from './displayType/displaySlice';
 import {
   persistStore,
   persistReducer,
@@ -35,6 +36,7 @@ export const store = configureStore({
     auth: persistedReducer,
     columns: columnsReducer,
     cards: cardsReducer,
+    displays: displayReducer,
     boards: persistReducer(boardsPersistConfig, boardsReducer),
   },
   middleware: getDefaultMiddleware =>
