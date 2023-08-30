@@ -1,5 +1,5 @@
 import css from './Background.module.css';
-import { useMedia } from 'react-use';
+// import { useMedia } from 'react-use';
 
 // Определение компонента Background с пропсами children и img
 export const Background = ({ children, img }) => {
