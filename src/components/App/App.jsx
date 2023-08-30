@@ -64,6 +64,8 @@
 
 // import { StartPageView } from 'components';
 
+import { ThemeProvider as ThemeProviderMUI } from '@mui/material';
+import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import { dark, light, violet } from 'components/Controllers/Theme/theme';
 import { HomePage, ScreenPage, StartPage } from 'pages';
@@ -110,20 +112,21 @@ export default function App() {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path="/home" element={<HomePage />} />
-          <Route path=":boardId" element={<ScreenPage />} />
-          {/* Auth Routes */}
-          <Route path="/" element={<StartPage />}>
-            <Route index element={<StartPageView />} />
-            <Route path="/auth/*" element={<AuthPage />}>
-              <Route path="register" element={<RegisterForm />} />
-              <Route path="login" element={<LoginForm />} />
+      <ThemeProviderMUI theme={createTheme({})}>
+        <ThemeProvider theme={theme}>
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route path=":boardId" element={<ScreenPage />} />
+            {/* Auth Routes */}
+            <Route path="/" element={<StartPage />}>
+              <Route index element={<StartPageView />} />
+              <Route path="/auth/*" element={<AuthPage />}>
+                <Route path="register" element={<RegisterForm />} />
+                <Route path="login" element={<LoginForm />} />
+              </Route>
             </Route>
-          </Route>
 
-          {/* <Route path="/" element={<Login />} />
+            {/* <Route path="/" element={<Login />} />
 
         <Route path=":boardId" element={<ScreensPage />} /> />
         <Route path="/home" element={<HomePage />} />
@@ -133,11 +136,12 @@ export default function App() {
           <Route index element={<StartPageView />} />
          */}
 
-          {/* <PrivateRoute path="/home">
+            {/* <PrivateRoute path="/home">
           <HomePage />
         </PrivateRoute> */}
-        </Routes>
-      </ThemeProvider>
+          </Routes>
+        </ThemeProvider>
+      </ThemeProviderMUI>
     </>
   );
 }
