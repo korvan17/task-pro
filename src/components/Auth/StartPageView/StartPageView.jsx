@@ -3,10 +3,8 @@ import { NavLink } from 'react-router-dom';
 import css from './StartPageView.module.css';
 import svgSprite from '../../../icons/sprite.svg';
 import UserImg from './UserImg/UserImg.js';
-import ScreenSizeInfo from 'components/App/ScreenSiziInfo';
 
 function StartPageView() {
-  <ScreenSizeInfo />;
   return (
     <div className={css.startPageSection}>
       <UserImg />
