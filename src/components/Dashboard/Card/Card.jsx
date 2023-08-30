@@ -9,7 +9,14 @@ import CardAdditionInfList from './CardAdditionInfList/CardAdditionInfList';
 // ! set a constant later
 const MAX_DESC_VISIBLE_LEN = 86;
 
-export default function Card({ title, desc, priority, deadline }) {
+export default function Card({
+  title,
+  desc,
+  priority,
+  deadline,
+  toggleModalCard,
+  deleteCard,
+}) {
   const [isDescHidden, setDescHidden] = useState('true');
 
   const showDotsToHide = desc.length > MAX_DESC_VISIBLE_LEN;
@@ -65,6 +72,8 @@ export default function Card({ title, desc, priority, deadline }) {
           {isDeadlineToday && <DeadlineIcon />}
 
           <CardIconsList
+            toggleModalCard={toggleModalCard}
+            deleteCard={deleteCard}
             className={`${css.iconButtsList} ${
               isDeadlineToday && css.iconButtsList_Deadline
             }`}

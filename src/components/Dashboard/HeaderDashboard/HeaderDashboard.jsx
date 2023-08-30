@@ -5,7 +5,7 @@ const HeaderDashboard = ({ title }) => {
   return (
     <div className={css.main__header}>
       {/* Відображаємо заголовок дошки */}
-      <h1 className={css.title__main}>{title}To Do</h1>
+      <h1 className={css.title__main}>{title}Name Board</h1>
       <div>
         {/* Відображаємо компонент Filter */}
         <Filter />

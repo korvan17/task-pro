@@ -10,9 +10,12 @@ import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard'
 import { Background } from 'components/Background/Background';
 import css from './ScreenPage.module.css';
 
-const ScreenPage = ({}) => {
+import { useState } from 'react';
+
+const ScreenPage = () => {
   const dispatch = useDispatch();
   const board = useSelector(selectBoards);
+  const [isEditing, setIsEditing] = useState(false);
 
   const [searchParams] = useSearchParams();
 
