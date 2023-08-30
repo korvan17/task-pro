@@ -21,6 +21,7 @@ export default function Theme() {
 
   const hadleThemeSelect = newUserTheme => {
     dispatch(updateTheme(newUserTheme));
+    toggleThemeList();
     // console.log(newUserTheme);
   };
 
