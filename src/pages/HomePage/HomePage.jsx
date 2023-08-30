@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import css from './HomePage.module.css';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { AddEditBoard, SideBar } from 'components';
-import { getBoard } from 'redux/boards/operations';
+import { getBoardByID } from 'redux/boards/operations';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenPage from 'pages/ScreenPage/ScreenPage';
@@ -29,7 +29,7 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getBoard());
+    dispatch(getBoardByID());
   }, [dispatch]);
 
   const toggleModal = () => {
