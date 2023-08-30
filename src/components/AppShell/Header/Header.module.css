@@ -33,9 +33,10 @@
 
 .options {
   display: flex;
+  align-items: baseline;
   gap: 14px;
   margin-left: auto;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .themeBtn {

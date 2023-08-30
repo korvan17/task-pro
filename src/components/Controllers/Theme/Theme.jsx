@@ -27,13 +27,13 @@ export default function Theme() {
   return (
     <div className={css.themeContainer}>
       <button
-        style={{ color: theme.header.themeSelectorColor }}
+        // style={{ color: theme.header.themeSelectorColor }}
         className={css.themeChangerButton}
         onClick={toggleThemeList}
       >
         <h3>Theme</h3>
         <svg
-          style={{ stroke: theme.header.themeSelectorColor }}
+          // style={{ stroke: theme.header.themeSelectorColor }}
           className={`${css.themeChangerIcon}`}
           width="16"
           height="16"
@@ -42,7 +42,7 @@ export default function Theme() {
         </svg>
       </button>
       <div
-        style={{ background: theme.header.themeListBackground }}
+        // style={{ background: theme.header.themeListBackground }}
         className={`${css.themeListContainer}`}
         hidden={!isThemeListVisible}
       >
@@ -50,11 +50,11 @@ export default function Theme() {
           {themes.map(themeName => (
             <li key={themeName + 1} className={css.themeListButton}>
               <button
-                style={
-                  selectedTheme === themeName
-                    ? { color: theme.header.themeListItemHoverColor }
-                    : { color: theme.header.themeListItemColor }
-                }
+                // style={
+                //   selectedTheme === themeName
+                //     ? { color: theme.header.themeListItemHoverColor }
+                //     : { color: theme.header.themeListItemColor }
+                // }
                 className={css.themeListButton}
                 onClick={() => {
                   if (selectedTheme === themeName) {

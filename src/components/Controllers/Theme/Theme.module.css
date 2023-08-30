@@ -10,12 +10,13 @@
   border: 0px;
   background: none;
   cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .themeChangerIcon {
   margin-left: 4px;
   stroke-width: 1.5px;
-  stroke: rgba(22, 22, 22, 0.8);
+  stroke: rgba(255, 255, 255, 0.8);
 }
 
 .themeListContainer {
@@ -33,9 +34,9 @@
 }
 
 /* .themeListContainer.active { */
-  /* transform: translateY(0); */
-  /* opacity: 1; */
-  /* visibility: visible; */
+/* transform: translateY(0); */
+/* opacity: 1; */
+/* visibility: visible; */
 /* } */
 
 .themeList {
