@@ -1,15 +1,27 @@
-.board {
-    padding: 0 20px 24px 20px;
+.card__item {
     display: flex;
-    gap: 34px;
-    overflow: auto;
+    gap:8px;
+    flex-direction: column;
+    margin-bottom: 14px;
 }
 
-.button__column {
-    min-width: 335px;
-}
-
-.list__column {
+.column__item{
     display: flex;
     gap: 34px;
+}
+
+.btn__card{
+    width: 100%;
+    
+}
+
+.btn__text{
+        display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            border-radius: 6px;
+            flex-shrink: 0;
+            stroke: white;
+
 }
