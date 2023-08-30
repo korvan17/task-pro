@@ -1,15 +1,16 @@
-import { ThemeProvider as ThemeProviderMUI } from '@mui/material';
-import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider as ThemeProviderMUI, createTheme } from '@mui/material';
 import { dark, light, violet } from 'components/Controllers/Theme/theme';
 import { HomePage, ScreenPage, StartPage } from 'pages';
-// import { HomePage, ScreenPage } from 'pages';
-import { lazy, useEffect, useState } from 'react';
+import { lazy } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { getTheme } from 'redux/auth/authSelectors';
 
-// const StartPage = lazy(() => import('pages/StartPage'));
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const StartPageView = lazy(() =>
   import('components/Auth/StartPageView/StartPageView')
 );
@@ -19,10 +20,6 @@ const RegisterForm = lazy(() =>
   import('components/Auth/RegisterForm/RegisterForm')
 );
 const LoginForm = lazy(() => import('components/Auth/LoginForm/LoginForm'));
-// const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-// const ScreenPage = lazy(() => import('../../pages/ScreenPage/ScreenPage'));
-
-// const MyComponent = lazy(() => import('./MyComponent'));
 
 export default function App() {
   const userTheme = useSelector(getTheme);
@@ -44,9 +41,7 @@ export default function App() {
     }
   }, [userTheme]);
 
-  // useEffect(() => {
-
-  // }, )
+  useEffect(() => {});
 
   return (
     <>
@@ -64,6 +59,18 @@ export default function App() {
               </Route>
             </Route>
           </Routes>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
         </ThemeProvider>
       </ThemeProviderMUI>
     </>

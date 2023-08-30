@@ -3,9 +3,9 @@ import css from './HeaderDashboard.module.css';
 
 const HeaderDashboard = ({ title }) => {
   return (
-    <div>
+    <div className={css.main__header}>
       {/* Відображаємо заголовок дошки */}
-      <h1 className={css.title}>{title}</h1>
+      <h1 className={css.title__main}>{title}To Do</h1>
       <div>
         {/* Відображаємо компонент Filter */}
         <Filter />

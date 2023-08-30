@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from '@emotion/react';
 import css from './BackgroundPicker.module.css';
 // import * as BackgroundImages from '../../../icons/backgounds';
 
@@ -28,10 +29,17 @@ const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
     setSelectedBackground(backgroundName);
     onSelectedBackgroundChange(backgroundName);
   };
-  // BackgroundImages[background.name]?.tablet;
+
+  const theme = useTheme();
+
   return (
     <div className={css.backgroundsPickerBlock}>
-      <span className={css.backgroundsTitle}>Background</span>
+      <span
+        style={{ color: theme.popUp.backgroundTextColor }}
+        className={css.backgroundsTitle}
+      >
+        Background
+      </span>
       <div className={css.backgroundsField}>
         {backgrounds.map((background, index) => (
           <button
