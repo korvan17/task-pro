@@ -69,8 +69,8 @@ export const updateBoardById = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
-      await axios.put(`/boards/${_id}`, { ...body });
-      return { ...body };
+      await axios.put(`/boards/${board._id}`, { ...board });
+      return { ...board };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
