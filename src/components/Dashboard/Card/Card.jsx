@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+
 import css from './Card.module.css';
 import convertDate from 'utlis/convertDate';
 import { CardIconsList, DeadlineIcon } from './CardIcons';
@@ -10,6 +11,8 @@ const MAX_DESC_VISIBLE_LEN = 86;
 
 export default function Card({ title, desc, priority, deadline }) {
   const [isDescHidden, setDescHidden] = useState('true');
+
+  const showDotsToHide = desc.length > MAX_DESC_VISIBLE_LEN;
 
   const toggleDesc = () => {
     setDescHidden(!isDescHidden);
@@ -52,7 +55,7 @@ export default function Card({ title, desc, priority, deadline }) {
             onClick={toggleDesc}
             className={`${css.dotsToHide} ${!isDescHidden && css.dotsOnShown}`}
           >
-            {isDescHidden ? '...' : ' hide'}
+            {isDescHidden ? (showDotsToHide ? '...' : '') : ' hide'}
           </span>
         </p>
         <div className={css.additionWrapper}>

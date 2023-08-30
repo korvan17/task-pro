@@ -11,7 +11,7 @@
 }
 
 .overWrapper {
-  max-width: 335px;
+  width: 334px;
 
   overflow: hidden;
   border-radius: 8px;
