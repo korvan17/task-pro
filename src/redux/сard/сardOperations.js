@@ -49,3 +49,21 @@ export const editCard = createAsyncThunk(
     }
   }
 );
+
+export const moveCard = createAsyncThunk(
+  'cards/moveCard',
+  async ({ cardId, toColumnId }, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      setToken(state.auth.token);
+
+      const response = await axios.patch(`/cards/${cardId}`, {
+        column: toColumnId,
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
