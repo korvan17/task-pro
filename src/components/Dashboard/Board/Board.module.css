@@ -1,11 +1,12 @@
 .board {
   display: flex;
-  position: absolute;
+  /* position: absolute;
+  left: 0px; */
   gap: 43px;
   justify-content: space-between;
   width: 225px;
+  height: 61px;
   padding: 22px 18px 22px 14px;
-  left: 0px;
   transition: 250ms;
 
   @media screen and (min-width: 768px) {
