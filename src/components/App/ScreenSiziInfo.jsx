@@ -1,50 +1,35 @@
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import getDisplayType from 'components/Auth/getDisplayType';
-// import { sendDisplayTypeToBackend } from 'redux/displayType/operationDisplayType';
-// // import debounce from 'lodash.debounce';
+// import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import getDisplayType from 'components/Auth/getDisplayType';
+import { sendDisplayTypeToBackend } from 'redux/displayType/operationDisplayType';
+import { throttle } from 'lodash';
 
-// function ScreenSizeInfo() {
-//   const dispatch = useDispatch();
-//   let lastDisplayType = null;
-//   let timeoutId = null;
+function ScreenSizeInfo() {
+  const dispatch = useDispatch();
+  const handleResizeThrottled = throttle(handleResize, 300); // Throttle the function
 
-//   const handleResize = async () => {
-//     lastDisplayType = getDisplayType();
+  async function handleResize() {
+    const lastDisplayType = getDisplayType();
+    if (lastDisplayType) {
+      try {
+        await dispatch(sendDisplayTypeToBackend({ display: lastDisplayType }));
+      } catch (error) {
+        // Handle error if needed
+      }
+    }
+  }
 
-//     if (timeoutId) {
-//       clearTimeout(timeoutId);
-//     }
+  useEffect(() => {
+    window.addEventListener('resize', handleResizeThrottled);
 
-//     timeoutId = setTimeout(async () => {
-//       if (lastDisplayType) {
-//         try {
-//           await dispatch(
-//             sendDisplayTypeToBackend({ display: lastDisplayType })
-//           );
-//         } catch (error) {
-//           // Handle error if needed
-//         }
-//       }
-//     }, 300);
-//   };
+    return () => {
+      window.removeEventListener('resize', handleResizeThrottled);
+      handleResizeThrottled.cancel(); // Cancel any pending executions
+    };
+  }, [handleResizeThrottled]);
 
-//   useEffect(() => {
-//     const handleResizeCallback = () => {
-//       handleResize();
-//     };
+  return null;
+}
 
-//     window.addEventListener('resize', handleResizeCallback);
-
-//     return () => {
-//       window.removeEventListener('resize', handleResizeCallback);
-//       if (timeoutId) {
-//         clearTimeout(timeoutId);
-//       }
-//     };
-//   }, []);
-
-//   return null;
-// }
-
-// export default ScreenSizeInfo;
+export default ScreenSizeInfo;

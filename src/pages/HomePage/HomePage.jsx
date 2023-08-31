@@ -9,6 +9,7 @@ import { getBoardByID } from 'redux/boards/operations';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenPage from 'pages/ScreenPage/ScreenPage';
+import ScreenSizeInfo from 'components/App/ScreenSiziInfo';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const HomePage = () => {
 
   return (
     <>
+      <ScreenSizeInfo />
       <Header toggleMenu={toggleMenu}></Header>
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
