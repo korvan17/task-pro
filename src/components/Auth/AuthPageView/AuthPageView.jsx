@@ -11,7 +11,7 @@ function AuthPageView() {
         <div className={css.linksBox}>
           <NavLink
             className={({ isActive }) => {
-              return isActive ? `${css.authLink}+ ${css.active}` : css.authLink;
+              return isActive ? `${css.authLink} ${css.active}` : css.authLink;
             }}
             to="register"
           >
@@ -20,7 +20,7 @@ function AuthPageView() {
           <NavLink
             className={({ isActive }) => {
               return isActive
-                ? `${css.authLink} + ${css.active}`
+                ? `${css.authLink} ${css.active}`
                 : css.authLink;
             }}
             to="login"
