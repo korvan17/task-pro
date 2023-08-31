@@ -38,13 +38,13 @@ const cardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.cards.findIndex(
-          item => item._id === action.payload._id
+          item => item._id === action.payload
         );
         state.cards.splice(index, 1);
       })
       .addCase(editCard.fulfilled, (state, action) => {
         const updatedCardIndex = state.cards.findIndex(
-          card => card._id === action.payload._id
+          card => card._id === action.payload
         );
         if (updatedCardIndex !== -1) {
           state.cards[updatedCardIndex] = action.payload;
@@ -52,7 +52,7 @@ const cardsSlice = createSlice({
       })
       .addCase(moveCard.fulfilled, (state, action) => {
         const updatedCardIndex = state.cards.findIndex(
-          card => card._id === action.payload._id
+          card => card._id === action.payload
         );
         if (updatedCardIndex !== -1) {
           state.cards[updatedCardIndex].column = action.payload.column;
