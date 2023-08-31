@@ -11,7 +11,8 @@
 }
 
 .btn__card{
-    width: 100%;
+    width: 334px;
+        height: 56px;
     
 }
 
@@ -24,4 +25,17 @@
             flex-shrink: 0;
             stroke: white;
 
+}
+.board{
+padding: 0 20px 24px 20px;
+    display: flex;
+    gap: 34px;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+.btn__alonecolumn{
+    width: 334px;
+    height: 56px;
+    
 }
