@@ -14,6 +14,7 @@ import { getBoardByID } from 'redux/boards/operations';
 const ScreenPage = () => {
   const dispatch = useDispatch();
   const board = useSelector(selectBoards);
+
   const [searchParams] = useSearchParams();
 
   const boardId = searchParams.get('boardId') ?? false;

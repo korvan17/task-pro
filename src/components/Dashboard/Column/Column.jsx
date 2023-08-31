@@ -1,12 +1,17 @@
 import css from './Column.module.css';
 import sprite from '../../../icons/sprite.svg';
 
-export default function Column(column) {
+export default function Column({ title, toggleModalColumn }) {
   return (
     <div className={css.container__column}>
-      <p className={css.title__column}>{column.title}</p>
+      <p className={css.title__column}>{title}</p>
       <div className={css.buttons__wrapp}>
-        <button className={css.button__column} type="button" title="pencil">
+        <button
+          className={css.button__column}
+          type="button"
+          title="pencil"
+          onClick={toggleModalColumn}
+        >
           <svg width="16" height="16">
             <use xlinkHref={`${sprite}#icon-edit`} className={css.svgIcon} />
           </svg>

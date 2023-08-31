@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import css from './HomePage.module.css';
+import { selectBoards } from 'redux/boards/selectors';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { AddEditBoard, SideBar } from 'components';
-// import { getBoard } from 'redux/boards/operations';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 // import ScreenPage from 'pages/ScreenPage/ScreenPage';
+import { getBoardByID } from 'redux/boards/operations';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 
 const HomePage = () => {
@@ -29,10 +30,6 @@ const HomePage = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   dispatch(getBoard());
-  // }, [dispatch]);
-
   const toggleModal = () => {
     setShowModal(!showModal);
     if (window.innerWidth < 1440) {
@@ -44,11 +41,25 @@ const HomePage = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // const pushBoard = id => {
-  //   setSearchParams({ boardId: id });
-  // };
+  const boards = useSelector(selectBoards);
+  const navigate = useNavigate();
 
-  const handleAddBoard = (title, background, icon) => {};
+  const [completedInitialRedirect, setCompletedInitialRedirect] =
+    useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBoardByID());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!completedInitialRedirect && boards.length > 0) {
+      navigate(`/home/${boards[0]._id}`);
+
+      setCompletedInitialRedirect(true);
+    }
+  }, [boards, completedInitialRedirect, navigate]);
 
   return (
     <>
@@ -60,12 +71,12 @@ const HomePage = () => {
         toggleModal={toggleModal}
         // pushBoard={pushBoard}
       ></SideBar>
+
       {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
       <section className={css.section}>
         <div className={css.text__home}>
           <p>
             Before starting your project, it is essential{' '}
-            {/* Викликаємо toggleModal при натисканні кнопки */}
             <button onClick={toggleModal} className={css.button__home}>
               to create a board
             </button>{' '}
@@ -77,11 +88,9 @@ const HomePage = () => {
 
         {showModal && (
           <BasicModal onClose={toggleModal}>
-            {/* Передаємо toggleModal в AddEditBoard, щоб закрити модальне вікно */}
-            <AddEditBoard onClose={toggleModal} onSubmit={handleAddBoard} />
+            <AddEditBoard onClose={toggleModal} />
           </BasicModal>
         )}
-        {/* Відображаємо модальне вікно, якщо showModal === true */}
       </section>
     </>
   );
