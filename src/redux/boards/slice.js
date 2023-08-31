@@ -4,9 +4,16 @@ import {
   addBoard,
   deleteBoard,
   updateBoardById,
+  getBoardByID,
 } from './operations';
 
-const customArr = [updateBoardById, deleteBoard, addBoard, fetchBoards];
+const customArr = [
+  updateBoardById,
+  deleteBoard,
+  addBoard,
+  fetchBoards,
+  getBoardByID,
+];
 
 const fnStatus = status => {
   return customArr.map(el => el[status]);
@@ -45,13 +52,14 @@ const boardsSlice = createSlice({
       .addCase(fetchBoards.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.boards = action.payload;
       })
 
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.boards.push({ ...action.payload });
+        console.log(action);
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {
@@ -71,6 +79,12 @@ const boardsSlice = createSlice({
         );
 
         state.boards[index] = action.payload;
+      })
+
+      .addCase(getBoardByID.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.currentBoard = action.payload; // Додано обробку для отриманої дошки
       })
 
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)

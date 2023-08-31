@@ -1,5 +1,6 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 
+import { useTheme } from '@emotion/react';
 import iconDefs from '../../../icons/sprite.svg';
 import css from './Filter.module.css';
 
@@ -18,20 +19,41 @@ export default function FIlter() {
   // const handleColorChange = color => {
   //   setSelectedColor(color);
   // };
-
+  const theme = useTheme();
+  const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+  const toggleFilters = () => {
+    setIsFiltersVisible(!isFiltersVisible);
+  };
   return (
     <div className={css.filtersContainer}>
       <div className={css.filtersButtonContainer}>
-        <button className={css.filtersButton}>
-          <svg className={css.filtersButtonIcon} width="16" height="16">
+        <button
+          style={{ color: theme.screensPage.filterButtonColor }}
+          className={css.filtersButton}
+          onClick={toggleFilters}
+        >
+          <svg
+            style={{ stroke: theme.screensPage.filterButtonColor }}
+            className={css.filtersButtonIcon}
+            width="16"
+            height="16"
+          >
             <use xlinkHref={`${iconDefs}#icon-filter`} />
           </svg>
-          <h3>Filters</h3>
+          Filters
         </button>
       </div>
-      <div className={css.filtersChangerContainer}>
-        <button className={css.filtersChangerContainerCloseButton}>
+      <div
+        style={{ background: theme.screensPage.filtersMenuBackground }}
+        className={css.filtersChangerContainer}
+        hidden={!isFiltersVisible}
+      >
+        <button
+          className={css.filtersChangerContainerCloseButton}
+          onClick={toggleFilters}
+        >
           <svg
+            style={{ stroke: theme.screensPage.filtersMenuCloseIconFill }}
             className={css.filtersChangerContainerCloseIcon}
             width="16"
             height="16"
@@ -39,11 +61,35 @@ export default function FIlter() {
             <use xlinkHref={`${iconDefs}#icon-close`} />
           </svg>
         </button>
-        <p className={css.filtersChangerHeader}>Filters</p>
-        <div className={css.filtersChangerLine}></div>
+        <p
+          style={{ color: theme.screensPage.filtersMenuTitleColor }}
+          className={css.filtersChangerHeader}
+        >
+          Filters
+        </p>
+        <div
+          style={{
+            backgroundColor: theme.screensPage.filtersMenuSeparatorLineColor,
+          }}
+          className={css.filtersChangerLine}
+        ></div>
         <div className={css.filterChangerTitleAndButtonContainer}>
-          <p className={css.filterChangerTitle}>Label color</p>
-          <button className={css.filterChangerShowButton}>Show all</button>
+          <p
+            style={{
+              color: theme.screensPage.filtersMenuLabelColor,
+            }}
+            className={css.filterChangerTitle}
+          >
+            Label color
+          </p>
+          <button
+            style={{
+              color: theme.screensPage.filtersMenuShowAllColor,
+            }}
+            className={css.filterChangerShowButton}
+          >
+            Show all
+          </button>
         </div>
         <div className={css.filtersChangerSelectorsContainer}>
           <div className={css.filtersChangerSelectorsInput}>

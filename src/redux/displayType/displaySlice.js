@@ -23,6 +23,3 @@ const displaySlice = createSlice({
 
 export const { setDisplays } = displaySlice.actions;
 export const displayReducer = displaySlice.reducer;
-
-export const getStatusDisplays = state => state.displays.status;
-export const selectDisplays = state => state.displays.displays;

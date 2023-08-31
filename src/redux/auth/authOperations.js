@@ -1,5 +1,6 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://task-pro-backend-4y7p.onrender.com';
 
@@ -18,6 +19,7 @@ export const register = createAsyncThunk(
       setToken(response.data.token);
       return response.data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -30,21 +32,21 @@ export const login = createAsyncThunk(
       setToken(response.data.token);
       return response.data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logout = createAsyncThunk(
-  'auth/logout', async (_, thunkAPI) => {
-    try {
-      await axios.post('/users/logout');
-      unsetToken();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    await axios.post('/users/logout');
+    unsetToken();
+  } catch (error) {
+    toast.error(error.response.data.message);
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const updateTheme = createAsyncThunk(
   'users/updateThemes',
@@ -55,6 +57,7 @@ export const updateTheme = createAsyncThunk(
       const { data } = await axios.patch('/users/theme', { theme });
       return data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -67,6 +70,7 @@ export const refreshUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (!persistedToken) {
+      toast.error('Unable to fetch user');
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
@@ -75,6 +79,7 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -88,6 +93,7 @@ export const needHelp = createAsyncThunk('help', async (user, thunkAPI) => {
     });
     return response.data;
   } catch (error) {
+    toast.error(error.response.data.message);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -102,6 +108,7 @@ export const updateUser = createAsyncThunk(
 
       return data;
     } catch (error) {
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
