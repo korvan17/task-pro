@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
 import css from './HomePage.module.css';
-import { selectBoards } from 'redux/boards/selectors';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { AddEditBoard, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
-// import ScreenPage from 'pages/ScreenPage/ScreenPage';
-import { getBoardByID } from 'redux/boards/operations';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 
 const HomePage = () => {
-  // const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const searchId = searchParams.get('boardId') ?? false;
 
   useEffect(() => {
     function handleResize() {
@@ -40,26 +31,6 @@ const HomePage = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  const boards = useSelector(selectBoards);
-  const navigate = useNavigate();
-
-  const [completedInitialRedirect, setCompletedInitialRedirect] =
-    useState(false);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getBoardByID());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (!completedInitialRedirect && boards.length > 0) {
-      navigate(`/home/${boards[0]._id}`);
-
-      setCompletedInitialRedirect(true);
-    }
-  }, [boards, completedInitialRedirect, navigate]);
 
   return (
     <>

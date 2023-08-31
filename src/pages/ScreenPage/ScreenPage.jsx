@@ -1,40 +1,30 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
-
-import { selectBoards } from 'redux/boards/selectors';
-
-// import { getBoardByID } from 'redux/boards/operations';
 import HeaderDashboard from 'components/Dashboard/HeaderDashboard/HeaderDashboard';
 import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard';
 import { Background } from 'components/Background/Background';
 import css from './ScreenPage.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { getBoardByID } from 'redux/boards/operations';
 
-const ScreenPage = () => {
+const ScreenPage = ({ id = '64f0a120f65c664a596fe318' }) => {
+  console.log('hallo');
+  const board = useSelector(state => state.boards.currentBoard);
   const dispatch = useDispatch();
-  const board = useSelector(selectBoards);
-
-  const [searchParams] = useSearchParams();
-
-  const boardId = searchParams.get('boardId') ?? false;
 
   useEffect(() => {
-    dispatch(getBoardByID(boardId));
-  }, [boardId, dispatch]);
+    dispatch(getBoardByID(id));
+  }, [dispatch, id]);
 
   return (
     <>
-      {board && (
-        <>
-          <div className={css.screen__section}>
-            <Background img={board.background}>
-              <HeaderDashboard title={board.title} />
-              <MainDashboard id={board._id} />
-            </Background>
-          </div>
-        </>
-      )}
+      <>
+        <div className={css.screen__section}>
+          <Background img={board.background}>
+            <HeaderDashboard title={board.title} />
+            <MainDashboard board={board} />
+          </Background>
+        </div>
+      </>
     </>
   );
 };
