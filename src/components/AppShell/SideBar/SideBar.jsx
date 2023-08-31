@@ -1,12 +1,20 @@
 import sprite from '../../../icons/sprite.svg';
 import iconCactus from '../../../icons/cactus.png';
 import css from './SideBar.module.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@emotion/react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectBoards } from 'redux/boards/selectors';
+import { logout } from '../../../redux/auth/authOperations';
+import { Board } from 'components';
+import { useNavigate } from 'react-router-dom';
 
 function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
+  const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
+  const boards = useSelector(selectBoards);
+  const dispatch = useDispatch();
 
   const handleClickOutside = event => {
     if (
@@ -23,6 +31,12 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   });
+
+  const logoutBtn = async () => {
+    console.log('logoutBtn');
+    await dispatch(logout());
+    navigate('/');
+  };
 
   return (
     <div
@@ -90,22 +104,18 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
       </div>
 
       <ul className={css.boardsList}>
-        <li
-          style={{
-            color: theme.sidebar.selectedBoardTitleColor,
-          }}
-          className={css.boardsItem}
-        >
-          Board 1
-        </li>
-        <li
-          style={{
-            color: theme.sidebar.boardTitleColor,
-          }}
-          className={css.boardsItem}
-        >
-          Board 2
-        </li>
+        {boards.map(board => (
+          <Board
+            key={board._id}
+            background={board.background}
+            icon={board.icon}
+            title={board.title}
+            toggleModal={toggleModal}
+            style={{
+              color: theme.sidebar.selectedBoardTitleColor,
+            }}
+          ></Board>
+        ))}
       </ul>
       <div className={css.containerHelpLogout}>
         <div
@@ -133,7 +143,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button className={css.helpBtn}>
+          <button onClick={toggleModal} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,
@@ -154,7 +164,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
             </p>
           </button>
         </div>
-        <button className={css.logoutBtn}>
+        <button onClick={logoutBtn} className={css.logoutBtn}>
           <svg
             style={{
               stroke: theme.sidebar.logoutIconFill,

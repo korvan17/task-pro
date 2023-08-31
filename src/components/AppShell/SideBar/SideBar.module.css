@@ -109,13 +109,12 @@
     background-color: #9dc888;
   }
 }
-.addIcon {
-  stroke: black;
-}
 
 .boardsList {
-  margin-top: 40px;
   color: white;
+  margin-top: 40px;
+  position: absolute;
+  left: 0px;
 }
 
 .boardsItem {
@@ -124,6 +123,12 @@
   &:hover {
     background-color: #1f1f1f;
   }
+}
+
+.current {
+  background-color: #ffcc00; /* Цвет подсветки */
+  color: #fff; /* Цвет текста */
+  cursor: pointer; /* Изменение формы курсора при наведении */
 }
 
 .containerHelpLogout {

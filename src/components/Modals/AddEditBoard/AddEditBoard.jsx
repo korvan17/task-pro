@@ -43,8 +43,16 @@ export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
           })
         );
       }
+      // await dispatch(
+      //   updateBoardById({
+      //     title: inputValue,
+      //     background,
+      //     icon,
+      //     boardId: boardId,
+      //   })
+      // );
       onClose();
-      navigate(`/${boardId}`);
+      // navigate(`/${boardId}`);
     } catch (err) {
       console.log(err);
     }
