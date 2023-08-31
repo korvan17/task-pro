@@ -6,6 +6,7 @@ import { boardsReducer } from './boards/slice';
 import { columnsReducer } from './columns/columnsSlice';
 import { cardsReducer } from './сard/сardSlice';
 import { displayReducer } from './displayType/displaySlice';
+import { modalReducer } from './modalSlice';
 import {
   persistStore,
   persistReducer,
@@ -24,11 +25,6 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
-const boardsPersistConfig = {
-  key: 'boards',
-  storage,
-  whitelist: ['items', 'currentBoard'],
-};
 
 export const store = configureStore({
   reducer: {
@@ -37,7 +33,8 @@ export const store = configureStore({
     columns: columnsReducer,
     cards: cardsReducer,
     displays: displayReducer,
-    boards: persistReducer(boardsPersistConfig, boardsReducer),
+    boards: boardsReducer,
+    modal: modalReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
