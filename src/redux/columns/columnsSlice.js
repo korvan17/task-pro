@@ -17,7 +17,7 @@ const handleRejected = (state, action) => {
 };
 
 const columnsInitialState = {
-  currentDashboard: {},
+  column: [],
   isLoading: false,
   error: null,
   columnsLength: 0,
@@ -36,17 +36,21 @@ const columnsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-
+      .addCase(addColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.column.push({ ...action.payload });
+      })
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
 
-        const index = state.currentDashboard.columns.findIndex(
+        const index = state.column.findIndex(
           item => item._id === action.payload._id
         );
 
-        state.currentDashboard.columns.splice(index, 1);
-        state.columnsLength = state.currentDashboard.columns.length;
+        state.column.splice(index, 1);
+        state.columnsLength = state.column.length;
       })
 
       .addCase(editColumn.fulfilled, (state, action) => {
@@ -55,17 +59,11 @@ const columnsSlice = createSlice({
 
         const { _id, title } = action.payload;
 
-        const columnIndex = state.currentDashboard.columns.findIndex(
+        const columnIndex = state.column.findIndex(
           item => item._id === _id
         );
 
-        state.currentDashboard.columns[columnIndex].title = title;
-      })
-      .addCase(addColumn.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.currentDashboard.columns.push(action.payload);
-        state.error = null;
-        state.columnsLength = state.currentDashboard.columns.length;
+        state.column[columnIndex].title = title;
       })
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected);

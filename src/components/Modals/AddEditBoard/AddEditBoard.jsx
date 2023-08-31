@@ -62,7 +62,7 @@ export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
         </svg>
       </button>
       <h3
-        style={{ color: theme.popUp.inputTextColor }}
+        style={{ color: theme.popUp.titleColor }}
         className={css.titleBoard}
       >
         {!isEditing ? 'New board' : 'Edit board'}
@@ -71,7 +71,7 @@ export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
         <label className={css.label}>
           <input
             style={{
-              color: theme.popUp.titleColor,
+              color: theme.popUp.inputTextColor,
               borderColor: theme.popUp.inputBorderColor,
               '::placeholder': { color: theme.popUp.inputPlaceholderColor },
             }}
