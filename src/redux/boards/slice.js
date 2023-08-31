@@ -66,7 +66,7 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
-          item => item._id === action.payload.deletedBoard._id
+          item => item._id === action.payload._id
         );
         state.boards.splice(index, 1);
       })
