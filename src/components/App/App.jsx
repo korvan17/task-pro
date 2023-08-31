@@ -1,81 +1,18 @@
-// import { ThemeProvider } from '@emotion/react';
-// import { Loader, LoginForm, RegisterForm, StartPageView } from 'components';
-// import { dark, light, violet } from 'components/Controllers/Theme/theme';
-// import { HomePage, ScreenPage, StartPage } from 'pages';
-// import AuthPage from 'pages/AuthPage';
-// import { useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import { Route, Routes } from 'react-router-dom';
-// import { getTheme } from 'redux/auth/authSelectors';
-
-// export default function App() {
-//   const userTheme = useSelector(getTheme);
-//   const [theme, setTheme] = useState(light);
-
-//   useEffect(() => {
-//     switch (userTheme) {
-//       case 'light':
-//         setTheme(light);
-//         break;
-//       case 'dark':
-//         setTheme(dark);
-//         break;
-//       case 'violet':
-//         setTheme(violet);
-//         break;
-//       default:
-//         setTheme(light);
-//     }
-//   }, [userTheme]);
-
-//   return (
-//     <>
-//       <ThemeProvider theme={theme}>
-//         <Loader />
-//         <Routes>
-//           {/* Auth Routes */}
-//           <Route path="/" element={<StartPage />}>
-//             <Route path="/home" element={<HomePage />} />
-//             <Route path=":boardId" element={<ScreenPage />} />
-//             <Route index element={<StartPageView />} />
-//             <Route path="/auth/*" element={<AuthPage />}>
-//               <Route path="register" element={<RegisterForm />} />
-//               <Route path="login" element={<LoginForm />} />
-//             </Route>
-//           </Route>
-//           {/* <Route path="/" element={<Login />} />
-
-//         <Route path=":boardId" element={<ScreensPage />} /> />
-//         <Route path="/home" element={<HomePage />} />
-//          <Route
-//         {/* Auth Routes
-//         <Route path="/" element={<StartPage />}>
-//           <Route index element={<StartPageView />} />
-//          */}
-
-//           {/* <PrivateRoute path="/home">
-//           <HomePage />
-//         </PrivateRoute> */}
-//         </Routes>
-//       </ThemeProvider>
-//     </>
-//   );
-// }
-
-// import { StartPageView } from 'components';
-
-import { ThemeProvider as ThemeProviderMUI } from '@mui/material';
-import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider as ThemeProviderMUI, createTheme } from '@mui/material';
 import { dark, light, violet } from 'components/Controllers/Theme/theme';
 import { HomePage, ScreenPage, StartPage } from 'pages';
-// import { HomePage, ScreenPage } from 'pages';
-import { lazy, useEffect, useState } from 'react';
+import { lazy } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { getTheme } from 'redux/auth/authSelectors';
 
-// const StartPage = lazy(() => import('pages/StartPage'));
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { selectIsLoading } from 'redux/boards/selectors';
+import { Loader } from 'components';
+
 const StartPageView = lazy(() =>
   import('components/Auth/StartPageView/StartPageView')
 );
@@ -85,13 +22,10 @@ const RegisterForm = lazy(() =>
   import('components/Auth/RegisterForm/RegisterForm')
 );
 const LoginForm = lazy(() => import('components/Auth/LoginForm/LoginForm'));
-// const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-// const ScreenPage = lazy(() => import('../../pages/ScreenPage/ScreenPage'));
-
-// const MyComponent = lazy(() => import('./MyComponent'));
 
 export default function App() {
   const userTheme = useSelector(getTheme);
+  const isLoad = useSelector(selectIsLoading);
   const [theme, setTheme] = useState(light);
 
   useEffect(() => {
@@ -110,12 +44,11 @@ export default function App() {
     }
   }, [userTheme]);
 
-  // useEffect(() => {
-
-  // }, )
+  useEffect(() => {});
 
   return (
     <>
+      {isLoad && <Loader />}
       <ThemeProviderMUI theme={createTheme({})}>
         <ThemeProvider theme={theme}>
           <Routes>
@@ -129,21 +62,19 @@ export default function App() {
                 <Route path="login" element={<LoginForm />} />
               </Route>
             </Route>
-
-            {/* <Route path="/" element={<Login />} />
-
-        <Route path=":boardId" element={<ScreensPage />} /> />
-        <Route path="/home" element={<HomePage />} />
-         <Route
-        {/* Auth Routes
-        <Route path="/" element={<StartPage />}>
-          <Route index element={<StartPageView />} />
-         */}
-
-            {/* <PrivateRoute path="/home">
-          <HomePage />
-        </PrivateRoute> */}
           </Routes>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
         </ThemeProvider>
       </ThemeProviderMUI>
     </>

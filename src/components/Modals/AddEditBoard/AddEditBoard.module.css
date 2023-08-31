@@ -1,77 +1,81 @@
 .titleBoard {
-    margin-bottom: 24px;
-    color: #161616;
-    font-family: Poppins;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.36px;
+  margin-bottom: 24px;
+  color: #161616;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.36px;
 }
 
 .input {
-    display: flex;
-    margin-bottom: 24px;
-    height: 49px;
-    background: transparent;
-    padding: 14px 18px;
-    border-radius: 8px;
-    border: 1px solid #BEDBB0;
-    color: currentColor;
-    box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-    opacity: 0.4;
-    outline: none;
+  display: flex;
+  margin-bottom: 24px;
+  height: 49px;
+  background: transparent;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  color: currentColor;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  opacity: 0.4;
+  outline: none;
 
-    @media (max-width: 375px) {
-        width: 100%;
-    }
+  @media (max-width: 375px) {
+    width: 100%;
+  }
 
-    @media (min-width: 375px) and (max-width: 768px) {
-        width: 287px;
-    }
+  @media (min-width: 375px) and (max-width: 768px) {
+    width: 287px;
+  }
 
-    @media (min-width: 768px) {
-        width: 302px;
-    }
+  @media (min-width: 768px) {
+    width: 302px;
+  }
+}
+
+.input::placeholder {
+  color: #fcfcfc;
 }
 
 .closeBtn {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    margin-left: auto;
-    width: 18px;
-    height: 18px;
-    stroke: #161616;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+  stroke: #161616;
 }
 
 .btn {
-    width: 100%;
+  width: 100%;
 }
 
 .btnSumbitIcon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #161616;
-    border-radius: 6px;
-    flex-shrink: 0;
-    stroke: white;
-    width: 28px;
-    height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #161616;
+  border-radius: 6px;
+  flex-shrink: 0;
+  stroke: white;
+  width: 28px;
+  height: 28px;
 }
 
 .btnSumbitAction {
-    color: #161616;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.28px;
+  color: #161616;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
 }

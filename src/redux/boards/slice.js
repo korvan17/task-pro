@@ -4,16 +4,15 @@ import {
   addBoard,
   deleteBoard,
   updateBoardById,
-  updateBoardBgById,
-  getBoardByID, // Импорт этой операции
+  getBoardByID,
 } from './operations';
 
 const customArr = [
-  updateBoardBgById,
   updateBoardById,
   deleteBoard,
   addBoard,
   fetchBoards,
+  getBoardByID,
 ];
 
 const fnStatus = status => {
@@ -25,15 +24,6 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
-  state.error = action.payload;
-  state.isLoading = false;
-};
-
-const handlePendingGetBoardId = state => {
-  state.isLoading = true;
-};
-
-const handleRejectedGetBoardById = (state, action) => {
   state.error = action.payload;
   state.isLoading = false;
 };
@@ -62,7 +52,7 @@ const boardsSlice = createSlice({
       .addCase(fetchBoards.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.boards = action.payload;
       })
 
       .addCase(addBoard.fulfilled, (state, action) => {
@@ -91,23 +81,12 @@ const boardsSlice = createSlice({
         state.boards[index] = action.payload;
       })
 
-      .addCase(updateBoardBgById.fulfilled, (state, action) => {
+      .addCase(getBoardByID.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-
-        const index = state.boards.findIndex(
-          board => board._id === action.payload
-        );
-        state.boards.splice(index, 1);
-
-        if (state.boards.length === 0) {
-          state.currentBoard = null;
-        } else {
-          state.currentBoard = 0;
-        }
+        state.currentBoard = action.payload; // Додано обробку для отриманої дошки
       })
-      .addCase(getBoardByID.pending, handlePendingGetBoardId) // Добавление этого кейса
-      .addCase(getBoardByID.rejected, handleRejectedGetBoardById) // Добавление этого кейса
+
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected),
 });

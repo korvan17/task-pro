@@ -8,6 +8,7 @@ import { selectBoards } from 'redux/boards/selectors';
 import HeaderDashboard from 'components/Dashboard/HeaderDashboard/HeaderDashboard';
 import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard';
 import { Background } from 'components/Background/Background';
+import css from './ScreenPage.module.css';
 
 const ScreenPage = () => {
   // const dispatch = useDispatch();
@@ -15,7 +16,6 @@ const ScreenPage = () => {
   const [searchParams] = useSearchParams();
 
   const boardId = searchParams.get('boardId') ?? false;
-  const board = boards.find(item => item._id === boardId);
 
   // useEffect(() => {
   //   dispatch(getBoardByID(boardId));
@@ -25,10 +25,12 @@ const ScreenPage = () => {
     <>
       {board && (
         <>
-          <Background img={board.background}>
-            <HeaderDashboard title={board.title} />
-            <MainDashboard id={board._id} />
-          </Background>
+          <div className={css.screen__section}>
+            <Background img={board.background}>
+              <HeaderDashboard title={board.title} />
+              <MainDashboard id={board._id} />
+            </Background>
+          </div>
         </>
       )}
     </>
