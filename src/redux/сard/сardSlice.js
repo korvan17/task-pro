@@ -38,7 +38,7 @@ const cardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.cards.findIndex(
-          item => item._id === action.payload.deletedСards._id
+          item => item._id === action.payload._id
         );
         state.cards.splice(index, 1);
       })
