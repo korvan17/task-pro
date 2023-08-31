@@ -17,9 +17,10 @@
   border: none;
   background: none;
   /* color: rgba(22, 22, 22, 0.8); */
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: normal;
   letter-spacing: -0.28px;
   cursor: pointer;
