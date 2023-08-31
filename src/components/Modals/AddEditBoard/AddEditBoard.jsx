@@ -35,16 +35,16 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
         await dispatch(
           addBoard({
             title: values.title,
-            background: values.background,
-            icon: values.icon,
+            background: background,
+            icon: icon,
           })
         );
       } else {
         await dispatch(
           updateBoardById({
             title: values.title,
-            background: values.background,
-            icon: values.icon,
+            background: background,
+            icon: icon,
             boardId,
           })
         );
