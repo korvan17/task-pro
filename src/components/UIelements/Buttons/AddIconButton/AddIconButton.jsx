@@ -7,10 +7,12 @@ export default function AddIconButton({
   buttonType = 'button',
   children,
   className,
+  pushButton,
 }) {
   const theme = useTheme();
   return (
     <Buttons
+      pushButton={pushButton}
       className={` ${className} ${children ? css.button : css.buttonNoTxt}`}
       buttonType={buttonType}
     >
