@@ -46,7 +46,7 @@ const columnsSlice = createSlice({
         state.error = null;
 
         const index = state.column.findIndex(
-          item => item._id === action.payload._id
+          item => item._id === action.payload
         );
 
         state.column.splice(index, 1);
