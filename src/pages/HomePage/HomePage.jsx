@@ -8,7 +8,7 @@ import { AddEditBoard, SideBar } from 'components';
 // import { getBoard } from 'redux/boards/operations';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
-import ScreenPage from 'pages/ScreenPage/ScreenPage';
+// import ScreenPage from 'pages/ScreenPage/ScreenPage';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 
 const HomePage = () => {

@@ -1,7 +1,7 @@
 import sprite from '../../../icons/sprite.svg';
 import iconCactus from '../../../icons/cactus.png';
 import css from './SideBar.module.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTheme } from '@emotion/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBoards } from 'redux/boards/selectors';

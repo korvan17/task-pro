@@ -6,7 +6,7 @@ import { useState } from 'react';
 import BackgroundPicker from 'components/UIelements/BackgroundPicker/BackgroundPicker';
 import { useDispatch } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 
 export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
@@ -19,7 +19,7 @@ export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
   const handleInputChange = e => {
     setInputValue(e.target.value);
   };
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
   };
@@ -69,10 +69,7 @@ export default function AddEditBoard({ title, isEditing, onClose, boardId }) {
           <use xlinkHref={`${iconDefs}#icon-close`} />
         </svg>
       </button>
-      <h3
-        style={{ color: theme.popUp.titleColor }}
-        className={css.titleBoard}
-      >
+      <h3 style={{ color: theme.popUp.titleColor }} className={css.titleBoard}>
         {!isEditing ? 'New board' : 'Edit board'}
       </h3>
       <form onSubmit={handleSubmit}>
