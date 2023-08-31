@@ -84,7 +84,7 @@ const boardsSlice = createSlice({
       .addCase(getBoardByID.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.currentBoard = action.payload; // Додано обробку для отриманої дошки
+        state.currentBoard = action.payload;
       })
 
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)

@@ -4,11 +4,15 @@ import { useTheme } from '@emotion/react';
 import sprite from '../../../icons/sprite.svg';
 import css from './Header.module.css';
 import { Theme } from 'components';
+import { useSelector } from 'react-redux';
 
 export default function Header({ toggleMenu }) {
   const theme = useTheme();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   // const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
+
+  const user = useSelector(state => state.auth.user);
+  console.log('user: ', user);
 
   useEffect(() => {
     const updateWindowWidth = () => {
