@@ -35,9 +35,9 @@
   }
 }
 
-.input::placeholder {
+/* .input::placeholder {
   color: #fcfcfc;
-}
+} */
 
 .closeBtn {
   position: absolute;
