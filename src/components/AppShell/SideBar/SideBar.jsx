@@ -104,18 +104,23 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
       </div>
 
       <ul className={css.boardsList}>
-        {boards.map(board => (
-          <Board
-            key={board._id}
-            background={board.background}
-            icon={board.icon}
-            title={board.title}
-            toggleModal={toggleModal}
-            style={{
-              color: theme.sidebar.selectedBoardTitleColor,
-            }}
-          ></Board>
-        ))}
+        {boards.map(board => {
+          // console.log(board.title, board._id);
+          return (
+            <Board
+              key={board._id}
+              // _id={board._id}
+              // background={board.background}
+              // icon={board.icon}
+              // title={board.title}
+              board={board}
+              toggleModal={toggleModal}
+              style={{
+                color: theme.sidebar.selectedBoardTitleColor,
+              }}
+            ></Board>
+          );
+        })}
       </ul>
       <div className={css.containerHelpLogout}>
         <div

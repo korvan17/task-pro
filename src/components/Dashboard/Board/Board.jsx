@@ -5,26 +5,20 @@ import css from './Board.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteBoard } from '../../../redux/boards/operations';
 
-const Board = ({ _id, icon, title, toggleModal }) => {
+const Board = ({ board, toggleModal }) => {
   const dispatch = useDispatch();
 
-  // const deleteBoardBtn = async _id => {
-  //   console.log(deleteBoardBtn);
-  //   await dispatch(deleteBoard(_id));
-  // };
-
-  const deleteBoardBtn = _id => {
-    console.log(deleteBoardBtn);
-    dispatch(deleteBoard(_id));
+  const deleteBoardBtn = boardId => {
+    dispatch(deleteBoard(boardId));
   };
 
   return (
-    <li className={css.board} key={_id}>
+    <li className={css.board} key={board._id}>
       <div className={css.boardIconTittleContainer}>
         <svg width="18" height="18" className={css.boardIcon}>
-          <use xlinkHref={`${sprite}#${icon}`} />
+          <use xlinkHref={`${sprite}#${board.icon}`} />
         </svg>
-        <p className={css.boardTittle}>{title}</p>
+        <p className={css.boardTittle}>{board.title}</p>
       </div>
 
       <div className={css.boardBtnContainer}>
@@ -36,7 +30,7 @@ const Board = ({ _id, icon, title, toggleModal }) => {
         <button
           type="button"
           className={css.boardBtn}
-          onClick={() => deleteBoardBtn(_id)}
+          onClick={() => deleteBoardBtn(board._id)}
         >
           <svg width="16" height="16" className={css.boardIconBtns}>
             <use xlinkHref={`${sprite}#icon-trash`} />
