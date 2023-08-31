@@ -7,7 +7,7 @@ import { throttle } from 'lodash';
 
 function ScreenSizeInfo() {
   const dispatch = useDispatch();
-  const handleResizeThrottled = throttle(handleResize, 300); // Throttle the function
+  const handleResizeThrottled = throttle(handleResize, 1000); // Throttle the function
 
   async function handleResize() {
     const lastDisplayType = getDisplayType();
@@ -15,7 +15,7 @@ function ScreenSizeInfo() {
       try {
         await dispatch(sendDisplayTypeToBackend({ display: lastDisplayType }));
       } catch (error) {
-        // Handle error if needed
+        console.log(error);
       }
     }
   }
@@ -25,7 +25,7 @@ function ScreenSizeInfo() {
 
     return () => {
       window.removeEventListener('resize', handleResizeThrottled);
-      handleResizeThrottled.cancel(); // Cancel any pending executions
+      handleResizeThrottled.cancel();
     };
   }, [handleResizeThrottled]);
 
