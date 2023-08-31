@@ -98,7 +98,7 @@ export const light = {
     titleColor: colors.blackColor,
     closeIconColor: colors.blackColor,
     inputBorderColor: colors.greenColor,
-    inputPlaceholderColor: "#000000",
+    inputPlaceholderColor: '#000000',
     inputTextColor: colors.blackColor,
     iconsTextColor: colors.blackColor,
     iconsFill: colors.halfGrayColor,

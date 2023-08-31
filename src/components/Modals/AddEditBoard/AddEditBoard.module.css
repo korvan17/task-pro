@@ -35,10 +35,6 @@
   }
 }
 
-/* .input::placeholder {
-  color: #fcfcfc;
-} */
-
 .closeBtn {
   position: absolute;
   top: 14px;
@@ -82,6 +78,6 @@
 
 .errorMessage {
   color: rgba(234, 84, 84, 0.859);
-    margin: 0 0 5px 0;
-    text-align-last: left;
+  margin: 0 0 5px 0;
+  text-align-last: left;
 }
