@@ -14,6 +14,7 @@ const colors = {
   violetColor: '#5255BC',
   lightVioletColor: '#ECEDFD',
   secondLightVioletColor: '#B8BCFD',
+  filtersButtonLightColor: 'rgba(255, 255, 255, 0.8);',
 };
 
 export const light = {
@@ -147,11 +148,11 @@ export const dark = {
   },
   screensPage: {
     background: colors.halfBlackColor,
-    filterButtonColor: colors.buttonsGrayColor,
+    filterButtonColor: colors.whiteColor,
     filtersMenuBackground: colors.blackColor,
     filtersMenuTitleColor: colors.whiteColor,
     filtersMenuCloseIconFill: colors.whiteColor,
-    filtersMenuSeparatorLineColor: colors.separatorsGrayColor,
+    filtersMenuSeparatorLineColor: 'rgba(255, 255, 255, 0.1)',
     filtersMenuLabelColor: colors.whiteColor,
     filtersMenuShowAllColor: colors.halfWhiteColor,
     filtersMenuRadioTextColor: colors.halfWhiteColor,

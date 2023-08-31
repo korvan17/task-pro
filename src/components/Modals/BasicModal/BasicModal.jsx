@@ -11,7 +11,7 @@ import { useTheme } from '@emotion/react';
 const modalRoot = document.querySelector('#modal-root');
 
 export default function BasicModal({ onClose, children }) {
-    const theme = useTheme();
+  const theme = useTheme();
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {

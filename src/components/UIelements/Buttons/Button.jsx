@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './Button.module.css';
+import { useTheme } from '@emotion/react';
 
 /**
  * A functional component representing a customizable button.
@@ -22,6 +23,7 @@ export default function Buttons({
   stylization = 'color',
   children,
 }) {
+  const theme = useTheme();
   const getBtnStyle = () => {
     switch (stylization) {
       case 'dark':
@@ -35,6 +37,7 @@ export default function Buttons({
 
   return (
     <button
+      style={{ background: theme.popUp.buttonBackground }}
       className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}
     >

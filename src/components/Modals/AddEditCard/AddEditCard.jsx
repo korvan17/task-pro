@@ -3,6 +3,7 @@ import iconDefs from '../../../icons/sprite.svg';
 import ColorPicker from 'components/UIelements/ColorPicker/ColorPicker';
 import { AddIconButton, Calendar } from 'components';
 import { useState } from 'react';
+import { useTheme } from '@emotion/react';
 
 export default function AddEditCard({
   title,
@@ -32,18 +33,30 @@ export default function AddEditCard({
   const handleSelectedColorChange = selectedColor => {
     setColor(selectedColor);
   };
+  const theme = useTheme();
 
   return (
     <>
       <button className={css.closeBtn} onClick={onClose}>
-        <svg width="18" height="18">
+        <svg
+          style={{ stroke: theme.popUp.closeIconColor }}
+          width="18"
+          height="18"
+        >
           <use xlinkHref={`${iconDefs}#icon-close`} />
         </svg>
       </button>
-      <h3 className={css.titleCard}>{!isEditing ? 'Add card' : 'Edit card'}</h3>
+      <h3 style={{ color: theme.popUp.titleColor }} className={css.titleCard}>
+        {!isEditing ? 'Add card' : 'Edit card'}
+      </h3>
       <form onSubmit={handleSubmit}>
         <label className={css.label}>
           <input
+            style={{
+              color: theme.popUp.inputTextColor,
+              borderColor: theme.popUp.inputBorderColor,
+              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
+            }}
             className={css.input}
             type="text"
             name="title"
@@ -53,6 +66,11 @@ export default function AddEditCard({
         </label>
         <label className={css.label}>
           <textarea
+            style={{
+              color: theme.popUp.inputTextColor,
+              borderColor: theme.popUp.inputBorderColor,
+              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
+            }}
             className={css.textarea}
             type="text"
             name="description"
@@ -62,11 +80,19 @@ export default function AddEditCard({
         </label>
         <ColorPicker onSelectedColorChange={handleSelectedColorChange} />
         <div>
-          <span className={css.calendarTitle}>Deadline</span>
+          <span
+            style={{ color: theme.popUp.iconsTextColor }}
+            className={css.calendarTitle}
+          >
+            Deadline
+          </span>
           <Calendar />
         </div>
-        <AddIconButton className={css.btn} theme={'light'}>
-          <span className={css.btnSumbitAction}>
+        <AddIconButton className={css.btn}>
+          <span
+            style={{ color: theme.popUp.buttonTextColor }}
+            className={css.btnSumbitAction}
+          >
             {!isEditing ? 'Add' : 'Edit'}
           </span>
         </AddIconButton>
