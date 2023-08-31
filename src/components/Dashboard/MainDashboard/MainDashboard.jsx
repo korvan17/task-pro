@@ -29,6 +29,7 @@ export function MainDashboard({ id }) {
   const toggleModalCard = () => {
     console.log('pushToggal');
     setShowModalCard(!showModalCard);
+    dispatch(editCard(toggleModalCard(true)));
   };
 
   const toggleModalColumn = () => {
