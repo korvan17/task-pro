@@ -23,12 +23,12 @@ export default function AddEditBoard({ onClose, boardId }) {
     setIcon(selectedIcon);
   };
 
-  if (background === 'default') {
-    background = '';
-  }
-
   const handleSelectedBackgroundChange = selectedBackground => {
-    setBackground(selectedBackground);
+    if (selectedBackground === 'default') {
+      setBackground('');
+    } else {
+      setBackground(selectedBackground);
+    }
   };
 
   const handleSubmit = async (values, { resetForm }) => {
