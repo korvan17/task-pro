@@ -5,29 +5,29 @@ import { AddEditBoard, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
-import { selectBoards } from 'redux/boards/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { getBoardByID } from 'redux/boards/operations';
+// import { selectBoards } from 'redux/boards/selectors';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
+// import { getBoardByID } from 'redux/boards/operations';
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const boards = useSelector(selectBoards);
-  const [hasRedirected, setHasRedirected] = useState(false);
+  // const boards = useSelector(selectBoards);
+  // const [hasRedirected, setHasRedirected] = useState(false);
 
-  useEffect(() => {
-    dispatch(getBoardByID());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getBoardByID());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    if (!hasRedirected && boards.length > 0) {
-      navigate(`/home/${boards[0]._id}`);
-      setHasRedirected(true);
-    }
-  }, [boards, hasRedirected, navigate]);
+  // useEffect(() => {
+  //   if (!hasRedirected && boards.length > 0) {
+  //     navigate(`/home/${boards[0]._id}`);
+  //     setHasRedirected(true);
+  //   }
+  // }, [boards, hasRedirected, navigate]);
 
   useEffect(() => {
     function handleResize() {

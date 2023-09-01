@@ -2,27 +2,33 @@ import HeaderDashboard from 'components/Dashboard/HeaderDashboard/HeaderDashboar
 import { MainDashboard } from 'components/Dashboard/MainDashboard/MainDashboard';
 import { Background } from 'components/Background/Background';
 import css from './ScreenPage.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getBoardByID } from 'redux/boards/operations';
-import { useNavigate, useParams } from 'react-router-dom';
-import { selectBoard } from 'redux/boards/slice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { getBoardByID } from 'redux/boards/operations';
+// import { useNavigate, useParams } from 'react-router-dom';
+// import { selectBoard } from 'redux/boards/slice';
 
-const ScreenPage = () => {
-  const navigate = useNavigate();
-  const { boardId } = useParams();
-  const dispatch = useDispatch();
-  const board = useSelector(selectBoard);
+const ScreenPage = board => {
+  // const navigate = useNavigate();
+  // const { boardId } = useParams();
+  // console.log('boardId - ', boardId);
+  // const dispatch = useDispatch();
+  // const board = useSelector(selectBoard);
+  console.log('board - ', board);
 
-  useEffect(() => {
-    dispatch(getBoardByID(boardId));
-  }, [boardId, dispatch]);
+  // useEffect(() => {
+  //   try {
+  //     dispatch(getBoardByID(boardId));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, [boardId, dispatch]);
 
-  useEffect(() => {
-    if (!board) {
-      navigate('/home');
-    }
-  });
+  // useEffect(() => {
+  //   if (!board) {
+  //     navigate('/home');
+  //   }
+  // });
 
   return (
     <>

@@ -13,12 +13,16 @@ import boardSchema from '../Schemas/boardSchema';
 export default function AddEditBoard({ isEditing, onClose, boardId }) {
   const dispatch = useDispatch();
   const [icon, setIcon] = useState('');
-  const [background, setBackground] = useState('');
+  let [background, setBackground] = useState('');
   const theme = useTheme();
 
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
   };
+
+  if (background === 'default') {
+    background = '';
+  }
 
   const handleSelectedBackgroundChange = selectedBackground => {
     setBackground(selectedBackground);
