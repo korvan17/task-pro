@@ -1,32 +1,98 @@
+/* all around the form */
+
 .conteiner {
+  position: relative;
+
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
+
   padding: 24px;
-  width: 400px;
-  height: 440px;
+
   font-family: Poppins;
+
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.5);
   background: #151515;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
-  gap: 14px;
+
+  @media screen and (max-width: 767px) {
+    max-width: 335px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
 }
 
-.title {
-  color: #fff;
+/* typography */
+
+.heading {
+  margin-bottom: 24px;
+
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
+
+  /* color: #ffffff; */
 }
 
-.userImg {
-  margin: auto;
+/* image */
+
+.userAvaWrapper {
+  position: relative;
+
+  width: 68px;
+  height: 68px;
+
+  margin: 0 auto;
+  margin-bottom: 25px;
+
+  background-image: url('../../../icons/user-default.png');
 }
+
+.imgWrapper {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* icons */
+
+.icon {
+  stroke: #000000;
+}
+
+.iconBtn {
+  && {
+    padding: 7px;
+  }
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.closeIcon{
+  stroke: #ffffff;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+
+.eyeIcon {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1px;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* form */
 
 .form {
   display: flex;
@@ -34,33 +100,24 @@
   gap: 24px;
 }
 
-.blockInputs {
+.inputsWrapper {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 .input {
-  display: flex;
-  width: 352px;
-  padding: 14px 291px 14px 18px;
-  align-items: center;
-  gap: 4px;
+  width: 100%;
+
+  padding: 14px;
+  padding-left: 18px;
+
+  background-color: #1f1f1f;
   border-radius: 8px;
-  border: 1px solid #bedbb0;
-  background: #151515;
-  color: #fff;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.28px;
+  border: 1px solid;
+  outline: none;
 }
-.button {
-  width: 352px;
-  height: 49px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  background: #bedbb0;
+
+.passwordLabel {
+  position: relative;
 }

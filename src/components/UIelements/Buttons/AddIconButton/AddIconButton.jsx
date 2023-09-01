@@ -1,3 +1,4 @@
+import React from 'react';
 import Buttons from '../Button';
 import css from './AddIconButton.module.css';
 import sprite from '../../../../icons/sprite.svg';
@@ -9,7 +10,7 @@ export default function AddIconButton({
 }) {
   return (
     <Buttons
-      className={` ${className} ${children ? css.button : css.buttonNoTxt}`}
+      className={`${className} ${children ? css.button : css.buttonNoTxt}`}
       buttonType={buttonType}
     >
       <svg
