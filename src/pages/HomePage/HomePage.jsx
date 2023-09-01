@@ -5,6 +5,7 @@ import { AddEditBoard, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
+import { useTheme } from '@emotion/react';
 // import { selectBoards } from 'redux/boards/selectors';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
@@ -17,6 +18,7 @@ const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
   // const boards = useSelector(selectBoards);
   // const [hasRedirected, setHasRedirected] = useState(false);
+  const theme = useTheme();
 
   // useEffect(() => {
   //   dispatch(getBoardByID());
@@ -63,11 +65,18 @@ const HomePage = () => {
       ></SideBar>
 
       {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
-      <section className={css.section}>
+      <section
+        style={{ background: theme.screensPage.background }}
+        className={css.section}
+      >
         <div className={css.text__home}>
-          <p>
+          <p style={{ color: theme.screensPage.screenPageText }}>
             Before starting your project, it is essential{' '}
-            <button onClick={toggleModal} className={css.button__home}>
+            <button
+              style={{ color: theme.screensPage.screenPageSpan }}
+              onClick={toggleModal}
+              className={css.button__home}
+            >
               to create a board
             </button>{' '}
             to visualize and track all the necessary tasks and milestones. This
