@@ -12,10 +12,10 @@ import boardSchema from '../Schemas/boardSchema';
 import { selectModalStatus } from 'redux/modalSlice';
 
 export default function AddEditBoard({ onClose, boardId }) {
+  const theme = useTheme();
   const dispatch = useDispatch();
   const [icon, setIcon] = useState('');
-  let [background, setBackground] = useState('');
-  const theme = useTheme();
+  const [background, setBackground] = useState('');
 
   const isEditing = useSelector(selectModalStatus);
 
@@ -32,11 +32,6 @@ export default function AddEditBoard({ onClose, boardId }) {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    // console.log({
-    //   title: values.title,
-    //   background: background,
-    //   icon: icon,
-    // });
     try {
       if (!isEditing) {
         await dispatch(
@@ -104,23 +99,8 @@ export default function AddEditBoard({ onClose, boardId }) {
               placeholder="Title"
             />
           </label>
-          <ErrorMessage
-            className={css.errorMessage}
-            name="icon"
-            component="div"
-          />
-          <IconPicker
-            name="icon"
-            onSelectedIconChange={handleSelectedIconChange}
-          />
-          <ErrorMessage
-            className={css.errorMessage}
-            name="background"
-            component="div"
-          />
-
+          <IconPicker onSelectedIconChange={handleSelectedIconChange} />
           <BackgroundPicker
-            name="background"
             onSelectedBackgroundChange={handleSelectedBackgroundChange}
           />
           <AddIconButton

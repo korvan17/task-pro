@@ -15,12 +15,14 @@ const IconPicker = ({ onSelectedIconChange }) => {
     { id: 8, name: 'icon-board-icon-8' },
   ];
 
-  const [selectedIcon, setSelectedIcon] = useState(null);
-  const [iconError, setIconError] = useState(false);
+  const defaultIcon = icons.find(
+    icon => icon.name === 'icon-board-icon-1'
+  ).name;
+
+  const [selectedIcon, setSelectedIcon] = useState(defaultIcon);
 
   const handleIcon = icon => {
     setSelectedIcon(icon);
-    setIconError(false);
     onSelectedIconChange(icon);
   };
 
@@ -60,7 +62,6 @@ const IconPicker = ({ onSelectedIconChange }) => {
           </button>
         ))}
       </div>
-      {iconError && <div style={{ color: 'red' }}>Please select an icon</div>}
     </div>
   );
 };
