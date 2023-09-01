@@ -4,9 +4,16 @@ import {
   addBoard,
   deleteBoard,
   updateBoardById,
+  getBoardByID,
 } from './operations';
 
-const customArr = [updateBoardById, deleteBoard, addBoard, fetchBoards];
+const customArr = [
+  updateBoardById,
+  deleteBoard,
+  addBoard,
+  fetchBoards,
+  getBoardByID,
+];
 
 const fnStatus = status => {
   return customArr.map(el => el[status]);
@@ -45,20 +52,21 @@ const boardsSlice = createSlice({
       .addCase(fetchBoards.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.boards = action.payload;
       })
 
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.boards.push({ ...action.payload });
+        console.log(action);
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
-          item => item._id === action.payload.deletedBoard._id
+          item => item._id === action.payload
         );
         state.boards.splice(index, 1);
       })
@@ -67,10 +75,16 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
-          board => board._id === action.payload._id
+          board => board._id === action.payload
         );
 
         state.boards[index] = action.payload;
+      })
+
+      .addCase(getBoardByID.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.currentBoard = action.payload;
       })
 
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)

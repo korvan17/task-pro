@@ -1,72 +1,42 @@
-import React, { useState } from 'react';
-import { AddIconButton, Card, Column } from 'components';
+import {
+  AddEditCard,
+  AddEditColumn,
+  AddIconButton,
+  Card,
+  Column,
+} from 'components';
 // import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
+import { useState } from 'react';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import { deleteCard } from '../../../redux/сard/сardOperations';
+import { useDispatch } from 'react-redux';
 
-export function MainDashboard({ id }) {
-  const [showModal, setShowModal] = useState(false);
-  // const [board, setBoard] = useState([]);
+// import { getCurrentBoardById } from 'redux/boards/selectors';
+// 64f0a120f65c664a596fe318
+// 64f0a158f65c664a596fe31c
+// 64f0a169f65c664a596fe320
+export function MainDashboard({ board }) {
+  const [showModalColumn, setShowModalColumn] = useState(false);
+  const [showModalCard, setShowModalCard] = useState(false);
+  const dispatch = useDispatch();
 
-  const board = {
-    columns: [
-      {
-        _id: 'das',
-        title: 'To Do',
-        cards: [
-          {
-            id: 'edasd',
-            title: 'patato',
-            description: 'Potato 2kg',
-            priority: 'low',
-            deadline: '',
-          },
-          {
-            id: 'edasd2',
-            title: 'tomato',
-            description: 'tomato 2kg',
-            priority: 'without',
-            deadline: '',
-          },
-        ],
-      },
-      {
-        _id: 'das2',
-        title: 'In progress',
-        cards: [
-          {
-            id: 'afqwefqwf',
-            title: 'apple',
-            description: 'Apple 18kg',
-            priority: 'without',
-            deadline: '',
-          },
-          {
-            id: 'edasd2',
-            title: 'berry',
-            description: 'berry 50kg',
-            priority: 'without',
-            deadline: '',
-          },
-        ],
-      },
-    ],
+  // const { payload: board } = await dispatch(getBoardByID(id));
+
+  // console.log('board - ', board.payload);
+
+  const handleDeleteCard = id => {
+    console.log('deleteCard');
+    dispatch(deleteCard(id));
   };
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
+  const toggleModalCard = () => {
+    setShowModalCard(!showModalCard);
   };
 
-  const handleAddColumn = () => {
-    // setBoard([...board]);
-    toggleModal();
+  const toggleModalColumn = () => {
+    setShowModalColumn(!showModalColumn);
   };
-
-  // const handleAddCard = () => {};
-  // const updatedBoard = board.columns.map(column =>
-  //   column._id === columnId ? { ...column, cards: [...column.cards] } : column
-  // );
-
-  // setBoard(updatedBoard);
 
   return (
     <div className={css.board}>
@@ -74,41 +44,17 @@ export function MainDashboard({ id }) {
         <ul className={css.column__item}>
           {board.columns.map(column => (
             <li key={column._id} className={css.column__list}>
-              <Column title={column.title} />
-              {/* <div className={css.container__column}>
-                <p className={css.title__column}>{column.title}</p>
-                <div className={css.buttons__wrapp}>
-                  <button
-                    className={css.button__column}
-                    type="button"
-                    title="pencil"
-                  >
-                    <svg width="16" height="16">
-                      <use
-                        xlinkHref={`${sprite}#icon-edit`}
-                        className={css.svgIcon}
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    className={css.button__column}
-                    type="button"
-                    title="trash"
-                  >
-                    <svg width="16" height="16">
-                      <use
-                        xlinkHref={`${sprite}#icon-trash`}
-                        className={css.svgIcon}
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div> */}
+              <Column
+                toggleModalColumn={toggleModalColumn}
+                title={column.title}
+              />
+
               <ul className={css.card__item}>
                 {column.cards.map(card => (
                   <li key={card._id}>
                     <Card
-                      theme="dark"
+                      toggleModalCard={toggleModalCard}
+                      deleteCard={handleDeleteCard}
                       title={card.title}
                       desc={card.description}
                       priority={card.priority}
@@ -120,7 +66,7 @@ export function MainDashboard({ id }) {
                   <div className={css.button__column}>
                     <AddIconButton
                       className={css.btn__card}
-                      action={handleAddColumn}
+                      pushButton={toggleModalCard}
                       theme="dark"
                     >
                       <span className={css.btn__text}>Add another card</span>
@@ -132,21 +78,22 @@ export function MainDashboard({ id }) {
           ))}
         </ul>
       )}
-      {/* 
-<div className={css.button__column}>
-        <AddIconButton
-          isContrast={false}
-          type={'button'}
-          text={'Add another column'}
-          action={handleAddColumn}
-        />
-      </div>       */}
-
-      {/* {showModal && (
-  <BasicModal onClose={toggleModal}>
-    <AddEditColumn isEditing={false} boardId={id} onClose={toggleModal} />
-  </BasicModal>
-)} */}
+      <AddIconButton
+        pushButton={toggleModalColumn}
+        className={css.btn__alonecolumn}
+      >
+        <span className={css.btn__text}>Add another column</span>
+      </AddIconButton>
+      {showModalColumn && (
+        <BasicModal onClose={toggleModalColumn}>
+          <AddEditColumn onClose={toggleModalColumn} />
+        </BasicModal>
+      )}
+      {showModalCard && (
+        <BasicModal onClose={toggleModalCard}>
+          <AddEditCard onClose={toggleModalCard} />
+        </BasicModal>
+      )}
     </div>
   );
 }

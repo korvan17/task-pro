@@ -109,13 +109,44 @@
     background-color: #9dc888;
   }
 }
-.addIcon {
-  stroke: black;
-}
 
 .boardsList {
-  margin-top: 40px;
   color: white;
+  margin-top: 40px;
+  position: absolute;
+  left: 0px;
+
+  max-height: 122px;
+  overflow: hidden;
+  /* transition: 300ms; */
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Фон для трека (полосы прокрутки) */
+  &::-webkit-scrollbar-track {
+    /* background: rgba(255, 255, 255, 0.4); */
+    background: #313131;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-left: 20px;
+  }
+  
+  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+  &::-webkit-scrollbar-thumb {
+    background: rgba(18, 18, 18, 1);
+    border-radius: 10px; /* Закругление углов ползунка */
+  }
+  
+  /* Стиль ползунка при наведении */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  &:hover {
+    overflow: auto;
+  }
 }
 
 .boardsItem {
@@ -124,6 +155,12 @@
   &:hover {
     background-color: #1f1f1f;
   }
+}
+
+.current {
+  background-color: #ffcc00; /* Цвет подсветки */
+  color: #fff; /* Цвет текста */
+  cursor: pointer; /* Изменение формы курсора при наведении */
 }
 
 .containerHelpLogout {
@@ -213,3 +250,5 @@
   stroke: #bedbb0;
   fill: transparent;
 }
+
+

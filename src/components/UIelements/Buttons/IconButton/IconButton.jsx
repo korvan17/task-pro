@@ -5,15 +5,15 @@ export default function IconButton({
   svg,
   className,
   size,
-  onClick,
+  pushButton,
   type = 'button',
 }) {
   return (
     <button
+      type={type}
+      onClick={() => pushButton('id')}
       className={`${className} ${css.button}`}
       style={{ height: size }}
-      type="button"
-      onClick={onClick}
     >
       <svg width={size} height={size}>
         {svg}

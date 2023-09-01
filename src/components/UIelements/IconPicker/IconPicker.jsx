@@ -16,9 +16,11 @@ const IconPicker = ({ onSelectedIconChange }) => {
   ];
 
   const [selectedIcon, setSelectedIcon] = useState(null);
+  const [iconError, setIconError] = useState(false);
 
   const handleIcon = icon => {
     setSelectedIcon(icon);
+    setIconError(false);
     onSelectedIconChange(icon);
   };
 
@@ -58,6 +60,7 @@ const IconPicker = ({ onSelectedIconChange }) => {
           </button>
         ))}
       </div>
+      {iconError && <div style={{ color: 'red' }}>Please select an icon</div>}
     </div>
   );
 };

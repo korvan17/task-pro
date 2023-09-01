@@ -4,7 +4,11 @@ import sprite from '../../../../icons/sprite.svg';
 import { IconButton } from 'components';
 import CardMoveModal from '../CardMoveModal/CardMoveModal';
 
-export default function CardIconsList({ className }) {
+export default function CardIconsList({
+  className,
+  toggleModalCard,
+  deleteCard,
+}) {
   return (
     <ul className={className}>
       <li className={css.iconButtonItem}>
@@ -16,6 +20,7 @@ export default function CardIconsList({ className }) {
       </li>
       <li className={css.iconButtonItem}>
         <IconButton
+          pushButton={toggleModalCard}
           svg={<use xlinkHref={`${sprite}#icon-edit`} />}
           size={16}
           className={css.icon}
@@ -23,6 +28,7 @@ export default function CardIconsList({ className }) {
       </li>
       <li className={css.iconButtonItem}>
         <IconButton
+          pushButton={deleteCard}
           svg={<use xlinkHref={`${sprite}#icon-trash`} />}
           size={16}
           className={css.icon}

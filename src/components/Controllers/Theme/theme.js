@@ -14,6 +14,7 @@ const colors = {
   violetColor: '#5255BC',
   lightVioletColor: '#ECEDFD',
   secondLightVioletColor: '#B8BCFD',
+  filtersButtonLightColor: 'rgba(255, 255, 255, 0.8);',
 };
 
 export const light = {
@@ -53,7 +54,7 @@ export const light = {
   },
   screensPage: {
     background: colors.backgroundGrayColor,
-    filterButtonColor: colors.buttonsGrayColor,
+    filterButtonColor: 'rgba(22, 22, 22, 0.80)',
     filtersMenuBackground: colors.backgroundWhiteColor,
     filtersMenuTitleColor: colors.blackColor,
     filtersMenuCloseIconFill: colors.blackColor,
@@ -97,7 +98,7 @@ export const light = {
     titleColor: colors.blackColor,
     closeIconColor: colors.blackColor,
     inputBorderColor: colors.greenColor,
-    inputPlaceholderColor: colors.blackColor,
+    inputPlaceholderColor: '#000000',
     inputTextColor: colors.blackColor,
     iconsTextColor: colors.blackColor,
     iconsFill: colors.halfGrayColor,
@@ -139,7 +140,7 @@ export const dark = {
   header: {
     background: colors.blackColor,
     menuButtonColor: colors.whiteColor,
-    themeSelectorColor: colors.whiteColor,
+    themeSelectorColor: 'rgba(255, 255, 255, 0.80)',
     themeListBackground: colors.blackColor,
     themeListItemColor: colors.halfWhiteColor,
     themeListItemHoverColor: colors.greenColor,
@@ -147,11 +148,11 @@ export const dark = {
   },
   screensPage: {
     background: colors.halfBlackColor,
-    filterButtonColor: colors.buttonsGrayColor,
+    filterButtonColor: 'rgba(255, 255, 255, 0.80)',
     filtersMenuBackground: colors.blackColor,
     filtersMenuTitleColor: colors.whiteColor,
     filtersMenuCloseIconFill: colors.whiteColor,
-    filtersMenuSeparatorLineColor: colors.separatorsGrayColor,
+    filtersMenuSeparatorLineColor: 'rgba(255, 255, 255, 0.1)',
     filtersMenuLabelColor: colors.whiteColor,
     filtersMenuShowAllColor: colors.halfWhiteColor,
     filtersMenuRadioTextColor: colors.halfWhiteColor,
@@ -241,7 +242,7 @@ export const violet = {
   },
   screensPage: {
     background: colors.lightVioletColor,
-    filterButtonColor: colors.buttonsGrayColor,
+    filterButtonColor: 'rgba(22, 22, 22, 0.80)',
     filtersMenuBackground: colors.whiteColor,
     filtersMenuTitleColor: colors.blackColor,
     filtersMenuCloseIconFill: colors.blackColor,

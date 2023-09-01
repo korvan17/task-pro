@@ -1,4 +1,5 @@
 .filtersContainer {
+  position: relative;
 }
 
 .filtersButtonContainer {
@@ -15,10 +16,11 @@
   padding: 0;
   border: none;
   background: none;
-  color: rgba(22, 22, 22, 0.8);
+  /* color: rgba(22, 22, 22, 0.8); */
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: normal;
   letter-spacing: -0.28px;
   cursor: pointer;
@@ -27,11 +29,11 @@
 .filtersButtonIcon {
   margin-right: 8px;
   stroke-width: 1.5px;
-  stroke: rgba(22, 22, 22, 0.8);
+  /* stroke: rgba(22, 22, 22, 0.8); */
 }
 
 .filtersChangerContainer {
-  position: relative;
+  position: absolute;
   padding: 24px;
   width: 300px;
   height: 235px;
@@ -69,6 +71,7 @@
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
+  text-align: left;
 }
 
 .filtersChangerLine {
@@ -108,6 +111,7 @@
   line-height: normal;
   letter-spacing: -0.24px;
   text-decoration-line: underline;
+  cursor: pointer;
 }
 
 .filtersChangerSelectorsContainer {
