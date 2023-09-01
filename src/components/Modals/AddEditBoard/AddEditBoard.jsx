@@ -9,32 +9,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
 import { useTheme } from '@emotion/react';
 import boardSchema from '../Schemas/boardSchema';
-import { selectModalStatus } from 'redux/modalSlice';
+// import { selectModalStatus } from 'redux/modalSlice';
 
-
-export default function AddEditBoard({ isEditing, onClose, boardId }) {
-  const isModalShow = useSelector(state => state.modal.isModalDisplayed);
-
+export default function AddEditBoard({ onClose, boardId }) {
+  const theme = useTheme();
   const dispatch = useDispatch();
   const [icon, setIcon] = useState('');
   let [background, setBackground] = useState('');
-
-  const isEditing = useSelector(selectModalStatus);
+  const isModalShow = useSelector(state => state.modal.isModalDisplayed);
+  // const isModalShow = useSelector(selectModalStatus);
 
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
   };
 
+  if (background === 'default') {
+    background = '';
+  }
+
   const handleSelectedBackgroundChange = selectedBackground => {
-    if (selectedBackground === 'default') {
-      setBackground('');
-    } else {
-      setBackground(selectedBackground);
-    }
+    setBackground(selectedBackground);
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-
     try {
       if (!isModalShow) {
         await dispatch(

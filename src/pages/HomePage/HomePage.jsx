@@ -7,16 +7,16 @@ import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 import { useDispatch } from 'react-redux';
 import { setModalStatus } from 'redux/modalSlice';
+import { useTheme } from '@emotion/react';
+import { ScreenPage } from 'pages';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
+  const theme = useTheme();
   const [boardId, setBoardId] = useState(null);
-
-  const dispatch = useDispatch();
-
+  const isBoardId = boardId ? true : false;
 
   useEffect(() => {
     function handleResize() {
@@ -29,16 +29,8 @@ const HomePage = () => {
     };
   }, []);
 
-  const addModal = () => {
+  const toggleModal = () => {
     setShowModal(!showModal);
-    if (window.innerWidth < 1440) {
-      toggleMenu();
-    }
-  };
-
-  const editleModal = () => {
-    setShowModal(!showModal);
-    dispatch(setModalStatus(!modalStatus));
     if (window.innerWidth < 1440) {
       toggleMenu();
     }
@@ -66,7 +58,6 @@ const HomePage = () => {
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-
         editBoard={editBoard}
         createBoard={createBoard}
 
@@ -86,7 +77,7 @@ const HomePage = () => {
               Before starting your project, it is essential{' '}
               <button
                 style={{ color: theme.screensPage.screenPageSpan }}
-                onClick={addModal}
+                onClick={createBoard}
                 className={css.button__home}
               >
                 to create a board
@@ -99,9 +90,8 @@ const HomePage = () => {
         )}
 
         {showModal && (
-          <BasicModal onClose={addModal}>
+          <BasicModal onClose={createBoard}>
             <AddEditBoard onClose={toggleModal} boardId={boardId} />
-
           </BasicModal>
         )}
       </section>

@@ -18,7 +18,6 @@ function SideBar({
   pushBoard,
   createBoard,
   editBoard,
-
 }) {
   const navigate = useNavigate();
   const theme = useTheme();
@@ -26,7 +25,7 @@ function SideBar({
   const boards = useSelector(selectBoards);
   // console.log('boards:', boards);
   const dispatch = useDispatch();
-  const isBoard = boards.length !== 0 ? true : false;
+  // const isBoard = boards.length !== 0 ? true : false;
 
   useEffect(() => {
     dispatch(fetchBoards());
@@ -103,9 +102,7 @@ function SideBar({
             style={{
               backgroundColor: theme.sidebar.createButtonBackground,
             }}
-
             onClick={createBoard}
-
             className={css.createBoardButton}
           >
             <svg width="20" height="20">
@@ -163,7 +160,7 @@ function SideBar({
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={addModal} className={css.helpBtn}>
+          <button onClick={createBoard} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,
