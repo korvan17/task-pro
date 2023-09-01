@@ -5,12 +5,13 @@ import { AddIconButton } from 'components';
 import IconPicker from 'components/UIelements/IconPicker/IconPicker';
 import { useState } from 'react';
 import BackgroundPicker from 'components/UIelements/BackgroundPicker/BackgroundPicker';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
 import { useTheme } from '@emotion/react';
 import boardSchema from '../Schemas/boardSchema';
 
 export default function AddEditBoard({ isEditing, onClose, boardId }) {
+  const isModalShow = useSelector(state => state.modal.isModalDisplayed);
   const dispatch = useDispatch();
   const [icon, setIcon] = useState('');
   const [background, setBackground] = useState('');
@@ -25,13 +26,13 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    console.log({
-      title: values.title,
-      background: background,
-      icon: icon,
-    });
+    // console.log({
+    //   title: values.title,
+    //   background: background,
+    //   icon: icon,
+    // });
     try {
-      if (!isEditing) {
+      if (!isModalShow) {
         await dispatch(
           addBoard({
             title: values.title,
@@ -68,7 +69,7 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
         </svg>
       </button>
       <h3 style={{ color: theme.popUp.titleColor }} className={css.titleBoard}>
-        {!isEditing ? 'New board' : 'Edit board'}
+        {!isModalShow ? 'New board' : 'Edit board'}
       </h3>
       <Formik
         initialValues={{
@@ -126,7 +127,7 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
               style={{ color: theme.popUp.buttonTextColor }}
               className={css.btnSumbitAction}
             >
-              {!isEditing ? 'Create' : 'Edit'}
+              {!isModalShow ? 'Create' : 'Edit'}
             </span>
           </AddIconButton>
         </Form>
