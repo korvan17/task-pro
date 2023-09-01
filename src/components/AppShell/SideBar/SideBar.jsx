@@ -8,6 +8,7 @@ import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board } from 'components';
 import { useNavigate } from 'react-router-dom';
+import { fetchBoards } from 'redux/boards/operations';
 
 function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
   const navigate = useNavigate();
@@ -15,6 +16,11 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
   const dispatch = useDispatch();
+  const isBoard = boards.length !== 0 ? true : false;
+
+  useEffect(() => {
+    dispatch(fetchBoards());
+  }, [dispatch]);
 
   const handleClickOutside = event => {
     if (
@@ -104,7 +110,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
       </div>
 
       <ul className={css.boardsList}>
-        {boards.length &&
+        {isBoard &&
           boards.map(board => {
             // console.log(board.title, board._id);
             return (

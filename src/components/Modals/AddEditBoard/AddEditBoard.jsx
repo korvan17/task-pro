@@ -29,11 +29,11 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    console.log({
-      title: values.title,
-      background: background,
-      icon: icon,
-    });
+    // console.log({
+    //   title: values.title,
+    //   background: background,
+    //   icon: icon,
+    // });
     try {
       if (!isEditing) {
         await dispatch(

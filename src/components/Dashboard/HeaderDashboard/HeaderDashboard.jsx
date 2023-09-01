@@ -7,7 +7,6 @@ const HeaderDashboard = ({ title }) => {
       {/* Відображаємо заголовок дошки */}
       <h1 className={css.title__main}>{title}</h1>
       <div>
-        {/* Відображаємо компонент Filter */}
         <Filter />
       </div>
     </div>

@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 const Board = ({ board, toggleModal }) => {
   const dispatch = useDispatch();
-
   const deleteBoardBtn = boardId => {
     dispatch(deleteBoard(boardId));
   };
