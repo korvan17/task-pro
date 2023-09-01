@@ -60,4 +60,5 @@
 
 .boardIconBtns {
   stroke: #ffffff80;
+  cursor: pointer;
 }
