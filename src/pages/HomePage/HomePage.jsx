@@ -7,6 +7,7 @@ import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 import { useTheme } from '@emotion/react';
 import { ScreenPage } from 'pages';
+import { useParams } from 'react-router-dom';
 // import { selectBoards } from 'redux/boards/selectors';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
@@ -19,6 +20,10 @@ const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
   // const boards = useSelector(selectBoards);
   // const [hasRedirected, setHasRedirected] = useState(false);
+  const { boardId } = useParams();
+
+  const isBoardId = boardId ? true : false;
+
   const theme = useTheme();
 
   // useEffect(() => {
@@ -70,7 +75,9 @@ const HomePage = () => {
         style={{ background: theme.screensPage.background }}
         className={css.section}
       >
-        {<ScreenPage /> || (
+        {isBoardId ? (
+          <ScreenPage id={boardId} />
+        ) : (
           <div className={css.text__home}>
             <p style={{ color: theme.screensPage.screenPageText }}>
               Before starting your project, it is essential{' '}
