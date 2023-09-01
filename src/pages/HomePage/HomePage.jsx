@@ -9,13 +9,14 @@ import { useTheme } from '@emotion/react';
 import { ScreenPage } from 'pages';
 import { useParams } from 'react-router-dom';
 // import { selectBoards } from 'redux/boards/selectors';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectModalStatus, setModalStatus } from 'redux/modalSlice';
 // import { useNavigate } from 'react-router-dom';
 // import { getBoardByID } from 'redux/boards/operations';
 
 const HomePage = () => {
   // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   // const boards = useSelector(selectBoards);
@@ -25,6 +26,8 @@ const HomePage = () => {
   const isBoardId = boardId ? true : false;
 
   const theme = useTheme();
+
+  const modalStatus = useSelector(selectModalStatus);
 
   // useEffect(() => {
   //   dispatch(getBoardByID());
@@ -48,8 +51,16 @@ const HomePage = () => {
     };
   }, []);
 
-  const toggleModal = () => {
+  const addModal = () => {
     setShowModal(!showModal);
+    if (window.innerWidth < 1440) {
+      toggleMenu();
+    }
+  };
+
+  const editleModal = () => {
+    setShowModal(!showModal);
+    dispatch(setModalStatus(!modalStatus));
     if (window.innerWidth < 1440) {
       toggleMenu();
     }
@@ -66,7 +77,8 @@ const HomePage = () => {
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-        toggleModal={toggleModal}
+        addModal={addModal}
+        editleModal={editleModal}
         // pushBoard={pushBoard}
       ></SideBar>
 
@@ -83,7 +95,7 @@ const HomePage = () => {
               Before starting your project, it is essential{' '}
               <button
                 style={{ color: theme.screensPage.screenPageSpan }}
-                onClick={toggleModal}
+                onClick={addModal}
                 className={css.button__home}
               >
                 to create a board
@@ -96,8 +108,8 @@ const HomePage = () => {
         )}
 
         {showModal && (
-          <BasicModal onClose={toggleModal}>
-            <AddEditBoard onClose={toggleModal} />
+          <BasicModal onClose={addModal}>
+            <AddEditBoard onClose={addModal} />
           </BasicModal>
         )}
       </section>

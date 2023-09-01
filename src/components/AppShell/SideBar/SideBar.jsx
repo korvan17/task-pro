@@ -10,7 +10,13 @@ import { Board } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { fetchBoards } from 'redux/boards/operations';
 
-function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
+function SideBar({
+  setIsMenuOpen,
+  isMenuOpen,
+  editleModal,
+  addModal,
+  pushBoard,
+}) {
   const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
@@ -93,7 +99,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
             style={{
               backgroundColor: theme.sidebar.createButtonBackground,
             }}
-            onClick={toggleModal}
+            onClick={addModal}
             className={css.createBoardButton}
           >
             <svg width="20" height="20">
@@ -121,7 +127,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
                 // icon={board.icon}
                 // title={board.title}
                 board={board}
-                toggleModal={toggleModal}
+                toggleModal={editleModal}
                 style={{
                   color: theme.sidebar.selectedBoardTitleColor,
                 }}
@@ -155,7 +161,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={toggleModal} className={css.helpBtn}>
+          <button onClick={addModal} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,

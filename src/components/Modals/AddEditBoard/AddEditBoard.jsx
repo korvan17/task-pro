@@ -5,16 +5,19 @@ import { AddIconButton } from 'components';
 import IconPicker from 'components/UIelements/IconPicker/IconPicker';
 import { useState } from 'react';
 import BackgroundPicker from 'components/UIelements/BackgroundPicker/BackgroundPicker';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
 import { useTheme } from '@emotion/react';
 import boardSchema from '../Schemas/boardSchema';
+import { selectModalStatus } from 'redux/modalSlice';
 
-export default function AddEditBoard({ isEditing, onClose, boardId }) {
+export default function AddEditBoard({ onClose, boardId }) {
   const dispatch = useDispatch();
   const [icon, setIcon] = useState('');
   let [background, setBackground] = useState('');
   const theme = useTheme();
+
+  const isEditing = useSelector(selectModalStatus);
 
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
