@@ -23,7 +23,12 @@ const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
     { id: 16, name: 'balloonClose' },
   ];
 
-  const [selectedBackground, setSelectedBackground] = useState(null);
+  const defaultBackground = backgrounds.find(
+    background => background.name === 'default'
+  ).name;
+
+  const [selectedBackground, setSelectedBackground] =
+    useState(defaultBackground);
 
   const handleBackground = backgroundName => {
     setSelectedBackground(backgroundName);

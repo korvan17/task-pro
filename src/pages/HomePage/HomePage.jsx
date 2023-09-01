@@ -9,11 +9,14 @@ import { useDispatch } from 'react-redux';
 import { setModalStatus } from 'redux/modalSlice';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
   const [boardId, setBoardId] = useState(null);
 
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     function handleResize() {
@@ -26,8 +29,16 @@ const HomePage = () => {
     };
   }, []);
 
-  const toggleModal = () => {
+  const addModal = () => {
     setShowModal(!showModal);
+    if (window.innerWidth < 1440) {
+      toggleMenu();
+    }
+  };
+
+  const editleModal = () => {
+    setShowModal(!showModal);
+    dispatch(setModalStatus(!modalStatus));
     if (window.innerWidth < 1440) {
       toggleMenu();
     }
@@ -55,28 +66,42 @@ const HomePage = () => {
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
+
         editBoard={editBoard}
         createBoard={createBoard}
+
         // pushBoard={pushBoard}
       ></SideBar>
 
       {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
-      <section className={css.section}>
-        <div className={css.text__home}>
-          <p>
-            Before starting your project, it is essential{' '}
-            <button onClick={toggleModal} className={css.button__home}>
-              to create a board
-            </button>
-            to visualize and track all the necessary tasks and milestones. This
-            board serves as a powerful tool to organize the workflow and ensure
-            effective collaboration among team members.
-          </p>
-        </div>
+      <section
+        style={{ background: theme.screensPage.background }}
+        className={css.section}
+      >
+        {isBoardId ? (
+          <ScreenPage id={boardId} />
+        ) : (
+          <div className={css.text__home}>
+            <p style={{ color: theme.screensPage.screenPageText }}>
+              Before starting your project, it is essential{' '}
+              <button
+                style={{ color: theme.screensPage.screenPageSpan }}
+                onClick={addModal}
+                className={css.button__home}
+              >
+                to create a board
+              </button>{' '}
+              to visualize and track all the necessary tasks and milestones.
+              This board serves as a powerful tool to organize the workflow and
+              ensure effective collaboration among team members.
+            </p>
+          </div>
+        )}
 
         {showModal && (
-          <BasicModal onClose={toggleModal}>
+          <BasicModal onClose={addModal}>
             <AddEditBoard onClose={toggleModal} boardId={boardId} />
+
           </BasicModal>
         )}
       </section>

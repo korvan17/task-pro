@@ -46,7 +46,7 @@ const columnsSlice = createSlice({
         state.error = null;
 
         const index = state.column.findIndex(
-          item => item._id === action.payload._id
+          item => item._id === action.payload
         );
 
         state.column.splice(index, 1);
@@ -57,13 +57,11 @@ const columnsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        const { _id, title } = action.payload;
-
-        const columnIndex = state.column.findIndex(
-          item => item._id === _id
+        const index = state.column.findIndex(
+          item => item._id === action.payload
         );
 
-        state.column[columnIndex].title = title;
+        state.column[index] = action.payload;
       })
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected);

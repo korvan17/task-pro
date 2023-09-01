@@ -8,14 +8,17 @@ import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board } from 'components';
 import { useNavigate } from 'react-router-dom';
+import { fetchBoards } from 'redux/boards/operations';
 
 function SideBar({
   setIsMenuOpen,
   isMenuOpen,
+
   toggleModal,
   pushBoard,
   createBoard,
   editBoard,
+
 }) {
   const navigate = useNavigate();
   const theme = useTheme();
@@ -23,6 +26,11 @@ function SideBar({
   const boards = useSelector(selectBoards);
   // console.log('boards:', boards);
   const dispatch = useDispatch();
+  const isBoard = boards.length !== 0 ? true : false;
+
+  useEffect(() => {
+    dispatch(fetchBoards());
+  }, [dispatch]);
 
   const handleClickOutside = event => {
     if (
@@ -95,7 +103,9 @@ function SideBar({
             style={{
               backgroundColor: theme.sidebar.createButtonBackground,
             }}
+
             onClick={createBoard}
+
             className={css.createBoardButton}
           >
             <svg width="20" height="20">
@@ -153,7 +163,7 @@ function SideBar({
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={toggleModal} className={css.helpBtn}>
+          <button onClick={addModal} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,

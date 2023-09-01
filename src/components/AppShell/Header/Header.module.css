@@ -15,7 +15,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    width: calc(100%-260px);
+    width: calc(100% - 260px);
     left: 260px;
     height: 68px;
   }

@@ -59,14 +59,13 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.boards.push({ ...action.payload });
-        console.log(action);
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
-          item => item._id === action.payload._id
+          item => item._id === action.payload
         );
         state.boards.splice(index, 1);
       })
@@ -75,7 +74,7 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
-          board => board._id === action.payload._id
+          board => board._id === action.payload
         );
 
         state.boards[index] = action.payload;
@@ -84,7 +83,7 @@ const boardsSlice = createSlice({
       .addCase(getBoardByID.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.currentBoard = action.payload; // Додано обробку для отриманої дошки
+        state.currentBoard = action.payload;
       })
 
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)

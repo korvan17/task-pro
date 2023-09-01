@@ -4,17 +4,14 @@ import css from './Board.module.css';
 
 import { useDispatch } from 'react-redux';
 import { deleteBoard } from '../../../redux/boards/operations';
+import { Link } from 'react-router-dom';
+
 
 const Board = ({ board, editBoard }) => {
   const dispatch = useDispatch();
 
-  // const deleteBoardBtn = async _id => {
-  //   console.log(deleteBoardBtn);
-  //   await dispatch(deleteBoard(_id));
-  // };
 
   const deleteBoardBtn = _id => {
-    // console.log(deleteBoardBtn);
     dispatch(deleteBoard(_id));
   };
 
@@ -47,6 +44,7 @@ const Board = ({ board, editBoard }) => {
           </svg>
         </button>
       </div>
+
     </li>
   );
 };
