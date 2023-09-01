@@ -59,7 +59,6 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.boards.push({ ...action.payload });
-        // console.log(action);
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {
