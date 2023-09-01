@@ -8,19 +8,13 @@ import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 import { useTheme } from '@emotion/react';
 import { ScreenPage } from 'pages';
 import { useParams } from 'react-router-dom';
-// import { selectBoards } from 'redux/boards/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectModalStatus, setModalStatus } from 'redux/modalSlice';
-// import { useNavigate } from 'react-router-dom';
-// import { getBoardByID } from 'redux/boards/operations';
 
 const HomePage = () => {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  // const boards = useSelector(selectBoards);
-  // const [hasRedirected, setHasRedirected] = useState(false);
   const { boardId } = useParams();
 
   const isBoardId = boardId ? true : false;
@@ -28,17 +22,6 @@ const HomePage = () => {
   const theme = useTheme();
 
   const modalStatus = useSelector(selectModalStatus);
-
-  // useEffect(() => {
-  //   dispatch(getBoardByID());
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (!hasRedirected && boards.length > 0) {
-  //     navigate(`/home/${boards[0]._id}`);
-  //     setHasRedirected(true);
-  //   }
-  // }, [boards, hasRedirected, navigate]);
 
   useEffect(() => {
     function handleResize() {
