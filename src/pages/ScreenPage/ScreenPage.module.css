@@ -1,6 +1,6 @@
-
-.screen__section{
-    background-color: #1F1F1F;
-    width: 100vw;
-    height: 100vh;
+.screen__section {
+  background-color: #1f1f1f;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 68px;
 }

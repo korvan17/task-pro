@@ -5,31 +5,40 @@ import { AddEditBoard, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
-import { selectBoards } from 'redux/boards/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { getBoardByID } from 'redux/boards/operations';
 import { useTheme } from '@emotion/react';
+import { ScreenPage } from 'pages';
+import { useParams } from 'react-router-dom';
+// import { selectBoards } from 'redux/boards/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectModalStatus, setModalStatus } from 'redux/modalSlice';
+// import { useNavigate } from 'react-router-dom';
+// import { getBoardByID } from 'redux/boards/operations';
 
 const HomePage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const boards = useSelector(selectBoards);
-  const [hasRedirected, setHasRedirected] = useState(false);
+  // const boards = useSelector(selectBoards);
+  // const [hasRedirected, setHasRedirected] = useState(false);
+  const { boardId } = useParams();
+
+  const isBoardId = boardId ? true : false;
+
   const theme = useTheme();
 
-  useEffect(() => {
-    dispatch(getBoardByID());
-  }, [dispatch]);
+  const modalStatus = useSelector(selectModalStatus);
 
-  useEffect(() => {
-    if (!hasRedirected && boards.length > 0) {
-      navigate(`/home/${boards[0]._id}`);
-      setHasRedirected(true);
-    }
-  }, [boards, hasRedirected, navigate]);
+  // useEffect(() => {
+  //   dispatch(getBoardByID());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   if (!hasRedirected && boards.length > 0) {
+  //     navigate(`/home/${boards[0]._id}`);
+  //     setHasRedirected(true);
+  //   }
+  // }, [boards, hasRedirected, navigate]);
 
   useEffect(() => {
     function handleResize() {
@@ -42,8 +51,16 @@ const HomePage = () => {
     };
   }, []);
 
-  const toggleModal = () => {
+  const addModal = () => {
     setShowModal(!showModal);
+    if (window.innerWidth < 1440) {
+      toggleMenu();
+    }
+  };
+
+  const editleModal = () => {
+    setShowModal(!showModal);
+    dispatch(setModalStatus(!modalStatus));
     if (window.innerWidth < 1440) {
       toggleMenu();
     }
@@ -60,7 +77,8 @@ const HomePage = () => {
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-        toggleModal={toggleModal}
+        addModal={addModal}
+        editleModal={editleModal}
         // pushBoard={pushBoard}
       ></SideBar>
 
@@ -69,25 +87,29 @@ const HomePage = () => {
         style={{ background: theme.screensPage.background }}
         className={css.section}
       >
-        <div className={css.text__home}>
-          <p style={{ color: theme.screensPage.screenPageText }}>
-            Before starting your project, it is essential{' '}
-            <button
-              style={{ color: theme.screensPage.screenPageSpan }}
-              onClick={toggleModal}
-              className={css.button__home}
-            >
-              to create a board
-            </button>{' '}
-            to visualize and track all the necessary tasks and milestones. This
-            board serves as a powerful tool to organize the workflow and ensure
-            effective collaboration among team members.
-          </p>
-        </div>
+        {isBoardId ? (
+          <ScreenPage id={boardId} />
+        ) : (
+          <div className={css.text__home}>
+            <p style={{ color: theme.screensPage.screenPageText }}>
+              Before starting your project, it is essential{' '}
+              <button
+                style={{ color: theme.screensPage.screenPageSpan }}
+                onClick={addModal}
+                className={css.button__home}
+              >
+                to create a board
+              </button>{' '}
+              to visualize and track all the necessary tasks and milestones.
+              This board serves as a powerful tool to organize the workflow and
+              ensure effective collaboration among team members.
+            </p>
+          </div>
+        )}
 
         {showModal && (
-          <BasicModal onClose={toggleModal}>
-            <AddEditBoard onClose={toggleModal} />
+          <BasicModal onClose={addModal}>
+            <AddEditBoard onClose={addModal} />
           </BasicModal>
         )}
       </section>
