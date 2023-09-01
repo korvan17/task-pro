@@ -5,26 +5,35 @@ import css from './ScreenPage.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getBoardByID } from 'redux/boards/operations';
+import { useNavigate, useParams } from 'react-router-dom';
+import { selectBoard } from 'redux/boards/slice';
 
-const ScreenPage = ({ id = '64f0a120f65c664a596fe318' }) => {
-  console.log('hallo');
-  const board = useSelector(state => state.boards.currentBoard);
+const ScreenPage = () => {
+  const navigate = useNavigate();
+  const { boardId } = useParams();
   const dispatch = useDispatch();
+  const board = useSelector(selectBoard);
 
   useEffect(() => {
-    dispatch(getBoardByID(id));
-  }, [dispatch, id]);
+    dispatch(getBoardByID(boardId));
+  }, [boardId, dispatch]);
+
+  useEffect(() => {
+    if (!board) {
+      navigate('/home');
+    }
+  });
 
   return (
     <>
-      <>
+      {board && (
         <div className={css.screen__section}>
           <Background img={board.background}>
             <HeaderDashboard title={board.title} />
-            <MainDashboard board={board} />
+            <MainDashboard id={board.id} /> {/* Use _id instead of id */}
           </Background>
         </div>
-      </>
+      )}
     </>
   );
 };

@@ -59,7 +59,7 @@ export default function App() {
                 </PrivateRoute>
               }
             />
-            <Route path=":boardId" element={<ScreenPage />} />
+            <Route path="/home/:boardId" element={<ScreenPage />} />
             {/* Auth Routes */}
             <Route path="/" element={<StartPage />}>
               <Route index element={<StartPageView />} />
