@@ -2,6 +2,12 @@
   background-color: #161616;
   color: #ffffffcc;
 
+  /* position: fixed;
+  right: 0;
+  top: 0;
+  left: 0px; 
+  height: 68px; */
+
   display: flex;
   padding-left: 16px;
   padding-right: 16px;

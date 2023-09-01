@@ -67,7 +67,7 @@ export default function Header({ toggleMenu }) {
             style={{ color: theme.header.userNameColor }}
             className={css.userName}
           >
-            Ivetta
+            {user.name}
           </p>
 
           <button
