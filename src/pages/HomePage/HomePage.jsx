@@ -5,23 +5,18 @@ import { AddEditBoard, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
-import { useTheme } from '@emotion/react';
-import { ScreenPage } from 'pages';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectModalStatus, setModalStatus } from 'redux/modalSlice';
+import { useDispatch } from 'react-redux';
+import { setModalStatus } from 'redux/modalSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { boardId } = useParams();
 
-  const isBoardId = boardId ? true : false;
+  const [boardId, setBoardId] = useState(null);
 
-  const theme = useTheme();
+  const dispatch = useDispatch();
 
-  const modalStatus = useSelector(selectModalStatus);
 
   useEffect(() => {
     function handleResize() {
@@ -49,6 +44,17 @@ const HomePage = () => {
     }
   };
 
+  const editBoard = id => {
+    toggleModal();
+    dispatch(setModalStatus(true));
+    setBoardId(id);
+  };
+
+  const createBoard = () => {
+    toggleModal();
+    dispatch(setModalStatus(false));
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -60,8 +66,10 @@ const HomePage = () => {
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-        addModal={addModal}
-        editleModal={editleModal}
+
+        editBoard={editBoard}
+        createBoard={createBoard}
+
         // pushBoard={pushBoard}
       ></SideBar>
 
@@ -92,7 +100,8 @@ const HomePage = () => {
 
         {showModal && (
           <BasicModal onClose={addModal}>
-            <AddEditBoard onClose={addModal} />
+            <AddEditBoard onClose={toggleModal} boardId={boardId} />
+
           </BasicModal>
         )}
       </section>

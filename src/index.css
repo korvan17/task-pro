@@ -85,3 +85,8 @@ img {
 }
 
 
+button,
+a {
+  cursor: pointer;
+}
+

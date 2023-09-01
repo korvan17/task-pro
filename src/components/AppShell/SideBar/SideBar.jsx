@@ -13,14 +13,18 @@ import { fetchBoards } from 'redux/boards/operations';
 function SideBar({
   setIsMenuOpen,
   isMenuOpen,
-  editleModal,
-  addModal,
+
+  toggleModal,
   pushBoard,
+  createBoard,
+  editBoard,
+
 }) {
   const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
+  // console.log('boards:', boards);
   const dispatch = useDispatch();
   const isBoard = boards.length !== 0 ? true : false;
 
@@ -99,7 +103,9 @@ function SideBar({
             style={{
               backgroundColor: theme.sidebar.createButtonBackground,
             }}
-            onClick={addModal}
+
+            onClick={createBoard}
+
             className={css.createBoardButton}
           >
             <svg width="20" height="20">
@@ -116,24 +122,20 @@ function SideBar({
       </div>
 
       <ul className={css.boardsList}>
-        {isBoard &&
-          boards.map(board => {
-            // console.log(board.title, board._id);
-            return (
-              <Board
-                key={board._id}
-                // _id={board._id}
-                // background={board.background}
-                // icon={board.icon}
-                // title={board.title}
-                board={board}
-                toggleModal={editleModal}
-                style={{
-                  color: theme.sidebar.selectedBoardTitleColor,
-                }}
-              ></Board>
-            );
-          })}
+        {boards.map(board => (
+          <Board
+            key={board._id}
+            board={board}
+            // background={board.background}
+            // icon={board.icon}
+            // title={board.title}
+            editBoard={editBoard}
+            toggleModal={toggleModal}
+            style={{
+              color: theme.sidebar.selectedBoardTitleColor,
+            }}
+          ></Board>
+        ))}
       </ul>
       <div className={css.containerHelpLogout}>
         <div
