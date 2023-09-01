@@ -43,14 +43,19 @@ const cardsSlice = createSlice({
         state.cards.splice(index, 1);
       })
       .addCase(editCard.fulfilled, (state, action) => {
-        const updatedCardIndex = state.cards.findIndex(
-          card => card._id === action.payload
+        state.isLoading = false;
+        state.error = null;
+
+        const index = state.cards.findIndex(
+          item => item._id === action.payload
         );
-        if (updatedCardIndex !== -1) {
-          state.cards[updatedCardIndex] = action.payload;
-        }
+
+        state.cards[index] = action.payload;
       })
       .addCase(moveCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        
         const updatedCardIndex = state.cards.findIndex(
           card => card._id === action.payload
         );
