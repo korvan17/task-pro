@@ -75,3 +75,9 @@
     line-height: normal;
     letter-spacing: -0.28px;
 }
+
+.errorMessage {
+    color: rgba(234, 84, 84, 0.859);
+    margin: 0 0 5px 0;
+    text-align-last: left;
+}
