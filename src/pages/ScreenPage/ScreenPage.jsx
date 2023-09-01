@@ -16,9 +16,7 @@ const ScreenPage = ({ id }) => {
   // console.log('boardId - ', boardId);
   // const dispatch = useDispatch();
   const boards = useSelector(selectBoards);
-  console.log('id - ', id, 'boardsss - ', boards);
   const board = boards.find(board => board._id === id);
-  console.log('board - ', board);
 
   // useEffect(() => {
   //   try {
