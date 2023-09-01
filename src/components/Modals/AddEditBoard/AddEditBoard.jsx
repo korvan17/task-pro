@@ -15,7 +15,7 @@ export default function AddEditBoard({ onClose, boardId }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [icon, setIcon] = useState('');
-  const [background, setBackground] = useState('');
+  let [background, setBackground] = useState('');
 
   const isEditing = useSelector(selectModalStatus);
 

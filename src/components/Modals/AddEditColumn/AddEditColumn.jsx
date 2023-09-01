@@ -2,7 +2,6 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import css from './AddEditColumn.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 import { AddIconButton } from 'components';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addColumn, editColumn } from 'redux/columns/columnsOperations';
 import { useTheme } from '@emotion/react';
