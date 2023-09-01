@@ -82,3 +82,8 @@ img {
     width: 1440px;
   }
 }
+
+button,
+a {
+  cursor: pointer;
+}

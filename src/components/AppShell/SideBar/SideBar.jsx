@@ -9,11 +9,19 @@ import { logout } from '../../../redux/auth/authOperations';
 import { Board } from 'components';
 import { useNavigate } from 'react-router-dom';
 
-function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
+function SideBar({
+  setIsMenuOpen,
+  isMenuOpen,
+  toggleModal,
+  pushBoard,
+  createBoard,
+  editBoard,
+}) {
   const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
+  // console.log('boards:', boards);
   const dispatch = useDispatch();
 
   const handleClickOutside = event => {
@@ -87,7 +95,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
             style={{
               backgroundColor: theme.sidebar.createButtonBackground,
             }}
-            onClick={toggleModal}
+            onClick={createBoard}
             className={css.createBoardButton}
           >
             <svg width="20" height="20">
@@ -107,9 +115,11 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
         {boards.map(board => (
           <Board
             key={board._id}
-            background={board.background}
-            icon={board.icon}
-            title={board.title}
+            board={board}
+            // background={board.background}
+            // icon={board.icon}
+            // title={board.title}
+            editBoard={editBoard}
             toggleModal={toggleModal}
             style={{
               color: theme.sidebar.selectedBoardTitleColor,

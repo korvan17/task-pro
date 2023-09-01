@@ -5,10 +5,15 @@ import { AddEditBoard, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
+import { useDispatch } from 'react-redux';
+import { setModalStatus } from 'redux/modalSlice';
 
 const HomePage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [boardId, setBoardId] = useState(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     function handleResize() {
@@ -28,6 +33,17 @@ const HomePage = () => {
     }
   };
 
+  const editBoard = id => {
+    toggleModal();
+    dispatch(setModalStatus(true));
+    setBoardId(id);
+  };
+
+  const createBoard = () => {
+    toggleModal();
+    dispatch(setModalStatus(false));
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -39,7 +55,8 @@ const HomePage = () => {
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-        toggleModal={toggleModal}
+        editBoard={editBoard}
+        createBoard={createBoard}
         // pushBoard={pushBoard}
       ></SideBar>
 
@@ -50,7 +67,7 @@ const HomePage = () => {
             Before starting your project, it is essential{' '}
             <button onClick={toggleModal} className={css.button__home}>
               to create a board
-            </button>{' '}
+            </button>
             to visualize and track all the necessary tasks and milestones. This
             board serves as a powerful tool to organize the workflow and ensure
             effective collaboration among team members.
@@ -59,7 +76,7 @@ const HomePage = () => {
 
         {showModal && (
           <BasicModal onClose={toggleModal}>
-            <AddEditBoard onClose={toggleModal} />
+            <AddEditBoard onClose={toggleModal} boardId={boardId} />
           </BasicModal>
         )}
       </section>
