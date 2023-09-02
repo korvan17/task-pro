@@ -57,14 +57,14 @@ export default function Header({ toggleMenu }) {
       ) : null}
       <div className={css.options}>
         {/* <div className={css.themeContainer}>
-          <p className={css.themeTitle}>Theme</p>
-          <button onClick={toggleTheme} className={css.themeBtn} type="button">
-
-            <svg className={css.themeIcon} width="16" height="16">
-              <use xlinkHref={`${sprite}#icon-theme`} />
-            </svg>
-          </button>
-        </div> */}
+            <p className={css.themeTitle}>Theme</p>
+            <button onClick={toggleTheme} className={css.themeBtn} type="button">
+  
+              <svg className={css.themeIcon} width="16" height="16">
+                <use xlinkHref={`${sprite}#icon-theme`} />
+              </svg>
+            </button>
+          </div> */}
         <Theme />
         <div className={css.userInfo}>
           <p

@@ -15,6 +15,7 @@
 
   @media screen and (min-width: 1440px) {
     width: 260px;
+    transform: none;
   }
 }
 
@@ -39,10 +40,12 @@
     position: absolute;
     padding: 24px;
     width: 260px;
+    
   }
-
+  
   @media screen and (min-width: 1440px) {
     position: relative;
+    transition: none;
     width: 260px;
   }
 }
