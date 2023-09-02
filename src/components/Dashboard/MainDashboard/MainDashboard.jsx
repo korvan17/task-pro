@@ -16,7 +16,7 @@ import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
 import { useParams } from 'react-router-dom';
 import { selectDisplays } from 'redux/displayType/displaySelectors';
-import { setModalStatus } from 'redux/modalSlice';
+import { selectColumnId, setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { useTheme } from '@emotion/react';
 
@@ -44,12 +44,19 @@ export function MainDashboard() {
   }, [dispatch, boardId]);
 
   const handleDeleteCard = id => {
-    console.log('deleteCard');
     dispatch(deleteCard(id));
   };
 
-  const toggleModalCard = () => {
+  const createCard = columnId => {
+    console.log(columnId);
     setShowModalCard(!showModalCard);
+    dispatch(setModalStatus(false));
+    dispatch(setColumnId(columnId));
+  };
+
+  const editCard = () => {
+    setShowModalCard(!showModalCard);
+    dispatch(setModalStatus(true));
   };
 
   const createColumn = () => {
@@ -65,6 +72,10 @@ export function MainDashboard() {
 
   const toggleModalColumn = () => {
     setShowModalColumn(!showModalColumn);
+  };
+
+  const toggleModalCard = () => {
+    setShowModalCard(!showModalCard);
   };
 
   const handleDeleteColumn = id => {
@@ -87,7 +98,8 @@ export function MainDashboard() {
                 {column.cards.map(card => (
                   <li key={card._id}>
                     <Card
-                      toggleModalCard={toggleModalCard}
+                      columnId={column._id}
+                      toggleModalCard={editCard}
                       deleteCard={handleDeleteCard}
                       title={card.title}
                       desc={card.description}
@@ -98,8 +110,9 @@ export function MainDashboard() {
                 ))}
                 <div className={css.button__column}>
                   <AddIconButton
+                    columnId={column._id}
                     className={css.btn__card}
-                    pushButton={toggleModalCard}
+                    pushButton={createCard}
                     theme="dark"
                   >
                     <span

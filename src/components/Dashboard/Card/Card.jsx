@@ -10,6 +10,7 @@ import CardAdditionInfList from './CardAdditionInfList/CardAdditionInfList';
 const MAX_DESC_VISIBLE_LEN = 86;
 
 export default function Card({
+  columnId,
   title,
   desc,
   priority,

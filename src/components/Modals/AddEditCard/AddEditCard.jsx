@@ -5,15 +5,18 @@ import ColorPicker from 'components/UIelements/ColorPicker/ColorPicker';
 import { AddIconButton } from 'components';
 import { useState } from 'react';
 import { useTheme } from '@emotion/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCard, editCard } from 'redux/сard/сardOperations';
 import cardSchema from '../Schemas/cardSchema';
 import NewCalendar from 'components/UIelements/Calendar/NewCalendar';
 
-export default function AddEditCard({ isEditing, onClose, cardId }) {
+export default function AddEditCard({ onClose, columnId, cardId }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [color, setColor] = useState('');
+  const isEditing = useSelector(state => state.modal.isModalDisplayed);
+  const currentColumnId = useSelector(state => state.modal.columnId);
+  console.log(currentColumnId);
 
   const handleSelectedColorChange = selectedColor => {
     setColor(selectedColor);
@@ -26,7 +29,9 @@ export default function AddEditCard({ isEditing, onClose, cardId }) {
           addCard({
             title: values.title,
             description: values.description,
-            color,
+            // color: color,
+            deadline: '',
+            column: currentColumnId,
           })
         );
       } else {
