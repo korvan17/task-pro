@@ -17,6 +17,7 @@ import { selectCurrentBoard } from 'redux/boards/selectors';
 import { useParams } from 'react-router-dom';
 import { selectDisplays } from 'redux/displayType/displaySelectors';
 import { setModalStatus } from 'redux/modalSlice';
+import { deleteColumn } from 'redux/columns/columnsOperations';
 
 // 64f0a120f65c664a596fe318
 // 64f0a158f65c664a596fe31c
@@ -29,13 +30,12 @@ export function MainDashboard() {
   const dispatch = useDispatch();
   const { boardId } = useParams();
   const display = useSelector(selectDisplays);
-  const columns = useSelector(state => state.columns.column);
-  const cards = useSelector(state => state.cards.card);
+  const isLoadingColumns = useSelector(state => state.columns.isLoading);
+  const isLoadingCards = useSelector(state => state.cards.isLoading);
 
   useEffect(() => {
-    console.log(display, cards, columns);
     dispatch(getBoardByID(boardId));
-  }, [columns, cards, display, boardId, dispatch]);
+  }, [isLoadingColumns, isLoadingCards, display, boardId, dispatch]);
 
   useEffect(() => {
     dispatch(getBoardByID(boardId));
@@ -65,6 +65,10 @@ export function MainDashboard() {
     setShowModalColumn(!showModalColumn);
   };
 
+  const handleDeleteColumn = id => {
+    dispatch(deleteColumn(id));
+  };
+
   return (
     <div className={css.board__main}>
       {board?.columns.length > 0 && (
@@ -73,7 +77,8 @@ export function MainDashboard() {
             <li key={column._id} className={css.column__list}>
               <Column
                 id={column._id}
-                toggleModalColumn={editColumn}
+                editColumn={editColumn}
+                deleteColumn={handleDeleteColumn}
                 title={column.title}
               />
               <ul className={css.card__item}>

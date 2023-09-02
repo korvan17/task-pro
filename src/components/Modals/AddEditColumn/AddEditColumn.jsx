@@ -78,7 +78,7 @@ export default function AddEditColumn({ onClose, columnId }) {
               style={{ color: theme.popUp.buttonTextColor }}
               className={css.btnSumbitAction}
             >
-              Add
+              {!isEditing ? 'Add' : 'Edit'}
             </span>
           </AddIconButton>
         </Form>
