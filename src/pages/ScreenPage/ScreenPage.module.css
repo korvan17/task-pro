@@ -1,8 +1,6 @@
 .screen__section {
   background-color: #1f1f1f;
   width: 100vw;
-  height: 100%;
-
   @media screen and (min-width: 1440px) {
     padding-top: 68px;
   }

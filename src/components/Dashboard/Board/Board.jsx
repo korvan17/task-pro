@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { deleteBoard } from '../../../redux/boards/operations';
 import { Link } from 'react-router-dom';
 
-const Board = ({ board, toggleModal }) => {
+const Board = ({ board, editBoard }) => {
   const dispatch = useDispatch();
 
   const deleteBoardBtn = boardId => {
@@ -24,7 +24,11 @@ const Board = ({ board, toggleModal }) => {
         </div>
 
         <div className={css.boardBtnContainer}>
-          <button type="button" className={css.boardBtn} onClick={toggleModal}>
+          <button
+            type="button"
+            className={css.boardBtn}
+            onClick={() => editBoard(board._id)}
+          >
             <svg width="16" height="16" className={css.boardIconBtns}>
               <use xlinkHref={`${sprite}#icon-edit`} />
             </svg>

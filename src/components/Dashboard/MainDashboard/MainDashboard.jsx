@@ -10,20 +10,26 @@ import css from './MainDashboard.module.css';
 import { useState } from 'react';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { deleteCard } from '../../../redux/сard/сardOperations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-// import { getCurrentBoardById } from 'redux/boards/selectors';
+import { useEffect } from 'react';
+import { getBoardByID } from 'redux/boards/operations';
+import { selectCurrentBoard } from 'redux/boards/selectors';
+import { useParams } from 'react-router-dom';
+
 // 64f0a120f65c664a596fe318
 // 64f0a158f65c664a596fe31c
 // 64f0a169f65c664a596fe320
-export function MainDashboard({ board }) {
+export function MainDashboard() {
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
+  const board = useSelector(selectCurrentBoard);
   const dispatch = useDispatch();
+  const { boardId } = useParams();
 
-  // const { payload: board } = await dispatch(getBoardByID(id));
-
-  // console.log('board - ', board.payload);
+  useEffect(() => {
+    dispatch(getBoardByID(boardId));
+  }, [dispatch, boardId]);
 
   const handleDeleteCard = id => {
     console.log('deleteCard');
@@ -39,7 +45,7 @@ export function MainDashboard({ board }) {
   };
 
   return (
-    <div className={css.board}>
+    <div className={css.board__main}>
       {board?.columns.length > 0 && (
         <ul className={css.column__item}>
           {board.columns.map(column => (
@@ -48,10 +54,10 @@ export function MainDashboard({ board }) {
                 toggleModalColumn={toggleModalColumn}
                 title={column.title}
               />
-
               <ul className={css.card__item}>
                 {column.cards.map(card => (
                   <li key={card._id}>
+                    {/* <CustomScrollbarCard></CustomScrollbarCard> */}
                     <Card
                       toggleModalCard={toggleModalCard}
                       deleteCard={handleDeleteCard}
@@ -62,7 +68,7 @@ export function MainDashboard({ board }) {
                     />
                   </li>
                 ))}
-                <li>
+                <li key="add-card-button">
                   <div className={css.button__column}>
                     <AddIconButton
                       className={css.btn__card}

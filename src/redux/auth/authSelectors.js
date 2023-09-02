@@ -9,3 +9,5 @@ export const getTheme = state => state.auth.user.theme;
 export const getError = state => state.auth.error;
 
 export const selectToken = state => state.auth.token;
+
+export const selectUser = state => state.auth.user;

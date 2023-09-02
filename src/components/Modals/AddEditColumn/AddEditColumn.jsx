@@ -6,16 +6,18 @@ import { useDispatch } from 'react-redux';
 import { addColumn, editColumn } from 'redux/columns/columnsOperations';
 import { useTheme } from '@emotion/react';
 import columnSchema from '../Schemas/columnSchema';
+import { useParams } from 'react-router-dom';
 
 export default function AddEditColumn({ onClose, isEditing, columnId }) {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const { boardId } = useParams();
 
   const handleSubmit = async (values, { resetForm }) => {
     console.log();
     try {
       if (!isEditing) {
-        await dispatch(addColumn({ title: values.title }));
+        await dispatch(addColumn({ title: values.title, board: boardId }));
       } else {
         await dispatch(editColumn({ title: values.title, id: columnId }));
       }

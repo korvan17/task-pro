@@ -5,23 +5,20 @@ import { AddEditBoard, EditProfile, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
+import { useDispatch } from 'react-redux';
+import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
 import { ScreenPage } from 'pages';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectModalStatus, setModalStatus } from 'redux/modalSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { boardId } = useParams();
-
-  const isBoardId = boardId ? true : false;
-
   const theme = useTheme();
-
-  const modalStatus = useSelector(selectModalStatus);
+  // const [boardId, setBoardId] = useState(null);
+  const { boardId } = useParams();
+  const isBoardId = boardId ? true : false;
 
   useEffect(() => {
     function handleResize() {
@@ -34,19 +31,22 @@ const HomePage = () => {
     };
   }, []);
 
-  const addModal = () => {
+  const toggleModal = () => {
     setShowModal(!showModal);
     if (window.innerWidth < 1440) {
       toggleMenu();
     }
   };
 
-  const editleModal = () => {
-    setShowModal(!showModal);
-    dispatch(setModalStatus(!modalStatus));
-    if (window.innerWidth < 1440) {
-      toggleMenu();
-    }
+  const editBoard = id => {
+    toggleModal();
+    dispatch(setModalStatus(true));
+    // setBoardId(id);
+  };
+
+  const createBoard = () => {
+    toggleModal();
+    dispatch(setModalStatus(false));
   };
 
   const toggleMenu = () => {
@@ -60,8 +60,9 @@ const HomePage = () => {
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-        addModal={addModal}
-        editleModal={editleModal}
+        editBoard={editBoard}
+        createBoard={createBoard}
+
         // pushBoard={pushBoard}
       ></SideBar>
 
@@ -78,7 +79,7 @@ const HomePage = () => {
               Before starting your project, it is essential{' '}
               <button
                 style={{ color: theme.screensPage.screenPageSpan }}
-                onClick={addModal}
+                onClick={createBoard}
                 className={css.button__home}
               >
                 to create a board
@@ -91,8 +92,8 @@ const HomePage = () => {
         )}
 
         {showModal && (
-          <BasicModal onClose={addModal}>
-            <AddEditBoard onClose={addModal} />
+          <BasicModal onClose={createBoard}>
+            <AddEditBoard onClose={toggleModal} boardId={boardId} />
           </BasicModal>
         )}
       </section>
