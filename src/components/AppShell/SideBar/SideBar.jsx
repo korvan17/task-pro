@@ -135,9 +135,6 @@ function SideBar({
             // title={board.title}
             editBoard={editBoard}
             toggleModal={toggleModal}
-            style={{
-              color: theme.sidebar.selectedBoardTitleColor,
-            }}
           ></Board>
         ))}
       </ul>
