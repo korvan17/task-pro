@@ -92,6 +92,7 @@ export default function AddEditBoard({ onClose, boardId }) {
               style={{
                 color: theme.popUp.inputTextColor,
                 borderColor: theme.popUp.inputBorderColor,
+                '::placeholder': { color: theme.popUp.inputPlaceholderColor },
               }}
               className={css.input}
               type="text"

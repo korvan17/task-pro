@@ -18,6 +18,7 @@ import { useParams } from 'react-router-dom';
 import { selectDisplays } from 'redux/displayType/displaySelectors';
 import { setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
+import { useTheme } from '@emotion/react';
 
 // 64f0a120f65c664a596fe318
 // 64f0a158f65c664a596fe31c
@@ -32,6 +33,7 @@ export function MainDashboard() {
   const display = useSelector(selectDisplays);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
+  const theme = useTheme();
 
   useEffect(() => {
     dispatch(getBoardByID(boardId));
@@ -100,7 +102,12 @@ export function MainDashboard() {
                     pushButton={toggleModalCard}
                     theme="dark"
                   >
-                    <span className={css.btn__text}>Add another card</span>
+                    <span
+                      style={{ color: theme.popUp.buttonTextColor }}
+                      className={css.btn__text}
+                    >
+                      Add another card
+                    </span>
                   </AddIconButton>
                 </div>
               </ul>
@@ -109,7 +116,12 @@ export function MainDashboard() {
         </ul>
       )}
       <AddIconButton pushButton={createColumn} className={css.btn__alonecolumn}>
-        <span className={css.btn__text}>Add another column</span>
+        <span
+          style={{ color: theme.popUp.buttonTextColor }}
+          className={css.btn__text}
+        >
+          Add another column
+        </span>
       </AddIconButton>
       {showModalColumn && (
         <BasicModal onClose={createColumn}>
