@@ -3,14 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: calc(100vh - 60px);
 }
 
 @media screen and (min-width: 1440px) {
   .section {
-    padding-left: 256px;
-    height: 100vh
+    /* padding-left: 256px; */
+    height: 100%;
   }
 }
 
@@ -35,6 +35,10 @@
 
 .button__home:hover {
   color: red;
+}
+
+.sideBarSectionContainer {
+  display: flex;
 }
 
 @media screen and (max-width: 374px) {

@@ -19,10 +19,12 @@
 
   @media screen and (min-width: 1440px) {
     position: fixed;
-    right: 0;
+    /* right: 0; */
     top: 0;
-    width: calc(100% - 260px);
-    left: 260px;
+    /* width: calc(100% - 260px); */
+    width: 100%;
+
+    /* left: 260px; */
     height: 68px;
   }
 }

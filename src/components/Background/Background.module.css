@@ -1,11 +1,6 @@
-
-
 .bg_section {
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-height: 100vh;
-width: 100vw;
-
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
 }
-

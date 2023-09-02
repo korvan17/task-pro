@@ -1,12 +1,12 @@
 import sprite from '../../../icons/sprite.svg';
 import iconCactus from '../../../icons/cactus.png';
 import css from './SideBar.module.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
-import { Board } from 'components';
+import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { fetchBoards } from 'redux/boards/operations';
 
@@ -19,6 +19,8 @@ function SideBar({
   createBoard,
   editBoard,
 }) {
+  const [showNeedHelp, setShowNeedHelp] = useState(false);
+
   const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
@@ -51,6 +53,11 @@ function SideBar({
     console.log('logoutBtn');
     await dispatch(logout());
     navigate('/');
+  };
+
+  const needHelpBtn = () => {
+    console.log('needHelpBtn');
+    setShowNeedHelp(!showNeedHelp);
   };
 
   return (
@@ -160,7 +167,7 @@ function SideBar({
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={createBoard} className={css.helpBtn}>
+          <button onClick={needHelpBtn} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,
@@ -202,6 +209,7 @@ function SideBar({
           </p>
         </button>
       </div>
+      {showNeedHelp && <NeedHelp onClose={needHelpBtn} />}
     </div>
   );
 }

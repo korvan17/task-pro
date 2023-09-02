@@ -19,8 +19,11 @@
 }
 
 .openSideBar {
-  position: absolute;
+  /* position: absolute; */
   z-index: 2;
+
+  display: inline-block;
+  position: absolute;
 
   top: 0;
   padding: 14px;
@@ -33,11 +36,13 @@
   transform: translateX(0);
 
   @media screen and (min-width: 768px) {
+    position: absolute;
     padding: 24px;
     width: 260px;
   }
 
   @media screen and (min-width: 1440px) {
+    position: relative;
     width: 260px;
   }
 }
@@ -123,22 +128,22 @@
   &::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   /* Фон для трека (полосы прокрутки) */
   &::-webkit-scrollbar-track {
-    /* background: rgba(255, 255, 255, 0.4); */
-    background: #313131;
+    background: rgba(255, 255, 255, 0.4);
+    /* background: #313131; */
     border-radius: 12px;
     overflow: hidden;
     margin-left: 20px;
   }
-  
+
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
     background: rgba(18, 18, 18, 1);
     border-radius: 10px; /* Закругление углов ползунка */
   }
-  
+
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
@@ -250,5 +255,3 @@
   stroke: #bedbb0;
   fill: transparent;
 }
-
-
