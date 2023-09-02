@@ -45,6 +45,15 @@
   gap: 14px;
   margin-left: auto;
   /* align-items: center; */
+
+  /* width: 325px;
+  @media screen and (min-width: 768px) {
+    width: 705px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1156px;
+  } */
 }
 
 .themeBtn {

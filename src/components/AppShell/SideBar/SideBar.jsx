@@ -13,7 +13,6 @@ import { fetchBoards } from 'redux/boards/operations';
 function SideBar({
   setIsMenuOpen,
   isMenuOpen,
-
   toggleModal,
   pushBoard,
   createBoard,

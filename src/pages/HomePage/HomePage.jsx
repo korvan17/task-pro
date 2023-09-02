@@ -37,14 +37,14 @@ const HomePage = () => {
     }
   };
 
+  const createBoard = () => {
+    dispatch(setModalStatus(false));
+    toggleModal();
+  };
+
   const editBoard = id => {
     toggleModal();
     dispatch(setModalStatus(true));
-  };
-
-  const createBoard = () => {
-    toggleModal();
-    dispatch(setModalStatus(false));
   };
 
   const toggleMenu = () => {
