@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_task_pro=self.webpackChunkgoit_task_pro||[]).push([[923],{923:function(t,r,s){s.r(r);s(2791);var e=s(1341),n=s(184);r.default=function(){return(0,n.jsx)(e.N7,{children:(0,n.jsx)(e.rU,{})})}}}]);
+//# sourceMappingURL=923.a7ba57b0.chunk.js.map
