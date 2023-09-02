@@ -19,7 +19,7 @@
   border: 1px solid #bedbb0;
   color: currentColor;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  opacity: 0.4;
+  /* opacity: 0.4; */
   outline: none;
 
   @media (max-width: 375px) {

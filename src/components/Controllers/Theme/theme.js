@@ -97,7 +97,7 @@ export const light = {
     background: colors.backgroundWhiteColor,
     titleColor: colors.blackColor,
     closeIconColor: colors.blackColor,
-    inputBorderColor: colors.greenColor,
+    inputBorderColor: 'rgba(190, 219, 176, 1)',
     inputPlaceholderColor: '#000000',
     inputTextColor: colors.blackColor,
     iconsTextColor: colors.blackColor,
@@ -108,7 +108,7 @@ export const light = {
     buttonIconBackground: colors.blackColor,
     buttonIconPlusFill: colors.whiteColor,
     buttonTextColor: colors.blackColor,
-    deadLineDateColor: colors.greenColor
+    deadLineDateColor: colors.greenColor,
   },
 };
 
@@ -192,7 +192,7 @@ export const dark = {
     background: colors.blackColor,
     titleColor: colors.whiteColor,
     closeIconColor: colors.whiteColor,
-    inputBorderColor: colors.greenColor,
+    inputBorderColor: 'rgba(190, 219, 176, 0.4)',
     inputPlaceholderColor: colors.halfGrayColor,
     inputTextColor: colors.whiteColor,
     iconsTextColor: colors.whiteColor,
@@ -203,7 +203,7 @@ export const dark = {
     buttonIconBackground: colors.blackColor,
     buttonIconPlusFill: colors.whiteColor,
     buttonTextColor: colors.blackColor,
-    deadLineDateColor: colors.greenColor
+    deadLineDateColor: colors.greenColor,
   },
 };
 
@@ -287,7 +287,7 @@ export const violet = {
     background: colors.whiteColor,
     titleColor: colors.blackColor,
     closeIconColor: colors.blackColor,
-    inputBorderColor: colors.violetColor,
+    inputBorderColor: 'rgba(82, 85, 188, 0.4)',
     inputPlaceholderColor: colors.halfGrayColor,
     inputTextColor: colors.blackColor,
     iconsTextColor: colors.blackColor,
