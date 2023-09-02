@@ -5,7 +5,7 @@ import sprite from '../../../icons/sprite.svg';
 import css from './Header.module.css';
 import { EditProfile, Theme } from 'components';
 import { useSelector } from 'react-redux';
-
+// import images from '../../../images/images';
 export default function Header({ toggleMenu }) {
   const [showEditProfile, setShowEditProfile] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -38,6 +38,11 @@ export default function Header({ toggleMenu }) {
       style={{ backgroundColor: theme.header.background }}
       className={css.container}
     >
+      {' '}
+      {/* <img
+        src={images[`balloonClose-icon-miniSerializeError.png`]}
+        alt="baloon"
+      /> */}
       {windowWidth < 1440 ? (
         <button onClick={toggleMenu} className={css.menuBtn} type="button">
           <svg
@@ -50,7 +55,6 @@ export default function Header({ toggleMenu }) {
           </svg>
         </button>
       ) : null}
-
       <div className={css.options}>
         {/* <div className={css.themeContainer}>
           <p className={css.themeTitle}>Theme</p>

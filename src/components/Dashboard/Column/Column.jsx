@@ -1,7 +1,7 @@
 import css from './Column.module.css';
 import sprite from '../../../icons/sprite.svg';
 
-export default function Column({ title, toggleModalColumn }) {
+export default function Column({ id, title, editColumn }) {
   return (
     <div className={css.container__column}>
       <p className={css.title__column}>{title}</p>
@@ -10,7 +10,7 @@ export default function Column({ title, toggleModalColumn }) {
           className={css.button__column}
           type="button"
           title="pencil"
-          onClick={toggleModalColumn}
+          onClick={() => editColumn(id)}
         >
           <svg width="16" height="16">
             <use xlinkHref={`${sprite}#icon-edit`} className={css.svgIcon} />

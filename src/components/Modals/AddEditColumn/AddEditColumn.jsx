@@ -2,17 +2,22 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import css from './AddEditColumn.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 import { AddIconButton } from 'components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addColumn, editColumn } from 'redux/columns/columnsOperations';
 import { useTheme } from '@emotion/react';
 import columnSchema from '../Schemas/columnSchema';
 import { useParams } from 'react-router-dom';
+import { selectCurrentBoard } from 'redux/boards/selectors';
 
-export default function AddEditColumn({ onClose, isEditing, columnId }) {
+export default function AddEditColumn({ onClose, columnId }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { boardId } = useParams();
+  const isEditing = useSelector(state => state.modal.isModalDisplayed);
 
+  const column = useSelector(selectCurrentBoard).columns.find(
+    col => col._id === columnId
+  );
   const handleSubmit = async (values, { resetForm }) => {
     console.log();
     try {
@@ -44,7 +49,7 @@ export default function AddEditColumn({ onClose, isEditing, columnId }) {
       </h3>
       <Formik
         initialValues={{
-          title: '',
+          title: isEditing ? column.title : '',
         }}
         onSubmit={handleSubmit}
         validationSchema={columnSchema}

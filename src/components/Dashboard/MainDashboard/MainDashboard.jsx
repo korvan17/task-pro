@@ -16,6 +16,7 @@ import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
 import { useParams } from 'react-router-dom';
 import { selectDisplays } from 'redux/displayType/displaySelectors';
+import { setModalStatus } from 'redux/modalSlice';
 
 // 64f0a120f65c664a596fe318
 // 64f0a158f65c664a596fe31c
@@ -23,6 +24,7 @@ import { selectDisplays } from 'redux/displayType/displaySelectors';
 export function MainDashboard() {
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
+  const [currentColumnId, setCurrentColumnId] = useState(null);
   const board = useSelector(selectCurrentBoard);
   const dispatch = useDispatch();
   const { boardId } = useParams();
@@ -48,6 +50,17 @@ export function MainDashboard() {
     setShowModalCard(!showModalCard);
   };
 
+  const createColumn = () => {
+    setShowModalColumn(!showModalColumn);
+    dispatch(setModalStatus(false));
+  };
+
+  const editColumn = id => {
+    setCurrentColumnId(id);
+    setShowModalColumn(!showModalColumn);
+    dispatch(setModalStatus(true));
+  };
+
   const toggleModalColumn = () => {
     setShowModalColumn(!showModalColumn);
   };
@@ -59,7 +72,8 @@ export function MainDashboard() {
           {board.columns.map(column => (
             <li key={column._id} className={css.column__list}>
               <Column
-                toggleModalColumn={toggleModalColumn}
+                id={column._id}
+                toggleModalColumn={editColumn}
                 title={column.title}
               />
               <ul className={css.card__item}>
@@ -89,15 +103,15 @@ export function MainDashboard() {
           ))}
         </ul>
       )}
-      <AddIconButton
-        pushButton={toggleModalColumn}
-        className={css.btn__alonecolumn}
-      >
+      <AddIconButton pushButton={createColumn} className={css.btn__alonecolumn}>
         <span className={css.btn__text}>Add another column</span>
       </AddIconButton>
       {showModalColumn && (
-        <BasicModal onClose={toggleModalColumn}>
-          <AddEditColumn onClose={toggleModalColumn} />
+        <BasicModal onClose={createColumn}>
+          <AddEditColumn
+            onClose={toggleModalColumn}
+            columnId={currentColumnId}
+          />
         </BasicModal>
       )}
       {showModalCard && (
