@@ -3,7 +3,7 @@ import { useTheme } from '@emotion/react';
 import css from './IconPicker.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 
-const IconPicker = ({ onSelectedIconChange }) => {
+const IconPicker = ({ onSelectedIconChange, defaultIcon }) => {
   const icons = [
     { id: 1, name: 'icon-board-icon-1' },
     { id: 2, name: 'icon-board-icon-2' },
@@ -14,10 +14,6 @@ const IconPicker = ({ onSelectedIconChange }) => {
     { id: 7, name: 'icon-board-icon-7' },
     { id: 8, name: 'icon-board-icon-8' },
   ];
-
-  const defaultIcon = icons.find(
-    icon => icon.name === 'icon-board-icon-1'
-  ).name;
 
   const [selectedIcon, setSelectedIcon] = useState(defaultIcon);
 

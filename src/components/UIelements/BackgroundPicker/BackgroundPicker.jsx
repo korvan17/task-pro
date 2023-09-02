@@ -3,7 +3,10 @@ import { useTheme } from '@emotion/react';
 import css from './BackgroundPicker.module.css';
 // import * as BackgroundImages from '../../../icons/backgounds';
 
-const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
+const BackgroundPicker = ({
+  onSelectedBackgroundChange,
+  defaultBackground,
+}) => {
   const backgrounds = [
     { id: 1, name: 'default' },
     { id: 2, name: 'tree' },
@@ -22,10 +25,6 @@ const BackgroundPicker = ({ onSelectedBackgroundChange }) => {
     { id: 15, name: 'balloonFar' },
     { id: 16, name: 'balloonClose' },
   ];
-
-  const defaultBackground = backgrounds.find(
-    background => background.name === 'default'
-  ).name;
 
   const [selectedBackground, setSelectedBackground] =
     useState(defaultBackground);
