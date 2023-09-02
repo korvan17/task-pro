@@ -14,9 +14,7 @@ import { HomePageView, ScreenPage } from '../../components';
 const HomePage = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log('isMenuOpen:', isMenuOpen);
   const [showModal, setShowModal] = useState(false);
-  console.log('showModal:', showModal);
   const theme = useTheme();
   const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
