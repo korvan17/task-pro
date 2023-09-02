@@ -8,15 +8,14 @@ import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 import { useDispatch } from 'react-redux';
 import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
-import { ScreenPage } from 'pages';
 import { useParams } from 'react-router-dom';
+import { HomePageView, ScreenPage } from '../../components';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const theme = useTheme();
-  // const [boardId, setBoardId] = useState(null);
   const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
 
@@ -41,7 +40,6 @@ const HomePage = () => {
   const editBoard = id => {
     toggleModal();
     dispatch(setModalStatus(true));
-    // setBoardId(id);
   };
 
   const createBoard = () => {
@@ -63,8 +61,6 @@ const HomePage = () => {
           isMenuOpen={isMenuOpen}
           editBoard={editBoard}
           createBoard={createBoard}
-
-          // pushBoard={pushBoard}
         ></SideBar>
 
         {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
@@ -75,21 +71,7 @@ const HomePage = () => {
           {isBoardId ? (
             <ScreenPage id={boardId} />
           ) : (
-            <div className={css.text__home}>
-              <p style={{ color: theme.screensPage.screenPageText }}>
-                Before starting your project, it is essential{' '}
-                <button
-                  style={{ color: theme.screensPage.screenPageSpan }}
-                  onClick={createBoard}
-                  className={css.button__home}
-                >
-                  to create a board
-                </button>{' '}
-                to visualize and track all the necessary tasks and milestones.
-                This board serves as a powerful tool to organize the workflow
-                and ensure effective collaboration among team members.
-              </p>
-            </div>
+            <HomePageView theme={theme} createBoard={createBoard} />
           )}
 
           {showModal && (
