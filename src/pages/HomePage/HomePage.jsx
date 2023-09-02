@@ -14,27 +14,33 @@ import { HomePageView, ScreenPage } from '../../components';
 const HomePage = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log('isMenuOpen:', isMenuOpen);
   const [showModal, setShowModal] = useState(false);
+  console.log('showModal:', showModal);
   const theme = useTheme();
   const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
 
   useEffect(() => {
     function handleResize() {
-      setIsMenuOpen(window.innerWidth >= 1440);
+      setIsMenuOpen(prevIsMenuOpen => {
+        if (showModal) {
+          return false;
+        } else {
+          return window.innerWidth >= 1440 ? true : prevIsMenuOpen;
+        }
+      });
     }
     window.addEventListener('resize', handleResize);
     handleResize();
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [showModal]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
-    if (window.innerWidth < 1440) {
-      toggleMenu();
-    }
   };
 
   const editBoard = id => {

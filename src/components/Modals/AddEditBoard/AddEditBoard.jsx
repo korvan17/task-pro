@@ -18,6 +18,7 @@ export default function AddEditBoard({ onClose, boardId }) {
   const [background, setBackground] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const board = useSelector(selectCurrentBoard);
+  console.log('board:', board);
 
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
@@ -74,7 +75,7 @@ export default function AddEditBoard({ onClose, boardId }) {
       </h3>
       <Formik
         initialValues={{
-          title: isEditing ? board.title : '',
+          title: isEditing ? board.title : 'your title',
           icon: isEditing ? board.icon : icon,
           background: isEditing ? board.background : background,
         }}

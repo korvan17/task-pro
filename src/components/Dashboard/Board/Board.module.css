@@ -42,6 +42,11 @@
   letter-spacing: -0.28px;
   margin-left: 4px;
 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+
   @media screen and (min-width: 768px) {
     margin-left: 8px;
   }

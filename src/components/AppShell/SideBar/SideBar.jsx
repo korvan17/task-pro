@@ -19,6 +19,7 @@ function SideBar({
   createBoard,
   editBoard,
 }) {
+  // console.log('isMenuOpen:', isMenuOpen)
   const [showNeedHelp, setShowNeedHelp] = useState(false);
 
   const navigate = useNavigate();
