@@ -287,7 +287,7 @@ export const violet = {
     background: colors.whiteColor,
     titleColor: colors.blackColor,
     closeIconColor: colors.blackColor,
-    inputBorderColor: colors.violetColor,
+    inputBorderColor: 'rgba(82, 85, 188, 0.4)',
     inputPlaceholderColor: colors.halfGrayColor,
     inputTextColor: colors.blackColor,
     iconsTextColor: colors.blackColor,
