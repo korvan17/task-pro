@@ -4,7 +4,7 @@
     display: flex;
     margin-bottom: 28px;
     justify-content: space-between;
-    font-family: 'Poppins-Medium';
+    font-family: Poppins;
     font-size: 16px;
     color: #fff;
     padding-bottom: 0;
@@ -15,7 +15,7 @@
   }
   
   .headerWrapper + div > * {
-    font-family: 'Poppins-Regular';
+    font-family: Poppins;
     font-weight: 500;
     font-size: 14px;
     line-height: calc(21 / 14);
@@ -78,7 +78,7 @@
     width: 23px;
     height: 23px;
     color: #fff;
-    font-family: 'Poppins-Medium';
+    font-family: Poppins;
     font-weight: 400;
     font-size: 14px;
     line-height: calc(18 / 14);

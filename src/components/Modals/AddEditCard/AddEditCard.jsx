@@ -2,12 +2,13 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import css from './AddEditCard.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 import ColorPicker from 'components/UIelements/ColorPicker/ColorPicker';
-import { AddIconButton, Calendar } from 'components';
+import { AddIconButton } from 'components';
 import { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { useDispatch } from 'react-redux';
 import { addCard, editCard } from 'redux/сard/сardOperations';
 import cardSchema from '../Schemas/cardSchema';
+import NewCalendar from 'components/UIelements/Calendar/NewCalendar';
 
 export default function AddEditCard({ isEditing, onClose, cardId }) {
   const theme = useTheme();
@@ -114,7 +115,7 @@ export default function AddEditCard({ isEditing, onClose, cardId }) {
             >
               Deadline
             </span>
-            <Calendar />
+              <NewCalendar />
           </div>
           <AddIconButton buttonType="submit" className={css.btn}>
             <span

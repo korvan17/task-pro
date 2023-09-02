@@ -5,7 +5,6 @@ import {
   Card,
   Column,
 } from 'components';
-// import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
 import { useState } from 'react';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
@@ -16,6 +15,7 @@ import { useEffect } from 'react';
 import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
 import { useParams } from 'react-router-dom';
+import { selectDisplays } from 'redux/displayType/displaySelectors';
 
 // 64f0a120f65c664a596fe318
 // 64f0a158f65c664a596fe31c
@@ -26,6 +26,14 @@ export function MainDashboard() {
   const board = useSelector(selectCurrentBoard);
   const dispatch = useDispatch();
   const { boardId } = useParams();
+  const display = useSelector(selectDisplays);
+  const columns = useSelector(state => state.columns.column);
+  const cards = useSelector(state => state.cards.card);
+
+  useEffect(() => {
+    console.log(display, cards, columns);
+    dispatch(getBoardByID(boardId));
+  }, [columns, cards, display, boardId, dispatch]);
 
   useEffect(() => {
     dispatch(getBoardByID(boardId));
@@ -57,7 +65,6 @@ export function MainDashboard() {
               <ul className={css.card__item}>
                 {column.cards.map(card => (
                   <li key={card._id}>
-                    {/* <CustomScrollbarCard></CustomScrollbarCard> */}
                     <Card
                       toggleModalCard={toggleModalCard}
                       deleteCard={handleDeleteCard}
@@ -68,17 +75,15 @@ export function MainDashboard() {
                     />
                   </li>
                 ))}
-                <li key="add-card-button">
-                  <div className={css.button__column}>
-                    <AddIconButton
-                      className={css.btn__card}
-                      pushButton={toggleModalCard}
-                      theme="dark"
-                    >
-                      <span className={css.btn__text}>Add another card</span>
-                    </AddIconButton>
-                  </div>
-                </li>
+                <div className={css.button__column}>
+                  <AddIconButton
+                    className={css.btn__card}
+                    pushButton={toggleModalCard}
+                    theme="dark"
+                  >
+                    <span className={css.btn__text}>Add another card</span>
+                  </AddIconButton>
+                </div>
               </ul>
             </li>
           ))}
