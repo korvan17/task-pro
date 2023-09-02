@@ -57,46 +57,48 @@ const HomePage = () => {
     <>
       <ScreenSizeInfo />
       <Header toggleMenu={toggleMenu} addModal={createBoard}></Header>
-      <SideBar
-        setIsMenuOpen={setIsMenuOpen}
-        isMenuOpen={isMenuOpen}
-        editBoard={editBoard}
-        createBoard={createBoard}
+      <div className={css.sideBarSectionContainer}>
+        <SideBar
+          setIsMenuOpen={setIsMenuOpen}
+          isMenuOpen={isMenuOpen}
+          editBoard={editBoard}
+          createBoard={createBoard}
 
-        // pushBoard={pushBoard}
-      ></SideBar>
+          // pushBoard={pushBoard}
+        ></SideBar>
 
-      {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
-      <section
-        style={{ background: theme.screensPage.background }}
-        className={css.section}
-      >
-        {isBoardId ? (
-          <ScreenPage id={boardId} />
-        ) : (
-          <div className={css.text__home}>
-            <p style={{ color: theme.screensPage.screenPageText }}>
-              Before starting your project, it is essential{' '}
-              <button
-                style={{ color: theme.screensPage.screenPageSpan }}
-                onClick={createBoard}
-                className={css.button__home}
-              >
-                to create a board
-              </button>{' '}
-              to visualize and track all the necessary tasks and milestones.
-              This board serves as a powerful tool to organize the workflow and
-              ensure effective collaboration among team members.
-            </p>
-          </div>
-        )}
+        {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
+        <section
+          style={{ background: theme.screensPage.background }}
+          className={css.section}
+        >
+          {isBoardId ? (
+            <ScreenPage id={boardId} />
+          ) : (
+            <div className={css.text__home}>
+              <p style={{ color: theme.screensPage.screenPageText }}>
+                Before starting your project, it is essential{' '}
+                <button
+                  style={{ color: theme.screensPage.screenPageSpan }}
+                  onClick={createBoard}
+                  className={css.button__home}
+                >
+                  to create a board
+                </button>{' '}
+                to visualize and track all the necessary tasks and milestones.
+                This board serves as a powerful tool to organize the workflow
+                and ensure effective collaboration among team members.
+              </p>
+            </div>
+          )}
 
-        {showModal && (
-          <BasicModal onClose={createBoard}>
-            <AddEditBoard onClose={toggleModal} boardId={boardId} />
-          </BasicModal>
-        )}
-      </section>
+          {showModal && (
+            <BasicModal onClose={createBoard}>
+              <AddEditBoard onClose={toggleModal} boardId={boardId} />
+            </BasicModal>
+          )}
+        </section>
+      </div>
     </>
   );
 };
