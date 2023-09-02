@@ -3,8 +3,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { getMonth, getYear } from 'date-fns';
 import s from './NewCalendar.module.css'; 
-import { CalendarButton } from 'newButton';
+import { CalendarButton } from './NewButton';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
 
 const NewCalendar = ({
   onDate = () => null,
@@ -28,6 +29,7 @@ const NewCalendar = ({
   useEffect(() => {
     onDate(startDate);
   }, [onDate, startDate]);
+  console.log(startDate)
 
   return (
     <DatePicker
@@ -65,7 +67,7 @@ const NewCalendar = ({
           </button>
           <div>
             <span>
-              {getYear(date)} {months[getMonth(date)]}
+            {months[getMonth(date)]} {getYear(date)}
             </span>
           </div>
           <button
@@ -81,4 +83,4 @@ const NewCalendar = ({
   );
 };
 
-export default NewCalendar;
+export default NewCalendar
