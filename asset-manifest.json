@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/task-pro/static/css/main.aa781770.css",
-    "main.js": "/task-pro/static/js/main.d63b51c6.js",
-    "static/js/923.ec1e98e9.chunk.js": "/task-pro/static/js/923.ec1e98e9.chunk.js",
+    "main.css": "/task-pro/static/css/main.123d5e08.css",
+    "main.js": "/task-pro/static/js/main.2d913690.js",
+    "static/js/923.5679d64a.chunk.js": "/task-pro/static/js/923.5679d64a.chunk.js",
     "static/media/desk-boy-img-2x.png": "/task-pro/static/media/desk-boy-img-2x.85ff1ceebffd6ac3a88e.png",
     "static/media/tablet-boy-img-2x.png": "/task-pro/static/media/tablet-boy-img-2x.85ff1ceebffd6ac3a88e.png",
     "static/media/mob-boy-img-2x.png": "/task-pro/static/media/mob-boy-img-2x.6917064cc6ab875894da.png",
@@ -11,12 +11,12 @@
     "static/media/sprite.svg": "/task-pro/static/media/sprite.da2c516b03bd938e3890954b16070add.svg",
     "static/media/mob-boy-img-1x.png": "/task-pro/static/media/mob-boy-img-1x.c44fa053d6a82a454bbb.png",
     "index.html": "/task-pro/index.html",
-    "main.aa781770.css.map": "/task-pro/static/css/main.aa781770.css.map",
-    "main.d63b51c6.js.map": "/task-pro/static/js/main.d63b51c6.js.map",
-    "923.ec1e98e9.chunk.js.map": "/task-pro/static/js/923.ec1e98e9.chunk.js.map"
+    "main.123d5e08.css.map": "/task-pro/static/css/main.123d5e08.css.map",
+    "main.2d913690.js.map": "/task-pro/static/js/main.2d913690.js.map",
+    "923.5679d64a.chunk.js.map": "/task-pro/static/js/923.5679d64a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aa781770.css",
-    "static/js/main.d63b51c6.js"
+    "static/css/main.123d5e08.css",
+    "static/js/main.2d913690.js"
   ]
 }
