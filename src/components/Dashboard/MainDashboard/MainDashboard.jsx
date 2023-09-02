@@ -16,7 +16,7 @@ import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
 import { useParams } from 'react-router-dom';
 import { selectDisplays } from 'redux/displayType/displaySelectors';
-import { selectColumnId, setColumnId, setModalStatus } from 'redux/modalSlice';
+import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { useTheme } from '@emotion/react';
 
