@@ -6,6 +6,7 @@ import s from './NewCalendar.module.css';
 import { CalendarButton } from './NewButton';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
+
 const NewCalendar = ({
   onDate = () => null,
   deadline = String(new Date()),
@@ -82,4 +83,4 @@ const NewCalendar = ({
   );
 };
 
-export default NewCalendar;
+export default NewCalendar
