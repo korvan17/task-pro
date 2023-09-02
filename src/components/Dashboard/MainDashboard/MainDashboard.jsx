@@ -20,9 +20,6 @@ import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { useTheme } from '@emotion/react';
 
-// 64f0a120f65c664a596fe318
-// 64f0a158f65c664a596fe31c
-// 64f0a169f65c664a596fe320
 export function MainDashboard() {
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
@@ -84,7 +81,7 @@ export function MainDashboard() {
 
   return (
     <div className={css.board__main}>
-      {board?.columns.length > 0 && (
+      {board?.columns[0]?._id !== undefined && (
         <ul className={css.column__item}>
           {board.columns.map(column => (
             <li key={column._id} className={css.column__list}>
