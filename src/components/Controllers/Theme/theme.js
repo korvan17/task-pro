@@ -108,6 +108,7 @@ export const light = {
     buttonIconBackground: colors.blackColor,
     buttonIconPlusFill: colors.whiteColor,
     buttonTextColor: colors.blackColor,
+    deadLineDateColor: colors.greenColor
   },
 };
 
@@ -202,6 +203,7 @@ export const dark = {
     buttonIconBackground: colors.blackColor,
     buttonIconPlusFill: colors.whiteColor,
     buttonTextColor: colors.blackColor,
+    deadLineDateColor: colors.greenColor
   },
 };
 
@@ -296,5 +298,6 @@ export const violet = {
     buttonIconBackground: colors.whiteColor,
     buttonIconPlusFill: colors.blackColor,
     buttonTextColor: colors.whiteColor,
+    deadLineDateColor: colors.violetColor
   },
 };
