@@ -9,13 +9,15 @@ import { useDispatch } from 'react-redux';
 import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
 import { ScreenPage } from 'pages';
+import { useParams } from 'react-router-dom';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const theme = useTheme();
-  const [boardId, setBoardId] = useState(null);
+  // const [boardId, setBoardId] = useState(null);
+  const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const HomePage = () => {
   const editBoard = id => {
     toggleModal();
     dispatch(setModalStatus(true));
-    setBoardId(id);
+    // setBoardId(id);
   };
 
   const createBoard = () => {
