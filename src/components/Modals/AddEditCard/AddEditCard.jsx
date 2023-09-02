@@ -99,7 +99,6 @@ export default function AddEditCard({ isEditing, onClose, cardId }) {
               style={{
                 color: theme.popUp.inputTextColor,
                 borderColor: theme.popUp.inputBorderColor,
-                '::placeholder': { color: theme.popUp.inputPlaceholderColor },
               }}
               className={css.textarea}
               type="text"

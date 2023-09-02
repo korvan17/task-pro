@@ -44,7 +44,10 @@ export default function FIlter() {
         </button>
       </div>
       <div
-        style={{ background: theme.screensPage.filtersMenuBackground }}
+        style={{
+          background: theme.screensPage.filtersMenuBackground,
+          borderColor: theme.popUp.inputBorderColor,
+        }}
         className={css.filtersChangerContainer}
         hidden={!isFiltersVisible}
       >
