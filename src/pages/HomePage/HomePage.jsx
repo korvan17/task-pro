@@ -21,20 +21,24 @@ const HomePage = () => {
 
   useEffect(() => {
     function handleResize() {
-      setIsMenuOpen(window.innerWidth >= 1440);
+      setIsMenuOpen(prevIsMenuOpen => {
+        if (showModal) {
+          return false;
+        } else {
+          return window.innerWidth >= 1440 ? true : prevIsMenuOpen;
+        }
+      });
     }
     window.addEventListener('resize', handleResize);
     handleResize();
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [showModal]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
-    if (window.innerWidth < 1440) {
-      toggleMenu();
-    }
   };
 
   const createBoard = () => {
