@@ -263,8 +263,8 @@ export const violet = {
     addColumnButtonIconPlusFill: colors.whiteColor,
     addColumnButtonTextColor: colors.blackColor,
     columnTitleColor: colors.blackColor,
-    columnTitlePencilFill: colors.halfWhiteColor,
-    columnTitleTrashFill: colors.halfWhiteColor,
+    columnTitlePencilFill: colors.halfGrayColor,
+    columnTitleTrashFill: colors.halfGrayColor,
   },
   card: {
     background: colors.whiteColor,
@@ -298,6 +298,6 @@ export const violet = {
     buttonIconBackground: colors.whiteColor,
     buttonIconPlusFill: colors.blackColor,
     buttonTextColor: colors.whiteColor,
-    deadLineDateColor: colors.violetColor
+    deadLineDateColor: colors.violetColor,
   },
 };
