@@ -18,6 +18,7 @@ import { useTheme } from '@emotion/react';
  *  <Buttons className="buttonCSS" buttonType="button" stylization="transparent">Click me</Buttons>
  */
 export default function Buttons({
+  columnId,
   className,
   buttonType = 'button',
   stylization = 'color',
@@ -38,7 +39,7 @@ export default function Buttons({
 
   return (
     <button
-      onClick={pushButton}
+      onClick={columnId ? () => pushButton(columnId) : pushButton}
       style={{ background: theme.popUp.buttonBackground }}
       className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}

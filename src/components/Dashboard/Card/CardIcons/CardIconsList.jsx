@@ -5,6 +5,8 @@ import { IconButton } from 'components';
 import CardMoveModal from '../CardMoveModal/CardMoveModal';
 
 export default function CardIconsList({
+  cardId,
+  columnId,
   className,
   toggleModalCard,
   deleteCard,
@@ -28,7 +30,7 @@ export default function CardIconsList({
       </li>
       <li className={css.iconButtonItem}>
         <IconButton
-          pushButton={deleteCard}
+          pushButton={() => deleteCard(cardId)}
           svg={<use xlinkHref={`${sprite}#icon-trash`} />}
           size={16}
           className={css.icon}

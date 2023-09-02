@@ -15,6 +15,8 @@ export default function AddEditCard({ onClose, columnId, cardId }) {
   const dispatch = useDispatch();
   const [color, setColor] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
+  const currentColumnId = useSelector(state => state.modal.columnId);
+  console.log(currentColumnId);
 
   const handleSelectedColorChange = selectedColor => {
     setColor(selectedColor);
@@ -27,9 +29,9 @@ export default function AddEditCard({ onClose, columnId, cardId }) {
           addCard({
             title: values.title,
             description: values.description,
-            color,
+            // color: color,
             deadline: '',
-            column: columnId,
+            column: currentColumnId,
           })
         );
       } else {
