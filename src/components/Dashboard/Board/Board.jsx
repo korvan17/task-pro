@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Board = ({ board, editBoard }) => {
   const dispatch = useDispatch();
+
   const deleteBoardBtn = boardId => {
     dispatch(deleteBoard(boardId));
   };
@@ -35,7 +36,10 @@ const Board = ({ board, editBoard }) => {
           <button
             type="button"
             className={css.boardBtn}
-            onClick={() => deleteBoardBtn(board._id)}
+            onClick={e => {
+              e.preventDefault();
+              deleteBoardBtn(board._id);
+            }}
           >
             <svg width="16" height="16" className={css.boardIconBtns}>
               <use xlinkHref={`${sprite}#icon-trash`} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import css from './HomePage.module.css';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import { AddEditBoard, SideBar } from 'components';
+import { AddEditBoard, EditProfile, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
@@ -9,13 +9,15 @@ import { useDispatch } from 'react-redux';
 import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
 import { ScreenPage } from 'pages';
+import { useParams } from 'react-router-dom';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const theme = useTheme();
-  const [boardId, setBoardId] = useState(null);
+  // const [boardId, setBoardId] = useState(null);
+  const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const HomePage = () => {
   const editBoard = id => {
     toggleModal();
     dispatch(setModalStatus(true));
-    setBoardId(id);
+    // setBoardId(id);
   };
 
   const createBoard = () => {
@@ -54,7 +56,7 @@ const HomePage = () => {
   return (
     <>
       <ScreenSizeInfo />
-      <Header toggleMenu={toggleMenu}></Header>
+      <Header toggleMenu={toggleMenu} addModal={addModal}></Header>
       <SideBar
         setIsMenuOpen={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
