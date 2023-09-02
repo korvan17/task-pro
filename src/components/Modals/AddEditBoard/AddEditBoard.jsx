@@ -9,31 +9,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
 import { useTheme } from '@emotion/react';
 import boardSchema from '../Schemas/boardSchema';
-// import { selectModalStatus } from 'redux/modalSlice';
+import { selectCurrentBoard } from 'redux/boards/selectors';
 
 export default function AddEditBoard({ onClose, boardId }) {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const [icon, setIcon] = useState('');
-  let [background, setBackground] = useState('');
-  const isModalShow = useSelector(state => state.modal.isModalDisplayed);
-  // const isModalShow = useSelector(selectModalStatus);
+  const [icon, setIcon] = useState('icon-board-icon-1');
+  const [background, setBackground] = useState('');
+  const isEditing = useSelector(state => state.modal.isModalDisplayed);
+  const board = useSelector(selectCurrentBoard);
 
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
   };
 
-  if (background === 'default') {
-    background = '';
-  }
-
   const handleSelectedBackgroundChange = selectedBackground => {
-    setBackground(selectedBackground);
+    if (selectedBackground === 'default') {
+      setBackground('');
+    } else {
+      setBackground(selectedBackground);
+    }
   };
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      if (!isModalShow) {
+      if (!isEditing) {
         await dispatch(
           addBoard({
             title: values.title,
@@ -47,7 +47,7 @@ export default function AddEditBoard({ onClose, boardId }) {
             title: values.title,
             background: background,
             icon: icon,
-            boardId,
+            id: boardId,
           })
         );
       }
@@ -70,13 +70,13 @@ export default function AddEditBoard({ onClose, boardId }) {
         </svg>
       </button>
       <h3 style={{ color: theme.popUp.titleColor }} className={css.titleBoard}>
-        {!isModalShow ? 'New board' : 'Edit board'}
+        {!isEditing ? 'New board' : 'Edit board'}
       </h3>
       <Formik
         initialValues={{
-          title: '',
-          icon: icon,
-          background: background,
+          title: isEditing ? board.title : '',
+          icon: isEditing ? board.icon : icon,
+          background: isEditing ? board.background : background,
         }}
         onSubmit={handleSubmit}
         validationSchema={boardSchema}
@@ -99,9 +99,13 @@ export default function AddEditBoard({ onClose, boardId }) {
               placeholder="Title"
             />
           </label>
-          <IconPicker onSelectedIconChange={handleSelectedIconChange} />
+          <IconPicker
+            onSelectedIconChange={handleSelectedIconChange}
+            defaultIcon={isEditing ? board.icon : icon}
+          />
           <BackgroundPicker
             onSelectedBackgroundChange={handleSelectedBackgroundChange}
+            defaultBackground={isEditing ? board.background : background}
           />
           <AddIconButton
             buttonType="submit"
@@ -112,7 +116,7 @@ export default function AddEditBoard({ onClose, boardId }) {
               style={{ color: theme.popUp.buttonTextColor }}
               className={css.btnSumbitAction}
             >
-              {!isModalShow ? 'Create' : 'Edit'}
+              {!isEditing ? 'Create' : 'Edit'}
             </span>
           </AddIconButton>
         </Form>
