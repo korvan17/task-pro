@@ -7,7 +7,7 @@ import { throttle } from 'lodash';
 
 function ScreenSizeInfo() {
   const dispatch = useDispatch();
-  const handleResizeThrottled = throttle(handleResize, 1000); // Throttle the function
+  const handleResizeThrottled = throttle(handleResize, 300); // Throttle the function
 
   async function handleResize() {
     const lastDisplayType = getDisplayType();
