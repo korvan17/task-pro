@@ -1,5 +1,7 @@
 /* .headerWrapper */
 .headerWrapper {
+    margin-left: auto;
+    margin-right: auto;
     width: 201px;
     display: flex;
     margin-bottom: 28px;
@@ -59,9 +61,9 @@
   
   /* .popperCustomClass */
   .popperCustomClass {
-    width: 233px;
+    width: 230px;
     height: 254px;
-    padding: 18px;
+    padding: 8px;
     overflow: hidden;
     border: 1px solid #bedbb0;
     border-radius: 8px;

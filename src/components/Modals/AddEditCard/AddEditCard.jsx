@@ -23,6 +23,7 @@ export default function AddEditCard({ onClose, cardId }) {
   };
 
   const handleDateChange = selectedDate => {
+    console.log(selectedDate)
     setDeadline(selectedDate);
   };
 
