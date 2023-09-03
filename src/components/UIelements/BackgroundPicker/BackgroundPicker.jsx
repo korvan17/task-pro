@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import css from './BackgroundPicker.module.css';
+import IconForModal from '../IcansForModal/IconsForModal';
 // import * as BackgroundImages from '../../../icons/backgounds';
 
 const BackgroundPicker = ({
   onSelectedBackgroundChange,
   defaultBackground,
 }) => {
-  const backgrounds = [
-    { id: 1, name: 'default' },
-    { id: 2, name: 'tree' },
-    { id: 3, name: 'triler' },
-    { id: 4, name: 'spheres' },
-    { id: 5, name: 'semimoon' },
-    { id: 6, name: 'sea' },
-    { id: 7, name: 'rocks' },
-    { id: 8, name: 'mountains' },
-    { id: 9, name: 'leaves' },
-    { id: 10, name: 'fullmoon' },
-    { id: 11, name: 'flowers' },
-    { id: 12, name: 'clouds' },
-    { id: 13, name: 'cave' },
-    { id: 14, name: 'boat' },
-    { id: 15, name: 'balloonFar' },
-    { id: 16, name: 'balloonClose' },
-  ];
+  // const backgrounds = [
+  //   { id: 1, name: 'default' },
+  //   { id: 2, name: 'tree' },
+  //   { id: 3, name: 'triler' },
+  //   { id: 4, name: 'spheres' },
+  //   { id: 5, name: 'semimoon' },
+  //   { id: 6, name: 'sea' },
+  //   { id: 7, name: 'rocks' },
+  //   { id: 8, name: 'mountains' },
+  //   { id: 9, name: 'leaves' },
+  //   { id: 10, name: 'fullmoon' },
+  //   { id: 11, name: 'flowers' },
+  //   { id: 12, name: 'clouds' },
+  //   { id: 13, name: 'cave' },
+  //   { id: 14, name: 'boat' },
+  //   { id: 15, name: 'balloonFar' },
+  //   { id: 16, name: 'balloonClose' },
+  // ];
 
   const [selectedBackground, setSelectedBackground] =
     useState(defaultBackground);
@@ -45,7 +46,11 @@ const BackgroundPicker = ({
         Background
       </span>
       <div className={css.backgroundsField}>
-        {backgrounds.map((background, index) => (
+        <IconForModal
+          handleBackground={handleBackground}
+          selectedBackground={selectedBackground}
+        />
+        {/* {backgrounds.map((background, index) => (
           <button
             type="button"
             key={background.id}
@@ -71,7 +76,7 @@ const BackgroundPicker = ({
               }`}
             />
           </button>
-        ))}
+        ))} */}
       </div>
     </div>
   );
