@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { getMonth, getYear } from 'date-fns';
-import s from './NewCalendar.module.css'; 
+import s from './NewCalendar.module.css';
 import { CalendarButton } from './NewButton';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-
 
 const NewCalendar = ({
   onDate = () => null,
   deadline = String(new Date()),
+  onDateChange,
 }) => {
   const [startDate, setStartDate] = useState(deadline);
   const months = [
@@ -29,26 +29,29 @@ const NewCalendar = ({
   useEffect(() => {
     onDate(startDate);
   }, [onDate, startDate]);
-  console.log(startDate)
+  // console.log(startDate)
 
   return (
     <DatePicker
       dateFormat="yyyy, MMMM ,d"
       selected={Date.parse(startDate)}
-      calendarClassName={s.calendarContainer} 
-      popperClassName={s.popperCustomClass} 
+      calendarClassName={s.calendarContainer}
+      popperClassName={s.popperCustomClass}
       calendarStartDay={1}
       customInput={
         <CalendarButton
           value={String(startDate)}
-          onClick={(e) => {
+          onClick={e => {
             console.log(e.target);
           }}
         />
       }
-      onChange={(date) => setStartDate(String(date))}
+      onChange={date => {
+        setStartDate(String(date));
+        onDateChange(date);
+      }}
       minDate={new Date()}
-      wrapperClassName={s.calendar} 
+      wrapperClassName={s.calendar}
       weekNumber={5}
       renderCustomHeader={({
         date,
@@ -57,7 +60,7 @@ const NewCalendar = ({
         prevMonthButtonDisabled,
         nextMonthButtonDisabled,
       }) => (
-        <div className={s.headerWrapper}> 
+        <div className={s.headerWrapper}>
           <button
             onClick={decreaseMonth}
             disabled={prevMonthButtonDisabled}
@@ -67,7 +70,7 @@ const NewCalendar = ({
           </button>
           <div>
             <span>
-            {months[getMonth(date)]} {getYear(date)}
+              {months[getMonth(date)]} {getYear(date)}
             </span>
           </div>
           <button
@@ -83,4 +86,4 @@ const NewCalendar = ({
   );
 };
 
-export default NewCalendar
+export default NewCalendar;
