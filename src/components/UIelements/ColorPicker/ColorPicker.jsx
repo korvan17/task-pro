@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import css from './ColorPicker.module.css';
 
-const ColorPicker = ({ onSelectedColorChange }) => {
+const ColorPicker = ({ onSelectedPriorityChange }) => {
   const colors = [
     { id: 1, priority: 'low', color: '#8FA1D0' },
     { id: 2, priority: 'medium', color: '#E09CB5' },
@@ -14,8 +14,8 @@ const ColorPicker = ({ onSelectedColorChange }) => {
   const [selectedColor, setSelectedColor] = useState(defaultColor);
 
   const handleColorChange = color => {
-    setSelectedColor(color);
-    onSelectedColorChange(color);
+    setSelectedColor(color.color);
+    onSelectedPriorityChange(color.priority);
   };
 
   return (
@@ -31,7 +31,7 @@ const ColorPicker = ({ onSelectedColorChange }) => {
               name="priority"
               value={color.priority}
               checked={selectedColor === color.color}
-              onChange={() => handleColorChange(color.color)}
+              onChange={() => handleColorChange(color)}
               style={{ display: 'none' }}
             />
             <span

@@ -10,16 +10,20 @@ import { addCard, editCard } from 'redux/сard/сardOperations';
 import cardSchema from '../Schemas/cardSchema';
 import NewCalendar from 'components/UIelements/Calendar/NewCalendar';
 
-export default function AddEditCard({ onClose, columnId, cardId }) {
+export default function AddEditCard({ onClose, cardId }) {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const [color, setColor] = useState('');
+  const [priority, setPriority] = useState('without');
+  const [deadline, setDeadline] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);
-  console.log(currentColumnId);
 
-  const handleSelectedColorChange = selectedColor => {
-    setColor(selectedColor);
+  const handleSelectedPriorityChange = selectedPriority => {
+    setPriority(selectedPriority);
+  };
+
+  const handleDateChange = selectedDate => {
+    setDeadline(selectedDate);
   };
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -29,8 +33,8 @@ export default function AddEditCard({ onClose, columnId, cardId }) {
           addCard({
             title: values.title,
             description: values.description,
-            // color: color,
-            deadline: '',
+            priority: priority,
+            deadline: deadline,
             column: currentColumnId,
           })
         );
@@ -39,7 +43,8 @@ export default function AddEditCard({ onClose, columnId, cardId }) {
           editCard({
             title: values.title,
             description: values.description,
-            color,
+            priority: priority,
+            deadline: deadline,
             cardId,
           })
         );
@@ -69,7 +74,6 @@ export default function AddEditCard({ onClose, columnId, cardId }) {
         initialValues={{
           title: '',
           description: '',
-          color: '',
         }}
         onSubmit={handleSubmit}
         validationSchema={cardSchema}
@@ -112,7 +116,9 @@ export default function AddEditCard({ onClose, columnId, cardId }) {
               placeholder="Description"
             />
           </label>
-          <ColorPicker onSelectedColorChange={handleSelectedColorChange} />
+          <ColorPicker
+            onSelectedPriorityChange={handleSelectedPriorityChange}
+          />
           <div>
             <span
               style={{ color: theme.popUp.iconsTextColor }}
@@ -120,7 +126,7 @@ export default function AddEditCard({ onClose, columnId, cardId }) {
             >
               Deadline
             </span>
-            <NewCalendar />
+            <NewCalendar onDateChange={handleDateChange} />
           </div>
           <AddIconButton buttonType="submit" className={css.btn}>
             <span
