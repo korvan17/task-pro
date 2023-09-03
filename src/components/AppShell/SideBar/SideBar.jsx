@@ -66,62 +66,64 @@ function SideBar({
       className={isMenuOpen ? css.openSideBar : css.sideBar}
       ref={menuRef}
     >
-      <div className={css.header}>
-        <svg
-          style={{
-            '--color1': theme.sidebar.logoFill,
-            '--color2': theme.sidebar.logoFlashColor,
-          }}
-          width="32"
-          height="32"
-        >
-          <use xlinkHref={`${sprite}#icon-logo`} />
-        </svg>
-        <h2
-          style={{ color: theme.sidebar.logoTextColor }}
-          className={css.headerTitle}
-        >
-          Task Pro
-        </h2>
-      </div>
-      <div className={css.boards}>
-        <h3
-          style={{ color: theme.sidebar.myBoardsColor }}
-          className={css.boardsTitle}
-        >
-          My boards
-        </h3>
-        <div
-          style={{
-            borderColor: theme.sidebar.separatorLineColor,
-          }}
-          className={css.createBoard}
-        >
-          <span
+      <div className={css.HeaderNewBoardContainer}>
+        <div className={css.header}>
+          <svg
             style={{
-              color: theme.sidebar.createBoardColor,
+              '--color1': theme.sidebar.logoFill,
+              '--color2': theme.sidebar.logoFlashColor,
             }}
-            className={css.createBoardText}
+            width="32"
+            height="32"
           >
-            Create a new board
-          </span>
-          <button
+            <use xlinkHref={`${sprite}#icon-logo`} />
+          </svg>
+          <h2
+            style={{ color: theme.sidebar.logoTextColor }}
+            className={css.headerTitle}
+          >
+            Task Pro
+          </h2>
+        </div>
+        <div className={css.boards}>
+          <h3
+            style={{ color: theme.sidebar.myBoardsColor }}
+            className={css.boardsTitle}
+          >
+            My boards
+          </h3>
+          <div
             style={{
-              backgroundColor: theme.sidebar.createButtonBackground,
+              borderColor: theme.sidebar.separatorLineColor,
             }}
-            onClick={createBoard}
-            className={css.createBoardButton}
+            className={css.createBoard}
           >
-            <svg width="20" height="20">
-              <use
-                style={{
-                  stroke: theme.sidebar.createButtonPlusFill,
-                }}
-                className={css.addIcon}
-                xlinkHref={`${sprite}#icon-add`}
-              />
-            </svg>
-          </button>
+            <span
+              style={{
+                color: theme.sidebar.createBoardColor,
+              }}
+              className={css.createBoardText}
+            >
+              Create a new board
+            </span>
+            <button
+              style={{
+                backgroundColor: theme.sidebar.createButtonBackground,
+              }}
+              onClick={createBoard}
+              className={css.createBoardButton}
+            >
+              <svg width="20" height="20">
+                <use
+                  style={{
+                    stroke: theme.sidebar.createButtonPlusFill,
+                  }}
+                  className={css.addIcon}
+                  xlinkHref={`${sprite}#icon-add`}
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
