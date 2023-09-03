@@ -118,6 +118,13 @@
     border: none;
     background-color: #1f1f1f;
   }
+
+  /* highlight for current date if chossen another day */
+ .popperCustomClass > div div > div + div > div *[aria-current="date"] {
+  border: 1px solid #bedbb0;
+  border-radius: 50%;
+}
+
   
   /* Global Styles */
   :global .react-datepicker-popper {
