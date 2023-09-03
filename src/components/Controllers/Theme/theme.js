@@ -64,7 +64,7 @@ export const light = {
     filtersMenuRadioTextColor: colors.halfGrayColor,
     filtersMenuSelectedRadioTextColor: colors.blackColor,
     screenPageText: colors.textColor,
-    screenPageSpan: colors.greenColor,
+    screenPageSpan: '#52c11a',
   },
   mainDashBoard: {
     titleTextColor: colors.blackColor,
