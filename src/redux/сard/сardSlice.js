@@ -68,6 +68,4 @@ const cardsSlice = createSlice({
   },
 });
 
-// export const {  } = cardsSlice.actions;
-
 export const cardsReducer = cardsSlice.reducer;
