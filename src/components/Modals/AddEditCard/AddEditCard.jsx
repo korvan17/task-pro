@@ -14,11 +14,16 @@ export default function AddEditCard({ onClose, cardId }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [priority, setPriority] = useState('without');
+  const [deadline, setDeadline] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);
 
   const handleSelectedPriorityChange = selectedPriority => {
     setPriority(selectedPriority);
+  };
+
+  const handleDateChange = selectedDate => {
+    setDeadline(selectedDate);
   };
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -29,7 +34,7 @@ export default function AddEditCard({ onClose, cardId }) {
             title: values.title,
             description: values.description,
             priority: priority,
-            deadline: '',
+            deadline: deadline,
             column: currentColumnId,
           })
         );
@@ -39,7 +44,7 @@ export default function AddEditCard({ onClose, cardId }) {
             title: values.title,
             description: values.description,
             priority: priority,
-            deadline: '',
+            deadline: deadline,
             cardId,
           })
         );
@@ -69,7 +74,6 @@ export default function AddEditCard({ onClose, cardId }) {
         initialValues={{
           title: '',
           description: '',
-          color: '',
         }}
         onSubmit={handleSubmit}
         validationSchema={cardSchema}
@@ -122,7 +126,7 @@ export default function AddEditCard({ onClose, cardId }) {
             >
               Deadline
             </span>
-            <NewCalendar />
+            <NewCalendar onDateChange={handleDateChange} />
           </div>
           <AddIconButton buttonType="submit" className={css.btn}>
             <span
