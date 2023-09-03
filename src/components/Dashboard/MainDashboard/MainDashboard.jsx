@@ -80,7 +80,7 @@ export function MainDashboard() {
   };
 
   return (
-    <div className={css.board__main}>
+    <section className={css.board__main}>
       {board?.columns[0]?._id !== undefined && (
         <ul className={css.column__item}>
           {board.columns.map(column => (
@@ -105,22 +105,22 @@ export function MainDashboard() {
                     />
                   </li>
                 ))}
-                <div className={css.button__column}>
-                  <AddIconButton
-                    columnId={column._id}
-                    className={css.btn__card}
-                    pushButton={createCard}
-                    theme="dark"
-                  >
-                    <span
-                      style={{ color: theme.popUp.buttonTextColor }}
-                      className={css.btn__text}
-                    >
-                      Add another card
-                    </span>
-                  </AddIconButton>
-                </div>
               </ul>
+              <div className={css.button__column}>
+                <AddIconButton
+                  columnId={column._id}
+                  className={css.btn__card}
+                  pushButton={createCard}
+                  theme="dark"
+                >
+                  <span
+                    style={{ color: theme.popUp.buttonTextColor }}
+                    className={css.btn__text}
+                  >
+                    Add another card
+                  </span>
+                </AddIconButton>
+              </div>
             </li>
           ))}
         </ul>
@@ -146,6 +146,6 @@ export function MainDashboard() {
           <AddEditCard onClose={toggleModalCard} />
         </BasicModal>
       )}
-    </div>
+    </section>
   );
 }
