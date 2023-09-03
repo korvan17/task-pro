@@ -14,6 +14,15 @@
   
   .headerWrapper + div {
     width: 201px;
+    margin-right: 0;
+
+  }
+
+  .headerWrapper + div {
+
+    margin-left: auto;
+    margin-right: auto;
+
   }
   
   .headerWrapper + div > * {
@@ -26,7 +35,7 @@
     color: #fff;
     margin-bottom: 11px;
   }
-  
+
   .headerWrapper::after {
     content: '';
     position: absolute;
