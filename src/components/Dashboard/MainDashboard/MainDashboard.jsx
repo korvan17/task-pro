@@ -19,9 +19,6 @@ import {
   Card,
   Column,
 } from 'components';
-import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import { useTheme } from '@emotion/react';
-import css from './MainDashboard.module.css';
 
 export function MainDashboard() {
   const dispatch = useDispatch();
