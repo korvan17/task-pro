@@ -20,6 +20,26 @@
     background-color: #1f1f1f;
   }
 }
+
+.selectedBoard {
+  position: relative;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    width: 4px;
+    height: 61px;
+    background-color: #bedbb0;
+    /* display: block; */
+    /* border-radius: 10% 0 0 10%; */
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
 .boardIconTittleContainer {
   display: flex;
 }

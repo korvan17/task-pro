@@ -5,6 +5,8 @@ import sprite from '../../../icons/sprite.svg';
 import css from './Header.module.css';
 import { EditProfile, Theme } from 'components';
 import { useSelector } from 'react-redux';
+
+
 export default function Header({ toggleMenu }) {
   const [showEditProfile, setShowEditProfile] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
