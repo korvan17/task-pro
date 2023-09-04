@@ -10,6 +10,7 @@ import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
 import { useParams } from 'react-router-dom';
 import { HomePageView, ScreenPage } from '../../components';
+import { setNewBoardCreate } from '../../redux/modalSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const HomePage = () => {
 
   const createBoard = () => {
     dispatch(setModalStatus(false));
+    dispatch(setNewBoardCreate(true));
     toggleModal();
   };
 

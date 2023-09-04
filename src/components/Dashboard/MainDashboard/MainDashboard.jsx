@@ -10,31 +10,51 @@ import { useState } from 'react';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { deleteCard } from '../../../redux/сard/сardOperations';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { useEffect } from 'react';
 import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { selectDisplays } from 'redux/displayType/displaySelectors';
 import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { useTheme } from '@emotion/react';
+import { setNewBoardCreate } from '../../../redux/modalSlice';
 
 export function MainDashboard() {
+  const dispatch = useDispatch();
+  const { boardId } = useParams();
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
   const [currentColumnId, setCurrentColumnId] = useState(null);
+  const [setSearchParams] = useSearchParams();
+
   const board = useSelector(selectCurrentBoard);
-  const dispatch = useDispatch();
-  const { boardId } = useParams();
   const display = useSelector(selectDisplays);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
+  const newBoardCreate = useSelector(state => state.modal.newBoardCreate);
   const theme = useTheme();
 
   useEffect(() => {
-    dispatch(getBoardByID(boardId));
-  }, [isLoadingColumns, isLoadingCards, display, boardId, dispatch]);
+    if (isLoadingCards || isLoadingColumns) {
+      dispatch(getBoardByID(boardId));
+    }
+    if (newBoardCreate) {
+      dispatch(setNewBoardCreate(false));
+      const idNewBoard = board[0]._id;
+      setSearchParams({ boardId: idNewBoard });
+      console.log(idNewBoard);
+    }
+  }, [
+    newBoardCreate,
+    isLoadingColumns,
+    isLoadingCards,
+    display,
+    boardId,
+    board,
+    dispatch,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
     dispatch(getBoardByID(boardId));
