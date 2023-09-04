@@ -5,6 +5,7 @@
     width: 201px;
     display: flex;
     margin-bottom: 28px;
+    margin-top: 10px;
     justify-content: space-between;
     font-family: Poppins;
     font-size: 16px;
@@ -53,6 +54,10 @@
     color: #ffff;
     cursor: pointer;
   }
+
+  .nextMonthBtn {
+    color: #bedbb0 !important;
+  }
   
   /* .calendarConatiner */
   .calendarConatiner {
@@ -68,6 +73,7 @@
   .calendarConatiner > :first-child {
     display: none;
   }
+
   
   /* .popperCustomClass */
   .popperCustomClass {
@@ -150,3 +156,4 @@
   :global .react-datepicker-popper[data-placement^='bottom'] {
     padding-top: 18px;
   }
+
