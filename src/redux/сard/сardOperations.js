@@ -23,13 +23,12 @@ export const addCard = createAsyncThunk(
 
 export const deleteCard = createAsyncThunk(
   'cards/deleteCard',
-  async (task, thunkAPI) => {
-    const { _id } = task;
+  async (id, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
-      await axios.delete(`/cards/${_id}`);
-      return task;
+      await axios.delete(`/cards/${id}`);
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -38,11 +37,16 @@ export const deleteCard = createAsyncThunk(
 
 export const editCard = createAsyncThunk(
   'cards/editCard',
-  async (task, thunkAPI) => {
+  async ({ title, description, priority, deadline, id }, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
-      const response = await axios.put(`/cards/${task._id}`, task);
+      const response = await axios.put(`/cards/${id}`, {
+        title,
+        description,
+        priority,
+        deadline,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
