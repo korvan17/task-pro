@@ -4,7 +4,7 @@ import css from './SideBar.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectBoards } from 'redux/boards/selectors';
+import { selectBoards, selectCurrentBoard } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +18,10 @@ function SideBar({
   pushBoard,
   createBoard,
   editBoard,
+  toggleMenu,
 }) {
   const [showNeedHelpModal, setShowNeedHelpModal] = useState(false);
+  // const currentBoard = useState(selectCurrentBoard)
 
   const navigate = useNavigate();
   const theme = useTheme();
@@ -39,6 +41,7 @@ function SideBar({
       setIsMenuOpen(false);
     }
   };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -52,15 +55,28 @@ function SideBar({
   };
 
   const toggleNeedHelpModal = () => {
-    console.log('needHelpBtn');
     setShowNeedHelpModal(!showNeedHelpModal);
   };
 
   const clickNeedHelp = () => {
     toggleNeedHelpModal();
-    console.log('clickNeedHelp');
-    dispatch(setModalStatus(true));
   };
+
+  const openNeedHelp = () => {
+    toggleNeedHelpModal();
+    toggleMenu();
+  };
+
+  const closeNeedHelp = () => {
+    toggleNeedHelpModal();
+  };
+
+  // const handleBoardClick = boardId => {
+  //   setSelectedBoard(boardId);
+
+  //   console.log('handleBoardClick');
+  //   console.log(boardId);
+  // };
 
   return (
     <div
@@ -165,7 +181,7 @@ function SideBar({
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={clickNeedHelp} className={css.helpBtn}>
+          <button onClick={openNeedHelp} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,
@@ -208,8 +224,8 @@ function SideBar({
         </button>
       </div>
       {showNeedHelpModal && (
-        <BasicModal onClose={clickNeedHelp}>
-          <NeedHelp onClose={toggleNeedHelpModal} />
+        <BasicModal onClose={closeNeedHelp}>
+          <NeedHelp onClose={clickNeedHelp} />
         </BasicModal>
       )}
     </div>

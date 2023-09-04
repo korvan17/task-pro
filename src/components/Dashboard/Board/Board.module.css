@@ -20,6 +20,15 @@
     background-color: #1f1f1f;
   }
 }
+
+
+
+.selectedBoard {
+  background-color: #ffcc00; /* Цвет подсветки */
+  color: #fff; /* Цвет текста */
+  cursor: pointer; /* Изменение формы курсора при наведении */
+}
+
 .boardIconTittleContainer {
   display: flex;
 }

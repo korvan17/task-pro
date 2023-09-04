@@ -22,6 +22,7 @@
 
 .openSideBar {
   /* position: absolute; */
+  min-height: 768px;
   z-index: 2;
 
   /* display: inline-block; */
@@ -172,12 +173,6 @@
   &:hover {
     background-color: #1f1f1f;
   }
-}
-
-.current {
-  background-color: #ffcc00; /* Цвет подсветки */
-  color: #fff; /* Цвет текста */
-  cursor: pointer; /* Изменение формы курсора при наведении */
 }
 
 .containerHelpLogout {

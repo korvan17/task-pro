@@ -7,7 +7,8 @@ import { deleteBoard } from '../../../redux/boards/operations';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 
-const Board = ({ board, editBoard }) => {
+const Board = ({ board, editBoard, _id }) => {
+
   const dispatch = useDispatch();
   const theme = useTheme();
   const navigate = useNavigate();
@@ -17,8 +18,22 @@ const Board = ({ board, editBoard }) => {
     navigate('/home');
   };
 
+
+  // const handleBoardClick = boardId => {
+  //   setSelectedBoard(boardId);
+
+  //   console.log('handleBoardClick');
+  //   console.log(boardId);
+  // };
+
   return (
-    <li key={board._id}>
+    <li
+      key={board._id}
+      // onClick={handleBoardClick(_id)}
+      // className={` ${css.boardItem} ${
+      //   selectedBoard === board._id ? css.selectedBoard : ''
+      // }`}
+    >
       <Link to={board._id} className={css.board}>
         <div className={css.boardIconTittleContainer}>
           <svg

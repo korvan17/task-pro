@@ -86,6 +86,7 @@ export function MainDashboard() {
   const handleDeleteColumn = id => {
     dispatch(deleteColumn(id));
   };
+
   const onDragEnd = result => {};
 
   return (

@@ -87,6 +87,8 @@ const HomePage = () => {
           isMenuOpen={isMenuOpen}
           editBoard={editBoard}
           createBoard={createBoard}
+          toggleMenu={toggleMenu}
+          toggleModal={toggleModal}
         ></SideBar>
 
         {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}
