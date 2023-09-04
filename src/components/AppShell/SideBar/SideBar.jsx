@@ -10,6 +10,7 @@ import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { fetchBoards } from 'redux/boards/operations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import { setModalStatus } from 'redux/modalSlice';
 
 // import { selectIsLoading } from '../../../redux/boards/selectors';
 
@@ -57,9 +58,15 @@ function SideBar({
     navigate('/');
   };
 
-  const needHelpBtn = () => {
+  const toggleNeedHelpModal = () => {
     console.log('needHelpBtn');
     setShowNeedHelpModal(!showNeedHelpModal);
+  };
+
+  const clickNeedHelp = () => {
+    toggleNeedHelpModal();
+    console.log('clickNeedHelp');
+    dispatch(setModalStatus(true));
   };
 
   return (
@@ -168,7 +175,7 @@ function SideBar({
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={needHelpBtn} className={css.helpBtn}>
+          <button onClick={clickNeedHelp} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,
@@ -211,8 +218,8 @@ function SideBar({
         </button>
       </div>
       {showNeedHelpModal && (
-        <BasicModal onClose={createBoard}>
-          <NeedHelp onClose={needHelpBtn} />
+        <BasicModal onClose={clickNeedHelp}>
+          <NeedHelp onClose={toggleNeedHelpModal} />
         </BasicModal>
       )}
     </div>
