@@ -26,7 +26,7 @@ function SideBar({
   const theme = useTheme();
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
-  const isLoadingBoards = useSelector(selectIsLoading);
+  // const isLoadingBoards = useSelector(selectIsLoading);
   // console.log('boards:', boards);
   const dispatch = useDispatch();
   // const isBoard = boards.length !== 0 ? true : false;
