@@ -6,7 +6,6 @@ const modalSlice = createSlice({
     isModalDisplayed: false,
     columnId: '',
     cardId: '',
-    newBoardCreate: false,
   },
   reducers: {
     setModalStatus(state, action) {
@@ -18,13 +17,10 @@ const modalSlice = createSlice({
     setCardId(state, action) {
       state.cardId = action.payload;
     },
-    setNewBoardCreate(state, action) {
-      state.newBoardCreate = action.payload;
-    },
   },
 });
 
-export const { setModalStatus, setColumnId, setNewBoardCreate, setCardId } =
+export const { setModalStatus, setColumnId, setCardId } =
   modalSlice.actions;
 export const modalReducer = modalSlice.reducer;
 
