@@ -1,109 +1,95 @@
 .card__item {
-    display: flex;
-    gap:8px;
-    flex-direction: column;
-    margin-top: 14px;
-    max-height:  calc(100% - 134px);
-        overflow-y: auto;
-        /* overflow-x: hidden; */
-        padding-right: 8px;
-        padding-bottom: 10px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  margin-top: 14px;
+  max-height: calc(100% - 134px);
+  overflow-y: auto;
 
-    overflow-y: auto;
+  padding-right: 8px;
 
+  overflow-y: auto;
 
-    /* Настройка дизайна полосы прокрутки */
-    scrollbar-width: 8px;
-    /* Задает ширину полосы прокрутки (thin или auto) */
+  scrollbar-width: 8px;
 }
 
 .card__item::-webkit-scrollbar {
-    width: 8px;
-    /* Ширина полосы прокрутки */
+  width: 8px;
+  /* Ширина полосы прокрутки */
 }
 
 .card__item::-webkit-scrollbar-thumb {
-    background-color: #121212;
-    /* Цвет полосы прокрутки */
-    border-radius: 12px;
-    /* Скругление углов полосы прокрутки */
+  background-color: #121212;
+
+  border-radius: 12px;
 }
 
 .card__item::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.1);
-    /* Белый цвет фона трека полосы прокрутки */
-    border-radius: 12px;
-    /* Скругление углов трека полосы прокрутки */
+  background-color: rgba(255, 255, 255, 0.1);
+
+  border-radius: 12px;
 }
-.column__item{
-    display: flex;
-    gap: 34px;
-    
+.column__item {
+  display: flex;
+  gap: 34px;
 }
 
-.btn__card{
-    
-    width: 334px;
-        height: 56px;
-        margin-top: 14px;
-    
+.btn__card {
+  width: 334px;
+  height: 56px;
+  margin-top: 14px;
 }
 
-.btn__text{
-        display: flex;
-            align-items: center;
-            justify-content: center;
-            
-            border-radius: 6px;
-            flex-shrink: 0;
-            stroke: white;
+.btn__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  border-radius: 6px;
+  flex-shrink: 0;
+  stroke: white;
 }
-.board__main{
-padding: 0 20px 24px 20px;
-    display: flex;
-    gap: 34px;
-overflow-y: auto;
-    margin-top: 10px;
-    height: calc(100vh - 123px);
-    width: 100vw;
+.board__main {
+  padding: 0 20px 24px 284px;
+  display: flex;
+  gap: 34px;
+  overflow-y: auto;
+  margin-top: 10px;
+  height: calc(100vh - 123px);
+  width: 100vw;
 }
 .board__main::-webkit-scrollbar {
-    width: 8px;
-    /* Ширина полосы прокрутки */
+  width: 8px;
+  /* Ширина полосы прокрутки */
 }
 
 .board__main::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.10);
-    /* Цвет полосы прокрутки */
-    border-radius: 12px;
-    /* Скругление углов полосы прокрутки */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Цвет полосы прокрутки */
+  border-radius: 12px;
+  /* Скругление углов полосы прокрутки */
 }
 
 .board__main::-webkit-scrollbar-track {
-    background-color: #161616;;
-    /* Белый цвет фона трека полосы прокрутки */
-    border-radius: 12px;
-    /* Скругление углов трека полосы прокрутки */
+  background-color: #161616;
+  /* Белый цвет фона трека полосы прокрутки */
+  border-radius: 12px;
+  /* Скругление углов трека полосы прокрутки */
 }
 
-
-
-
-@media screen and (min-width: 768px) {
-    .board__main {
-        padding: 0 32px 24px 32px;
-    }
+@media screen and (max-width: 1439px) {
+  .board__main {
+    padding: 0 32px 24px 32px;
+  }
 }
 
-@media screen and (min-width: 1440px) {
+/* @media screen and (min-width: 1440px) {
     .board__main {
         padding: 0 24px 24px 24px;
     }
-}
+} */
 
-.btn__alonecolumn{
-    width: 334px;
-    height: 56px;
-    
+.btn__alonecolumn {
+  width: 334px;
+  height: 56px;
 }

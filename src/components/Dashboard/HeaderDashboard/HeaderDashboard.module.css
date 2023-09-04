@@ -2,8 +2,13 @@
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
-  margin-left: 24px;
+
   margin-right: 24px;
+}
+@media screen and (min-width: 1440px) {
+  .main__header {
+    margin-left: 284px;
+  }
 }
 
 .title__main {

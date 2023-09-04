@@ -9,7 +9,7 @@
 
 @media screen and (min-width: 1440px) {
   .section {
-    /* padding-left: 256px; */
+    padding-left: 256px;
     height: 100%;
   }
 }
