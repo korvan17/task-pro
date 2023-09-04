@@ -10,6 +10,7 @@ import { addBoard, updateBoardById } from 'redux/boards/operations';
 import { useTheme } from '@emotion/react';
 import boardSchema from '../Schemas/boardSchema';
 import { selectCurrentBoard } from 'redux/boards/selectors';
+import { fetchBoards } from '../../../redux/boards/operations';
 
 export default function AddEditBoard({ onClose, boardId }) {
   const theme = useTheme();
@@ -53,6 +54,7 @@ export default function AddEditBoard({ onClose, boardId }) {
       }
       resetForm();
       onClose();
+      dispatch(fetchBoards());
     } catch (err) {
       console.log(err);
     }

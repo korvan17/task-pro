@@ -11,7 +11,7 @@ import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
 import { useParams } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
-import { setNewBoardCreate } from '../../../redux/modalSlice';
+import { setCardId, setNewBoardCreate } from '../../../redux/modalSlice';
 import {
   AddEditCard,
   AddEditColumn,
@@ -67,7 +67,9 @@ export function MainDashboard() {
     setShowModalCard(true);
   };
 
-  const editCard = () => {
+  const editCard = (columnId, cardId) => {
+    dispatch(setColumnId(columnId));
+    dispatch(setCardId(cardId));
     dispatch(setModalStatus(true));
     setShowModalCard(true);
   };
@@ -155,6 +157,7 @@ export function MainDashboard() {
                                     {...provided.dragHandleProps}
                                   >
                                     <Card
+                                      cardId={card._id}
                                       columnId={column._id}
                                       toggleModalCard={editCard}
                                       deleteCard={handleDeleteCard}

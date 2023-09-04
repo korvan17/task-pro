@@ -9,23 +9,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCard, editCard } from 'redux/сard/сardOperations';
 import cardSchema from '../Schemas/cardSchema';
 import NewCalendar from 'components/UIelements/Calendar/NewCalendar';
+import { selectCurrentBoard } from '../../../redux/boards/selectors';
 
-export default function AddEditCard({ onClose, cardId }) {
+export default function AddEditCard({ onClose }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [priority, setPriority] = useState('without');
   const [deadline, setDeadline] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);
+  const currentCardId = useSelector(state => state.modal.cardId);
+  const curentBoard = useSelector(selectCurrentBoard);
 
   const handleSelectedPriorityChange = selectedPriority => {
     setPriority(selectedPriority);
   };
 
   const handleDateChange = selectedDate => {
-    console.log(selectedDate)
+    console.log(selectedDate);
     setDeadline(selectedDate);
   };
+
+  let currentCard;
+
+  if (isEditing) {
+    console.log('currentColumnId - ', currentColumnId);
+    const currentColumn = curentBoard.columns.find(
+      column => column._id === currentColumnId
+    );
+    console.log(' currentColumn - ', currentColumn);
+    currentCard = currentColumn.cards.find(card => card._id === currentCardId);
+  }
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
@@ -46,7 +60,7 @@ export default function AddEditCard({ onClose, cardId }) {
             description: values.description,
             priority: priority,
             deadline: deadline,
-            cardId,
+            _id: currentCardId,
           })
         );
       }
@@ -73,8 +87,8 @@ export default function AddEditCard({ onClose, cardId }) {
       </h3>
       <Formik
         initialValues={{
-          title: '',
-          description: '',
+          title: isEditing ? currentCard.title : '',
+          description: isEditing ? currentCard.description : '',
         }}
         onSubmit={handleSubmit}
         validationSchema={cardSchema}

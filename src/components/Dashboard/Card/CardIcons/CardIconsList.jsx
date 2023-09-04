@@ -29,7 +29,7 @@ export default function CardIconsList({
       </li>
       <li className={css.iconButtonItem}>
         <IconButton
-          pushButton={toggleModalCard}
+          pushButton={() => toggleModalCard(columnId, cardId)}
           svg={
             <use
               style={{ stroke: theme.card.iconsFill }}
@@ -42,7 +42,7 @@ export default function CardIconsList({
       </li>
       <li className={css.iconButtonItem}>
         <IconButton
-          pushButton={() => deleteCard(cardId)}
+          pushButton={() => deleteCard(columnId, cardId)}
           svg={
             <use
               style={{ stroke: theme.card.iconsFill }}

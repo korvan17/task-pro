@@ -11,6 +11,7 @@ import { useTheme } from '@emotion/react';
 const MAX_DESC_VISIBLE_LEN = 86;
 
 export default function Card({
+  cardId,
   columnId,
   title,
   desc,
@@ -94,6 +95,8 @@ export default function Card({
           {isDeadlineToday && <DeadlineIcon />}
 
           <CardIconsList
+            cardId={cardId}
+            columnId={columnId}
             toggleModalCard={toggleModalCard}
             deleteCard={deleteCard}
             className={`${css.iconButtsList} ${
