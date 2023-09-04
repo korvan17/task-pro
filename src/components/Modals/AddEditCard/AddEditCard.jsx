@@ -42,6 +42,7 @@ export default function AddEditCard({ onClose }) {
     );
     currentCard = currentColumn.cards.find(card => card._id === currentCardId);
   }
+  // const previousDeadline = isEditing ? currentCard.deadline : '';
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
@@ -146,7 +147,10 @@ export default function AddEditCard({ onClose }) {
             >
               Deadline
             </span>
-            <NewCalendar onDateChange={handleDateChange} />
+            <NewCalendar
+              onDateChange={handleDateChange}
+              currentDeadline={isEditing ? currentCard.deadline : null}
+            />
           </div>
           <AddIconButton buttonType="submit" className={css.btn}>
             <span
