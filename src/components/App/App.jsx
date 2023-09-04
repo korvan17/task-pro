@@ -13,6 +13,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { selectIsLoading } from 'redux/boards/selectors';
 import ScreenPage from '../Dashboard/ScreenPage/ScreenPage';
+import { selectColumnsIsLoading } from 'redux/columns/columnsSelectors';
+import { selectCardsIsLoading } from 'redux/сard/сardSelectors';
 
 const StartPageView = lazy(() =>
   import('components/Auth/StartPageView/StartPageView')
@@ -25,7 +27,9 @@ const LoginForm = lazy(() => import('components/Auth/LoginForm/LoginForm'));
 
 export default function App() {
   const userTheme = useSelector(getTheme);
-  const isLoad = useSelector(selectIsLoading);
+  const isBoardLoading = useSelector(selectIsLoading);
+  const isCardLoading = useSelector(selectColumnsIsLoading);
+  const isColumnLoading = useSelector(selectCardsIsLoading);
   const [theme, setTheme] = useState(light);
 
   useEffect(() => {
@@ -48,7 +52,7 @@ export default function App() {
 
   return (
     <>
-      {isLoad && <Loader />}
+      {(isBoardLoading || isCardLoading || isColumnLoading) && <Loader />}
       <ThemeProviderMUI theme={createTheme({})}>
         <ThemeProvider theme={theme}>
           <Routes>
