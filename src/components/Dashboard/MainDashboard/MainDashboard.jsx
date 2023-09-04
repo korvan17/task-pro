@@ -36,7 +36,7 @@ export function MainDashboard() {
   const theme = useTheme();
 
   useEffect(() => {
-    if (isLoadingCards || isLoadingColumns) {
+    if (!isLoadingCards || !isLoadingColumns) {
       dispatch(getBoardByID(boardId));
     }
     if (newBoardCreate) {

@@ -9,7 +9,7 @@ import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { fetchBoards } from 'redux/boards/operations';
-import { selectIsLoading } from '../../../redux/boards/selectors';
+// import { selectIsLoading } from '../../../redux/boards/selectors';
 
 function SideBar({
   setIsMenuOpen,
