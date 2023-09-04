@@ -74,6 +74,7 @@ const NewCalendar = ({
             </span>
           </div>
           <button
+            className={s.nextMonthBtn}
             onClick={increaseMonth}
             disabled={nextMonthButtonDisabled}
             type="button"
