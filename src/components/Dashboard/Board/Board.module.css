@@ -6,13 +6,13 @@
   justify-content: space-between;
   width: 217px;
   height: 61px;
-  padding: 22px 20px 22px 14px;
+  padding: 22px 10px 22px 14px;
   transition: 250ms;
 
   @media screen and (min-width: 768px) {
     width: 252px;
 
-    padding: 22px 24px 22px 24px;
+    padding: 22px 14px 22px 24px;
     gap: 58px;
   }
 

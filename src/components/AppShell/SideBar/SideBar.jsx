@@ -9,6 +9,7 @@ import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { fetchBoards } from 'redux/boards/operations';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
 // import { selectIsLoading } from '../../../redux/boards/selectors';
 
 function SideBar({
@@ -20,7 +21,7 @@ function SideBar({
   editBoard,
 }) {
   // console.log('isMenuOpen:', isMenuOpen)
-  const [showNeedHelp, setShowNeedHelp] = useState(false);
+  const [showNeedHelpModal, setShowNeedHelpModal] = useState(false);
 
   const navigate = useNavigate();
   const theme = useTheme();
@@ -59,7 +60,7 @@ function SideBar({
 
   const needHelpBtn = () => {
     console.log('needHelpBtn');
-    setShowNeedHelp(!showNeedHelp);
+    setShowNeedHelpModal(!showNeedHelpModal);
   };
 
   return (
@@ -210,7 +211,11 @@ function SideBar({
           </p>
         </button>
       </div>
-      {showNeedHelp && <NeedHelp onClose={needHelpBtn} />}
+      {showNeedHelpModal && (
+        <BasicModal onClose={createBoard}>
+          <NeedHelp onClose={needHelpBtn} />
+        </BasicModal>
+      )}
     </div>
   );
 }
