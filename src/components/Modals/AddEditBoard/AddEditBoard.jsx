@@ -76,7 +76,7 @@ export default function AddEditBoard({ onClose, boardId }) {
       </h3>
       <Formik
         initialValues={{
-          title: isEditing ? board.title : 'your title',
+          title: isEditing ? board.title : '',
           icon: isEditing ? board.icon : icon,
           background: isEditing ? board.background : background,
         }}

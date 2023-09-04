@@ -41,7 +41,6 @@ export default function AddEditCard({ onClose }) {
       column => column._id === currentColumnId
     );
     currentCard = currentColumn.cards.find(card => card._id === currentCardId);
-    console.log(currentCard.priority);
   }
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -135,8 +134,8 @@ export default function AddEditCard({ onClose }) {
             />
           </label>
           <ColorPicker
-            // defaultColor={color}
-            // defaultPriority={isEditing ? currentCard.priority : priority}
+            currentPriority={isEditing ? currentCard.priority : null}
+            defaultColor={color}
             onSelectedPriorityChange={handleSelectedPriorityChange}
             onSelectedColorChange={handleSelectedColorChange}
           />
