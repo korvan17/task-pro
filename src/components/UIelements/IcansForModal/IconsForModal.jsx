@@ -47,7 +47,7 @@ export default function IconForModal({ handleBackground, selectedBackground }) {
               />
               <img
                 src={require(`../../../iconsForModal/${img}${endOfName}`)}
-                alt="user"
+                alt={img.slice(1)}
                 height="124"
               />
             </picture>
