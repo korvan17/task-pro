@@ -8,11 +8,8 @@ import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
-// import { fetchBoards } from 'redux/boards/operations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { setModalStatus } from 'redux/modalSlice';
-
-// import { selectIsLoading } from '../../../redux/boards/selectors';
 
 function SideBar({
   setIsMenuOpen,
@@ -137,9 +134,6 @@ function SideBar({
           <Board
             key={board._id}
             board={board}
-            // background={board.background}
-            // icon={board.icon}
-            // title={board.title}
             editBoard={editBoard}
             toggleModal={toggleModal}
           ></Board>
