@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
-import { selectDisplays } from 'redux/displayType/displaySelectors';
+// import { selectDisplays } from 'redux/displayType/displaySelectors';
 import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { deleteCard } from '../../../redux/сard/сardOperations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import { setNewBoardCreate } from '../../../redux/modalSlice';
 import {
@@ -26,16 +26,17 @@ export function MainDashboard() {
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
   const [currentColumnId, setCurrentColumnId] = useState(null);
-  const [setSearchParams] = useSearchParams();
+  // const [setSearchParams] = useSearchParams();
 
   const board = useSelector(selectCurrentBoard);
-  const display = useSelector(selectDisplays);
+  // const display = useSelector(selectDisplays);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
   const newBoardCreate = useSelector(state => state.modal.newBoardCreate);
   const theme = useTheme();
 
   useEffect(() => {
+    console.log('mainUseEffect');
     if (!isLoadingCards || !isLoadingColumns) {
       dispatch(getBoardByID(boardId));
     }
@@ -49,11 +50,11 @@ export function MainDashboard() {
     newBoardCreate,
     isLoadingColumns,
     isLoadingCards,
-    display,
+    // display,
     boardId,
-    board,
+    // board,
     dispatch,
-    setSearchParams,
+    // setSearchParams,
   ]);
 
   const handleDeleteCard = id => {
