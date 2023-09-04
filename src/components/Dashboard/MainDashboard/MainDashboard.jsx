@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
-import { selectDisplays } from 'redux/displayType/displaySelectors';
+// import { selectDisplays } from 'redux/displayType/displaySelectors';
 import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { deleteCard } from '../../../redux/сard/сardOperations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
-import { setNewBoardCreate } from '../../../redux/modalSlice';
+import { setCardId, setNewBoardCreate } from '../../../redux/modalSlice';
 import {
   AddEditCard,
   AddEditColumn,
@@ -26,16 +26,17 @@ export function MainDashboard() {
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
   const [currentColumnId, setCurrentColumnId] = useState(null);
-  const [setSearchParams] = useSearchParams();
+  // const [setSearchParams] = useSearchParams();
 
   const board = useSelector(selectCurrentBoard);
-  const display = useSelector(selectDisplays);
+  // const display = useSelector(selectDisplays);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
   const newBoardCreate = useSelector(state => state.modal.newBoardCreate);
   const theme = useTheme();
 
   useEffect(() => {
+    console.log('mainUseEffect');
     if (!isLoadingCards || !isLoadingColumns) {
       dispatch(getBoardByID(boardId));
     }
@@ -49,11 +50,11 @@ export function MainDashboard() {
     newBoardCreate,
     isLoadingColumns,
     isLoadingCards,
-    display,
+    // display,
     boardId,
-    board,
+    // board,
     dispatch,
-    setSearchParams,
+    // setSearchParams,
   ]);
 
   const handleDeleteCard = id => {
@@ -66,7 +67,9 @@ export function MainDashboard() {
     setShowModalCard(true);
   };
 
-  const editCard = () => {
+  const editCard = (columnId, cardId) => {
+    dispatch(setColumnId(columnId));
+    dispatch(setCardId(cardId));
     dispatch(setModalStatus(true));
     setShowModalCard(true);
   };
@@ -108,91 +111,70 @@ export function MainDashboard() {
   return (
     <DragDropContext onDragEnd={onDragEnd} onBeforeCapture={onBeforeCapture}>
       <section className={css.board__main}>
-        <Droppable droppableId="board" direction="horizontal" type="COLUMN">
-          {provided => (
-            <ul
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className={css.column__item}
-            >
-              {board?.columns.map((column, index) => (
-                <Draggable
-                  key={column._id}
-                  draggableId={column._id}
-                  index={index}
-                >
-                  {provided => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className={css.column__list}
-                    >
-                      <Column
-                        id={column._id}
-                        editColumn={editColumn}
-                        deleteColumn={handleDeleteColumn}
-                        title={column.title}
-                      />
-                      <Droppable droppableId={column._id} type="CARD">
+        <ul className={css.column__item}>
+          {board?.columns.map((column, index) => (
+            <li key={column._id} className={css.column__list}>
+              <Column
+                id={column._id}
+                editColumn={editColumn}
+                deleteColumn={handleDeleteColumn}
+                title={column.title}
+              />
+              <Droppable droppableId={column._id} type="CARD">
+                {provided => (
+                  <ul
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    className={css.card__item}
+                  >
+                    {column.cards.map((card, cardIndex) => (
+                      <Draggable
+                        key={card._id}
+                        draggableId={card._id}
+                        index={cardIndex}
+                      >
                         {provided => (
-                          <ul
-                            {...provided.droppableProps}
+                          <li
                             ref={provided.innerRef}
-                            className={css.card__item}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
                           >
-                            {column.cards.map((card, cardIndex) => (
-                              <Draggable
-                                key={card._id}
-                                draggableId={card._id}
-                                index={cardIndex}
-                              >
-                                {provided => (
-                                  <li
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                  >
-                                    <Card
-                                      columnId={column._id}
-                                      toggleModalCard={editCard}
-                                      deleteCard={handleDeleteCard}
-                                      title={card.title}
-                                      desc={card.description}
-                                      priority={card.priority}
-                                      deadline={card.deadline}
-                                    />
-                                  </li>
-                                )}
-                              </Draggable>
-                            ))}
-                            {provided.placeholder}
-                          </ul>
+                            <Card
+                              cardId={card._id}
+                              columnId={column._id}
+                              toggleModalCard={editCard}
+                              deleteCard={handleDeleteCard}
+                              title={card.title}
+                              desc={card.description}
+                              priority={card.priority}
+                              deadline={card.deadline}
+                            />
+                          </li>
                         )}
-                      </Droppable>
-                      <div className={css.button__column}>
-                        <AddIconButton
-                          columnId={column._id}
-                          className={css.btn__card}
-                          pushButton={() => createCard(column._id)}
-                          theme="dark"
-                        >
-                          <span
-                            style={{ color: theme.popUp.buttonTextColor }}
-                            className={css.btn__text}
-                          >
-                            Add another card
-                          </span>
-                        </AddIconButton>
-                      </div>
-                    </li>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </ul>
+                )}
+              </Droppable>
+              <div className={css.button__column}>
+                <AddIconButton
+                  columnId={column._id}
+                  className={css.btn__card}
+                  pushButton={() => createCard(column._id)}
+                  theme="dark"
+                >
+                  <span
+                    style={{ color: theme.popUp.buttonTextColor }}
+                    className={css.btn__text}
+                  >
+                    Add another card
+                  </span>
+                </AddIconButton>
+              </div>
+            </li>
+          ))}
+        </ul>
         <AddIconButton
           pushButton={createColumn}
           className={css.btn__alonecolumn}

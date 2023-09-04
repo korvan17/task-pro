@@ -11,6 +11,7 @@ import { useTheme } from '@emotion/react';
 import { useParams } from 'react-router-dom';
 import { HomePageView, ScreenPage } from '../../components';
 import { setNewBoardCreate } from '../../redux/modalSlice';
+import { fetchBoards } from '../../redux/boards/operations';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,14 @@ const HomePage = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [showModal]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchBoards());
+    };
+
+    fetchData();
+  }, [dispatch]);
 
   const toggleModal = () => {
     setShowModal(!showModal);

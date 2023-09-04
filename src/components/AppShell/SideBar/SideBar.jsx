@@ -10,6 +10,7 @@ import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { fetchBoards } from 'redux/boards/operations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
+
 // import { selectIsLoading } from '../../../redux/boards/selectors';
 
 function SideBar({
@@ -32,9 +33,7 @@ function SideBar({
   const dispatch = useDispatch();
   // const isBoard = boards.length !== 0 ? true : false;
 
-  useEffect(() => {
-    dispatch(fetchBoards());
-  }, [dispatch]);
+  useEffect(() => {}, [boards]);
 
   const handleClickOutside = event => {
     if (
