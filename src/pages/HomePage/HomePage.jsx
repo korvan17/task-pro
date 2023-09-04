@@ -12,7 +12,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { HomePageView, ScreenPage } from '../../components';
 import { setNewBoardCreate } from '../../redux/modalSlice';
 import { fetchBoards } from '../../redux/boards/operations';
-import { createBrowserHistory } from 'history';
 import { useSelector } from 'react-redux';
 import { selectBoards } from 'redux/boards/selectors';
 
@@ -23,12 +22,11 @@ const HomePage = () => {
   const theme = useTheme();
   const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
-  const history = createBrowserHistory();
   const navigate = useNavigate();
 
   const boards = useSelector(selectBoards);
 
-  const [prevBoardsLength, setPrevBoardsLength] = useState(0);
+  const newBoardId = useSelector(state => state.boards.currentBoardId);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,13 +37,11 @@ const HomePage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (boards.length > prevBoardsLength) {
-      const idNewBoard = boards[0]._id;
-      navigate(`/home/${idNewBoard}`);
+    if (newBoardId) {
+      navigate(`/home/${newBoardId}`);
       dispatch(setNewBoardCreate(false));
     }
-    setPrevBoardsLength(boards.length);
-  }, [boards, prevBoardsLength, navigate, dispatch]);
+  }, [navigate, dispatch, newBoardId]);
 
   useEffect(() => {
     function handleResize() {
@@ -63,7 +59,7 @@ const HomePage = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [showModal, boards, history, dispatch]);
+  }, [showModal, boards, dispatch]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
