@@ -1,0 +1,10 @@
+.arrayOfIcons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 252px;
+  gap: 4px;
+}
+
+.selectedBackground {
+  transform: scale(1.1);
+}

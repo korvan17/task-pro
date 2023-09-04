@@ -1,4 +1,4 @@
-@import-normalize;
+@import '../node_modules/modern-normalize/modern-normalize.css';
 
 body {
   margin: 0;
@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #313131;
+  overflow: hidden;
 }
 
 code {
@@ -84,4 +85,7 @@ img {
   }
 }
 
-
+button,
+a {
+  cursor: pointer;
+}

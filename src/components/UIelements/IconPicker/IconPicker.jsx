@@ -3,7 +3,7 @@ import { useTheme } from '@emotion/react';
 import css from './IconPicker.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 
-const IconPicker = ({ onSelectedIconChange }) => {
+const IconPicker = ({ onSelectedIconChange, defaultIcon }) => {
   const icons = [
     { id: 1, name: 'icon-board-icon-1' },
     { id: 2, name: 'icon-board-icon-2' },
@@ -15,12 +15,10 @@ const IconPicker = ({ onSelectedIconChange }) => {
     { id: 8, name: 'icon-board-icon-8' },
   ];
 
-  const [selectedIcon, setSelectedIcon] = useState(null);
-  const [iconError, setIconError] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState(defaultIcon);
 
   const handleIcon = icon => {
     setSelectedIcon(icon);
-    setIconError(false);
     onSelectedIconChange(icon);
   };
 
@@ -60,7 +58,6 @@ const IconPicker = ({ onSelectedIconChange }) => {
           </button>
         ))}
       </div>
-      {iconError && <div style={{ color: 'red' }}>Please select an icon</div>}
     </div>
   );
 };

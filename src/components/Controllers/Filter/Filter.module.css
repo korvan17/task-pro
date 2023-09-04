@@ -9,10 +9,12 @@
 }
 
 .filtersButton {
-  width: 80px;
-  height: 20px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  width: 80px;
+  height: 20px;
+  /* align-items: center; */
   padding: 0;
   border: none;
   background: none;
@@ -34,12 +36,14 @@
 
 .filtersChangerContainer {
   position: absolute;
+  right: 0;
   padding: 24px;
+  margin-top: 10px;
   width: 300px;
   height: 235px;
   border-radius: 8px;
   background: #fcfcfc;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);;
 }
 
 .filtersChangerContainerCloseButton {

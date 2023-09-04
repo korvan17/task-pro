@@ -1,20 +1,37 @@
 import sprite from '../../../icons/sprite.svg';
 import iconCactus from '../../../icons/cactus.png';
 import css from './SideBar.module.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
-import { Board } from 'components';
+import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
+import { fetchBoards } from 'redux/boards/operations';
 
-function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
+function SideBar({
+  setIsMenuOpen,
+  isMenuOpen,
+  toggleModal,
+  pushBoard,
+  createBoard,
+  editBoard,
+}) {
+  // console.log('isMenuOpen:', isMenuOpen)
+  const [showNeedHelp, setShowNeedHelp] = useState(false);
+
   const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
+  // console.log('boards:', boards);
   const dispatch = useDispatch();
+  // const isBoard = boards.length !== 0 ? true : false;
+
+  useEffect(() => {
+    dispatch(fetchBoards());
+  }, [dispatch]);
 
   const handleClickOutside = event => {
     if (
@@ -38,89 +55,90 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
     navigate('/');
   };
 
+  const needHelpBtn = () => {
+    console.log('needHelpBtn');
+    setShowNeedHelp(!showNeedHelp);
+  };
+
   return (
     <div
       style={{ backgroundColor: theme.sidebar.background }}
       className={isMenuOpen ? css.openSideBar : css.sideBar}
       ref={menuRef}
     >
-      <div className={css.header}>
-        <svg
-          style={{
-            '--color1': theme.sidebar.logoFill,
-            '--color2': theme.sidebar.logoFlashColor,
-          }}
-          width="32"
-          height="32"
-        >
-          <use xlinkHref={`${sprite}#icon-logo`} />
-        </svg>
-        <h2
-          style={{ color: theme.sidebar.logoTextColor }}
-          className={css.headerTitle}
-        >
-          Task Pro
-        </h2>
-      </div>
-      <div className={css.boards}>
-        <h3
-          style={{ color: theme.sidebar.myBoardsColor }}
-          className={css.boardsTitle}
-        >
-          My boards
-        </h3>
-        <div
-          style={{
-            borderColor: theme.sidebar.separatorLineColor,
-          }}
-          className={css.createBoard}
-        >
-          <span
+      <div className={css.HeaderNewBoardContainer}>
+        <div className={css.header}>
+          <svg
             style={{
-              color: theme.sidebar.createBoardColor,
+              '--color1': theme.sidebar.logoFill,
+              '--color2': theme.sidebar.logoFlashColor,
             }}
-            className={css.createBoardText}
+            width="32"
+            height="32"
           >
-            Create a new board
-          </span>
-          <button
+            <use xlinkHref={`${sprite}#icon-logo`} />
+          </svg>
+          <h2
+            style={{ color: theme.sidebar.logoTextColor }}
+            className={css.headerTitle}
+          >
+            Task Pro
+          </h2>
+        </div>
+        <div className={css.boards}>
+          <h3
+            style={{ color: theme.sidebar.myBoardsColor }}
+            className={css.boardsTitle}
+          >
+            My boards
+          </h3>
+          <div
             style={{
-              backgroundColor: theme.sidebar.createButtonBackground,
+              borderColor: theme.sidebar.separatorLineColor,
             }}
-            onClick={toggleModal}
-            className={css.createBoardButton}
+            className={css.createBoard}
           >
-            <svg width="20" height="20">
-              <use
-                style={{
-                  stroke: theme.sidebar.createButtonPlusFill,
-                }}
-                className={css.addIcon}
-                xlinkHref={`${sprite}#icon-add`}
-              />
-            </svg>
-          </button>
+            <span
+              style={{
+                color: theme.sidebar.createBoardColor,
+              }}
+              className={css.createBoardText}
+            >
+              Create a new board
+            </span>
+            <button
+              style={{
+                backgroundColor: theme.sidebar.createButtonBackground,
+              }}
+              onClick={createBoard}
+              className={css.createBoardButton}
+            >
+              <svg width="20" height="20">
+                <use
+                  style={{
+                    stroke: theme.sidebar.createButtonPlusFill,
+                  }}
+                  className={css.addIcon}
+                  xlinkHref={`${sprite}#icon-add`}
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
       <ul className={css.boardsList}>
-        {boards.map(board => {
-          // console.log(board.title, board._id);
-          return (
-            <Board
-              key={board._id}
-              // _id={board._id}
-              // background={board.background}
-              // icon={board.icon}
-              // title={board.title}
-              board={board}
-              toggleModal={toggleModal}
-              style={{
-                color: theme.sidebar.selectedBoardTitleColor,
-              }}
-            ></Board>
-          );
-        })}
+        {boards.map(board => (
+          <Board
+            key={board._id}
+            board={board}
+            // background={board.background}
+            // icon={board.icon}
+            // title={board.title}
+            editBoard={editBoard}
+            toggleModal={toggleModal}
+          ></Board>
+        ))}
       </ul>
       <div className={css.containerHelpLogout}>
         <div
@@ -148,7 +166,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={toggleModal} className={css.helpBtn}>
+          <button onClick={needHelpBtn} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,
@@ -190,6 +208,7 @@ function SideBar({ setIsMenuOpen, isMenuOpen, toggleModal, pushBoard }) {
           </p>
         </button>
       </div>
+      {showNeedHelp && <NeedHelp onClose={needHelpBtn} />}
     </div>
   );
 }

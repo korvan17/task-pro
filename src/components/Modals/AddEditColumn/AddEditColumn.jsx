@@ -1,29 +1,32 @@
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import css from './AddEditColumn.module.css';
 import iconDefs from '../../../icons/sprite.svg';
 import { AddIconButton } from 'components';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addColumn, editColumn } from 'redux/columns/columnsOperations';
 import { useTheme } from '@emotion/react';
+import columnSchema from '../Schemas/columnSchema';
+import { useParams } from 'react-router-dom';
+import { selectCurrentBoard } from 'redux/boards/selectors';
 
-export default function AddEditColumn({ title, onClose, isEditing, columnId }) {
-  const dispatch = useDispatch();
-
+export default function AddEditColumn({ onClose, columnId }) {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const { boardId } = useParams();
+  const isEditing = useSelector(state => state.modal.isModalDisplayed);
 
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = e => {
-    setInputValue(e.target.value);
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const column = useSelector(selectCurrentBoard).columns.find(
+    col => col._id === columnId
+  );
+  const handleSubmit = async (values, { resetForm }) => {
+    console.log();
     try {
       if (!isEditing) {
-        await dispatch(addColumn({ title: inputValue }));
+        await dispatch(addColumn({ title: values.title, board: boardId }));
+      } else {
+        await dispatch(editColumn({ title: values.title, id: columnId }));
       }
-      await dispatch(editColumn({ title: inputValue, id: columnId }));
+      resetForm();
       onClose();
     } catch (err) {
       console.log(err);
@@ -44,30 +47,42 @@ export default function AddEditColumn({ title, onClose, isEditing, columnId }) {
       <h3 style={{ color: theme.popUp.titleColor }} className={css.titleBoard}>
         {!isEditing ? 'Add column' : 'Edit column'}
       </h3>
-      <form onSubmit={handleSubmit}>
-        <label className={css.label}>
-          <input
-            style={{
-              color: theme.popUp.inputTextColor,
-              borderColor: theme.popUp.inputBorderColor,
-              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
-            }}
-            className={css.input}
-            type="text"
-            name="title"
-            placeholder="Title"
-            onChange={handleInputChange}
-          />
-        </label>
-        <AddIconButton className={css.btn}>
-          <span
-            style={{ color: theme.popUp.buttonTextColor }}
-            className={css.btnSumbitAction}
-          >
-            Add
-          </span>
-        </AddIconButton>
-      </form>
+      <Formik
+        initialValues={{
+          title: isEditing ? column.title : '',
+        }}
+        onSubmit={handleSubmit}
+        validationSchema={columnSchema}
+      >
+        <Form>
+          <label className={css.label}>
+            <ErrorMessage
+              className={css.errorMessage}
+              name="title"
+              component="p"
+            />
+            <Field
+              style={{
+                color: theme.popUp.inputTextColor,
+                borderColor: theme.popUp.inputBorderColor,
+                '::placeholder': { color: theme.popUp.inputPlaceholderColor },
+              }}
+              className={css.input}
+              type="text"
+              name="title"
+              placeholder="Title"
+            />
+          </label>
+          <AddIconButton buttonType="submit" className={css.btn}>
+            <span
+              style={{ color: theme.popUp.buttonTextColor }}
+              className={css.btnSumbitAction}
+            >
+              {!isEditing ? 'Add' : 'Edit'}
+            </span>
+          </AddIconButton>
+        </Form>
+      </Formik>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@emotion/react';
 import { ThemeProvider as ThemeProviderMUI, createTheme } from '@mui/material';
 import { dark, light, violet } from 'components/Controllers/Theme/theme';
-import { HomePage, ScreenPage, StartPage } from 'pages';
+import { HomePage, StartPage } from 'pages';
 import { lazy, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -12,6 +12,7 @@ import { PrivateRoute, PublicRoute } from 'components/Routes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { selectIsLoading } from 'redux/boards/selectors';
+import ScreenPage from '../Dashboard/ScreenPage/ScreenPage';
 
 const StartPageView = lazy(() =>
   import('components/Auth/StartPageView/StartPageView')
@@ -51,16 +52,6 @@ export default function App() {
       <ThemeProviderMUI theme={createTheme({})}>
         <ThemeProvider theme={theme}>
           <Routes>
-            <Route
-              path="/home"
-              element={
-                <PrivateRoute>
-                  <HomePage />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/home/:boardId" element={<ScreenPage />} />
-            {/* Auth Routes */}
             <Route path="/" element={<StartPage />}>
               <Route index element={<StartPageView />} />
               <Route
@@ -75,6 +66,17 @@ export default function App() {
                 <Route path="login" element={<LoginForm />} />
               </Route>
             </Route>
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute>
+                  <HomePage />
+                </PrivateRoute>
+              }
+            >
+              <Route path="/home/:boardId" element={<ScreenPage />} />
+            </Route>
+            {/* Auth Routes */}
           </Routes>
           <ToastContainer
             position="top-right"

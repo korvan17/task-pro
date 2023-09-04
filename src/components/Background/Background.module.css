@@ -1,7 +1,7 @@
-.main {
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: calc(100vh - 60px);
-    background-color: #1f1f1f;
+.bg_section {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
 }
-

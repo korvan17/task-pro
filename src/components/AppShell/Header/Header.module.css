@@ -2,6 +2,12 @@
   background-color: #161616;
   color: #ffffffcc;
 
+  /* position: fixed;
+  right: 0;
+  top: 0;
+  left: 0px; 
+  height: 68px; */
+
   display: flex;
   padding-left: 16px;
   padding-right: 16px;
@@ -13,10 +19,12 @@
 
   @media screen and (min-width: 1440px) {
     position: fixed;
-    right: 0;
+    /* right: 0; */
     top: 0;
-    width: calc(100% - 260px);
-    left: 260px;
+    /* width: calc(100% - 260px); */
+    width: 100%;
+
+    /* left: 260px; */
     height: 68px;
   }
 }
@@ -37,6 +45,15 @@
   gap: 14px;
   margin-left: auto;
   /* align-items: center; */
+
+  /* width: 325px;
+  @media screen and (min-width: 768px) {
+    width: 705px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1156px;
+  } */
 }
 
 .themeBtn {
@@ -80,6 +97,11 @@
   letter-spacing: -0.28px;
 
   color: #ffffff;
+}
+
+.userBtn {
+  background-color: transparent;
+  border: none;
 }
 
 .userAvatar {

@@ -5,11 +5,13 @@ import css from './Card.module.css';
 import convertDate from 'utlis/convertDate';
 import { CardIconsList, DeadlineIcon } from './CardIcons';
 import CardAdditionInfList from './CardAdditionInfList/CardAdditionInfList';
+import { useTheme } from '@emotion/react';
 
 // ! set a constant later
 const MAX_DESC_VISIBLE_LEN = 86;
 
 export default function Card({
+  columnId,
   title,
   desc,
   priority,
@@ -18,6 +20,8 @@ export default function Card({
   deleteCard,
 }) {
   const [isDescHidden, setDescHidden] = useState('true');
+
+  const theme = useTheme();
 
   const showDotsToHide = desc.length > MAX_DESC_VISIBLE_LEN;
 
@@ -44,19 +48,34 @@ export default function Card({
     }
   };
 
-  const priorityStyle = {
-    '--priority-color': getColor(),
-  };
+  // const priorityStyle = {
+  //   '--priority-color': getColor(),
+  // };
 
   const currentDate = convertDate(new Date());
 
   const isDeadlineToday = currentDate === deadline;
 
   return (
-    <div className={css.overWrapper}>
-      <div className={css.wrapper} style={priorityStyle}>
-        <h4 className={css.title}>{title}</h4>
-        <p className={`${css.desc} ${!isDescHidden && css.descShown}`}>
+    <div
+      style={{ backgroundColor: theme.card.background }}
+      className={css.overWrapper}
+    >
+      <div
+        style={{
+          backgroundColor: theme.card.background,
+          borderLeft: `4px solid ${getColor()}`,
+        }}
+        className={css.wrapper}
+      >
+        {/*  style={priorityStyle} */}
+        <h4 style={{ color: theme.card.titleColor }} className={css.title}>
+          {title}
+        </h4>
+        <p
+          style={{ color: theme.card.textColor }}
+          className={`${css.desc} ${!isDescHidden && css.descShown}`}
+        >
           {displayedDesc}
           <span
             onClick={toggleDesc}
@@ -65,7 +84,10 @@ export default function Card({
             {isDescHidden ? (showDotsToHide ? '...' : '') : ' hide'}
           </span>
         </p>
-        <div className={css.additionWrapper}>
+        <div
+          style={{ borderTopColor: theme.card.separatorLineColor }}
+          className={css.additionWrapper}
+        >
           <CardAdditionInfList deadline={deadline} priority={priority} />
 
           {/* icon-beel shows if deadline day is today */}

@@ -24,3 +24,5 @@ export { default as AddIconButton } from './UIelements/Buttons/AddIconButton/Add
 export { default as Buttons } from './UIelements/Buttons/Button.jsx';
 export { default as Calendar } from './UIelements/Calendar/Calendar.jsx';
 export { default as Loader } from './UIelements/Loader/Loader.jsx';
+export { default as HomePageView } from './Dashboard/HomePageView/HomePageView.jsx';
+export { default as ScreenPage } from './Dashboard/ScreenPage/ScreenPage.jsx';

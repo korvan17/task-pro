@@ -3,16 +3,14 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
 import sprite from '../../../icons/sprite.svg';
 import css from './Header.module.css';
-import { Theme } from 'components';
+import { EditProfile, Theme } from 'components';
 import { useSelector } from 'react-redux';
-
 export default function Header({ toggleMenu }) {
-  const theme = useTheme();
+  const [showEditProfile, setShowEditProfile] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
+  const theme = useTheme();
 
   const user = useSelector(state => state.auth.user);
-  console.log('user: ', user);
 
   useEffect(() => {
     const updateWindowWidth = () => {
@@ -24,10 +22,9 @@ export default function Header({ toggleMenu }) {
     };
   }, []);
 
-  // const toggleTheme = () => {
-  //   console.log('toggle theme menu');
-  //   setIsThemeMenuOpen(!isThemeMenuOpen);
-  // };
+  const toggleEditProfile = () => {
+    setShowEditProfile(!showEditProfile);
+  };
 
   return (
     <div
@@ -46,28 +43,46 @@ export default function Header({ toggleMenu }) {
           </svg>
         </button>
       ) : null}
-
       <div className={css.options}>
         {/* <div className={css.themeContainer}>
-          <p className={css.themeTitle}>Theme</p>
-          <button onClick={toggleTheme} className={css.themeBtn} type="button">
-
-            <svg className={css.themeIcon} width="16" height="16">
-              <use xlinkHref={`${sprite}#icon-theme`} />
-            </svg>
-          </button>
-        </div> */}
+            <p className={css.themeTitle}>Theme</p>
+            <button onClick={toggleTheme} className={css.themeBtn} type="button">
+  
+              <svg className={css.themeIcon} width="16" height="16">
+                <use xlinkHref={`${sprite}#icon-theme`} />
+              </svg>
+            </button>
+          </div> */}
         <Theme />
-        <ul className={css.userInfo}>
-          <li
+        <div className={css.userInfo}>
+          <p
             style={{ color: theme.header.userNameColor }}
             className={css.userName}
           >
-            Ivetta
-          </li>
-          <li className={css.userAvatart}>Avatar</li>
-        </ul>
+            {user.name}
+          </p>
+
+          <button
+            type="button"
+            onClick={toggleEditProfile}
+            className={css.userBtn}
+          >
+            <svg
+              className={css.userAvatart}
+              // className={css.menuIcon}
+              width="32"
+              height="32"
+            >
+              {user.avatar !== '' ? (
+                <use xlinkHref={`${user.avatarURL}`} />
+              ) : (
+                <use xlinkHref={`${sprite}#icon-user`} />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
+      {showEditProfile && <EditProfile onClose={toggleEditProfile} />}
     </div>
   );
 }

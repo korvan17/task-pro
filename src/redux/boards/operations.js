@@ -55,7 +55,7 @@ export const getBoardByID = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
-      const { data } = await axios.get(`/board/${id}`);
+      const { data } = await axios.get(`/boards/${id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -65,12 +65,12 @@ export const getBoardByID = createAsyncThunk(
 
 export const updateBoardById = createAsyncThunk(
   'boards/updateBoardById',
-  async (body, thunkAPI) => {
+  async ({ id, title, background, icon }, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
-      await axios.put(`/boards/${body._id}`, { ...body });
-      return { ...body };
+      await axios.put(`/boards/${id}`, { title, background, icon });
+      return { title, background, icon };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

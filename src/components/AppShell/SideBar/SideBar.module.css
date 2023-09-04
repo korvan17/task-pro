@@ -1,7 +1,7 @@
 .sideBar {
   position: absolute;
   top: 0;
-  padding: 14px;
+  /* padding: 14px; */
   width: 225px;
   height: 100vh;
   background-color: #121212;
@@ -9,21 +9,30 @@
   transform: translateX(-100%);
 
   @media screen and (min-width: 768px) {
-    padding: 24px;
+    /* padding: 24px; */
     width: 260px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 260px;
+    transform: none;
+    position: relative;
   }
 }
 
 .openSideBar {
-  position: absolute;
+  /* position: absolute; */
   z-index: 2;
 
+  /* display: inline-block; */
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   top: 0;
-  padding: 14px;
+  /* padding: 14px; */
   width: 225px;
   height: 100vh;
   flex-shrink: 0;
@@ -33,12 +42,22 @@
   transform: translateX(0);
 
   @media screen and (min-width: 768px) {
-    padding: 24px;
+    position: absolute;
+    /* padding: 24px; */
     width: 260px;
   }
 
   @media screen and (min-width: 1440px) {
+    position: relative;
+    transition: none;
     width: 260px;
+  }
+}
+
+.HeaderNewBoardContainer {
+  margin: 14px 14px 40px 14px;
+  @media screen and (min-width: 768px) {
+    margin: 24px 24px 40px 24px;
   }
 }
 
@@ -112,33 +131,34 @@
 
 .boardsList {
   color: white;
-  margin-top: 40px;
-  position: absolute;
+  /* position: absolute; */
   left: 0px;
+  top: 212px;
 
-  max-height: 122px;
+  /* max-height: calc(100%-122px); */
+  max-height: 100%;
   overflow: hidden;
   /* transition: 300ms; */
 
   &::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   /* Фон для трека (полосы прокрутки) */
   &::-webkit-scrollbar-track {
-    /* background: rgba(255, 255, 255, 0.4); */
-    background: #313131;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    /* background: #313131; */
+    border-radius: 10px;
     overflow: hidden;
-    margin-left: 20px;
+    /* margin-left: 10px; */
   }
-  
+
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
     background: rgba(18, 18, 18, 1);
     border-radius: 10px; /* Закругление углов ползунка */
   }
-  
+
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
@@ -164,12 +184,17 @@
 }
 
 .containerHelpLogout {
-  position: fixed;
-  bottom: 24px;
+  /* position: fixed; */
+  /* bottom: 24px; */
+  margin: 40px 14px 24px 14px;
+
+  @media screen and (min-width: 768px) {
+    margin: 40px 24px 24px 24px;
+  }
 }
 
 .help {
-  padding: 14px 0 0 14px;
+  padding: 14px 14px 18px 14px;
   width: 197px;
   height: 238px;
   flex-shrink: 0;
@@ -180,6 +205,7 @@
     width: 212px;
     height: 272px;
     flex-shrink: 0;
+    padding: 20px 20px 18px 20px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -250,5 +276,3 @@
   stroke: #bedbb0;
   fill: transparent;
 }
-
-

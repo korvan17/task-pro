@@ -13,7 +13,7 @@ export const sendDisplayTypeToBackend = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
-      const response = await axios.post('/users/display', displayInfo);
+      const response = await axios.patch('/users/display', displayInfo);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

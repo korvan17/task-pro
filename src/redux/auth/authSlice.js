@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   register,
   login,
@@ -8,7 +8,28 @@ import {
   needHelp,
   updateUser,
 } from './authOperations';
+const customArr = [
+  register,
+  login,
+  logout,
+  updateTheme,
+  refreshUser,
+  needHelp,
+  updateUser,
+];
 
+const fnStatus = status => {
+  return customArr.map(el => el[status]);
+};
+
+const handlePending = state => {
+  state.isRefreshing = true;
+};
+
+const handleRejected = (state, action) => {
+  state.error = action.payload;
+  state.isRefreshing = false;
+};
 const authInitialState = {
   user: {
     email: '',
@@ -32,25 +53,10 @@ const authSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      .addCase(register.pending, state => {
-        state.isRefreshing = true;
-      })
       .addCase(register.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
-        state.error = null;
-      })
-      .addCase(register.rejected, (state, { payload }) => {
-        state.error = payload;
-        state.isRefreshing = false;
-      })
-      .addCase(login.pending, state => {
-        state.isRefreshing = true;
-      })
-      .addCase(login.rejected, (state, { payload }) => {
-        state.error = payload;
         state.isRefreshing = false;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
@@ -58,10 +64,6 @@ const authSlice = createSlice({
         state.token = payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-        state.error = null;
-      })
-      .addCase(logout.pending, state => {
-        state.isRefreshing = true;
       })
       .addCase(logout.fulfilled, state => {
         state.user.email = '';
@@ -71,17 +73,10 @@ const authSlice = createSlice({
         state.token = '';
         state.isLoggedIn = false;
         state.isRefreshing = false;
-        state.error = null;
-      })
-      .addCase(updateTheme.pending, state => {
-        state.isRefreshing = true;
       })
       .addCase(updateTheme.fulfilled, (state, { payload }) => {
         state.user.theme = payload.theme;
         state.isRefreshing = false;
-      })
-      .addCase(refreshUser.pending, state => {
-        state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
@@ -89,27 +84,10 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.rejected, state => {
-        state.isRefreshing = false;
-      })
-      .addCase(needHelp.rejected, state => {
-        state.isRefreshing = false;
-        state.error = true;
-      })
-      .addCase(needHelp.pending, state => {
-        state.isRefreshing = true;
-        state.error = false;
-      })
       .addCase(needHelp.fulfilled, (state, { payload }) => {
         state.isRefreshing = false;
         state.replyEmail = payload.replyEmail;
         state.comment = payload.comment;
-      })
-      .addCase(updateUser.rejected, state => {
-        state.isRefreshing = false;
-      })
-      .addCase(updateUser.pending, state => {
-        state.isRefreshing = true;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.user.name = payload.name;
@@ -117,7 +95,10 @@ const authSlice = createSlice({
         state.user.password = payload.password;
         state.user.avatarURL = payload.avatarURL;
         state.isRefreshing = false;
-      }),
+      })
+
+      .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
+      .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected),
 });
 
 export const { setAuth } = authSlice.actions;

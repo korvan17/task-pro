@@ -58,8 +58,7 @@ const boardsSlice = createSlice({
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.boards.push({ ...action.payload });
-        console.log(action);
+        state.boards.unshift({ ...action.payload });
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {

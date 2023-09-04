@@ -7,7 +7,7 @@
   /* Title */
   .title {
     font-size: 12px;
-    font-family: Poppins-Medium;
+    font-family: Poppins;
     font-weight: 400;
     letter-spacing: -0.24px;
     line-height: 18px;
@@ -36,7 +36,7 @@
     background: inherit;
     border-radius: 16px;
     border: none;
-    font-family: 'Poppins-Medium';
+    font-family: Poppins;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

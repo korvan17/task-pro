@@ -17,9 +17,9 @@
     padding: 14px 18px;
     border-radius: 8px;
     border: 1px solid #BEDBB0;
-    color: currentColor;
+    color: white;
     box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-    opacity: 0.4;
+    /* opacity: 0.4; */
     outline: none;
 
     @media (max-width: 375px) {
@@ -47,7 +47,7 @@
     border: 1px solid #BEDBB0;
     color: currentColor;
     box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-    opacity: 0.4;
+    /* opacity: 0.4; */
     outline: none;
 }
 
@@ -103,4 +103,10 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: -0.24px;
+}
+
+.errorMessage {
+    color: rgba(234, 84, 84, 0.859);
+    margin: 0 0 5px 0;
+    text-align-last: left;
 }

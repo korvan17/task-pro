@@ -5,31 +5,34 @@ import { AddIconButton } from 'components';
 import IconPicker from 'components/UIelements/IconPicker/IconPicker';
 import { useState } from 'react';
 import BackgroundPicker from 'components/UIelements/BackgroundPicker/BackgroundPicker';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
 import { useTheme } from '@emotion/react';
 import boardSchema from '../Schemas/boardSchema';
+import { selectCurrentBoard } from 'redux/boards/selectors';
 
-export default function AddEditBoard({ isEditing, onClose, boardId }) {
-  const dispatch = useDispatch();
-  const [icon, setIcon] = useState('');
-  const [background, setBackground] = useState('');
+export default function AddEditBoard({ onClose, boardId }) {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const [icon, setIcon] = useState('icon-board-icon-1');
+  const [background, setBackground] = useState('');
+  const isEditing = useSelector(state => state.modal.isModalDisplayed);
+  const board = useSelector(selectCurrentBoard);
+  console.log('board:', board);
 
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
   };
 
   const handleSelectedBackgroundChange = selectedBackground => {
-    setBackground(selectedBackground);
+    if (selectedBackground === 'default') {
+      setBackground('');
+    } else {
+      setBackground(selectedBackground);
+    }
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    console.log({
-      title: values.title,
-      background: background,
-      icon: icon,
-    });
     try {
       if (!isEditing) {
         await dispatch(
@@ -45,7 +48,7 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
             title: values.title,
             background: background,
             icon: icon,
-            boardId,
+            id: boardId,
           })
         );
       }
@@ -72,9 +75,9 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
       </h3>
       <Formik
         initialValues={{
-          title: '',
-          icon: icon,
-          background: background,
+          title: isEditing ? board.title : 'your title',
+          icon: isEditing ? board.icon : icon,
+          background: isEditing ? board.background : background,
         }}
         onSubmit={handleSubmit}
         validationSchema={boardSchema}
@@ -90,6 +93,7 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
               style={{
                 color: theme.popUp.inputTextColor,
                 borderColor: theme.popUp.inputBorderColor,
+                '::placeholder': { color: theme.popUp.inputPlaceholderColor },
               }}
               className={css.input}
               type="text"
@@ -97,24 +101,13 @@ export default function AddEditBoard({ isEditing, onClose, boardId }) {
               placeholder="Title"
             />
           </label>
-          <ErrorMessage
-            className={css.errorMessage}
-            name="icon"
-            component="div"
-          />
           <IconPicker
-            name="icon"
             onSelectedIconChange={handleSelectedIconChange}
+            defaultIcon={isEditing ? board.icon : icon}
           />
-          <ErrorMessage
-            className={css.errorMessage}
-            name="background"
-            component="div"
-          />
-
           <BackgroundPicker
-            name="background"
             onSelectedBackgroundChange={handleSelectedBackgroundChange}
+            defaultBackground={isEditing ? board.background : background}
           />
           <AddIconButton
             buttonType="submit"

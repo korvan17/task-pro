@@ -5,6 +5,7 @@ import sprite from '../../../../icons/sprite.svg';
 import { useTheme } from '@emotion/react';
 
 export default function AddIconButton({
+  columnId,
   buttonType = 'button',
   children,
   className,
@@ -13,6 +14,7 @@ export default function AddIconButton({
   const theme = useTheme();
   return (
     <Buttons
+      columnId={columnId}
       pushButton={pushButton}
       className={` ${className} ${children ? css.button : css.buttonNoTxt}`}
       buttonType={buttonType}

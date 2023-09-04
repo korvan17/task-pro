@@ -1,4 +1,3 @@
-// import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import getDisplayType from 'components/Auth/getDisplayType';
@@ -7,7 +6,7 @@ import { throttle } from 'lodash';
 
 function ScreenSizeInfo() {
   const dispatch = useDispatch();
-  const handleResizeThrottled = throttle(handleResize, 1000); // Throttle the function
+  const handleResizeThrottled = throttle(handleResize, 1000);
 
   async function handleResize() {
     const lastDisplayType = getDisplayType();
