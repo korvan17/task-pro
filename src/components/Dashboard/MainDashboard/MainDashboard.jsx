@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
@@ -8,6 +7,11 @@ import { selectDisplays } from 'redux/displayType/displaySelectors';
 import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { deleteCard } from '../../../redux/сard/сardOperations';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import css from './MainDashboard.module.css';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { useTheme } from '@emotion/react';
+import { setNewBoardCreate } from '../../../redux/modalSlice';
 import {
   AddEditCard,
   AddEditColumn,
@@ -15,19 +19,6 @@ import {
   Card,
   Column,
 } from 'components';
-import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import css from './MainDashboard.module.css';
-import { deleteCard } from '../../../redux/сard/сardOperations';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getBoardByID } from 'redux/boards/operations';
-import { selectCurrentBoard } from 'redux/boards/selectors';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { selectDisplays } from 'redux/displayType/displaySelectors';
-import { setColumnId, setModalStatus } from 'redux/modalSlice';
-import { deleteColumn } from 'redux/columns/columnsOperations';
-import { useTheme } from '@emotion/react';
-import { setNewBoardCreate } from '../../../redux/modalSlice';
 
 export function MainDashboard() {
   const dispatch = useDispatch();
