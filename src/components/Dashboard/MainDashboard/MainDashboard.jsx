@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
@@ -7,11 +8,6 @@ import { selectDisplays } from 'redux/displayType/displaySelectors';
 import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { deleteCard } from '../../../redux/сard/сardOperations';
-import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import css from './MainDashboard.module.css';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { useTheme } from '@emotion/react';
-import { setNewBoardCreate } from '../../../redux/modalSlice';
 import {
   AddEditCard,
   AddEditColumn,
@@ -19,42 +15,25 @@ import {
   Card,
   Column,
 } from 'components';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import { useTheme } from '@emotion/react';
+import css from './MainDashboard.module.css';
 
 export function MainDashboard() {
-  const dispatch = useDispatch();
-  const { boardId } = useParams();
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
   const [currentColumnId, setCurrentColumnId] = useState(null);
-  const [setSearchParams] = useSearchParams();
-
   const board = useSelector(selectCurrentBoard);
+  const dispatch = useDispatch();
+  const { boardId } = useParams();
   const display = useSelector(selectDisplays);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
-  const newBoardCreate = useSelector(state => state.modal.newBoardCreate);
   const theme = useTheme();
 
   useEffect(() => {
-    if (isLoadingCards || isLoadingColumns) {
-      dispatch(getBoardByID(boardId));
-    }
-    if (newBoardCreate) {
-      dispatch(setNewBoardCreate(false));
-      const idNewBoard = board[0]._id;
-      setSearchParams({ boardId: idNewBoard });
-      console.log(idNewBoard);
-    }
-  }, [
-    newBoardCreate,
-    isLoadingColumns,
-    isLoadingCards,
-    display,
-    boardId,
-    board,
-    dispatch,
-    setSearchParams,
-  ]);
+    dispatch(getBoardByID(boardId));
+  }, [isLoadingColumns, isLoadingCards, display, boardId, dispatch]);
 
   const handleDeleteCard = id => {
     dispatch(deleteCard(id));
@@ -94,28 +73,19 @@ export function MainDashboard() {
     dispatch(deleteColumn(id));
   };
 
-  const onDragEnd = result => {
-    const { source, destination, type } = result;
+  const onDragEnd = result => {};
 
-    if (!destination) {
-      return;
-    }
+  const onBeforeCapture = beforeCapture => {
+    const { draggableId } = beforeCapture;
+    const isCard = draggableId.startsWith('card'); // Adjust this based on your card IDs
 
-    if (type === 'COLUMN') {
-      const reorderedColumns = [...board.columns];
-      const [movedColumn] = reorderedColumns.splice(source.index, 1);
-      reorderedColumns.splice(destination.index, 0, movedColumn);
-
-      // Диспатчите действие для обновления состояния
-    } else if (type === 'CARD') {
-      // Вам также нужно обработать перемещение карточек внутри одной колонки
-      // Обновите состояние Redux с новым порядком карточек внутри колонки
-      // Диспатчите действие для обновления состояния
+    if (!isCard) {
+      return null;
     }
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={onDragEnd} onBeforeCapture={onBeforeCapture}>
       <section className={css.board__main}>
         <Droppable droppableId="board" direction="horizontal" type="COLUMN">
           {provided => (
