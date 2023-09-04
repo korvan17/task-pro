@@ -10,7 +10,6 @@ import { addCard, editCard } from 'redux/сard/сardOperations';
 import cardSchema from '../Schemas/cardSchema';
 import NewCalendar from 'components/UIelements/Calendar/NewCalendar';
 import { selectCurrentBoard } from '../../../redux/boards/selectors';
-import { setNewBoardCreate } from 'redux/modalSlice';
 
 export default function AddEditCard({ onClose }) {
   const theme = useTheme();
@@ -25,7 +24,6 @@ export default function AddEditCard({ onClose }) {
   const currentCardId = useSelector(state => state.modal.cardId);
   const curentBoard = useSelector(selectCurrentBoard);
   let currentCard;
-
   if (isEditing) {
     const currentColumn = curentBoard.columns.find(
       column => column._id === currentColumnId

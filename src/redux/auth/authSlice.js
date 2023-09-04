@@ -29,7 +29,10 @@ const handlePending = state => {
 const handleRejected = (state, action) => {
   state.error = action.payload;
   state.isRefreshing = false;
+  state.token = '';
+  state.isLoggedIn = false;
 };
+
 const authInitialState = {
   user: {
     email: '',

@@ -24,7 +24,6 @@ export default function Buttons({
   stylization = 'color',
   children,
   pushButton,
-  navigateToNewBoard,
 }) {
   const theme = useTheme();
   const getBtnStyle = () => {
@@ -40,9 +39,7 @@ export default function Buttons({
 
   return (
     <button
-      onClick={
-        (columnId ? () => pushButton(columnId) : pushButton, navigateToNewBoard)
-      }
+      onClick={columnId ? () => pushButton(columnId) : pushButton}
       style={{ background: theme.popUp.buttonBackground }}
       className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}

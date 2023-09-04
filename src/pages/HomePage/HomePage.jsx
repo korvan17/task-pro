@@ -10,7 +10,6 @@ import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { HomePageView, ScreenPage } from '../../components';
-import { setNewBoardCreate } from '../../redux/modalSlice';
 import { fetchBoards } from '../../redux/boards/operations';
 import { useSelector } from 'react-redux';
 import { selectBoards } from 'redux/boards/selectors';
@@ -39,7 +38,6 @@ const HomePage = () => {
   useEffect(() => {
     if (newBoardId) {
       navigate(`/home/${newBoardId}`);
-      dispatch(setNewBoardCreate(false));
     }
   }, [navigate, dispatch, newBoardId]);
 
@@ -67,8 +65,6 @@ const HomePage = () => {
 
   const createBoard = () => {
     dispatch(setModalStatus(false));
-    // dispatch(setNewBoardCreate(true));
-    // console.log('setNewBoardCreate(true)');
     toggleModal();
   };
 

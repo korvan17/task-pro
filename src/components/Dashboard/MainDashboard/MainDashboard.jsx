@@ -3,15 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
-// import { selectDisplays } from 'redux/displayType/displaySelectors';
 import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
 import { deleteCard } from '../../../redux/сard/сardOperations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
-import { setCardId, setNewBoardCreate } from '../../../redux/modalSlice';
+import { setCardId } from '../../../redux/modalSlice';
 import {
   AddEditCard,
   AddEditColumn,
@@ -19,7 +18,6 @@ import {
   Card,
   Column,
 } from 'components';
-import { selectBoards } from '../../../redux/boards/selectors';
 
 export function MainDashboard() {
   const dispatch = useDispatch();
@@ -27,17 +25,12 @@ export function MainDashboard() {
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
   const [currentColumnId, setCurrentColumnId] = useState(null);
-  const [setSearchParams] = useSearchParams();
-  const boards = useSelector(selectBoards);
   const board = useSelector(selectCurrentBoard);
-  // const display = useSelector(selectDisplays);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
-  const newBoardCreate = useSelector(state => state.modal.newBoardCreate);
   const theme = useTheme();
 
   useEffect(() => {
-    console.log('mainUseEffect');
     if (
       isLoadingCards === true ||
       isLoadingColumns === true ||
@@ -45,20 +38,12 @@ export function MainDashboard() {
     ) {
       dispatch(getBoardByID(boardId));
     }
-    if (newBoardCreate) {
-      dispatch(setNewBoardCreate(false));
-      // const idNewBoard = boards[0]._id;
-      // <Navigate to={idNewBoard} />;
-    }
   }, [
-    newBoardCreate,
     isLoadingColumns,
     isLoadingCards,
     // display,
     boardId,
-    boards,
     dispatch,
-    setSearchParams,
   ]);
 
   const handleDeleteCard = (columnId, cardId) => {
@@ -101,11 +86,6 @@ export function MainDashboard() {
   const handleDeleteColumn = id => {
     dispatch(deleteColumn(id));
   };
-  console.log(
-    'board?.columns[0]._id !== ',
-    board?.columns[0]._id,
-    board?.columns
-  );
   const onDragEnd = result => {};
 
   return (
@@ -214,6 +194,14 @@ export function MainDashboard() {
               Add another column
             </span>
           </AddIconButton>
+          {showModalColumn && (
+            <BasicModal onClose={createColumn}>
+              <AddEditColumn
+                onClose={toggleModalColumn}
+                columnId={currentColumnId}
+              />
+            </BasicModal>
+          )}
         </div>
       )}
     </DragDropContext>
