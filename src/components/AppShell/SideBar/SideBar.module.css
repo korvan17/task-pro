@@ -7,13 +7,16 @@
   background-color: #121212;
   transition: 500ms;
   transform: translateX(-100%);
+}
 
-  @media screen and (min-width: 768px) {
-    /* padding: 24px; */
+@media screen and (min-width: 768px) {
+  .sideBar {
     width: 260px;
   }
+}
 
-  @media screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
+  .sideBar {
     width: 260px;
     transform: none;
     position: relative;
@@ -40,16 +43,17 @@
 
   transition: 500ms;
   transform: translateX(0);
+}
 
-  @media screen and (min-width: 768px) {
-    position: absolute;
+@media screen and (min-width: 768px) {
+  .openSideBar {
     /* padding: 24px; */
     width: 260px;
   }
-
-  @media screen and (min-width: 1440px) {
-    position: relative;
-    transition: none;
+}
+@media screen and (min-width: 1440px) {
+  .openSideBar {
+    position: absolute;
     width: 260px;
   }
 }

@@ -156,17 +156,19 @@ export function MainDashboard() {
               </li>
             ))}
           </ul>
-          <AddIconButton
-            pushButton={createColumn}
-            className={css.btn__alonecolumn}
-          >
-            <span
-              style={{ color: theme.popUp.buttonTextColor }}
-              className={css.btn__text}
+          <div>
+            <AddIconButton
+              pushButton={createColumn}
+              className={css.btn__alonecolumn}
             >
-              Add another column
-            </span>
-          </AddIconButton>
+              <span
+                style={{ color: theme.popUp.buttonTextColor }}
+                className={css.btn__text}
+              >
+                Add another column
+              </span>
+            </AddIconButton>
+          </div>
           {showModalColumn && (
             <BasicModal onClose={createColumn}>
               <AddEditColumn
