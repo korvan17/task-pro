@@ -10,12 +10,13 @@ import { addCard, editCard } from 'redux/сard/сardOperations';
 import cardSchema from '../Schemas/cardSchema';
 import NewCalendar from 'components/UIelements/Calendar/NewCalendar';
 import { selectCurrentBoard } from '../../../redux/boards/selectors';
+import { setNewBoardCreate } from 'redux/modalSlice';
 
 export default function AddEditCard({ onClose }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [priority, setPriority] = useState('without');
-  const [color, setColor] = useState('#1616164D');
+  const [setColor] = useState('#1616164D');
   const [deadline, setDeadline] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);
@@ -67,6 +68,7 @@ export default function AddEditCard({ onClose }) {
           })
         );
       }
+
       resetForm();
       onClose();
     } catch (err) {

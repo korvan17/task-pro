@@ -8,10 +8,13 @@ import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 import { useDispatch } from 'react-redux';
 import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { HomePageView, ScreenPage } from '../../components';
 import { setNewBoardCreate } from '../../redux/modalSlice';
 import { fetchBoards } from '../../redux/boards/operations';
+import { createBrowserHistory } from 'history';
+import { useSelector } from 'react-redux';
+import { selectBoards } from 'redux/boards/selectors';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -20,6 +23,29 @@ const HomePage = () => {
   const theme = useTheme();
   const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
+  const history = createBrowserHistory();
+  const navigate = useNavigate();
+
+  const boards = useSelector(selectBoards);
+
+  const [prevBoardsLength, setPrevBoardsLength] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchBoards());
+    };
+
+    fetchData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (boards.length > prevBoardsLength) {
+      const idNewBoard = boards[0]._id;
+      navigate(`/home/${idNewBoard}`);
+      dispatch(setNewBoardCreate(false));
+    }
+    setPrevBoardsLength(boards.length);
+  }, [boards, prevBoardsLength, navigate, dispatch]);
 
   useEffect(() => {
     function handleResize() {
@@ -37,26 +63,16 @@ const HomePage = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [showModal]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(fetchBoards());
-    };
-
-    fetchData();
-  }, [dispatch]);
+  }, [showModal, boards, history, dispatch]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
- 
-
   const createBoard = () => {
     dispatch(setModalStatus(false));
-    dispatch(setNewBoardCreate(true));
-    console.log('setNewBoardCreate(true)');
+    // dispatch(setNewBoardCreate(true));
+    // console.log('setNewBoardCreate(true)');
     toggleModal();
   };
 
