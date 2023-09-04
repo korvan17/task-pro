@@ -15,7 +15,7 @@ export default function AddEditCard({ onClose }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [priority, setPriority] = useState('without');
-  const [color, setColor] = useState('#1616164D');
+  const [setColor] = useState('#1616164D');
   const [deadline, setDeadline] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);

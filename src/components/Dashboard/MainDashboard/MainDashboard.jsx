@@ -9,7 +9,7 @@ import { deleteColumn } from 'redux/columns/columnsOperations';
 import { deleteCard } from '../../../redux/сard/сardOperations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
-import { Navigate, useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import { setCardId, setNewBoardCreate } from '../../../redux/modalSlice';
 import {
