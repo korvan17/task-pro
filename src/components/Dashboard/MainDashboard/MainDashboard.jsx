@@ -19,6 +19,9 @@ import {
   Card,
   Column,
 } from 'components';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import { useTheme } from '@emotion/react';
+import css from './MainDashboard.module.css';
 
 export function MainDashboard() {
   const dispatch = useDispatch();
@@ -94,28 +97,19 @@ export function MainDashboard() {
     dispatch(deleteColumn(id));
   };
 
-  const onDragEnd = result => {
-    const { source, destination, type } = result;
+  const onDragEnd = result => {};
 
-    if (!destination) {
-      return;
-    }
+  const onBeforeCapture = beforeCapture => {
+    const { draggableId } = beforeCapture;
+    const isCard = draggableId.startsWith('card'); // Adjust this based on your card IDs
 
-    if (type === 'COLUMN') {
-      const reorderedColumns = [...board.columns];
-      const [movedColumn] = reorderedColumns.splice(source.index, 1);
-      reorderedColumns.splice(destination.index, 0, movedColumn);
-
-      // Диспатчите действие для обновления состояния
-    } else if (type === 'CARD') {
-      // Вам также нужно обработать перемещение карточек внутри одной колонки
-      // Обновите состояние Redux с новым порядком карточек внутри колонки
-      // Диспатчите действие для обновления состояния
+    if (!isCard) {
+      return null;
     }
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={onDragEnd} onBeforeCapture={onBeforeCapture}>
       <section className={css.board__main}>
         <Droppable droppableId="board" direction="horizontal" type="COLUMN">
           {provided => (
