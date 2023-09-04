@@ -33,6 +33,7 @@ const boardsInitialState = {
   isLoading: false,
   error: null,
   currentBoard: null,
+  currentBoardId: null,
 };
 
 const boardsSlice = createSlice({
@@ -58,6 +59,7 @@ const boardsSlice = createSlice({
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        state.currentBoardId = action.payload._id;
         state.boards.unshift({ ...action.payload });
       })
 
