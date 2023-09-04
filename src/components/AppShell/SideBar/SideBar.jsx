@@ -8,11 +8,8 @@ import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
-// import { fetchBoards } from 'redux/boards/operations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { setModalStatus } from 'redux/modalSlice';
-
-// import { selectIsLoading } from '../../../redux/boards/selectors';
 
 function SideBar({
   setIsMenuOpen,
@@ -22,17 +19,14 @@ function SideBar({
   createBoard,
   editBoard,
 }) {
-  // console.log('isMenuOpen:', isMenuOpen)
   const [showNeedHelpModal, setShowNeedHelpModal] = useState(false);
 
   const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
-  // const isLoadingBoards = useSelector(selectIsLoading);
-  // console.log('boards:', boards);
+
   const dispatch = useDispatch();
-  // const isBoard = boards.length !== 0 ? true : false;
 
   useEffect(() => {}, [boards]);
 
@@ -53,7 +47,6 @@ function SideBar({
   });
 
   const logoutBtn = async () => {
-    console.log('logoutBtn');
     await dispatch(logout());
     navigate('/');
   };
@@ -141,9 +134,6 @@ function SideBar({
           <Board
             key={board._id}
             board={board}
-            // background={board.background}
-            // icon={board.icon}
-            // title={board.title}
             editBoard={editBoard}
             toggleModal={toggleModal}
           ></Board>
@@ -163,7 +153,7 @@ function SideBar({
             }}
             className={css.helpText}
           >
-            If you need help with{' '}
+            If you need help with
             <span
               style={{
                 color: theme.sidebar.needHelpSpanColor,

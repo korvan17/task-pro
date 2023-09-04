@@ -6,6 +6,7 @@ import {
   updateBoardById,
   getBoardByID,
 } from './operations';
+import { toast } from 'react-toastify';
 
 const customArr = [
   updateBoardById,
@@ -57,6 +58,7 @@ const boardsSlice = createSlice({
       })
 
       .addCase(addBoard.fulfilled, (state, action) => {
+        toast.success('Great job! Your board has been added. 😍');
         state.isLoading = false;
         state.error = null;
         state.currentBoardId = action.payload._id;
@@ -64,6 +66,7 @@ const boardsSlice = createSlice({
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {
+        toast.error('Board successfully removed from your account. 😟');
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
@@ -73,6 +76,7 @@ const boardsSlice = createSlice({
       })
 
       .addCase(updateBoardById.fulfilled, (state, action) => {
+        toast.success('Board updated successfully. Changes saved! 👍');
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
