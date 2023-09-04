@@ -11,12 +11,15 @@ import { useTheme } from '@emotion/react';
 
 const NewCalendar = ({
   onDate = () => null,
-  deadline = String(new Date()),
+  deadline,
   onDateChange,
+  currentDeadline,
 }) => {
   const userTheme = useSelector(getTheme);
   const theme = useTheme();
-  const [startDate, setStartDate] = useState(deadline);
+  const [startDate, setStartDate] = useState(
+    currentDeadline ? currentDeadline : deadline
+  );
   const months = [
     'January',
     'February',
@@ -34,7 +37,6 @@ const NewCalendar = ({
   useEffect(() => {
     onDate(startDate);
   }, [onDate, startDate]);
-  // console.log(startDate)
 
   const setCalendarTheme = () => {
     switch (userTheme) {

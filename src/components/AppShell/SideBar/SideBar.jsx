@@ -8,7 +8,7 @@ import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
-import { fetchBoards } from 'redux/boards/operations';
+// import { fetchBoards } from 'redux/boards/operations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { setModalStatus } from 'redux/modalSlice';
 

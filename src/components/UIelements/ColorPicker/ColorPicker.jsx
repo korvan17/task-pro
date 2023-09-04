@@ -4,7 +4,8 @@ import css from './ColorPicker.module.css';
 const ColorPicker = ({
   onSelectedPriorityChange,
   onSelectedColorChange,
-  // defaultPriority,
+  defaultColor,
+  currentPriority,
 }) => {
   const colors = [
     { id: 1, priority: 'low', color: '#8FA1D0' },
@@ -13,13 +14,11 @@ const ColorPicker = ({
     { id: 4, priority: 'without', color: '#1616164D' },
   ];
 
-  // console.log(defaultPriority);
-  // const foundColor = colors.find(color => color.priority === defaultPriority);
-  // console.log(foundColor);
+  const foundColor = colors.find(color => color.priority === currentPriority);
 
-  const defaultColor = colors.find(color => color.priority === 'without').color;
-
-  const [selectedColor, setSelectedColor] = useState(defaultColor);
+  const [selectedColor, setSelectedColor] = useState(
+    currentPriority ? foundColor.color : defaultColor
+  );
 
   const handleColorChange = color => {
     setSelectedColor(color.color);
