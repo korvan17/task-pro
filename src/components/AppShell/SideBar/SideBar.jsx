@@ -8,7 +8,10 @@ import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
-// import { fetchBoards } from 'redux/boards/operations';
+import { fetchBoards } from 'redux/boards/operations';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import { setModalStatus } from 'redux/modalSlice';
+
 // import { selectIsLoading } from '../../../redux/boards/selectors';
 
 function SideBar({
@@ -20,7 +23,7 @@ function SideBar({
   editBoard,
 }) {
   // console.log('isMenuOpen:', isMenuOpen)
-  const [showNeedHelp, setShowNeedHelp] = useState(false);
+  const [showNeedHelpModal, setShowNeedHelpModal] = useState(false);
 
   const navigate = useNavigate();
   const theme = useTheme();
@@ -55,9 +58,15 @@ function SideBar({
     navigate('/');
   };
 
-  const needHelpBtn = () => {
+  const toggleNeedHelpModal = () => {
     console.log('needHelpBtn');
-    setShowNeedHelp(!showNeedHelp);
+    setShowNeedHelpModal(!showNeedHelpModal);
+  };
+
+  const clickNeedHelp = () => {
+    toggleNeedHelpModal();
+    console.log('clickNeedHelp');
+    dispatch(setModalStatus(true));
   };
 
   return (
@@ -166,7 +175,7 @@ function SideBar({
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={needHelpBtn} className={css.helpBtn}>
+          <button onClick={clickNeedHelp} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,
@@ -208,7 +217,11 @@ function SideBar({
           </p>
         </button>
       </div>
-      {showNeedHelp && <NeedHelp onClose={needHelpBtn} />}
+      {showNeedHelpModal && (
+        <BasicModal onClose={clickNeedHelp}>
+          <NeedHelp onClose={toggleNeedHelpModal} />
+        </BasicModal>
+      )}
     </div>
   );
 }

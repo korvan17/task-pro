@@ -67,9 +67,6 @@
   gap: 8px;
 }
 
-.iconLogo {
-}
-
 .headerTitle {
   color: #fff;
   font-family: Poppins;
@@ -131,7 +128,7 @@
 
 .boardsList {
   color: white;
-  /* position: absolute; */
+  margin-bottom: auto;
   left: 0px;
   top: 212px;
 
