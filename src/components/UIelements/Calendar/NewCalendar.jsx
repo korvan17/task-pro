@@ -11,7 +11,7 @@ import { useTheme } from '@emotion/react';
 
 const NewCalendar = ({
   onDate = () => null,
-  deadline = String(new Date()),
+  deadline,
   onDateChange,
   currentDeadline,
 }) => {

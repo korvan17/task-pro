@@ -16,11 +16,19 @@ export default function AddEditCard({ onClose }) {
   const dispatch = useDispatch();
   const [priority, setPriority] = useState('without');
   const [color, setColor] = useState('#1616164D');
-  const [deadline, setDeadline] = useState('');
+  const [deadline, setDeadline] = useState(String(new Date()));
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);
   const currentCardId = useSelector(state => state.modal.cardId);
   const curentBoard = useSelector(selectCurrentBoard);
+  let currentCard;
+
+  if (isEditing) {
+    const currentColumn = curentBoard.columns.find(
+      column => column._id === currentColumnId
+    );
+    currentCard = currentColumn.cards.find(card => card._id === currentCardId);
+  }
 
   const handleSelectedPriorityChange = selectedPriority => {
     setPriority(selectedPriority);
@@ -33,16 +41,6 @@ export default function AddEditCard({ onClose }) {
   const handleDateChange = selectedDate => {
     setDeadline(selectedDate);
   };
-
-  let currentCard;
-
-  if (isEditing) {
-    const currentColumn = curentBoard.columns.find(
-      column => column._id === currentColumnId
-    );
-    currentCard = currentColumn.cards.find(card => card._id === currentCardId);
-  }
-  // const previousDeadline = isEditing ? currentCard.deadline : '';
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
@@ -149,6 +147,7 @@ export default function AddEditCard({ onClose }) {
             </span>
             <NewCalendar
               onDateChange={handleDateChange}
+              deadline={deadline}
               currentDeadline={isEditing ? currentCard.deadline : null}
             />
           </div>
