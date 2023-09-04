@@ -15,6 +15,7 @@ export default function AddEditCard({ onClose }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [priority, setPriority] = useState('without');
+  const [color, setColor] = useState('#1616164D');
   const [deadline, setDeadline] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);
@@ -25,20 +26,22 @@ export default function AddEditCard({ onClose }) {
     setPriority(selectedPriority);
   };
 
+  const handleSelectedColorChange = selectedColor => {
+    setColor(selectedColor);
+  };
+
   const handleDateChange = selectedDate => {
-    console.log(selectedDate);
     setDeadline(selectedDate);
   };
 
   let currentCard;
 
   if (isEditing) {
-    console.log('currentColumnId - ', currentColumnId);
     const currentColumn = curentBoard.columns.find(
       column => column._id === currentColumnId
     );
-    console.log(' currentColumn - ', currentColumn);
     currentCard = currentColumn.cards.find(card => card._id === currentCardId);
+    console.log(currentCard.priority);
   }
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -60,7 +63,7 @@ export default function AddEditCard({ onClose }) {
             description: values.description,
             priority: priority,
             deadline: deadline,
-            _id: currentCardId,
+            id: currentCardId,
           })
         );
       }
@@ -132,7 +135,10 @@ export default function AddEditCard({ onClose }) {
             />
           </label>
           <ColorPicker
+            // defaultColor={color}
+            // defaultPriority={isEditing ? currentCard.priority : priority}
             onSelectedPriorityChange={handleSelectedPriorityChange}
+            onSelectedColorChange={handleSelectedColorChange}
           />
           <div>
             <span

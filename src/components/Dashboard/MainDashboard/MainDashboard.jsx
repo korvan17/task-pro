@@ -57,8 +57,9 @@ export function MainDashboard() {
     // setSearchParams,
   ]);
 
-  const handleDeleteCard = id => {
-    dispatch(deleteCard(id));
+  const handleDeleteCard = (columnId, cardId) => {
+    dispatch(setColumnId(columnId));
+    dispatch(deleteCard(cardId));
   };
 
   const createCard = columnId => {
