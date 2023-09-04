@@ -4,15 +4,17 @@ import css from './Board.module.css';
 
 import { useDispatch } from 'react-redux';
 import { deleteBoard } from '../../../redux/boards/operations';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 
 const Board = ({ board, editBoard }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const deleteBoardBtn = boardId => {
     dispatch(deleteBoard(boardId));
+    navigate('/home');
   };
 
   return (

@@ -22,17 +22,14 @@ function SideBar({
   createBoard,
   editBoard,
 }) {
-  // console.log('isMenuOpen:', isMenuOpen)
   const [showNeedHelpModal, setShowNeedHelpModal] = useState(false);
 
   const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
-  // const isLoadingBoards = useSelector(selectIsLoading);
-  // console.log('boards:', boards);
+
   const dispatch = useDispatch();
-  // const isBoard = boards.length !== 0 ? true : false;
 
   useEffect(() => {}, [boards]);
 
@@ -53,7 +50,6 @@ function SideBar({
   });
 
   const logoutBtn = async () => {
-    console.log('logoutBtn');
     await dispatch(logout());
     navigate('/');
   };
@@ -163,7 +159,7 @@ function SideBar({
             }}
             className={css.helpText}
           >
-            If you need help with{' '}
+            If you need help with
             <span
               style={{
                 color: theme.sidebar.needHelpSpanColor,
