@@ -4,12 +4,11 @@ import css from './SideBar.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectBoards, selectCurrentBoard } from 'redux/boards/selectors';
+import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import { setModalStatus } from 'redux/modalSlice';
 
 function SideBar({
   setIsMenuOpen,
@@ -21,7 +20,6 @@ function SideBar({
   toggleMenu,
 }) {
   const [showNeedHelpModal, setShowNeedHelpModal] = useState(false);
-  // const currentBoard = useState(selectCurrentBoard)
 
   const navigate = useNavigate();
   const theme = useTheme();
