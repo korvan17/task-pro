@@ -11,6 +11,14 @@ export default function IconForModal({ handleBackground, selectedBackground }) {
     nameFile.add(fileName);
   });
   const images = Array.from(nameFile).sort();
+  images.splice(16, 4);
+  const theme = 'violet';
+  if (theme === 'light') {
+    images.splice(0, 1, 'QdefaultLight');
+  }
+  if (theme === 'violet') {
+    images.splice(0, 1, 'RdefaultViolet');
+  }
 
   return (
     <ul className={css.arrayOfIcons}>
