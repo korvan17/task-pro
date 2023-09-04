@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import css from './HomePage.module.css';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import { AddEditBoard, SideBar } from 'components';
+import { AddEditBoard, Loader, SideBar } from 'components';
 import Backdrop from 'components/Backdrop/Backdrop';
 import Header from 'components/AppShell/Header/Header';
 import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
@@ -16,6 +16,7 @@ import { selectBoards } from 'redux/boards/selectors';
 
 const HomePage = () => {
   const dispatch = useDispatch();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const theme = useTheme();
