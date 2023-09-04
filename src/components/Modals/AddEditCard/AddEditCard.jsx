@@ -15,12 +15,20 @@ export default function AddEditCard({ onClose }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [priority, setPriority] = useState('without');
-  const [setColor] = useState('#1616164D');
-  const [deadline, setDeadline] = useState('');
+  const [color, setColor] = useState('#1616164D');
+  const [deadline, setDeadline] = useState(String(new Date()));
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);
   const currentCardId = useSelector(state => state.modal.cardId);
   const curentBoard = useSelector(selectCurrentBoard);
+  let currentCard;
+
+  if (isEditing) {
+    const currentColumn = curentBoard.columns.find(
+      column => column._id === currentColumnId
+    );
+    currentCard = currentColumn.cards.find(card => card._id === currentCardId);
+  }
 
   const handleSelectedPriorityChange = selectedPriority => {
     setPriority(selectedPriority);
@@ -33,16 +41,6 @@ export default function AddEditCard({ onClose }) {
   const handleDateChange = selectedDate => {
     setDeadline(selectedDate);
   };
-
-  let currentCard;
-
-  if (isEditing) {
-    const currentColumn = curentBoard.columns.find(
-      column => column._id === currentColumnId
-    );
-    currentCard = currentColumn.cards.find(card => card._id === currentCardId);
-    console.log(currentCard.priority);
-  }
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
@@ -135,8 +133,8 @@ export default function AddEditCard({ onClose }) {
             />
           </label>
           <ColorPicker
-            // defaultColor={color}
-            // defaultPriority={isEditing ? currentCard.priority : priority}
+            currentPriority={isEditing ? currentCard.priority : null}
+            defaultColor={color}
             onSelectedPriorityChange={handleSelectedPriorityChange}
             onSelectedColorChange={handleSelectedColorChange}
           />
@@ -147,7 +145,11 @@ export default function AddEditCard({ onClose }) {
             >
               Deadline
             </span>
-            <NewCalendar onDateChange={handleDateChange} />
+            <NewCalendar
+              onDateChange={handleDateChange}
+              deadline={deadline}
+              currentDeadline={isEditing ? currentCard.deadline : null}
+            />
           </div>
           <AddIconButton buttonType="submit" className={css.btn}>
             <span
