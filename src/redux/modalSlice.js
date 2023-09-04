@@ -5,6 +5,7 @@ const modalSlice = createSlice({
   initialState: {
     isModalDisplayed: false,
     columnId: '',
+    newBoardCreate: false,
   },
   reducers: {
     setModalStatus(state, action) {
@@ -13,10 +14,14 @@ const modalSlice = createSlice({
     setColumnId(state, action) {
       state.columnId = action.payload;
     },
+    setNewBoardCreate(state, action) {
+      state.columnId = action.payload;
+    },
   },
 });
 
-export const { setModalStatus, setColumnId } = modalSlice.actions;
+export const { setModalStatus, setColumnId, setNewBoardCreate } =
+  modalSlice.actions;
 export const modalReducer = modalSlice.reducer;
 
 export const selectModalStatus = state => state.modal.isModalDisplayed;
