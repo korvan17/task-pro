@@ -51,6 +51,8 @@ const HomePage = () => {
     setShowModal(!showModal);
   };
 
+ 
+
   const createBoard = () => {
     dispatch(setModalStatus(false));
     dispatch(setNewBoardCreate(true));
