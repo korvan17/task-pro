@@ -74,9 +74,23 @@ export function MainDashboard() {
   };
 
   const onDragEnd = result => {
-    // Handle column and card reordering here
-    // result will contain information about the drag and drop action
-    // You'll need to update your Redux state accordingly
+    const { source, destination, type } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (type === 'COLUMN') {
+      const reorderedColumns = [...board.columns];
+      const [movedColumn] = reorderedColumns.splice(source.index, 1);
+      reorderedColumns.splice(destination.index, 0, movedColumn);
+
+      // Диспатчите действие для обновления состояния
+    } else if (type === 'CARD') {
+      // Вам также нужно обработать перемещение карточек внутри одной колонки
+      // Обновите состояние Redux с новым порядком карточек внутри колонки
+      // Диспатчите действие для обновления состояния
+    }
   };
 
   return (
