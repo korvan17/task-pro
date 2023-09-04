@@ -8,10 +8,12 @@ import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 import { useDispatch } from 'react-redux';
 import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { HomePageView, ScreenPage } from '../../components';
 import { setNewBoardCreate } from '../../redux/modalSlice';
 import { fetchBoards } from '../../redux/boards/operations';
+import { useSelector } from 'react-redux';
+import { selectBoards } from 'redux/boards/selectors';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,26 @@ const HomePage = () => {
   const theme = useTheme();
   const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
+  const navigate = useNavigate();
+
+  const boards = useSelector(selectBoards);
+
+  const newBoardId = useSelector(state => state.boards.currentBoardId);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchBoards());
+    };
+
+    fetchData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (newBoardId) {
+      navigate(`/home/${newBoardId}`);
+      dispatch(setNewBoardCreate(false));
+    }
+  }, [navigate, dispatch, newBoardId]);
 
   useEffect(() => {
     function handleResize() {
@@ -37,26 +59,16 @@ const HomePage = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [showModal]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(fetchBoards());
-    };
-
-    fetchData();
-  }, [dispatch]);
+  }, [showModal, boards, dispatch]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
- 
-
   const createBoard = () => {
     dispatch(setModalStatus(false));
-    dispatch(setNewBoardCreate(true));
-    console.log('setNewBoardCreate(true)');
+    // dispatch(setNewBoardCreate(true));
+    // console.log('setNewBoardCreate(true)');
     toggleModal();
   };
 
