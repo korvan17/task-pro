@@ -4,13 +4,13 @@
   left: 0px; */
   gap: 43px;
   justify-content: space-between;
-  width: 225px;
+  width: 217px;
   height: 61px;
-  padding: 22px 18px 22px 14px;
+  padding: 22px 20px 22px 14px;
   transition: 250ms;
 
   @media screen and (min-width: 768px) {
-    width: 260px;
+    width: 252px;
 
     padding: 22px 24px 22px 24px;
     gap: 58px;
@@ -46,7 +46,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100px;
+  max-width: 88px;
 
   @media screen and (min-width: 768px) {
     margin-left: 8px;
