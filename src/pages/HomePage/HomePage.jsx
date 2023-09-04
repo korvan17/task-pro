@@ -45,6 +45,7 @@ const HomePage = () => {
   const createBoard = () => {
     dispatch(setModalStatus(false));
     dispatch(setNewBoardCreate(true));
+    console.log('setNewBoardCreate(true)');
     toggleModal();
   };
 

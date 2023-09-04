@@ -9,6 +9,7 @@ import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { fetchBoards } from 'redux/boards/operations';
+import { selectIsLoading } from '../../../redux/boards/selectors';
 
 function SideBar({
   setIsMenuOpen,
@@ -25,6 +26,7 @@ function SideBar({
   const theme = useTheme();
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
+  const isLoadingBoards = useSelector(selectIsLoading);
   // console.log('boards:', boards);
   const dispatch = useDispatch();
   // const isBoard = boards.length !== 0 ? true : false;

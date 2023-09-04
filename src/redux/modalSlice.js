@@ -15,7 +15,7 @@ const modalSlice = createSlice({
       state.columnId = action.payload;
     },
     setNewBoardCreate(state, action) {
-      state.columnId = action.payload;
+      state.newBoardCreate = action.payload;
     },
   },
 });

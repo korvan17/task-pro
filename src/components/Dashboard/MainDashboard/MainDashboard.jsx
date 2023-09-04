@@ -41,9 +41,9 @@ export function MainDashboard() {
     }
     if (newBoardCreate) {
       dispatch(setNewBoardCreate(false));
-      const idNewBoard = board[0]._id;
-      setSearchParams({ boardId: idNewBoard });
-      console.log(idNewBoard);
+      // const idNewBoard = board[0]._id;
+      // setSearchParams({ boardId: idNewBoard });
+      console.log('idNewBoard');
     }
   }, [
     newBoardCreate,

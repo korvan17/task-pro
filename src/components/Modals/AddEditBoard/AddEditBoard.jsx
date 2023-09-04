@@ -18,7 +18,6 @@ export default function AddEditBoard({ onClose, boardId }) {
   const [background, setBackground] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const board = useSelector(selectCurrentBoard);
-  console.log('board:', board);
 
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);
