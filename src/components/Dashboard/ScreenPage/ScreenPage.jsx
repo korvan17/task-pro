@@ -15,7 +15,7 @@ const ScreenPage = ({ id }) => {
         <div className={css.screen__section}>
           <Background img={board.backgroundURL}>
             <HeaderDashboard title={board.title} />
-            <MainDashboard id={board.id} /> {/* Use _id instead of id */}
+            <MainDashboard /> {/* Use _id instead of id */}
           </Background>
         </div>
       )}

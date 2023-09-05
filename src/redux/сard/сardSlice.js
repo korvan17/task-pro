@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addCard, deleteCard, editCard, moveCard } from './сardOperations';
+import { toast } from 'react-toastify';
 const customArr = [addCard, deleteCard, editCard, moveCard];
 
 const fnStatus = status => {
@@ -11,6 +12,7 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
+  toast.error('Something went wrong. Please try again. 😐');
   state.isLoading = false;
   state.error = action.payload;
 };

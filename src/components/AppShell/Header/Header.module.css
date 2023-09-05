@@ -95,14 +95,10 @@
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
-
-  color: #ffffff;
 }
 
 .userBtn {
+  display: flex;
   background-color: transparent;
   border: none;
-}
-
-.userAvatar {
 }

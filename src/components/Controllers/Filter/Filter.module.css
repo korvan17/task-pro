@@ -3,8 +3,8 @@
 }
 
 .filtersButtonContainer {
-  width: 75px;
-  height: 20px;
+  /* width: 75px;
+  height: 20px; */
   /* outline: 1px solid blue; */
 }
 
@@ -19,7 +19,6 @@
   border: none;
   background: none;
   /* color: rgba(22, 22, 22, 0.8); */
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -43,7 +42,7 @@
   height: 235px;
   border-radius: 8px;
   background: #fcfcfc;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
 }
 
 .filtersChangerContainerCloseButton {
@@ -125,9 +124,16 @@
 
 .filtersChangerSelectorsInput {
   display: flex;
+  align-items: center;
   gap: 8px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  text-transform: capitalize;
 }
 
 .filtersChangerSelectorsInput:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }

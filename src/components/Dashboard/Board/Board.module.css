@@ -1,4 +1,31 @@
+/* dark */
 .board {
+  display: flex;
+  /* position: absolute;
+  left: 0px; */
+  gap: 43px;
+  justify-content: space-between;
+  width: 217px;
+  height: 61px;
+  padding: 22px 10px 22px 14px;
+  transition: 250ms;
+}
+
+@media screen and (min-width: 768px) {
+  .board {
+    width: 252px;
+
+    padding: 22px 14px 22px 24px;
+    gap: 58px;
+  }
+}
+
+.board:hover {
+  /* background-color: #1f1f1f; */
+}
+
+/* light */
+.lightBoard {
   display: flex;
   /* position: absolute;
   left: 0px; */
@@ -17,13 +44,60 @@
   }
 
   &:hover {
-    background-color: #1f1f1f;
+    background-color: #F6F6F7;
   }
 }
 
+/* violet */
+.violetBoard {
+  display: flex;
+  /* position: absolute;
+  left: 0px; */
+  gap: 43px;
+  justify-content: space-between;
+  width: 217px;
+  height: 61px;
+  padding: 22px 10px 22px 14px;
+  transition: 250ms;
+
+  @media screen and (min-width: 768px) {
+    width: 252px;
+
+    padding: 22px 14px 22px 24px;
+    gap: 58px;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+  }
+}
+
+/* dark */
 .selectedBoard {
   position: relative;
   cursor: pointer;
+  background-color: #1f1f1f;
+}
+
+.selectedBoard::after {
+  content: '';
+  width: 4px;
+  height: 61px;
+  background-color: #bedbb0;
+  /* display: block; */
+  /* border-radius: 10% 0 0 10%; */
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* light */
+.lightSelectedBoard {
+  position: relative;
+  cursor: pointer;
+  background-color: #F6F6F7;
 
   &::after {
     content: '';
@@ -40,8 +114,30 @@
   }
 }
 
+/* violet */
+.violetSelectedBoard {
+  position: relative;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.20);
+
+  &::after {
+    content: '';
+    width: 4px;
+    height: 61px;
+    background-color: #FFFFFF;
+    /* display: block; */
+    /* border-radius: 10% 0 0 10%; */
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
 .boardIconTittleContainer {
   display: flex;
+  align-items: flex-end;
 }
 
 .boardIcon {
@@ -54,7 +150,6 @@
 
 .boardTittle {
   color: #fff;
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -67,8 +162,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 88px;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .boardTittle {
     margin-left: 8px;
   }
 }

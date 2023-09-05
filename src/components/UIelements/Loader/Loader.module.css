@@ -7,6 +7,7 @@
   height: 10px;
   background: linear-gradient(to right, transparent, #36c773, transparent);
   overflow: hidden;
+  z-index: 100000;
 }
 
 .loader::after {

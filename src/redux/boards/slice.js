@@ -25,6 +25,8 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
+  toast.error('Something went wrong. Please try again. 😐');
+
   state.error = action.payload;
   state.isLoading = false;
 };
@@ -45,6 +47,9 @@ const boardsSlice = createSlice({
     selectBoard(state, action) {
       state.currentBoard = action.payload;
     },
+    setCurrentBoardIdToNull(state) {
+      state.currentBoardId = null;
+    },
   },
   extraReducers: builder =>
     builder
@@ -63,7 +68,7 @@ const boardsSlice = createSlice({
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {
-        toast.error('Board successfully removed from your account. 😟');
+        toast.warning('Board successfully removed from your account. 😟');
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
@@ -93,5 +98,5 @@ const boardsSlice = createSlice({
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected),
 });
 
-export const { selectBoard } = boardsSlice.actions;
+export const { selectBoard, setCurrentBoardIdToNull } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getBoardByID } from 'redux/boards/operations';
@@ -19,32 +19,38 @@ import {
   Column,
 } from 'components';
 
+import { selectFilter, setFilter } from '../../../redux/filterSlice';
+
+import { getTheme } from 'redux/auth/authSelectors';
+
 export function MainDashboard() {
   const dispatch = useDispatch();
   const { boardId } = useParams();
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
   const [currentColumnId, setCurrentColumnId] = useState(null);
+  const filterCards = useSelector(selectFilter);
+
   const board = useSelector(selectCurrentBoard);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
   const theme = useTheme();
+  const userTheme = useSelector(getTheme);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (
-      isLoadingCards === true ||
-      isLoadingColumns === true ||
-      boardId !== ''
-    ) {
-      dispatch(getBoardByID(boardId));
+    if (isFirstRender.current === false) {
+      if (isLoadingColumns === false && isLoadingCards === false) {
+        dispatch(getBoardByID(boardId));
+      }
     }
-  }, [
-    isLoadingColumns,
-    isLoadingCards,
-    // display,
-    boardId,
-    dispatch,
-  ]);
+  }, [isLoadingCards, isLoadingColumns, boardId, dispatch]);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    }
+  }, []);
 
   const handleDeleteCard = (columnId, cardId) => {
     dispatch(setColumnId(columnId));
@@ -55,6 +61,7 @@ export function MainDashboard() {
     dispatch(setModalStatus(false));
     dispatch(setColumnId(columnId));
     setShowModalCard(true);
+    dispatch(setFilter(''));
   };
 
   const editCard = (columnId, cardId) => {
@@ -103,10 +110,23 @@ export function MainDashboard() {
     }
   };
 
+  const setCardsScrollTheme = () => {
+    switch (userTheme) {
+      case 'light':
+        return [css.lightCard__item, css.lightBoard__main];
+      case 'dark':
+        return [css.card__item, css.board__main];
+      case 'violet':
+        return [css.violetCard__item, css.violetBoard__main];
+      default:
+        return [css.lightCard__item, css.lightBoard__main];
+    }
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       {board?.columns[0]._id ? (
-        <div className={css.board__main}>
+        <div className={setCardsScrollTheme()[1]}>
           <ul className={css.column__item}>
             {board?.columns.map((column, index) => (
               <li key={column._id} className={css.column__list}>
@@ -121,34 +141,40 @@ export function MainDashboard() {
                     <ul
                       {...provided.droppableProps}
                       ref={provided.innerRef}
-                      className={css.card__item}
+                      className={setCardsScrollTheme()[0]}
                     >
-                      {column.cards.map((card, cardIndex) => (
-                        <Draggable
-                          key={card._id}
-                          draggableId={card._id}
-                          index={cardIndex}
-                        >
-                          {provided => (
-                            <li
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                            >
-                              <Card
-                                cardId={card._id}
-                                columnId={column._id}
-                                toggleModalCard={editCard}
-                                deleteCard={handleDeleteCard}
-                                title={card.title}
-                                desc={card.description}
-                                priority={card.priority}
-                                deadline={card.deadline}
-                              />
-                            </li>
-                          )}
-                        </Draggable>
-                      ))}
+                      {column.cards
+                        .filter(card =>
+                          filterCards === ''
+                            ? true
+                            : card.priority === filterCards
+                        )
+                        .map((card, cardIndex) => (
+                          <Draggable
+                            key={card._id}
+                            draggableId={card._id}
+                            index={cardIndex}
+                          >
+                            {provided => (
+                              <li
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                              >
+                                <Card
+                                  cardId={card._id}
+                                  columnId={column._id}
+                                  toggleModalCard={editCard}
+                                  deleteCard={handleDeleteCard}
+                                  title={card.title}
+                                  desc={card.description}
+                                  priority={card.priority}
+                                  deadline={card.deadline}
+                                />
+                              </li>
+                            )}
+                          </Draggable>
+                        ))}
                       {provided.placeholder}
                     </ul>
                   )}
@@ -199,7 +225,7 @@ export function MainDashboard() {
           )}
         </div>
       ) : (
-        <div className={css.board__main}>
+        <div className={setCardsScrollTheme()[1]}>
           <AddIconButton
             pushButton={createColumn}
             className={css.btn__alonecolumn}

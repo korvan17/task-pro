@@ -1,29 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useTheme } from '@emotion/react';
 import iconDefs from '../../../icons/sprite.svg';
 import css from './Filter.module.css';
+import { useDispatch } from 'react-redux';
+import { selectFilter, setFilter } from '../../../redux/filterSlice';
+import { useSelector } from 'react-redux';
 
 export default function FIlter() {
-  // const colors = [
-  //   { id: 1, priority: 'low', color: '#8FA1D0' },
-  //   { id: 2, priority: 'medium', color: '#E09CB5' },
-  //   { id: 3, priority: 'high', color: '#BEDBB0' },
-  //   { id: 4, priority: 'without', color: '#1616164D' },
-  // ];
+  const colors = [
+    { id: 1, priority: 'without', color: 'gray' },
+    { id: 2, priority: 'low', color: '#8FA1D0' },
+    { id: 3, priority: 'medium', color: '#E09CB5' },
+    { id: 4, priority: 'high', color: '#BEDBB0' },
+  ];
 
-  // const defaultColor = colors.find(color => color.priority === 'without').color;
-
-  // const [selectedColor, setSelectedColor] = useState(defaultColor);
-
-  // const handleColorChange = color => {
-  //   setSelectedColor(color);
-  // };
   const theme = useTheme();
+  const dispatch = useDispatch();
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
   const toggleFilters = () => {
     setIsFiltersVisible(!isFiltersVisible);
   };
+  const getFilterState = useSelector(selectFilter);
+
+  const [selectedColor, setSelectedColor] = useState(null);
+
+  const handleRadioButtonChecked = color => {
+    setSelectedColor(color.color);
+    dispatch(setFilter(color.priority));
+  };
+
+  const hadleShowAll = () => {
+    setSelectedColor(null);
+    dispatch(setFilter(''));
+  };
+
+  useEffect(() => {
+    setSelectedColor(getFilterState);
+  }, [getFilterState]);
+
   return (
     <div className={css.filtersContainer}>
       <div className={css.filtersButtonContainer}>
@@ -86,6 +101,7 @@ export default function FIlter() {
             Label color
           </p>
           <button
+            onClick={hadleShowAll}
             style={{
               color: theme.screensPage.filtersMenuShowAllColor,
             }}
@@ -95,30 +111,45 @@ export default function FIlter() {
           </button>
         </div>
         <div className={css.filtersChangerSelectorsContainer}>
-          <div className={css.filtersChangerSelectorsInput}>
-            <input
-              type="radio"
-              id="withoutpriority"
-              name="without priority"
-              value="without priority"
-            />
-            <label htmlFor="withoutpriority">Without priority</label>
-          </div>
-
-          <div className={css.filtersChangerSelectorsInput}>
-            <input type="radio" id="low" name="low" value="low" />
-            <label htmlFor="low">Low</label>
-          </div>
-
-          <div className={css.filtersChangerSelectorsInput}>
-            <input type="radio" id="medium" name="medium" value="medium" />
-            <label htmlFor="medium">Medium</label>
-          </div>
-
-          <div className={css.filtersChangerSelectorsInput}>
-            <input type="radio" id="high" name="high" value="high" />
-            <label htmlFor="high">High</label>
-          </div>
+          {colors.map(color => (
+            <label
+              style={{
+                color:
+                  selectedColor === color.color
+                    ? theme.screensPage.filtersMenuSelectedRadioTextColor
+                    : theme.screensPage.filtersMenuRadioTextColor,
+              }}
+              className={css.filtersChangerSelectorsInput}
+              key={color.id}
+            >
+              <input
+                type="radio"
+                name="priority"
+                value={color.priority}
+                onChange={() => handleRadioButtonChecked(color)}
+                style={{ display: 'none' }}
+              />
+              <span
+                style={{
+                  backgroundColor: color.color,
+                  width: '14px',
+                  height: '14px',
+                  display: 'inline-block',
+                  border:
+                    selectedColor === color.color
+                      ? `2px solid ${theme.screensPage.radioCircleColor}`
+                      : 'none',
+                  outline:
+                    selectedColor === color.color
+                      ? `1px solid ${color.color}`
+                      : 'none',
+                  borderRadius: '50%',
+                  cursor: 'pointer',
+                }}
+              ></span>
+              {color.priority}
+            </label>
+          ))}
         </div>
       </div>
     </div>

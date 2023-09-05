@@ -1,12 +1,42 @@
 .sideBar {
   position: absolute;
   top: 0;
+  left: 0;
   /* padding: 14px; */
   width: 225px;
   height: 100vh;
   background-color: #121212;
   transition: 500ms;
   transform: translateX(-100%);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    /* right: 50px;
+    left: 0; */
+  }
+
+  /* Фон для трека (полосы прокрутки) */
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+  &::-webkit-scrollbar-thumb {
+    background: #bedbb0;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+
+  /* Стиль ползунка при наведении */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -19,7 +49,9 @@
   .sideBar {
     width: 260px;
     transform: none;
-    position: relative;
+
+    /* position: relative; */
+
   }
 }
 
@@ -61,7 +93,10 @@
 
 .HeaderNewBoardContainer {
   margin: 14px 14px 40px 14px;
-  @media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 768px) {
+  .HeaderNewBoardContainer {
     margin: 24px 24px 40px 24px;
   }
 }
@@ -74,7 +109,6 @@
 
 .headerTitle {
   color: #fff;
-  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -83,14 +117,16 @@
 }
 .boards {
   margin-top: 70px;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .boards {
     margin-top: 60px;
   }
 }
+
 .boardsTitle {
   color: rgba(255, 255, 255, 0.5);
-  font-family: Poppins;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -100,6 +136,7 @@
 .createBoard {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 8px;
   padding: 14px 0 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -110,7 +147,6 @@
 
   display: block;
   color: #fff;
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -118,56 +154,147 @@
   letter-spacing: -0.28px;
 }
 .createBoardButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   border: none;
   border-radius: 6px;
   background-color: #bedbb0;
   transition: 250ms;
+}
 
-  &:hover {
-    background-color: #9dc888;
+.createBoardButton:hover {
+  background-color: #9dc888;
+}
+/* dark */
+.boardsList {
+  color: white;
+  /* margin-bottom: auto; */
+  max-height: 100%;
+  /* max-height: calc(100% - 327px); */
+  /* max-height: calc(100%-122px); */
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    /* right: 0;
+    left: auto; */
+  }
+
+  /* Фон для трека (полосы прокрутки) */
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+  &::-webkit-scrollbar-thumb {
+    background: #bedbb0;
+    border-radius: 10px;
+
+    margin-right: 10px;
+  }
+
+  /* Стиль ползунка при наведении */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
-.boardsList {
+/* light */
+.lightBoardsList {
   color: white;
   margin-bottom: auto;
   left: 0px;
   top: 212px;
+  /* max-height: 100vh; */
 
-  /* max-height: calc(100%-122px); */
+  max-height: calc(100%-327px);
   height: 122px;
-  overflow: hidden;
+  overflow: auto;
   /* transition: 300ms; */
 
   &::-webkit-scrollbar {
     width: 8px;
   }
 
+  &::-webkit-scrollbar {
+    width: 8px;
+    /* Для перемещения ползунка слева используйте right вместо left */
+    right: 0;
+    left: auto; /* Уберите left */
+  }
+
   /* Фон для трека (полосы прокрутки) */
   &::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.4);
-    /* background: #313131; */
     border-radius: 10px;
     overflow: hidden;
-    /* margin-left: 10px; */
   }
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
-    background: rgba(18, 18, 18, 1);
+    background: #bedbb0;
     border-radius: 10px; /* Закругление углов ползунка */
+    right: 0;
+    left: auto;
   }
 
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* violet */
+.violetBoardsList {
+  color: white;
+  margin-bottom: auto;
+  left: 0px;
+  top: 212px;
+  max-height: 100vh;
+
+  /* max-height: calc(100%-122px); */
+  height: 122px;
+  overflow: auto;
+  /* transition: 300ms; */
+
+  &::-webkit-scrollbar {
+    width: 8px;
   }
 
-  &:hover {
-    overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+    /* Для перемещения ползунка слева используйте right вместо left */
+    right: 0;
+    left: auto; /* Уберите left */
+  }
+
+  /* Фон для трека (полосы прокрутки) */
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+  &::-webkit-scrollbar-thumb {
+    background: #bedbb0;
+    border-radius: 10px; /* Закругление углов ползунка */
+    right: 0;
+    left: auto;
+  }
+
+  /* Стиль ползунка при наведении */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -180,7 +307,6 @@
 }
 
 .containerHelpLogout {
-  /* position: fixed; */
   /* bottom: 24px; */
   margin: 40px 14px 24px 14px;
 
@@ -196,33 +322,34 @@
   flex-shrink: 0;
   border-radius: 8px;
   background: #1f1f1f;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .help {
     width: 212px;
     height: 272px;
     flex-shrink: 0;
     padding: 20px 20px 18px 20px;
   }
-
-  @media screen and (min-width: 1440px) {
-  }
 }
+
 .helpText {
   margin-top: 14px;
 
   width: 168px;
   height: 80px;
   flex-shrink: 0;
-
-  color: #fff;
   font-family: Poppins;
+  color: #fff;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: -0.24px;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .helpText {
     width: 172px;
     height: 102px;
     flex-shrink: 0;
@@ -252,7 +379,6 @@
 }
 .helpBtnText {
   color: #fff;
-  font-family: Poppins;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;

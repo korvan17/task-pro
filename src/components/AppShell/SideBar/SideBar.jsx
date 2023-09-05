@@ -9,6 +9,7 @@ import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import { getTheme } from 'redux/auth/authSelectors';
 
 function SideBar({
   setIsMenuOpen,
@@ -23,6 +24,7 @@ function SideBar({
 
   const navigate = useNavigate();
   const theme = useTheme();
+  const userTheme = useSelector(getTheme);
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
 
@@ -76,6 +78,19 @@ function SideBar({
   //   console.log(boardId);
   // };
 
+  const setScrollTheme = () => {
+    switch (userTheme) {
+      case 'light':
+        return css.lightBoardsList;
+      case 'dark':
+        return css.boardsList;
+      case 'violet':
+        return css.violetBoardsList;
+      default:
+        return css.lightBoardsList;
+    }
+  };
+
   return (
     <div
       style={{ backgroundColor: theme.sidebar.background }}
@@ -88,9 +103,13 @@ function SideBar({
             style={{
               '--color1': theme.sidebar.logoFill,
               '--color2': theme.sidebar.logoFlashColor,
+              cursor: 'pointer',
             }}
             width="32"
             height="32"
+            onClick={() => {
+              navigate('/home');
+            }}
           >
             <use xlinkHref={`${sprite}#icon-logo`} />
           </svg>
@@ -143,7 +162,7 @@ function SideBar({
         </div>
       </div>
 
-      <ul className={css.boardsList}>
+      <ul className={setScrollTheme()}>
         {boards.map(board => (
           <Board
             key={board._id}
@@ -167,7 +186,7 @@ function SideBar({
             }}
             className={css.helpText}
           >
-            If you need help with
+            If you need help with{' '}
             <span
               style={{
                 color: theme.sidebar.needHelpSpanColor,
