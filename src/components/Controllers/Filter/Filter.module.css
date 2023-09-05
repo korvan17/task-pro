@@ -3,8 +3,8 @@
 }
 
 .filtersButtonContainer {
-  width: 75px;
-  height: 20px;
+  /* width: 75px;
+  height: 20px; */
   /* outline: 1px solid blue; */
 }
 
@@ -19,7 +19,6 @@
   border: none;
   background: none;
   /* color: rgba(22, 22, 22, 0.8); */
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;

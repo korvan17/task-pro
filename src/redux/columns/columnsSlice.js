@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addColumn, deleteColumn, editColumn } from './columnsOperations';
+import { toast } from 'react-toastify';
 
 const customArr = [addColumn, deleteColumn, editColumn];
 
@@ -12,6 +13,7 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
+  toast.error('Something went wrong. Please try again. 😐');
   state.isLoading = false;
   state.error = action.payload;
 };
@@ -60,6 +62,5 @@ const columnsSlice = createSlice({
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected);
   },
 });
-
 
 export const columnsReducer = columnsSlice.reducer;

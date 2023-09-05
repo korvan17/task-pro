@@ -6,7 +6,6 @@
   padding: 24px;
   width: 400px;
   height: 440px;
-  font-family: Poppins;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.5);
   background: #151515;
@@ -16,7 +15,6 @@
 
 .title {
   color: #fff;
-  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -50,7 +48,6 @@
   border: 1px solid #bedbb0;
   background: #151515;
   color: #fff;
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

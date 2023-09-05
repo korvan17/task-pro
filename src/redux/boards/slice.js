@@ -25,6 +25,8 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
+  toast.error('Something went wrong. Please try again. 😐');
+
   state.error = action.payload;
   state.isLoading = false;
 };
@@ -66,7 +68,7 @@ const boardsSlice = createSlice({
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {
-        toast.error('Board successfully removed from your account. 😟');
+        toast.warning('Board successfully removed from your account. 😟');
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(

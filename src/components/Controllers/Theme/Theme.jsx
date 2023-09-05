@@ -32,7 +32,7 @@ export default function Theme() {
         className={css.themeChangerButton}
         onClick={toggleThemeList}
       >
-        <h3>Theme</h3>
+        <h3 className={css.themeTitle}>Theme</h3>
         <svg
           style={{ stroke: theme.header.themeSelectorColor }}
           className={`${css.themeChangerIcon}`}

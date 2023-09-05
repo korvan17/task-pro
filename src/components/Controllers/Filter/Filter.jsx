@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useTheme } from '@emotion/react';
 import iconDefs from '../../../icons/sprite.svg';
 import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
-import { setFilter } from '../../../redux/filterSlice';
+import { selectFilter, setFilter } from '../../../redux/filterSlice';
+import { useSelector } from 'react-redux';
 
 export default function FIlter() {
   const colors = [
@@ -20,6 +21,7 @@ export default function FIlter() {
   const toggleFilters = () => {
     setIsFiltersVisible(!isFiltersVisible);
   };
+  const getFilterState = useSelector(selectFilter);
 
   const [selectedColor, setSelectedColor] = useState(null);
 
@@ -32,6 +34,10 @@ export default function FIlter() {
     setSelectedColor(null);
     dispatch(setFilter(''));
   };
+
+  useEffect(() => {
+    setSelectedColor(getFilterState);
+  }, [getFilterState]);
 
   return (
     <div className={css.filtersContainer}>

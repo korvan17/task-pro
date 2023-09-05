@@ -19,7 +19,7 @@ import {
   Column,
 } from 'components';
 
-import { selectFilter } from '../../../redux/filterSlice';
+import { selectFilter, setFilter } from '../../../redux/filterSlice';
 
 import { getTheme } from 'redux/auth/authSelectors';
 
@@ -61,6 +61,7 @@ export function MainDashboard() {
     dispatch(setModalStatus(false));
     dispatch(setColumnId(columnId));
     setShowModalCard(true);
+    dispatch(setFilter(''));
   };
 
   const editCard = (columnId, cardId) => {
