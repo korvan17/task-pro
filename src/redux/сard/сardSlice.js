@@ -19,7 +19,6 @@ const cardsInitialState = {
   cards: [],
   isLoading: false,
   error: null,
-  columnsLength: 0,
 };
 
 const cardsSlice = createSlice({
@@ -55,13 +54,7 @@ const cardsSlice = createSlice({
       .addCase(moveCard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        
-        const updatedCardIndex = state.cards.findIndex(
-          card => card._id === action.payload
-        );
-        if (updatedCardIndex !== -1) {
-          state.cards[updatedCardIndex].column = action.payload.column;
-        }
+        state.cards.push(action.payload);
       })
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected);
