@@ -12,24 +12,21 @@ export default function FIlter() {
     { id: 4, priority: 'high', color: '#BEDBB0' },
   ];
 
-  // const defaultColor = colors.find(color => color.priority === 'without').color;
-
-  // const [selectedColor, setSelectedColor] = useState(defaultColor);
-
-  // const handleColorChange = color => {
-  //   setSelectedColor(color);
-  // };
   const theme = useTheme();
-  const [isFiltersVisible, setIsFiltersVisible] = useState(true);
+  const [isFiltersVisible, setIsFiltersVisible] = useState(false);
   const toggleFilters = () => {
     setIsFiltersVisible(!isFiltersVisible);
   };
 
-  // const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
 
-  // const handleRadioButtonChecked = (color) => {
-    
-  // };
+  const handleRadioButtonChecked = color => {
+    setSelectedColor(color.color);
+  };
+
+  const hadleShowAll = () => {
+    setSelectedColor(null);
+  };
 
   return (
     <div className={css.filtersContainer}>
@@ -93,6 +90,7 @@ export default function FIlter() {
             Label color
           </p>
           <button
+            onClick={hadleShowAll}
             style={{
               color: theme.screensPage.filtersMenuShowAllColor,
             }}
@@ -102,33 +100,14 @@ export default function FIlter() {
           </button>
         </div>
         <div className={css.filtersChangerSelectorsContainer}>
-          {/* <div className={css.filtersChangerSelectorsInput}>
-            <input
-              type="radio"
-              id="withoutpriority"
-              name="without priority"
-              value="without priority"
-            />
-            <label htmlFor="withoutpriority">Without priority</label>
-          </div>
-
-          <div className={css.filtersChangerSelectorsInput}>
-            <input type="radio" id="low" name="low" value="low" />
-            <label htmlFor="low">Low</label>
-          </div>
-
-          <div className={css.filtersChangerSelectorsInput}>
-            <input type="radio" id="medium" name="medium" value="medium" />
-            <label htmlFor="medium">Medium</label>
-          </div>
-
-          <div className={css.filtersChangerSelectorsInput}>
-            <input type="radio" id="high" name="high" value="high" />
-            <label htmlFor="high">High</label>
-          </div> */}
           {colors.map(color => (
             <label
-              style={{ color: theme.screensPage.filtersMenuRadioTextColor }}
+              style={{
+                color:
+                  selectedColor === color.color
+                    ? theme.screensPage.filtersMenuSelectedRadioTextColor
+                    : theme.screensPage.filtersMenuRadioTextColor,
+              }}
               className={css.filtersChangerSelectorsInput}
               key={color.id}
             >
@@ -136,7 +115,7 @@ export default function FIlter() {
                 type="radio"
                 name="priority"
                 value={color.priority}
-                // onChange={() => handleColorChange(color)}
+                onChange={() => handleRadioButtonChecked(color)}
                 style={{ display: 'none' }}
               />
               <span
@@ -145,8 +124,14 @@ export default function FIlter() {
                   width: '14px',
                   height: '14px',
                   display: 'inline-block',
-                  border: '#FFF',
-                  outline: '#000',
+                  border:
+                    selectedColor === color.color
+                      ? `2px solid ${theme.screensPage.radioCircleColor}`
+                      : 'none',
+                  outline:
+                    selectedColor === color.color
+                      ? `1px solid ${color.color}`
+                      : 'none',
                   borderRadius: '50%',
                   cursor: 'pointer',
                 }}
