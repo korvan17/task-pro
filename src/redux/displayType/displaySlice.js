@@ -9,11 +9,6 @@ const displayInitialState = {
 const displaySlice = createSlice({
   name: 'displays',
   initialState: displayInitialState,
-  reducers: {
-    setDisplays(state, action) {
-      state.displays = action.payload;
-    },
-  },
   extraReducers: builder => {
     builder.addCase(sendDisplayTypeToBackend.fulfilled, (state, action) => {
       state.displays = action.payload;
@@ -21,5 +16,4 @@ const displaySlice = createSlice({
   },
 });
 
-export const { setDisplays } = displaySlice.actions;
 export const displayReducer = displaySlice.reducer;

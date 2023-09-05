@@ -21,19 +21,12 @@ const columnsInitialState = {
   isLoading: false,
   error: null,
   columnsLength: 0,
-  currentBg: '',
-  currentName: '',
-  selectedPriority: 'show all',
 };
 
 const columnsSlice = createSlice({
   name: 'columns',
   initialState: columnsInitialState,
-  reducers: {
-    selectPriority(state, action) {
-      state.selectedPriority = action.payload;
-    },
-  },
+
   extraReducers: builder => {
     builder
       .addCase(addColumn.fulfilled, (state, action) => {
@@ -68,6 +61,5 @@ const columnsSlice = createSlice({
   },
 });
 
-export const { selectPriority } = columnsSlice.actions;
 
 export const columnsReducer = columnsSlice.reducer;

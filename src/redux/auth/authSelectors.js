@@ -11,3 +11,7 @@ export const getError = state => state.auth.error;
 export const selectToken = state => state.auth.token;
 
 export const selectUser = state => state.auth.user;
+
+export const selectEmail = state => state.auth.email;
+
+export const selectComment = state => state.auth.comment;
