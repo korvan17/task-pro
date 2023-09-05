@@ -18,7 +18,10 @@ import {
   Card,
   Column,
 } from 'components';
+
 import { selectFilter } from '../../../redux/filterSlice';
+
+import { getTheme } from 'redux/auth/authSelectors';
 
 export function MainDashboard() {
   const dispatch = useDispatch();
@@ -32,6 +35,7 @@ export function MainDashboard() {
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
   const theme = useTheme();
+  const userTheme = useSelector(getTheme);
 
   useEffect(() => {
     if (
@@ -106,10 +110,23 @@ export function MainDashboard() {
     }
   };
 
+  const setCardsScrollTheme = () => {
+    switch (userTheme) {
+      case 'light':
+        return [css.lightCard__item, css.lightBoard__main];
+      case 'dark':
+        return [css.card__item, css.board__main];
+      case 'violet':
+        return [css.violetCard__item, css.violetBoard__main];
+      default:
+        return [css.lightCard__item, css.lightBoard__main];
+    }
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       {board?.columns[0]._id ? (
-        <div className={css.board__main}>
+        <div className={setCardsScrollTheme()[1]}>
           <ul className={css.column__item}>
             {board?.columns.map((column, index) => (
               <li key={column._id} className={css.column__list}>
@@ -124,7 +141,7 @@ export function MainDashboard() {
                     <ul
                       {...provided.droppableProps}
                       ref={provided.innerRef}
-                      className={css.card__item}
+                      className={setCardsScrollTheme()[0]}
                     >
                       {column.cards
                         .filter(card =>
@@ -208,7 +225,7 @@ export function MainDashboard() {
           )}
         </div>
       ) : (
-        <div className={css.board__main}>
+        <div className={setCardsScrollTheme()[1]}>
           <AddIconButton
             pushButton={createColumn}
             className={css.btn__alonecolumn}
