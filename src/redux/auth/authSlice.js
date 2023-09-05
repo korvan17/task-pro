@@ -47,7 +47,7 @@ const authInitialState = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
-  replyEmail: '',
+  email: '',
   comment: '',
 };
 
@@ -93,7 +93,7 @@ const authSlice = createSlice({
       })
       .addCase(needHelp.fulfilled, (state, { payload }) => {
         state.isRefreshing = false;
-        state.replyEmail = payload.replyEmail;
+        state.email = payload.email;
         state.comment = payload.comment;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
@@ -108,5 +108,4 @@ const authSlice = createSlice({
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected),
 });
 
-export const { setAuth } = authSlice.actions;
 export const authReducer = authSlice.reducer;

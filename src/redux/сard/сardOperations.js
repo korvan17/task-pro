@@ -56,13 +56,14 @@ export const editCard = createAsyncThunk(
 
 export const moveCard = createAsyncThunk(
   'cards/moveCard',
-  async ({ cardId, toColumnId }, thunkAPI) => {
+  async ({ cardId, toColumnId, toIndex }, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
 
       const response = await axios.patch(`/cards/${cardId}`, {
         column: toColumnId,
+        index: toIndex,
       });
 
       return response.data;
