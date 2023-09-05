@@ -103,9 +103,13 @@ function SideBar({
             style={{
               '--color1': theme.sidebar.logoFill,
               '--color2': theme.sidebar.logoFlashColor,
+              cursor: 'pointer',
             }}
             width="32"
             height="32"
+            onClick={() => {
+              navigate('/home');
+            }}
           >
             <use xlinkHref={`${sprite}#icon-logo`} />
           </svg>

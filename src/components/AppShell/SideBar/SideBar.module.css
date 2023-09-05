@@ -160,7 +160,7 @@
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
-    background: #BEDBB0;
+    background: #bedbb0;
     border-radius: 10px; /* Закругление углов ползунка */
   }
 
@@ -201,7 +201,7 @@
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
-    background: #BEDBB0;
+    background: #bedbb0;
     border-radius: 10px; /* Закругление углов ползунка */
   }
 
@@ -248,7 +248,7 @@
 
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
-    background: #FFFFFF;
+    background: #ffffff;
   }
 
   &:hover {
