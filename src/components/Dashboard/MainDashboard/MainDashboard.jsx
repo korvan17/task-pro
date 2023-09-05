@@ -34,17 +34,30 @@ export function MainDashboard() {
   const board = useSelector(selectCurrentBoard);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
+  const isLoadingBoardUpdate = useSelector(
+    state => state.boards.isLoadingUpdate
+  );
   const theme = useTheme();
   const userTheme = useSelector(getTheme);
   const isFirstRender = useRef(true);
 
   useEffect(() => {
     if (isFirstRender.current === false) {
-      if (isLoadingColumns === false && isLoadingCards === false) {
+      if (
+        isLoadingColumns === false &&
+        isLoadingCards === false &&
+        isLoadingBoardUpdate === false
+      ) {
         dispatch(getBoardByID(boardId));
       }
     }
-  }, [isLoadingCards, isLoadingColumns, boardId, dispatch]);
+  }, [
+    isLoadingCards,
+    isLoadingColumns,
+    isLoadingBoardUpdate,
+    boardId,
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (isFirstRender.current) {
