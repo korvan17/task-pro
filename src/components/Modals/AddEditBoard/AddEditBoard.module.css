@@ -1,7 +1,6 @@
 .titleBoard {
   margin-bottom: 24px;
   color: #161616;
-  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -68,7 +67,6 @@
 
 .btnSumbitAction {
   color: #161616;
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

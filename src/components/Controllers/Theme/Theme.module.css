@@ -6,8 +6,9 @@
 }
 
 .themeChangerButton {
+  padding: 0;
   display: flex;
-  align-items: center;
+  align-items: end;
   border: 0px;
   background: none;
   cursor: pointer;
@@ -66,4 +67,13 @@
 .themeListButton:hover {
   color: #bedbb0;
   cursor: pointer;
+}
+
+.themeTitle {
+  color: rgba(22, 22, 22, 0.8);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
 }
