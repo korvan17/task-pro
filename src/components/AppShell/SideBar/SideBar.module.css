@@ -1,12 +1,42 @@
 .sideBar {
   position: absolute;
   top: 0;
+  left: 0;
   /* padding: 14px; */
   width: 225px;
   height: 100vh;
   background-color: #121212;
   transition: 500ms;
   transform: translateX(-100%);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    right: 50px;
+    left: 0;
+  }
+
+  /* Фон для трека (полосы прокрутки) */
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+  &::-webkit-scrollbar-thumb {
+    background: #bedbb0;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+
+  /* Стиль ползунка при наведении */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -19,7 +49,7 @@
   .sideBar {
     width: 260px;
     transform: none;
-    position: relative;
+    /* position: relative; */
   }
 }
 
@@ -136,41 +166,37 @@
 /* dark */
 .boardsList {
   color: white;
-  margin-bottom: auto;
-  left: 0px;
-  top: 212px;
-
+  /* margin-bottom: auto; */
+  max-height: 100%;
+  /* max-height: calc(100% - 327px); */
   /* max-height: calc(100%-122px); */
-  height: 122px;
-  overflow: hidden;
-  /* transition: 300ms; */
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 8px;
+    right: 0;
+    left: auto;
   }
 
   /* Фон для трека (полосы прокрутки) */
   &::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.4);
-    /* background: #313131; */
     border-radius: 10px;
     overflow: hidden;
-    /* margin-left: 10px; */
   }
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
     background: #bedbb0;
-    border-radius: 10px; /* Закругление углов ползунка */
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    position: absolute;
   }
 
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.1);
-  }
-
-  &:hover {
-    overflow: auto;
   }
 }
 
@@ -180,38 +206,42 @@
   margin-bottom: auto;
   left: 0px;
   top: 212px;
+  /* max-height: 100vh; */
 
-  /* max-height: calc(100%-122px); */
+  max-height: calc(100%-327px);
   height: 122px;
-  overflow: hidden;
+  overflow: auto;
   /* transition: 300ms; */
 
   &::-webkit-scrollbar {
     width: 8px;
   }
 
+  &::-webkit-scrollbar {
+    width: 8px;
+    /* Для перемещения ползунка слева используйте right вместо left */
+    right: 0;
+    left: auto; /* Уберите left */
+  }
+
   /* Фон для трека (полосы прокрутки) */
   &::-webkit-scrollbar-track {
-    background: rgba(22, 22, 22, 0.1);
-    /* background: #313131; */
+    background: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     overflow: hidden;
-    /* margin-left: 10px; */
   }
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
     background: #bedbb0;
     border-radius: 10px; /* Закругление углов ползунка */
+    right: 0;
+    left: auto;
   }
 
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
-  &:hover {
-    overflow: auto;
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -221,38 +251,42 @@
   margin-bottom: auto;
   left: 0px;
   top: 212px;
+  max-height: 100vh;
 
   /* max-height: calc(100%-122px); */
   height: 122px;
-  overflow: hidden;
+  overflow: auto;
   /* transition: 300ms; */
 
   &::-webkit-scrollbar {
     width: 8px;
   }
 
+  &::-webkit-scrollbar {
+    width: 8px;
+    /* Для перемещения ползунка слева используйте right вместо left */
+    right: 0;
+    left: auto; /* Уберите left */
+  }
+
   /* Фон для трека (полосы прокрутки) */
   &::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.4);
-    /* background: #313131; */
     border-radius: 10px;
     overflow: hidden;
-    /* margin-left: 10px; */
   }
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.8);
+    background: #bedbb0;
     border-radius: 10px; /* Закругление углов ползунка */
+    right: 0;
+    left: auto;
   }
 
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
-    background: #ffffff;
-  }
-
-  &:hover {
-    overflow: auto;
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -265,7 +299,6 @@
 }
 
 .containerHelpLogout {
-  /* position: fixed; */
   /* bottom: 24px; */
   margin: 40px 14px 24px 14px;
 
