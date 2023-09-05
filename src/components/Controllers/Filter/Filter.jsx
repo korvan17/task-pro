@@ -5,12 +5,12 @@ import iconDefs from '../../../icons/sprite.svg';
 import css from './Filter.module.css';
 
 export default function FIlter() {
-  // const colors = [
-  //   { id: 1, priority: 'low', color: '#8FA1D0' },
-  //   { id: 2, priority: 'medium', color: '#E09CB5' },
-  //   { id: 3, priority: 'high', color: '#BEDBB0' },
-  //   { id: 4, priority: 'without', color: '#1616164D' },
-  // ];
+  const colors = [
+    { id: 1, priority: 'without', color: 'gray' },
+    { id: 2, priority: 'low', color: '#8FA1D0' },
+    { id: 3, priority: 'medium', color: '#E09CB5' },
+    { id: 4, priority: 'high', color: '#BEDBB0' },
+  ];
 
   // const defaultColor = colors.find(color => color.priority === 'without').color;
 
@@ -20,10 +20,17 @@ export default function FIlter() {
   //   setSelectedColor(color);
   // };
   const theme = useTheme();
-  const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+  const [isFiltersVisible, setIsFiltersVisible] = useState(true);
   const toggleFilters = () => {
     setIsFiltersVisible(!isFiltersVisible);
   };
+
+  const [selectedColor, setSelectedColor] = useState(null);
+
+  const handleRadioButtonChecked = (color) => {
+    
+  };
+
   return (
     <div className={css.filtersContainer}>
       <div className={css.filtersButtonContainer}>
@@ -95,7 +102,7 @@ export default function FIlter() {
           </button>
         </div>
         <div className={css.filtersChangerSelectorsContainer}>
-          <div className={css.filtersChangerSelectorsInput}>
+          {/* <div className={css.filtersChangerSelectorsInput}>
             <input
               type="radio"
               id="withoutpriority"
@@ -118,7 +125,35 @@ export default function FIlter() {
           <div className={css.filtersChangerSelectorsInput}>
             <input type="radio" id="high" name="high" value="high" />
             <label htmlFor="high">High</label>
-          </div>
+          </div> */}
+          {colors.map(color => (
+            <label
+              style={{ color: theme.screensPage.filtersMenuRadioTextColor }}
+              className={css.filtersChangerSelectorsInput}
+              key={color.id}
+            >
+              <input
+                type="radio"
+                name="priority"
+                value={color.priority}
+                // onChange={() => handleColorChange(color)}
+                style={{ display: 'none' }}
+              />
+              <span
+                style={{
+                  backgroundColor: color.color,
+                  width: '14px',
+                  height: '14px',
+                  display: 'inline-block',
+                  border: '#FFF',
+                  outline: '#000',
+                  borderRadius: '50%',
+                  cursor: 'pointer',
+                }}
+              ></span>
+              {color.priority}
+            </label>
+          ))}
         </div>
       </div>
     </div>
