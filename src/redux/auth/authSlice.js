@@ -28,6 +28,9 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
+  toast.error(
+    'Something went wrong with your authentication. Please try again. 🤷‍♀️'
+  );
   state.error = action.payload;
   state.isRefreshing = false;
   state.token = '';

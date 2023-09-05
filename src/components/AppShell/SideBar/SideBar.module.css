@@ -13,8 +13,8 @@
 
   &::-webkit-scrollbar {
     width: 8px;
-    right: 50px;
-    left: 0;
+    /* right: 50px;
+    left: 0; */
   }
 
   /* Фон для трека (полосы прокрутки) */
@@ -174,8 +174,8 @@
 
   &::-webkit-scrollbar {
     width: 8px;
-    right: 0;
-    left: auto;
+    /* right: 0;
+    left: auto; */
   }
 
   /* Фон для трека (полосы прокрутки) */
@@ -189,9 +189,8 @@
   &::-webkit-scrollbar-thumb {
     background: #bedbb0;
     border-radius: 10px;
-    left: 0;
-    top: 0;
-    position: absolute;
+
+    margin-right: 10px;
   }
 
   /* Стиль ползунка при наведении */
