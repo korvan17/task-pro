@@ -206,20 +206,24 @@
 }
 
 @media screen and (max-width: 767px) {
-  .board__main {
+  .board__main, .lightBoard__main, .violetBoard__main {
     padding: 0 20px 24px 20px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439px) {
-  .board__main {
+  .board__main,
+    .lightBoard__main,
+    .violetBoard__main {
     padding: 0 32px 24px 32px;
     margin-top: 26px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .board__main {
+  .board__main,
+    .lightBoard__main,
+    .violetBoard__main {
     margin-top: 10px;
   }
 }
