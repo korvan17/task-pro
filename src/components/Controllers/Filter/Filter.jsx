@@ -25,11 +25,11 @@ export default function FIlter() {
     setIsFiltersVisible(!isFiltersVisible);
   };
 
-  const [selectedColor, setSelectedColor] = useState(null);
+  // const [selectedColor, setSelectedColor] = useState(null);
 
-  const handleRadioButtonChecked = (color) => {
+  // const handleRadioButtonChecked = (color) => {
     
-  };
+  // };
 
   return (
     <div className={css.filtersContainer}>
