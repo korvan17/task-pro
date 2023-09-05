@@ -5,7 +5,7 @@ import { getBoardByID } from 'redux/boards/operations';
 import { selectCurrentBoard } from 'redux/boards/selectors';
 import { setColumnId, setModalStatus } from 'redux/modalSlice';
 import { deleteColumn } from 'redux/columns/columnsOperations';
-import { deleteCard } from '../../../redux/сard/сardOperations';
+import { deleteCard, moveCard } from '../../../redux/сard/сardOperations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import css from './MainDashboard.module.css';
 import { useParams } from 'react-router-dom';
@@ -87,7 +87,21 @@ export function MainDashboard() {
     dispatch(deleteColumn(id));
   };
 
-  const onDragEnd = result => {};
+  const onDragEnd = result => {
+    if (!result.destination) {
+      return;
+    }
+    if (result.type === 'CARD') {
+      console.log('result - ', result);
+      dispatch(
+        moveCard({
+          cardId: result.draggableId,
+          toColumnId: result.destination.droppableId,
+          toIndex: result.destination.index,
+        })
+      );
+    }
+  };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
