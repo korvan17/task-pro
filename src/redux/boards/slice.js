@@ -45,6 +45,9 @@ const boardsSlice = createSlice({
     selectBoard(state, action) {
       state.currentBoard = action.payload;
     },
+    setCurrentBoardIdToNull(state) {
+      state.currentBoardId = null;
+    },
   },
   extraReducers: builder =>
     builder
@@ -93,5 +96,5 @@ const boardsSlice = createSlice({
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected),
 });
 
-export const { selectBoard } = boardsSlice.actions;
+export const { selectBoard, setCurrentBoardIdToNull } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer;

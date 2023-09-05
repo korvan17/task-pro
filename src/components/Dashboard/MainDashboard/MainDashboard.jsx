@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getBoardByID } from 'redux/boards/operations';
@@ -36,22 +36,21 @@ export function MainDashboard() {
   const isLoadingCards = useSelector(state => state.cards.isLoading);
   const theme = useTheme();
   const userTheme = useSelector(getTheme);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (
-      isLoadingCards === true ||
-      isLoadingColumns === true ||
-      boardId !== ''
-    ) {
-      dispatch(getBoardByID(boardId));
+    if (isFirstRender.current === false) {
+      if (isLoadingColumns === false && isLoadingCards === false) {
+        dispatch(getBoardByID(boardId));
+      }
     }
-  }, [
-    isLoadingColumns,
-    isLoadingCards,
-    // display,
-    boardId,
-    dispatch,
-  ]);
+  }, [isLoadingCards, isLoadingColumns, boardId, dispatch]);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    }
+  }, []);
 
   const handleDeleteCard = (columnId, cardId) => {
     dispatch(setColumnId(columnId));

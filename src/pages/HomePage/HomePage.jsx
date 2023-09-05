@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import css from './HomePage.module.css';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { AddEditBoard, SideBar } from 'components';
@@ -13,6 +13,7 @@ import { HomePageView, ScreenPage } from '../../components';
 import { fetchBoards } from '../../redux/boards/operations';
 import { useSelector } from 'react-redux';
 import { selectBoards } from 'redux/boards/selectors';
+import { setCurrentBoardIdToNull } from '../../redux/boards/slice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -23,22 +24,23 @@ const HomePage = () => {
   const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
   const navigate = useNavigate();
+  const isFirstRender = useRef(true);
 
   const boards = useSelector(selectBoards);
 
   const newBoardId = useSelector(state => state.boards.currentBoardId);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(fetchBoards());
-    };
-
-    fetchData();
+    if (isFirstRender.current) {
+      dispatch(fetchBoards());
+      isFirstRender.current = false;
+    }
   }, [dispatch]);
 
   useEffect(() => {
     if (newBoardId) {
       navigate(`/home/${newBoardId}`);
+      dispatch(setCurrentBoardIdToNull());
     }
   }, [navigate, dispatch, newBoardId]);
 
