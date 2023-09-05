@@ -8,7 +8,7 @@ import { selectBoards } from 'redux/boards/selectors';
 import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
-import { fetchBoards } from 'redux/boards/operations';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
 
 function SideBar({
   setIsMenuOpen,
@@ -17,21 +17,18 @@ function SideBar({
   pushBoard,
   createBoard,
   editBoard,
+  toggleMenu,
 }) {
-  // console.log('isMenuOpen:', isMenuOpen)
-  const [showNeedHelp, setShowNeedHelp] = useState(false);
+  const [showNeedHelpModal, setShowNeedHelpModal] = useState(false);
 
   const navigate = useNavigate();
   const theme = useTheme();
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
-  // console.log('boards:', boards);
-  const dispatch = useDispatch();
-  // const isBoard = boards.length !== 0 ? true : false;
 
-  useEffect(() => {
-    dispatch(fetchBoards());
-  }, [dispatch]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {}, [boards]);
 
   const handleClickOutside = event => {
     if (
@@ -42,6 +39,7 @@ function SideBar({
       setIsMenuOpen(false);
     }
   };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -50,15 +48,33 @@ function SideBar({
   });
 
   const logoutBtn = async () => {
-    console.log('logoutBtn');
     await dispatch(logout());
     navigate('/');
   };
 
-  const needHelpBtn = () => {
-    console.log('needHelpBtn');
-    setShowNeedHelp(!showNeedHelp);
+  const toggleNeedHelpModal = () => {
+    setShowNeedHelpModal(!showNeedHelpModal);
   };
+
+  const clickNeedHelp = () => {
+    toggleNeedHelpModal();
+  };
+
+  const openNeedHelp = () => {
+    toggleNeedHelpModal();
+    toggleMenu();
+  };
+
+  const closeNeedHelp = () => {
+    toggleNeedHelpModal();
+  };
+
+  // const handleBoardClick = boardId => {
+  //   setSelectedBoard(boardId);
+
+  //   console.log('handleBoardClick');
+  //   console.log(boardId);
+  // };
 
   return (
     <div
@@ -132,9 +148,6 @@ function SideBar({
           <Board
             key={board._id}
             board={board}
-            // background={board.background}
-            // icon={board.icon}
-            // title={board.title}
             editBoard={editBoard}
             toggleModal={toggleModal}
           ></Board>
@@ -154,7 +167,7 @@ function SideBar({
             }}
             className={css.helpText}
           >
-            If you need help with{' '}
+            If you need help with
             <span
               style={{
                 color: theme.sidebar.needHelpSpanColor,
@@ -166,7 +179,7 @@ function SideBar({
             , check out our support resources or reach out to our customer
             support team.
           </p>
-          <button onClick={needHelpBtn} className={css.helpBtn}>
+          <button onClick={openNeedHelp} className={css.helpBtn}>
             <svg
               style={{
                 stroke: theme.sidebar.needHelpIconAndTextColor,
@@ -208,7 +221,11 @@ function SideBar({
           </p>
         </button>
       </div>
-      {showNeedHelp && <NeedHelp onClose={needHelpBtn} />}
+      {showNeedHelpModal && (
+        <BasicModal onClose={closeNeedHelp}>
+          <NeedHelp onClose={clickNeedHelp} />
+        </BasicModal>
+      )}
     </div>
   );
 }

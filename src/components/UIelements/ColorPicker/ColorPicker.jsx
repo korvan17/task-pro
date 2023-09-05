@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import css from './ColorPicker.module.css';
 
-const ColorPicker = ({ onSelectedPriorityChange }) => {
+const ColorPicker = ({
+  onSelectedPriorityChange,
+  onSelectedColorChange,
+  defaultColor,
+  currentPriority,
+}) => {
   const colors = [
     { id: 1, priority: 'low', color: '#8FA1D0' },
     { id: 2, priority: 'medium', color: '#E09CB5' },
@@ -9,12 +14,15 @@ const ColorPicker = ({ onSelectedPriorityChange }) => {
     { id: 4, priority: 'without', color: '#1616164D' },
   ];
 
-  const defaultColor = colors.find(color => color.priority === 'without').color;
+  const foundColor = colors.find(color => color.priority === currentPriority);
 
-  const [selectedColor, setSelectedColor] = useState(defaultColor);
+  const [selectedColor, setSelectedColor] = useState(
+    currentPriority ? foundColor.color : defaultColor
+  );
 
   const handleColorChange = color => {
     setSelectedColor(color.color);
+    onSelectedColorChange(color.color);
     onSelectedPriorityChange(color.priority);
   };
 

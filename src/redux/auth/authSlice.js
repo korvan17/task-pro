@@ -8,6 +8,7 @@ import {
   needHelp,
   updateUser,
 } from './authOperations';
+import { toast } from 'react-toastify';
 const customArr = [
   register,
   login,
@@ -29,7 +30,10 @@ const handlePending = state => {
 const handleRejected = (state, action) => {
   state.error = action.payload;
   state.isRefreshing = false;
+  state.token = '';
+  state.isLoggedIn = false;
 };
+
 const authInitialState = {
   user: {
     email: '',
@@ -43,7 +47,7 @@ const authInitialState = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
-  replyEmail: '',
+  email: '',
   comment: '',
 };
 
@@ -54,18 +58,21 @@ const authSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(register.fulfilled, (state, { payload }) => {
+        toast.success('Registration completed successfully. Welcome! 👌');
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
+        toast.success('Glad to have you back. Successful login! 🤩');
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(logout.fulfilled, state => {
+        toast.info('Logout successful. We hope to see you back soon! 😭💙');
         state.user.email = '';
         state.user.name = '';
         state.user.avatarURL = '';
@@ -86,7 +93,7 @@ const authSlice = createSlice({
       })
       .addCase(needHelp.fulfilled, (state, { payload }) => {
         state.isRefreshing = false;
-        state.replyEmail = payload.replyEmail;
+        state.email = payload.email;
         state.comment = payload.comment;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
@@ -101,5 +108,4 @@ const authSlice = createSlice({
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected),
 });
 
-export const { setAuth } = authSlice.actions;
 export const authReducer = authSlice.reducer;

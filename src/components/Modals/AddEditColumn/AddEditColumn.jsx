@@ -15,9 +15,12 @@ export default function AddEditColumn({ onClose, columnId }) {
   const { boardId } = useParams();
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
 
-  const column = useSelector(selectCurrentBoard).columns.find(
-    col => col._id === columnId
-  );
+  let column = useSelector(selectCurrentBoard);
+
+  if (isEditing) {
+    column = column.columns.find(col => col._id === columnId);
+  }
+
   const handleSubmit = async (values, { resetForm }) => {
     console.log();
     try {

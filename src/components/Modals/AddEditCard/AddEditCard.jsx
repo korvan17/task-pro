@@ -9,21 +9,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCard, editCard } from 'redux/сard/сardOperations';
 import cardSchema from '../Schemas/cardSchema';
 import NewCalendar from 'components/UIelements/Calendar/NewCalendar';
+import { selectCurrentBoard } from '../../../redux/boards/selectors';
 
-export default function AddEditCard({ onClose, cardId }) {
+export default function AddEditCard({ onClose }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [priority, setPriority] = useState('without');
-  const [deadline, setDeadline] = useState('');
+
+  const [color, setColor] = useState('#1616164D');
+  const [deadline, setDeadline] = useState(String(new Date()));
+
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
   const currentColumnId = useSelector(state => state.modal.columnId);
+  const currentCardId = useSelector(state => state.modal.cardId);
+  const curentBoard = useSelector(selectCurrentBoard);
+  let currentCard;
+  if (isEditing) {
+    const currentColumn = curentBoard.columns.find(
+      column => column._id === currentColumnId
+    );
+    currentCard = currentColumn.cards.find(card => card._id === currentCardId);
+  }
 
   const handleSelectedPriorityChange = selectedPriority => {
     setPriority(selectedPriority);
   };
 
+  const handleSelectedColorChange = selectedColor => {
+    setColor(selectedColor);
+  };
+
   const handleDateChange = selectedDate => {
-    console.log(selectedDate)
     setDeadline(selectedDate);
   };
 
@@ -46,10 +62,11 @@ export default function AddEditCard({ onClose, cardId }) {
             description: values.description,
             priority: priority,
             deadline: deadline,
-            cardId,
+            id: currentCardId,
           })
         );
       }
+
       resetForm();
       onClose();
     } catch (err) {
@@ -73,8 +90,8 @@ export default function AddEditCard({ onClose, cardId }) {
       </h3>
       <Formik
         initialValues={{
-          title: '',
-          description: '',
+          title: isEditing ? currentCard.title : '',
+          description: isEditing ? currentCard.description : '',
         }}
         onSubmit={handleSubmit}
         validationSchema={cardSchema}
@@ -118,7 +135,10 @@ export default function AddEditCard({ onClose, cardId }) {
             />
           </label>
           <ColorPicker
+            currentPriority={isEditing ? currentCard.priority : null}
+            defaultColor={color}
             onSelectedPriorityChange={handleSelectedPriorityChange}
+            onSelectedColorChange={handleSelectedColorChange}
           />
           <div>
             <span
@@ -127,7 +147,11 @@ export default function AddEditCard({ onClose, cardId }) {
             >
               Deadline
             </span>
-            <NewCalendar onDateChange={handleDateChange} />
+            <NewCalendar
+              onDateChange={handleDateChange}
+              deadline={deadline}
+              currentDeadline={isEditing ? currentCard.deadline : null}
+            />
           </div>
           <AddIconButton buttonType="submit" className={css.btn}>
             <span

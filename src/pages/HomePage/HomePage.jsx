@@ -8,16 +8,39 @@ import ScreenSizeInfo from 'components/Controllers/ScreenSiziInfo';
 import { useDispatch } from 'react-redux';
 import { setModalStatus } from 'redux/modalSlice';
 import { useTheme } from '@emotion/react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { HomePageView, ScreenPage } from '../../components';
+import { fetchBoards } from '../../redux/boards/operations';
+import { useSelector } from 'react-redux';
+import { selectBoards } from 'redux/boards/selectors';
 
 const HomePage = () => {
   const dispatch = useDispatch();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const theme = useTheme();
   const { boardId } = useParams();
   const isBoardId = boardId ? true : false;
+  const navigate = useNavigate();
+
+  const boards = useSelector(selectBoards);
+
+  const newBoardId = useSelector(state => state.boards.currentBoardId);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchBoards());
+    };
+
+    fetchData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (newBoardId) {
+      navigate(`/home/${newBoardId}`);
+    }
+  }, [navigate, dispatch, newBoardId]);
 
   useEffect(() => {
     function handleResize() {
@@ -35,7 +58,7 @@ const HomePage = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [showModal]);
+  }, [showModal, boards, dispatch]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -65,6 +88,8 @@ const HomePage = () => {
           isMenuOpen={isMenuOpen}
           editBoard={editBoard}
           createBoard={createBoard}
+          toggleMenu={toggleMenu}
+          toggleModal={toggleModal}
         ></SideBar>
 
         {isMenuOpen && window.innerWidth < 1440 && <Backdrop />}

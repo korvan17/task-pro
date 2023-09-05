@@ -3,7 +3,7 @@ import Buttons from '../Button';
 import css from './AddIconButton.module.css';
 import sprite from '../../../../icons/sprite.svg';
 import { useTheme } from '@emotion/react';
-
+// import { useDispatch, useSelector } from 'react-redux';
 export default function AddIconButton({
   columnId,
   buttonType = 'button',

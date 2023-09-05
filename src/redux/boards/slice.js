@@ -6,6 +6,7 @@ import {
   updateBoardById,
   getBoardByID,
 } from './operations';
+import { toast } from 'react-toastify';
 
 const customArr = [
   updateBoardById,
@@ -33,6 +34,7 @@ const boardsInitialState = {
   isLoading: false,
   error: null,
   currentBoard: null,
+  currentBoardId: null,
 };
 
 const boardsSlice = createSlice({
@@ -42,9 +44,6 @@ const boardsSlice = createSlice({
   reducers: {
     selectBoard(state, action) {
       state.currentBoard = action.payload;
-    },
-    setFilter(state, action) {
-      state.filter = action.payload;
     },
   },
   extraReducers: builder =>
@@ -56,12 +55,15 @@ const boardsSlice = createSlice({
       })
 
       .addCase(addBoard.fulfilled, (state, action) => {
+        toast.success('Great job! Your board has been added. 😍');
         state.isLoading = false;
         state.error = null;
+        state.currentBoardId = action.payload._id;
         state.boards.unshift({ ...action.payload });
       })
 
       .addCase(deleteBoard.fulfilled, (state, action) => {
+        toast.error('Board successfully removed from your account. 😟');
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
@@ -71,6 +73,7 @@ const boardsSlice = createSlice({
       })
 
       .addCase(updateBoardById.fulfilled, (state, action) => {
+        toast.success('Board updated successfully. Changes saved! 👍');
         state.isLoading = false;
         state.error = null;
         const index = state.boards.findIndex(
@@ -90,5 +93,5 @@ const boardsSlice = createSlice({
       .addMatcher(isAnyOf(...fnStatus('rejected')), handleRejected),
 });
 
-export const { selectBoard, setFilter } = boardsSlice.actions;
+export const { selectBoard } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer;

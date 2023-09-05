@@ -5,13 +5,21 @@ import { getMonth, getYear } from 'date-fns';
 import s from './NewCalendar.module.css';
 import { CalendarButton } from './NewButton';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import { useSelector } from 'react-redux';
+import { getTheme } from 'redux/auth/authSelectors';
+import { useTheme } from '@emotion/react';
 
 const NewCalendar = ({
   onDate = () => null,
-  deadline = String(new Date()),
+  deadline,
   onDateChange,
+  currentDeadline,
 }) => {
-  const [startDate, setStartDate] = useState(deadline);
+  const userTheme = useSelector(getTheme);
+  const theme = useTheme();
+  const [startDate, setStartDate] = useState(
+    currentDeadline ? currentDeadline : deadline
+  );
   const months = [
     'January',
     'February',
@@ -29,14 +37,26 @@ const NewCalendar = ({
   useEffect(() => {
     onDate(startDate);
   }, [onDate, startDate]);
-  // console.log(startDate)
+
+  const setCalendarTheme = () => {
+    switch (userTheme) {
+      case 'light':
+        return [s.lightPopperCustomClass, s.lightHeaderWrapper];
+      case 'dark':
+        return [s.popperCustomClass, s.headerWrapper];
+      case 'violet':
+        return [s.violetPopperCustomClass, s.violetHeaderWrapper];
+      default:
+        return [s.lightPopperCustomClass, s.lightHeaderWrapper];
+    }
+  };
 
   return (
     <DatePicker
       dateFormat="yyyy, MMMM ,d"
       selected={Date.parse(startDate)}
       calendarClassName={s.calendarContainer}
-      popperClassName={s.popperCustomClass}
+      popperClassName={setCalendarTheme()[0]}
       calendarStartDay={1}
       customInput={
         <CalendarButton
@@ -60,8 +80,9 @@ const NewCalendar = ({
         prevMonthButtonDisabled,
         nextMonthButtonDisabled,
       }) => (
-        <div className={s.headerWrapper}>
+        <div className={setCalendarTheme()[1]}>
           <button
+            style={{ color: theme.popUp.titleColor }}
             onClick={decreaseMonth}
             disabled={prevMonthButtonDisabled}
             type="button"
@@ -69,11 +90,13 @@ const NewCalendar = ({
             {'<'}
           </button>
           <div>
-            <span>
+            <span style={{ color: theme.popUp.titleColor }}>
               {months[getMonth(date)]} {getYear(date)}
             </span>
           </div>
           <button
+            style={{ color: theme.popUp.buttonBackground }}
+            // className={s.nextMonthBtn}
             onClick={increaseMonth}
             disabled={nextMonthButtonDisabled}
             type="button"

@@ -1,152 +1,409 @@
 /* .headerWrapper */
 .headerWrapper {
-    margin-left: auto;
-    margin-right: auto;
-    width: 201px;
-    display: flex;
-    margin-bottom: 28px;
-    justify-content: space-between;
-    font-family: Poppins;
-    font-size: 16px;
-    color: #fff;
-    padding-bottom: 0;
-  }
-  
-  .headerWrapper + div {
-    width: 201px;
-    margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 201px;
+  display: flex;
+  margin-bottom: 28px;
+  margin-top: 10px;
+  justify-content: space-between;
+  font-family: Poppins;
+  font-size: 16px;
+  color: #fff;
+  padding-bottom: 0;
+}
 
-  }
+.headerWrapper + div {
+  width: 201px;
+  margin-right: 0;
+}
 
-  .headerWrapper + div {
+.headerWrapper + div {
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    margin-left: auto;
-    margin-right: auto;
+.headerWrapper + div > * {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: calc(21 / 14);
+  max-width: 23px;
+  max-height: 23px;
+  color: #fff;
+  margin-bottom: 11px;
+}
 
-  }
-  
-  .headerWrapper + div > * {
-    font-family: Poppins;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: calc(21 / 14);
-    max-width: 23px;
-    max-height: 23px;
-    color: #fff;
-    margin-bottom: 11px;
-  }
+.headerWrapper::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  right: 0px;
+  top: 34px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
 
-  .headerWrapper::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    right: 0px;
-    top: 34px;
-    background-color: rgba(255, 255, 255, 0.20);
-    border-radius: 2px;
-  }
-  
-  .headerWrapper button {
-    width: 18px;
-    height: 18px;
-    color: #ffff;
-    cursor: pointer;
-  }
-  
-  /* .calendarConatiner */
-  .calendarConatiner {
-    width: 201px;
-    height: 222px;
-    overflow: hidden;
-    padding-top: 0;
-    border: 1px solid #bedbb0;
-    border-radius: 8px;
-    background-color: #151515;
-  }
-  
-  .calendarConatiner > :first-child {
-    display: none;
-  }
-  
-  /* .popperCustomClass */
-  .popperCustomClass {
-    width: 230px;
-    height: 254px;
-    padding: 8px;
-    overflow: hidden;
-    border: 1px solid #bedbb0;
-    border-radius: 8px;
-    background-color: #151515;
-  }
-  
-  .popperCustomClass > div * {
-    border: none;
-    background-color: #151515;
-    padding: 0px;
-  }
-  
-  .popperCustomClass > div div > div + div > div * {
-    width: 23px;
-    height: 23px;
-    color: #fff;
-    font-family: Poppins;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: calc(18 / 14);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .popperCustomClass > div div > div + div > div *:hover {
-    background-color: #bedbb0;
-    border-radius: 50%;
-    color: #151515;
-  }
-  
-  .popperCustomClass > div div > div + div > div *[aria-disabled='true'] {
-    color: rgba(255, 255, 255, 0.20);
-  }
-  
-  .popperCustomClass > div div > div + div > div *[aria-disabled='true']:hover {
-    background-color: inherit;
-  }
-  
-  .popperCustomClass > div div > div + div > div *[aria-selected='true'] {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #bedbb0;
-    border-radius: 50%;
-    color: #151515;
-  }
-  
-  .popperCustomClass > div:nth-child(2) {
-    margin: 0px;
-  }
-  
-  .popperCustomClass > div + div {
-    border: none;
-    background-color: #1f1f1f;
-  }
+.headerWrapper button {
+  width: 18px;
+  height: 18px;
+  color: #ffff;
+  cursor: pointer;
+}
 
-  /* highlight for current date if chossen another day */
- .popperCustomClass > div div > div + div > div *[aria-current="date"] {
+/* .light */
+.lightHeaderWrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 201px;
+  display: flex;
+  margin-bottom: 28px;
+  margin-top: 10px;
+  justify-content: space-between;
+  font-family: Poppins;
+  font-size: 16px;
+  color: #fff;
+  padding-bottom: 0;
+}
+
+.lightHeaderWrapper + div {
+  width: 201px;
+  margin-right: 0;
+}
+
+.lightHeaderWrapper + div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lightHeaderWrapper + div > * {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: calc(21 / 14);
+  max-width: 23px;
+  max-height: 23px;
+  color: rgba(22, 22, 22, 0.5);
+  margin-bottom: 11px;
+}
+
+.lightHeaderWrapper::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  right: 0px;
+  top: 34px;
+  background-color: rgba(22, 22, 22, 0.2);
+  border-radius: 2px;
+}
+
+.lightHeaderWrapper button {
+  width: 18px;
+  height: 18px;
+  color: #ffff;
+  cursor: pointer;
+}
+
+/* .violet */
+.violetHeaderWrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 201px;
+  display: flex;
+  margin-bottom: 28px;
+  margin-top: 10px;
+  justify-content: space-between;
+  font-family: Poppins;
+  font-size: 16px;
+  color: #fff;
+  padding-bottom: 0;
+}
+
+.violetHeaderWrapper + div {
+  width: 201px;
+  margin-right: 0;
+}
+
+.violetHeaderWrapper + div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.violetHeaderWrapper + div > * {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: calc(21 / 14);
+  max-width: 23px;
+  max-height: 23px;
+  color: rgba(22, 22, 22, 0.5);
+  margin-bottom: 11px;
+}
+
+.violetHeaderWrapper::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  right: 0px;
+  top: 34px;
+  background-color: rgba(22, 22, 22, 0.2);
+  border-radius: 2px;
+}
+
+.violetHeaderWrapper button {
+  width: 18px;
+  height: 18px;
+  color: #ffff;
+  cursor: pointer;
+}
+
+/* .nextMonthBtn {
+  color: #bedbb0 !important;
+} */
+
+/* .calendarConatiner */
+.calendarConatiner {
+  width: 201px;
+  height: 222px;
+  overflow: hidden;
+  padding-top: 0;
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  background-color: #151515;
+}
+
+.calendarConatiner > :first-child {
+  display: none;
+}
+
+/* .popperCustomClass */
+.popperCustomClass {
+  width: 230px;
+  height: 254px;
+  padding: 8px;
+  overflow: hidden;
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  background-color: #151515;
+}
+
+.popperCustomClass > div * {
+  border: none;
+  background-color: #151515;
+  padding: 0px;
+}
+
+.popperCustomClass > div div > div + div > div * {
+  width: 23px;
+  height: 23px;
+  color: #fff;
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popperCustomClass > div div > div + div > div *:hover {
+  background-color: #bedbb0;
+  border-radius: 50%;
+  color: #151515;
+}
+
+.popperCustomClass > div div > div + div > div *[aria-disabled='true'] {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.popperCustomClass > div div > div + div > div *[aria-disabled='true']:hover {
+  background-color: inherit;
+}
+
+.popperCustomClass > div div > div + div > div *[aria-selected='true'] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bedbb0;
+  border-radius: 50%;
+  color: #151515;
+}
+
+.popperCustomClass > div:nth-child(2) {
+  margin: 0px;
+}
+
+.popperCustomClass > div + div {
+  border: none;
+  background-color: #1f1f1f;
+}
+
+/* highlight for current date if chossen another day */
+.popperCustomClass > div div > div + div > div *[aria-current='date'] {
   border: 1px solid #bedbb0;
   border-radius: 50%;
 }
 
-  
-  /* Global Styles */
-  :global .react-datepicker-popper {
-    z-index: 2;
-  }
-  
-  :global .react-datepicker__triangle {
-    display: none;
-  }
-  
-  :global .react-datepicker-popper[data-placement^='bottom'] {
-    padding-top: 18px;
-  }
+/* .light */
+.lightPopperCustomClass {
+  width: 230px;
+  height: 254px;
+  padding: 8px;
+  overflow: hidden;
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.lightPopperCustomClass > div * {
+  border: none;
+  background-color: #ffffff;
+  padding: 0px;
+}
+
+.lightPopperCustomClass > div div > div + div > div * {
+  width: 23px;
+  height: 23px;
+  color: #161616;
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightPopperCustomClass > div div > div + div > div *:hover {
+  background-color: #bedbb0;
+  border-radius: 50%;
+  color: #151515;
+}
+
+.lightPopperCustomClass > div div > div + div > div *[aria-disabled='true'] {
+  color: rgba(22, 22, 22, 0.2);
+}
+
+.lightPopperCustomClass
+  > div
+  div
+  > div
+  + div
+  > div
+  *[aria-disabled='true']:hover {
+  background-color: inherit;
+}
+
+.lightPopperCustomClass > div div > div + div > div *[aria-selected='true'] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bedbb0;
+  border-radius: 50%;
+  color: #151515;
+}
+
+.lightPopperCustomClass > div:nth-child(2) {
+  margin: 0px;
+}
+
+.lightPopperCustomClass > div + div {
+  border: none;
+  background-color: #1f1f1f;
+}
+
+/* highlight for current date if chossen another day */
+.lightPopperCustomClass > div div > div + div > div *[aria-current='date'] {
+  border: 1px solid #bedbb0;
+  border-radius: 50%;
+}
+
+/* .violet */
+.violetPopperCustomClass {
+  width: 230px;
+  height: 254px;
+  padding: 8px;
+  overflow: hidden;
+  border: 1px solid #5255bc;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.violetPopperCustomClass > div * {
+  border: none;
+  background-color: #ffffff; /*  */
+  padding: 0px;
+}
+
+.violetPopperCustomClass > div div > div + div > div * {
+  width: 23px;
+  height: 23px;
+  color: #161616;
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.violetPopperCustomClass > div div > div + div > div *:hover {
+  background-color: #5255bc;
+  border-radius: 50%;
+  color: #fcfcfc;
+}
+
+.violetPopperCustomClass > div div > div + div > div *[aria-disabled='true'] {
+  color: rgba(22, 22, 22, 0.2);
+}
+
+.violetPopperCustomClass
+  > div
+  div
+  > div
+  + div
+  > div
+  *[aria-disabled='true']:hover {
+  background-color: inherit;
+}
+
+.violetPopperCustomClass > div div > div + div > div *[aria-selected='true'] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5255bc;
+  border-radius: 50%;
+  color: #fcfcfc;
+}
+
+.violetPopperCustomClass > div:nth-child(2) {
+  margin: 0px;
+}
+
+.violetPopperCustomClass > div + div {
+  border: none;
+  background-color: #1f1f1f;
+}
+
+/* highlight for current date if chossen another day */
+.violetPopperCustomClass > div div > div + div > div *[aria-current='date'] {
+  border: 1px solid #5255bc;
+  border-radius: 50%;
+}
+
+/* Global Styles */
+:global .react-datepicker-popper {
+  z-index: 2;
+}
+
+:global .react-datepicker__triangle {
+  display: none;
+}
+
+:global .react-datepicker-popper[data-placement^='bottom'] {
+  padding-top: 18px;
+}

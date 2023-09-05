@@ -1,6 +1,9 @@
 import css from './IconsForModal.module.css';
+import { getTheme } from 'redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
 
 export default function IconForModal({ handleBackground, selectedBackground }) {
+  const userTheme = useSelector(getTheme);
   const endOfName = '-icon-min.png';
   const endOfName2x = '-icon-2x-min.png';
   const imageFiles = require.context('../../../iconsForModal', false, /\.png$/);
@@ -11,6 +14,20 @@ export default function IconForModal({ handleBackground, selectedBackground }) {
     nameFile.add(fileName);
   });
   const images = Array.from(nameFile).sort();
+  images.splice(16, 4);
+
+  const setDefaultBackground = () => {
+    switch (userTheme) {
+      case 'light':
+        return images.splice(0, 1, 'QdefaultLight');
+      case 'violet':
+        return images.splice(0, 1, 'RdefaultViolet');
+      default:
+        return;
+    }
+  };
+
+  setDefaultBackground();
 
   return (
     <ul className={css.arrayOfIcons}>

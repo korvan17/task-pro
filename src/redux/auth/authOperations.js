@@ -91,7 +91,7 @@ export const refreshUser = createAsyncThunk(
 export const needHelp = createAsyncThunk('help', async (user, thunkAPI) => {
   try {
     const response = await axios.post('/help', {
-      replyEmail: user.email,
+      email: user.email,
       comment: user.text,
     });
     return response.data;

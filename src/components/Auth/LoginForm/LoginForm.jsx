@@ -42,7 +42,7 @@ function LoginForm() {
       onSubmit={handleFormSubmit}
       validationSchema={loginSchema}
     >
-      <Form className={css.authForm} autoComplete="off">
+      <Form className={css.authForm}>
         <div className={css.authFormInputBox}>
           <div className={css.authFormInpWrap}>
             <ErrorMessage

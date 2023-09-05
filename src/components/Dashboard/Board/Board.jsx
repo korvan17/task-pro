@@ -4,19 +4,37 @@ import css from './Board.module.css';
 
 import { useDispatch } from 'react-redux';
 import { deleteBoard } from '../../../redux/boards/operations';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
+import { useSelector } from 'react-redux';
+import { selectCurrentBoard } from 'redux/boards/selectors';
 
 const Board = ({ board, editBoard }) => {
+  const currentBoard = useSelector(selectCurrentBoard);
+
   const dispatch = useDispatch();
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const deleteBoardBtn = boardId => {
     dispatch(deleteBoard(boardId));
+    navigate('/home');
   };
 
+  // const handleBoardClick = boardId => {
+  //   setSelectedBoard(boardId);
+
+  //   console.log('handleBoardClick');
+  //   console.log(boardId);
+  // };
+  // console.log(currentBoard?._id, board._id);
+
   return (
-    <li key={board._id}>
+    <li
+      key={board._id}
+      // onClick={handleBoardClick(_id)}
+      className={` ${currentBoard?._id === board._id ? css.selectedBoard : ''}`}
+    >
       <Link to={board._id} className={css.board}>
         <div className={css.boardIconTittleContainer}>
           <svg

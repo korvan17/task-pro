@@ -1,8 +1,14 @@
 .arrayOfIcons {
   display: flex;
-  flex-wrap: wrap;
-  width: 252px;
   gap: 4px;
+  flex-wrap: wrap;
+}
+
+.backgroundsImg {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .selectedBackground {
