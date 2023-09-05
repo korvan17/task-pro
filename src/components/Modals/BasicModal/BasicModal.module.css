@@ -18,11 +18,17 @@
   border: 1px solid rgba(190, 219, 176, 0.5);
   background: #fcfcfc;
 
-  @media (max-width: 375px) {
-    max-width: 325px;
-  }
+}
 
-  @media (min-width: 375px) {
-    width: 350px;
+@media screen and (max-width: 767px) {
+  .modal {
+    width: 100%;
+    max-width: 335px;
   }
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        width: 350px;
+    }
 }

@@ -49,7 +49,9 @@
   .sideBar {
     width: 260px;
     transform: none;
+
     /* position: relative; */
+
   }
 }
 
@@ -91,7 +93,10 @@
 
 .HeaderNewBoardContainer {
   margin: 14px 14px 40px 14px;
-  @media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 768px) {
+  .HeaderNewBoardContainer {
     margin: 24px 24px 40px 24px;
   }
 }
@@ -104,7 +109,6 @@
 
 .headerTitle {
   color: #fff;
-  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -113,14 +117,16 @@
 }
 .boards {
   margin-top: 70px;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .boards {
     margin-top: 60px;
   }
 }
+
 .boardsTitle {
   color: rgba(255, 255, 255, 0.5);
-  font-family: Poppins;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -130,6 +136,7 @@
 .createBoard {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 8px;
   padding: 14px 0 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -140,7 +147,6 @@
 
   display: block;
   color: #fff;
-  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -153,15 +159,18 @@
   align-items: center;
   width: 40px;
   height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   border: none;
   border-radius: 6px;
   background-color: #bedbb0;
   transition: 250ms;
+}
 
-  &:hover {
-    background-color: #9dc888;
-  }
+.createBoardButton:hover {
+  background-color: #9dc888;
 }
 /* dark */
 .boardsList {
@@ -313,33 +322,34 @@
   flex-shrink: 0;
   border-radius: 8px;
   background: #1f1f1f;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .help {
     width: 212px;
     height: 272px;
     flex-shrink: 0;
     padding: 20px 20px 18px 20px;
   }
-
-  @media screen and (min-width: 1440px) {
-  }
 }
+
 .helpText {
   margin-top: 14px;
 
   width: 168px;
   height: 80px;
   flex-shrink: 0;
-
-  color: #fff;
   font-family: Poppins;
+  color: #fff;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: -0.24px;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .helpText {
     width: 172px;
     height: 102px;
     flex-shrink: 0;
@@ -369,7 +379,6 @@
 }
 .helpBtnText {
   color: #fff;
-  font-family: Poppins;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
