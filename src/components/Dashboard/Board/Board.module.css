@@ -1,3 +1,4 @@
+/* dark */
 .board {
   display: flex;
   /* position: absolute;
@@ -21,15 +22,107 @@
   }
 }
 
+/* light */
+.lightBoard {
+  display: flex;
+  /* position: absolute;
+  left: 0px; */
+  gap: 43px;
+  justify-content: space-between;
+  width: 217px;
+  height: 61px;
+  padding: 22px 10px 22px 14px;
+  transition: 250ms;
+
+  @media screen and (min-width: 768px) {
+    width: 252px;
+
+    padding: 22px 14px 22px 24px;
+    gap: 58px;
+  }
+
+  &:hover {
+    background-color: #F6F6F7;
+  }
+}
+
+/* violet */
+.violetBoard {
+  display: flex;
+  /* position: absolute;
+  left: 0px; */
+  gap: 43px;
+  justify-content: space-between;
+  width: 217px;
+  height: 61px;
+  padding: 22px 10px 22px 14px;
+  transition: 250ms;
+
+  @media screen and (min-width: 768px) {
+    width: 252px;
+
+    padding: 22px 14px 22px 24px;
+    gap: 58px;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+  }
+}
+
+/* dark */
 .selectedBoard {
   position: relative;
   cursor: pointer;
+  background-color: #1f1f1f;
 
   &::after {
     content: '';
     width: 4px;
     height: 61px;
     background-color: #bedbb0;
+    /* display: block; */
+    /* border-radius: 10% 0 0 10%; */
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+/* light */
+.lightSelectedBoard {
+  position: relative;
+  cursor: pointer;
+  background-color: #F6F6F7;
+
+  &::after {
+    content: '';
+    width: 4px;
+    height: 61px;
+    background-color: #bedbb0;
+    /* display: block; */
+    /* border-radius: 10% 0 0 10%; */
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+/* violet */
+.violetSelectedBoard {
+  position: relative;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.20);
+
+  &::after {
+    content: '';
+    width: 4px;
+    height: 61px;
+    background-color: #FFFFFF;
     /* display: block; */
     /* border-radius: 10% 0 0 10%; */
     border-top-left-radius: 4px;
