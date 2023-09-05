@@ -40,7 +40,7 @@ export default function Buttons({
 
   return (
     <button
-      onClick={columnId ? () => pushButton(columnId) : pushButton}
+      onClick={pushButton}
       style={{ background: theme.popUp.buttonBackground }}
       className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}

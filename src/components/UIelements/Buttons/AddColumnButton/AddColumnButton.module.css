@@ -1,0 +1,28 @@
+/* button */
+.button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* icon */
+.icon {
+  stroke-width: 1px;
+  fill: none;
+  padding: 7px;
+  border-radius: 6px;
+  margin-right: 8px;
+  stroke: #ffffff;
+  background-color: #000000;
+}
+
+/* without text */
+.buttonNoTxt {
+  padding: 8px 10px 8px 10px;
+}
+
+.iconNoTxt {
+  background-color: transparent;
+  stroke: #000000;
+  padding: 0;
+  margin-right: 0;
+}

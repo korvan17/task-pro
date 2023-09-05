@@ -1,0 +1,79 @@
+/* form */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input {
+  width: 100%;
+
+  padding: 14px;
+  padding-left: 18px;
+
+  font-size: 14px;
+
+  border-radius: 8px;
+  border: 1px solid;
+  outline: none;
+  background-color: inherit;
+}
+
+.passwordLabel {
+  position: relative;
+}
+
+/* image */
+
+.userAvaWrapper {
+  position: relative;
+
+  width: 68px;
+  height: 68px;
+
+  margin: 0 auto;
+
+  background-image: url('../../../../icons/user-default.png');
+}
+
+.imgWrapper {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imgInput {
+  display: none;
+}
+
+/* icons */
+
+.icon {
+  stroke: #000000;
+}
+
+.eyeIcon {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1px;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.iconBtn {
+  && {
+    padding: 7px;
+  }
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%);
+}

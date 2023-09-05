@@ -11,7 +11,7 @@ export default function IconButton({
   return (
     <button
       type={type}
-      onClick={() => pushButton('id')}
+      onClick={pushButton}
       className={`${className} ${css.button}`}
       style={{ height: size }}
     >
