@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import css from './EditProfile.module.css';
 import { IconButton } from 'components';
 import sprite from '../../../icons/sprite.svg';
-import { registerSchema } from 'components/Auth/userSchemas';
+// import { registerSchema } from 'components/Auth/userSchemas';
 import { updateUser } from 'redux/auth/authOperations';
 import ProfileForm from './ProfileForm/ProfileForm';
 
