@@ -127,7 +127,11 @@ export function MainDashboard() {
                       className={css.card__item}
                     >
                       {column.cards
-                        .filter(card => card.priority === filterCards)
+                        .filter(card =>
+                          filterCards === ''
+                            ? true
+                            : card.priority === filterCards
+                        )
                         .map((card, cardIndex) => (
                           <Draggable
                             key={card._id}
