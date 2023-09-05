@@ -92,7 +92,7 @@ export const needHelp = createAsyncThunk('help', async (user, thunkAPI) => {
   try {
     const response = await axios.post('/help', {
       email: user.email,
-      comment: user.text,
+      comment: user.comment,
     });
     return response.data;
   } catch (error) {
