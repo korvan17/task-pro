@@ -18,6 +18,7 @@ import {
   Card,
   Column,
 } from 'components';
+import { selectFilter } from '../../../redux/filterSlice';
 
 export function MainDashboard() {
   const dispatch = useDispatch();
@@ -25,6 +26,8 @@ export function MainDashboard() {
   const [showModalColumn, setShowModalColumn] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
   const [currentColumnId, setCurrentColumnId] = useState(null);
+  const filterCards = useSelector(selectFilter);
+
   const board = useSelector(selectCurrentBoard);
   const isLoadingColumns = useSelector(state => state.columns.isLoading);
   const isLoadingCards = useSelector(state => state.cards.isLoading);
@@ -123,32 +126,34 @@ export function MainDashboard() {
                       ref={provided.innerRef}
                       className={css.card__item}
                     >
-                      {column.cards.map((card, cardIndex) => (
-                        <Draggable
-                          key={card._id}
-                          draggableId={card._id}
-                          index={cardIndex}
-                        >
-                          {provided => (
-                            <li
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                            >
-                              <Card
-                                cardId={card._id}
-                                columnId={column._id}
-                                toggleModalCard={editCard}
-                                deleteCard={handleDeleteCard}
-                                title={card.title}
-                                desc={card.description}
-                                priority={card.priority}
-                                deadline={card.deadline}
-                              />
-                            </li>
-                          )}
-                        </Draggable>
-                      ))}
+                      {column.cards
+                        .filter(card => card.priority === filterCards)
+                        .map((card, cardIndex) => (
+                          <Draggable
+                            key={card._id}
+                            draggableId={card._id}
+                            index={cardIndex}
+                          >
+                            {provided => (
+                              <li
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                              >
+                                <Card
+                                  cardId={card._id}
+                                  columnId={column._id}
+                                  toggleModalCard={editCard}
+                                  deleteCard={handleDeleteCard}
+                                  title={card.title}
+                                  desc={card.description}
+                                  priority={card.priority}
+                                  deadline={card.deadline}
+                                />
+                              </li>
+                            )}
+                          </Draggable>
+                        ))}
                       {provided.placeholder}
                     </ul>
                   )}
