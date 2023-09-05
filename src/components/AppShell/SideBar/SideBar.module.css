@@ -121,6 +121,9 @@
   letter-spacing: -0.28px;
 }
 .createBoardButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 36px;
   display: flex;
@@ -136,7 +139,7 @@
 .createBoardButton:hover {
   background-color: #9dc888;
 }
-
+/* dark */
 .boardsList {
   color: white;
   margin-bottom: auto;
@@ -163,13 +166,95 @@
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
-    background: rgba(18, 18, 18, 1);
+    background: #BEDBB0;
+    border-radius: 10px; /* Закругление углов ползунка */
+  }
+
+  /* Стиль ползунка при наведении */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:hover {
+    overflow: auto;
+  }
+}
+
+/* light */
+.lightBoardsList {
+  color: white;
+  margin-bottom: auto;
+  left: 0px;
+  top: 212px;
+
+  /* max-height: calc(100%-122px); */
+  height: 122px;
+  overflow: hidden;
+  /* transition: 300ms; */
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Фон для трека (полосы прокрутки) */
+  &::-webkit-scrollbar-track {
+    background: rgba(22, 22, 22, 0.1);
+    /* background: #313131; */
+    border-radius: 10px;
+    overflow: hidden;
+    /* margin-left: 10px; */
+  }
+
+  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+  &::-webkit-scrollbar-thumb {
+    background: #BEDBB0;
     border-radius: 10px; /* Закругление углов ползунка */
   }
 
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  &:hover {
+    overflow: auto;
+  }
+}
+
+/* violet */
+.violetBoardsList {
+  color: white;
+  margin-bottom: auto;
+  left: 0px;
+  top: 212px;
+
+  /* max-height: calc(100%-122px); */
+  height: 122px;
+  overflow: hidden;
+  /* transition: 300ms; */
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Фон для трека (полосы прокрутки) */
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+    /* background: #313131; */
+    border-radius: 10px;
+    overflow: hidden;
+    /* margin-left: 10px; */
+  }
+
+  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px; /* Закругление углов ползунка */
+  }
+
+  /* Стиль ползунка при наведении */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #FFFFFF;
   }
 
   &:hover {

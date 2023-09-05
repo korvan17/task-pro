@@ -9,6 +9,7 @@ import { logout } from '../../../redux/auth/authOperations';
 import { Board, NeedHelp } from 'components';
 import { useNavigate } from 'react-router-dom';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import { getTheme } from 'redux/auth/authSelectors';
 
 function SideBar({
   setIsMenuOpen,
@@ -23,6 +24,7 @@ function SideBar({
 
   const navigate = useNavigate();
   const theme = useTheme();
+  const userTheme = useSelector(getTheme);
   const menuRef = useRef(null);
   const boards = useSelector(selectBoards);
 
@@ -75,6 +77,19 @@ function SideBar({
   //   console.log('handleBoardClick');
   //   console.log(boardId);
   // };
+
+  const setScrollTheme = () => {
+    switch (userTheme) {
+      case 'light':
+        return css.lightBoardsList;
+      case 'dark':
+        return css.boardsList;
+      case 'violet':
+        return css.violetBoardsList;
+      default:
+        return css.lightBoardsList;
+    }
+  };
 
   return (
     <div
@@ -143,7 +158,7 @@ function SideBar({
         </div>
       </div>
 
-      <ul className={css.boardsList}>
+      <ul className={setScrollTheme()}>
         {boards.map(board => (
           <Board
             key={board._id}

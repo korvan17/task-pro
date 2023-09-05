@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import iconDefs from '../../../icons/sprite.svg';
 import css from './Filter.module.css';
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../../../redux/filterSlice';
 
 export default function FIlter() {
   const colors = [
@@ -13,6 +15,7 @@ export default function FIlter() {
   ];
 
   const theme = useTheme();
+  const dispatch = useDispatch();
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
   const toggleFilters = () => {
     setIsFiltersVisible(!isFiltersVisible);
@@ -22,10 +25,12 @@ export default function FIlter() {
 
   const handleRadioButtonChecked = color => {
     setSelectedColor(color.color);
+    dispatch(setFilter(color.priority));
   };
 
   const hadleShowAll = () => {
     setSelectedColor(null);
+    dispatch(setFilter(''));
   };
 
   return (

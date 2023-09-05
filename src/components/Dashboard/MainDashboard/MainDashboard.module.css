@@ -1,3 +1,4 @@
+/* dark */
 .card__item {
   display: flex;
   gap: 8px;
@@ -19,7 +20,7 @@
 }
 
 .card__item::-webkit-scrollbar-thumb {
-  background-color: #121212;
+  background-color: #BEDBB0;
 
   border-radius: 12px;
 }
@@ -29,6 +30,73 @@
 
   border-radius: 12px;
 }
+
+/* light */
+.lightCard__item {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  margin-top: 14px;
+  max-height: calc(100% - 134px);
+  overflow-y: auto;
+
+  padding-right: 8px;
+
+  overflow-y: auto;
+
+  scrollbar-width: 8px;
+}
+
+.lightCard__item::-webkit-scrollbar {
+  width: 8px;
+  /* Ширина полосы прокрутки */
+}
+
+.lightCard__item::-webkit-scrollbar-thumb {
+  background-color: #BEDBB0;
+
+  border-radius: 12px;
+}
+
+.lightCard__item::-webkit-scrollbar-track {
+  background-color: rgba(22, 22, 22, 0.1);
+
+  border-radius: 12px;
+}
+
+/* violet */
+.violetCard__item {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  margin-top: 14px;
+  max-height: calc(100% - 134px);
+  overflow-y: auto;
+
+  padding-right: 8px;
+
+  overflow-y: auto;
+
+  scrollbar-width: 8px;
+}
+
+.violetCard__item::-webkit-scrollbar {
+  width: 8px;
+  /* Ширина полосы прокрутки */
+}
+
+.violetCard__item::-webkit-scrollbar-thumb {
+  background-color: #5255BC;
+
+  border-radius: 12px;
+}
+
+.violetCard__item::-webkit-scrollbar-track {
+  background-color: rgba(22, 22, 22, 0.1);
+
+  border-radius: 12px;
+}
+
 .column__item {
   display: flex;
   gap: 34px;
@@ -49,6 +117,8 @@
   flex-shrink: 0;
   stroke: white;
 }
+
+/* dark */
 .board__main {
   padding: 0 20px 24px 284px;
   display: flex;
@@ -64,14 +134,72 @@
 }
 
 .board__main::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #BEDBB0;
   /* Цвет полосы прокрутки */
   border-radius: 12px;
   /* Скругление углов полосы прокрутки */
 }
 
 .board__main::-webkit-scrollbar-track {
-  background-color: #161616;
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Белый цвет фона трека полосы прокрутки */
+  border-radius: 12px;
+  /* Скругление углов трека полосы прокрутки */
+}
+
+/* light */
+.lightBoard__main {
+  padding: 0 20px 24px 284px;
+  display: flex;
+  gap: 34px;
+  overflow-y: auto;
+  margin-top: 10px;
+  height: calc(100vh - 123px);
+  width: 100vw;
+}
+.lightBoard__main::-webkit-scrollbar {
+  width: 8px;
+  /* Ширина полосы прокрутки */
+}
+
+.lightBoard__main::-webkit-scrollbar-thumb {
+  background-color: #BEDBB0;
+  /* Цвет полосы прокрутки */
+  border-radius: 12px;
+  /* Скругление углов полосы прокрутки */
+}
+
+.lightBoard__main::-webkit-scrollbar-track {
+  background-color: rgba(22, 22, 22, 0.1);
+  /* Белый цвет фона трека полосы прокрутки */
+  border-radius: 12px;
+  /* Скругление углов трека полосы прокрутки */
+}
+
+/* violet */
+.violetBoard__main {
+  padding: 0 20px 24px 284px;
+  display: flex;
+  gap: 34px;
+  overflow-y: auto;
+  margin-top: 10px;
+  height: calc(100vh - 123px);
+  width: 100vw;
+}
+.violetBoard__main::-webkit-scrollbar {
+  width: 8px;
+  /* Ширина полосы прокрутки */
+}
+
+.violetBoard__main::-webkit-scrollbar-thumb {
+  background-color: #5255BC;
+  /* Цвет полосы прокрутки */
+  border-radius: 12px;
+  /* Скругление углов полосы прокрутки */
+}
+
+.violetBoard__main::-webkit-scrollbar-track {
+  background-color: rgba(22, 22, 22, 0.1);
   /* Белый цвет фона трека полосы прокрутки */
   border-radius: 12px;
   /* Скругление углов трека полосы прокрутки */
