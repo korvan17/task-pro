@@ -182,7 +182,7 @@ function SideBar({
             }}
             className={css.helpText}
           >
-            If you need help with
+            If you need help with{' '}
             <span
               style={{
                 color: theme.sidebar.needHelpSpanColor,

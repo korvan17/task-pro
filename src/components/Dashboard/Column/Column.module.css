@@ -40,13 +40,12 @@
 
 .title__column {
     color: #FFF;
-    font-family: Poppins;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 
-white-space: nowrap;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 200px;
