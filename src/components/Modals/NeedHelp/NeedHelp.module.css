@@ -57,8 +57,7 @@
 
 .titleCard {
     margin-bottom: 24px;
-    color: #161616;
-    font-family: Poppins;
+    color: #161616;   
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
@@ -66,16 +65,36 @@
     letter-spacing: -0.36px;
 }
 
-.button {
-    width: 352px;
-    height: 49px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: #bedbb0;
-  }
 
   .errorMessage {
     color: rgba(234, 84, 84, 0.859);
     margin: 0 0 5px 0;
     text-align-last: left;
 }
+
+.btnSumbitAction {
+    color: #161616;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+}
+
+.btnNeedHelp{   
+    width: 100%;
+    color: #161616;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    min-width: fit-content;
+    padding: 14px;  
+    font-size: 14px;  
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+  
+}
+

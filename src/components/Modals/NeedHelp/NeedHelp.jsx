@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import needHelpSchema from '../Schemas/needHelpSchema';
 import { needHelp } from 'redux/auth/authOperations';
 
+
+
 export default function NeedHelp({ onClose }) {
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -86,6 +88,7 @@ export default function NeedHelp({ onClose }) {
             />
           </label>
           <button
+            className={css.btnNeedHelp}
             style={{
               backgroundColor: theme.popUp.buttonBackground,
               color: theme.popUp.buttonTextColor,
@@ -93,7 +96,7 @@ export default function NeedHelp({ onClose }) {
             type="submit"
           >
             Send
-          </button>
+          </button>      
         </Form>
       </Formik>
     </>
