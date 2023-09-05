@@ -160,13 +160,13 @@
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
-    background: rgba(18, 18, 18, 1);
+    background: #BEDBB0;
     border-radius: 10px; /* Закругление углов ползунка */
   }
 
   /* Стиль ползунка при наведении */
   &::-webkit-scrollbar-thumb:hover {
-    background: rgba(22, 22, 22, 0.5);
+    background: rgba(255, 255, 255, 0.1);
   }
 
   &:hover {
@@ -192,7 +192,7 @@
 
   /* Фон для трека (полосы прокрутки) */
   &::-webkit-scrollbar-track {
-    background: rgba(22, 22, 22, 0.2);
+    background: rgba(22, 22, 22, 0.1);
     /* background: #313131; */
     border-radius: 10px;
     overflow: hidden;
@@ -201,7 +201,7 @@
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
-    background: rgba(22, 22, 22, 0.4);
+    background: #BEDBB0;
     border-radius: 10px; /* Закругление углов ползунка */
   }
 
@@ -242,7 +242,7 @@
 
   /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 10px; /* Закругление углов ползунка */
   }
 
