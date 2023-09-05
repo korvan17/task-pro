@@ -55,7 +55,12 @@ const Board = ({ board, editBoard }) => {
       <Link to={board._id} className={setBoardTheme()[1]}>
         <div className={css.boardIconTittleContainer}>
           <svg
-            style={{ stroke: theme.sidebar.boardIconFill }}
+            style={{
+              stroke:
+                currentBoard?._id === board._id
+                  ? theme.sidebar.selectedBoardIconFill
+                  : theme.sidebar.boardIconFill,
+            }}
             width="18"
             height="18"
             className={css.boardIcon}
@@ -63,7 +68,12 @@ const Board = ({ board, editBoard }) => {
             <use xlinkHref={`${sprite}#${board.icon}`} />
           </svg>
           <p
-            style={{ color: theme.sidebar.boardTitleColor }}
+            style={{
+              color:
+                currentBoard?._id === board._id
+                  ? theme.sidebar.selectedBoardTitleColor
+                  : theme.sidebar.boardTitleColor,
+            }}
             className={css.boardTittle}
           >
             {board.title}
