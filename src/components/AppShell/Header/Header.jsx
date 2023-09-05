@@ -4,8 +4,8 @@ import { useTheme } from '@emotion/react';
 import sprite from '../../../icons/sprite.svg';
 import css from './Header.module.css';
 import { EditProfile, Theme } from 'components';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import { useSelector } from 'react-redux';
-
 
 export default function Header({ toggleMenu }) {
   const [showEditProfile, setShowEditProfile] = useState(false);
@@ -84,7 +84,11 @@ export default function Header({ toggleMenu }) {
           </button>
         </div>
       </div>
-      {showEditProfile && <EditProfile onClose={toggleEditProfile} />}
+      {showEditProfile && (
+        <BasicModal onClose={toggleEditProfile}>
+          <EditProfile onClose={toggleEditProfile} />
+        </BasicModal>
+      )}
     </div>
   );
 }

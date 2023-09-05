@@ -1,69 +1,57 @@
+import React from 'react';
 import { useTheme } from '@emotion/react';
+import { Formik } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
 
 import css from './EditProfile.module.css';
+import { IconButton } from 'components';
 import sprite from '../../../icons/sprite.svg';
-export default function EditProfile() {
+import { registerSchema } from 'components/Auth/userSchemas';
+import { updateUser } from 'redux/auth/authOperations';
+import ProfileForm from './ProfileForm/ProfileForm';
+
+export default function EditProfile({ onClose }) {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.auth.user);
+
+  const handleFormSubmit = values => {
+    dispatch(updateUser(values));
+    onClose();
+  };
+
   const theme = useTheme();
   return (
-    <div className={css.conteiner}>
-      <h2 style={{ color: theme.popUp.titleColor }} className={css.title}>
+    <div
+      className={css.conteiner}
+      style={{ background: theme.popUp.background }}
+    >
+      <IconButton
+        className={`${css.icon} ${css.closeIcon}`}
+        svg={
+          <use
+            style={{ stroke: theme.popUp.selectedIconFill }}
+            href={`${sprite}#icon-close`}
+          />
+        }
+        size={18}
+        pushButton={onClose}
+      />
+      <h2 style={{ color: theme.popUp.titleColor }} className={css.heading}>
         Edit profile
       </h2>
-      <svg className={css.userImg}>
-        <use xlinkHref={`${sprite}#icon-user`} />
-      </svg>
 
-      <form className={css.form}>
-        <div className={css.blockInputs}>
-          <input
-            style={{
-              color: theme.popUp.titleColor,
-              borderColor: theme.popUp.inputBorderColor,
-              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
-            }}
-            type="text"
-            id="name"
-            name="name"
-            placeholder="name"
-            className={css.input}
-          />
-
-          <input
-            style={{
-              color: theme.popUp.titleColor,
-              borderColor: theme.popUp.inputBorderColor,
-              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
-            }}
-            type="email"
-            id="email"
-            name="email"
-            placeholder="example@example.com"
-            className={css.input}
-          />
-
-          <input
-            style={{
-              color: theme.popUp.titleColor,
-              borderColor: theme.popUp.inputBorderColor,
-              '::placeholder': { color: theme.popUp.inputPlaceholderColor },
-            }}
-            type="password"
-            id="password"
-            name="password"
-            placeholder="password"
-            className={css.input}
-          />
-        </div>
-        <button
-          style={{
-            backgroundColor: theme.popUp.buttonBackground,
-            color: theme.popUp.buttonTextColor,
-          }}
-          type="submit"
-        >
-          Send
-        </button>
-      </form>
+      <Formik
+        initialValues={{
+          name: user.name,
+          email: user.email,
+          password: '',
+          avatar: '',
+        }}
+        onSubmit={handleFormSubmit}
+        // validationSchema={registerSchema}
+      >
+        <ProfileForm />
+      </Formik>
     </div>
   );
 }

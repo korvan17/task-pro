@@ -1,16 +1,21 @@
 import React from 'react';
 import css from './IconButton.module.css';
 
-export default function IconButton({ svg, className, size, pushButton }) {
+export default function IconButton({
+  svg,
+  className,
+  size,
+  pushButton,
+  type = 'button',
+}) {
   return (
-    // style is temp solution
     <button
-      type="button"
-      onClick={() => pushButton('id')}
-      className={css.button}
+      type={type}
+      onClick={pushButton}
+      className={`${className} ${css.button}`}
       style={{ height: size }}
     >
-      <svg className={className} width={size} height={size}>
+      <svg width={size} height={size}>
         {svg}
       </svg>
     </button>

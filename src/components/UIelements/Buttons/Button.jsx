@@ -10,6 +10,7 @@ import { useTheme } from '@emotion/react';
  * @param {"button" | "submit | "reset"} [props.buttonType='button'] - The type attribute for the button element.
  * @param {className} propsclassname - Additional custom styles for Button component.
  * @param {("color" | "transparent" | "dark")} props.stylization - Stilization types of button.
+ * @param {string | null} props.padding - If your button has custom padding, provide padding css property one line.
  * @param {ReactNode} props.children
  * @returns {JSX.Element}
  * @example
@@ -39,7 +40,7 @@ export default function Buttons({
 
   return (
     <button
-      onClick={columnId ? () => pushButton(columnId) : pushButton}
+      onClick={pushButton}
       style={{ background: theme.popUp.buttonBackground }}
       className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}

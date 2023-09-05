@@ -1,10 +1,10 @@
 import React from 'react';
 import Buttons from '../Button';
-import css from './AddIconButton.module.css';
+import css from './AddColumnButton.module.css';
 import sprite from '../../../../icons/sprite.svg';
 import { useTheme } from '@emotion/react';
-// import { useDispatch, useSelector } from 'react-redux';
-export default function AddIconButton({
+
+export default function AddColumnButton({
   columnId,
   buttonType = 'button',
   children,
