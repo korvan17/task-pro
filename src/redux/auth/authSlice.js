@@ -92,6 +92,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(needHelp.fulfilled, (state, { payload }) => {
+        toast.info('Message sent successfully! 👌');
         state.isRefreshing = false;
         state.email = payload.email;
         state.comment = payload.comment;
