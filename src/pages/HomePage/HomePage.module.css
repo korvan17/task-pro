@@ -13,16 +13,9 @@
   }
 }
 
-
 @media screen and (max-width: 374px) {
   .section {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 1439px) {
-  .section {
-    align-items: normal;
   }
 }
 
