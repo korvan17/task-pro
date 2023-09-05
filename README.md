@@ -1,113 +1,95 @@
-# React homework template
+#**TaskPro - React and Node.js Web Application**
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+##**Motivation**
 
-## Создание репозитория по шаблону
+Our motivation for creating TaskPro was to simplify task and project management
+for individuals and teams. We wanted to provide a user-friendly and efficient
+platform that would help users organize their work, set priorities, and meet
+deadlines with ease.
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+##**Problem-Solving**
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+TaskPro addresses the common challenge of task organization and project
+management. Many existing solutions are either too complex for simple tasks or
+lack the necessary features for comprehensive project management. TaskPro offers
+a balanced approach, making it suitable for both personal and team use.
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+##**Key Features**
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+- User Registration and Authentication: Users can create accounts and log in
+  securely to access their profiles.
 
-После того как репозиторий будет создан, необходимо перейти в настройки
-созданного репозитория на вкладку `Settings` > `Actions` > `General` как
-показано на изображении.
+- Board Creation: Users can create customizable boards for different projects or
+  areas of work.
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+- Column Management: Each board can have multiple columns to represent workflow
+  stages or categories.
 
-Проскролив страницу до самого конца, в секции `«Workflow permissions»` выбери
-опцию `«Read and write permissions»` и поставь галочку в чекбоксе. Это
-необходимо для автоматизации процесса деплоя проекта.
+- Task Cards: Users can add task cards to columns, including task names,
+  descriptions, priorities, and deadlines.
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+- Deadline Notifications: TaskPro sends timely reminders as the deadline for a
+  task approaches.
 
-Теперь у тебя есть личный репозиторий проекта, со структурой файлов и папок
-репозитория-шаблона. Далее работай с ним как с любым другим личным репозиторием,
-клонируй его себе на компьютер, пиши код, делай коммиты и отправляй их на
-GitHub.
+- Responsive Design: TaskPro is optimized for various screen sizes, ensuring a
+  seamless user experience across devices.
 
-## Подготовка к работе
+##**What We Learned**
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+During the development of TaskPro, we learned valuable lessons in both front-end
+and back-end technologies. We gained insights into React for building dynamic
+and responsive user interfaces and Node.js for creating a robust and efficient
+backend. Additionally, we explored user authentication and real-time
+notifications to enhance the user experience.
 
-## Деплой
+##**What Sets Us Apart**
 
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
+TaskPro distinguishes itself from other task and project management tools
+through its user-friendly interface and comprehensive feature set. Our focus on
+simplicity without sacrificing functionality makes TaskPro accessible to both
+individuals and teams of all sizes. The real-time deadline notifications and
+seamless cross-device experience further set TaskPro apart from the competition.
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
+##**Get Started**
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+To get started with TaskPro, follow these steps:
 
-![GitHub Pages settings](./assets/repo-settings.png)
+1. Clone the repository to your local machine.
+2. Install the necessary dependencies for both the front end and backend.
+3. Configure your environment variables for authentication and database access.
+4. Run the application on your local server.
 
-### Статус деплоя
+For more detailed instructions, please refer to the project's documentation.
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
+##**Contributors**
 
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
+- Ivan Korniienko - Frontend Developer (Team Lead Frontend)
 
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
+- Yurii Soroka - Frontend Developer
 
-![Deployment status](./assets/deploy-status.png)
+- Pylypenko Pavlo - Frontend Developer
 
-### Живая страница
+- Pavlo Bakmaiev - Frontend Developer
 
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
+- Oleksandr Tsymbaliuk - Frontend Developer
 
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
+- Vasyl Myroniuk - Frontend Developer
 
-### Маршрутизация
+- Oleh Syvonenko - Frontend Developer
 
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеш в начале строки обязателен.
+- Vitalii Sydorenko - Frontend Developer
 
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
+- Savelii Helzhynskyi - Frontend Developer
 
-## Как это работает
+- Yelyzaveta Diachenko - Frontend Developer
 
-![How it works](./assets/how-it-works.png)
+- Oleksandr Neverov - Backend Developer (Team Lead Backend)
 
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+- Oleh Bilous - Backend Developer
+
+##**Contact Us**
+
+If you have any questions, suggestions, or feedback, please don't hesitate to
+reach out to us at [korvan17@gmail.com]. Thank you for choosing TaskPro for your
+task and project management needs! We hope it helps you stay organized and
+productive.
