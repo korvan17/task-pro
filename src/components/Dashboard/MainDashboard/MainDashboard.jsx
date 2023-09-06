@@ -183,6 +183,7 @@ export function MainDashboard() {
                                   desc={card.description}
                                   priority={card.priority}
                                   deadline={card.deadline}
+                                  cardsColumnId={card.column}
                                 />
                               </li>
                             )}

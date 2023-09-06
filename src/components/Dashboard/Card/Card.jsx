@@ -21,14 +21,15 @@ export default function Card({
   deadline,
   toggleModalCard,
   deleteCard,
+  cardsColumnId,
 }) {
   const [isDescHidden, setDescHidden] = useState('true');
 
   const currentBoard = useSelector(selectCurrentBoard);
   const currentBarardColumns = currentBoard.columns;
   const columns = currentBarardColumns.map(el => ({
-    title: el.title,
-    id: el._id,
+    columnTitle: el.title,
+    columnId: el._id,
   }));
 
   const theme = useTheme();
@@ -118,6 +119,7 @@ export default function Card({
             className={`${css.iconButtsList} ${
               isDeadlineToday && css.iconButtsList_Deadline
             }`}
+            cardsColumnId={cardsColumnId}
           />
         </div>
       </div>

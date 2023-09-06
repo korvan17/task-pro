@@ -6,7 +6,14 @@ import iconDefs from '../../../../icons/sprite.svg';
 import css from './CardMoveModal.module.css';
 import { moveCard } from 'redux/сard/сardOperations';
 
-export default function CardMoveModal({ svg, className, size, columns }) {
+export default function CardMoveModal({
+  svg,
+  className,
+  size,
+  columns,
+  cardId,
+  cardsColumnId,
+}) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const tooltipTimeout = useRef(null);
   const dispatch = useDispatch();
@@ -40,14 +47,17 @@ export default function CardMoveModal({ svg, className, size, columns }) {
     <Tooltip
       title={
         <div className={css.tooltip} onMouseEnter={handleTooltipMouseEnter}>
-          {columns.map(({ title, id }) => {
+          {columns.map(({ columnTitle, columnId }) => {
+            if (columnId === cardsColumnId) {
+              return null;
+            }
             return (
               <button
-                key={id}
+                key={columnId}
                 className={css.button}
-                onClick={() => onClickBtn(id, )}
+                onClick={() => onClickBtn(cardId, columnId, 0)}
               >
-                <span className={css.iconTxt}>{title}</span>
+                <span className={css.iconTxt}>{columnTitle}</span>
                 <svg className={css.icon} width={16} height={16}>
                   <use xlinkHref={`${iconDefs}#icon-move`} />
                 </svg>

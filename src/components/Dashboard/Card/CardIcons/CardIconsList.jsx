@@ -11,24 +11,29 @@ export default function CardIconsList({
   className,
   toggleModalCard,
   deleteCard,
-  columns
+  columns,
+  cardsColumnId,
 }) {
   const theme = useTheme();
   return (
     <ul className={className}>
-      <li className={css.iconButtonItem}>
-        <CardMoveModal
-          columns={columns}
-          svg={
-            <use
-              style={{ stroke: theme.card.iconsFill }}
-              xlinkHref={`${sprite}#icon-move`}
-            />
-          }
-          size={16}
-          className={css.icon}
-        />
-      </li>
+      {columns.length > 1 && (
+        <li className={css.iconButtonItem}>
+          <CardMoveModal
+            cardsColumnId={cardsColumnId}
+            columns={columns}
+            svg={
+              <use
+                style={{ stroke: theme.card.iconsFill }}
+                xlinkHref={`${sprite}#icon-move`}
+              />
+            }
+            size={16}
+            className={css.icon}
+            cardId={cardId}
+          />
+        </li>
+      )}
       <li className={css.iconButtonItem}>
         <IconButton
           pushButton={() => toggleModalCard(columnId, cardId)}
