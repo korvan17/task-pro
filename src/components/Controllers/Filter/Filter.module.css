@@ -2,23 +2,15 @@
   position: relative;
 }
 
-.filtersButtonContainer {
-  /* width: 75px;
-  height: 20px; */
-  /* outline: 1px solid blue; */
-}
-
 .filtersButton {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   width: 80px;
   height: 20px;
-  /* align-items: center; */
   padding: 0;
   border: none;
   background: none;
-  /* color: rgba(22, 22, 22, 0.8); */
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -30,7 +22,6 @@
 .filtersButtonIcon {
   margin-right: 8px;
   stroke-width: 1.5px;
-  /* stroke: rgba(22, 22, 22, 0.8); */
 }
 
 .filtersChangerContainer {
@@ -82,7 +73,6 @@
   padding-top: 0.5px;
   margin-bottom: 14px;
   background-color: rgba(22, 22, 22, 0.1);
-  /* outline: 1px solid blue; */
 }
 
 .filterChangerTitleAndButtonContainer {
