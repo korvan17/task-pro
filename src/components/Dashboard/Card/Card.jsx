@@ -59,9 +59,9 @@ export default function Card({
     }
   };
 
-  // const priorityStyle = {
-  //   '--priority-color': getColor(),
-  // };
+  const priorityStyle = {
+    '--priority-color': getColor(),
+  };
 
   const currentDate = convertDate(new Date());
   const date = new Date(deadline);
@@ -71,18 +71,13 @@ export default function Card({
   const isDeadlineToday = currentDate === convertedPropsDate;
 
   return (
-    <div
-      style={{ backgroundColor: theme.card.background }}
-      className={css.overWrapper}
-    >
+    <div style={priorityStyle} className={css.overWrapper}>
       <div
         style={{
           backgroundColor: theme.card.background,
-          borderLeft: `4px solid ${getColor()}`,
         }}
         className={css.wrapper}
       >
-        {/*  style={priorityStyle} */}
         <h4 style={{ color: theme.card.titleColor }} className={css.title}>
           {title}
         </h4>
