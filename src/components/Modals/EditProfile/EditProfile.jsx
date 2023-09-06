@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import css from './EditProfile.module.css';
 import { IconButton } from 'components';
 import sprite from '../../../icons/sprite.svg';
-import { registerSchema } from 'components/Auth/userSchemas';
 import { updateUser } from 'redux/auth/authOperations';
 import ProfileForm from './ProfileForm/ProfileForm';
 
@@ -15,11 +14,19 @@ export default function EditProfile({ onClose }) {
   const user = useSelector(state => state.auth.user);
 
   const handleFormSubmit = values => {
-    dispatch(updateUser(values));
+    dispatch(
+      updateUser({
+        avatar: values.avatar,
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      })
+    );
     onClose();
   };
 
   const theme = useTheme();
+
   return (
     <div
       className={css.conteiner}
@@ -46,6 +53,7 @@ export default function EditProfile({ onClose }) {
           email: user.email,
           password: '',
           avatar: '',
+          avatarURL: user.avatarURL,
         }}
         onSubmit={handleFormSubmit}
         // validationSchema={registerSchema}

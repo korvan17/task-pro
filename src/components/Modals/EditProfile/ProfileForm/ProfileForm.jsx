@@ -7,8 +7,6 @@ import sprite from '../../../../icons/sprite.svg';
 import { Buttons } from 'components';
 import css from './ProfileForm.module.css';
 import { IconButton } from 'components';
-import { AddIconButton } from 'components';
-import AddColumnButton from 'components/UIelements/Buttons/AddColumnButton/AddColumnButton';
 import ImageInput from './ImgInput';
 
 export default function ProfileForm() {
@@ -27,7 +25,7 @@ export default function ProfileForm() {
         <div className={css.userAvaWrapper}>
           <div className={css.imgWrapper}>
             <img
-              src={values.avatar}
+              src={values.avatarURL}
               alt="user profile avatar"
               className={css.userImg}
               width={68}

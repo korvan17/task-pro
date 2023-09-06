@@ -107,7 +107,11 @@ export const updateUser = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       setToken(state.auth.token);
-      const { data } = await axios.put('/users/update', credintials);
+      const { data } = await axios.put('/users/update', credintials, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+      });
 
       return data;
     } catch (error) {
