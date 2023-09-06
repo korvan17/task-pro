@@ -20,7 +20,7 @@
 }
 
 .card__item::-webkit-scrollbar-thumb {
-  background-color: #BEDBB0;
+  background-color: #bedbb0;
 
   border-radius: 12px;
 }
@@ -53,7 +53,7 @@
 }
 
 .lightCard__item::-webkit-scrollbar-thumb {
-  background-color: #BEDBB0;
+  background-color: #bedbb0;
 
   border-radius: 12px;
 }
@@ -86,7 +86,7 @@
 }
 
 .violetCard__item::-webkit-scrollbar-thumb {
-  background-color: #5255BC;
+  background-color: #5255bc;
 
   border-radius: 12px;
 }
@@ -134,7 +134,7 @@
 }
 
 .board__main::-webkit-scrollbar-thumb {
-  background-color: #BEDBB0;
+  background-color: #bedbb0;
   /* Цвет полосы прокрутки */
   border-radius: 12px;
   /* Скругление углов полосы прокрутки */
@@ -163,7 +163,7 @@
 }
 
 .lightBoard__main::-webkit-scrollbar-thumb {
-  background-color: #BEDBB0;
+  background-color: #bedbb0;
   /* Цвет полосы прокрутки */
   border-radius: 12px;
   /* Скругление углов полосы прокрутки */
@@ -188,11 +188,13 @@
 }
 .violetBoard__main::-webkit-scrollbar {
   width: 8px;
+
   /* Ширина полосы прокрутки */
 }
 
 .violetBoard__main::-webkit-scrollbar-thumb {
-  background-color: #5255BC;
+  background-color: #5255bc;
+
   /* Цвет полосы прокрутки */
   border-radius: 12px;
   /* Скругление углов полосы прокрутки */
@@ -202,29 +204,62 @@
   background-color: rgba(22, 22, 22, 0.1);
   /* Белый цвет фона трека полосы прокрутки */
   border-radius: 12px;
+
   /* Скругление углов трека полосы прокрутки */
 }
 
 @media screen and (max-width: 767px) {
-  .board__main, .lightBoard__main, .violetBoard__main {
+  .board__main,
+  .lightBoard__main,
+  .violetBoard__main {
     padding: 0 20px 24px 20px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439px) {
   .board__main,
-    .lightBoard__main,
-    .violetBoard__main {
+  .lightBoard__main,
+  .violetBoard__main {
     padding: 0 32px 24px 32px;
-    margin-top: 26px;
+    margin-top: 12px;
   }
 }
-
+@media screen and (max-width: 768px) {
+  .board__main,
+  .lightBoard__main,
+  .violetBoard__main {
+    margin-top: 20px;
+  }
+}
 @media screen and (min-width: 1440px) {
   .board__main,
-    .lightBoard__main,
-    .violetBoard__main {
+  .lightBoard__main,
+  .violetBoard__main {
     margin-top: 10px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .board__main::-webkit-scrollbar-track,
+  .lightBoard__main::-webkit-scrollbar-track,
+  .violetBoard__main::-webkit-scrollbar-track {
+    margin-left: 284px;
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .board__main::-webkit-scrollbar-track,
+  .lightBoard__main::-webkit-scrollbar-track,
+  .violetBoard__main::-webkit-scrollbar-track {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .board__main::-webkit-scrollbar-track,
+  .lightBoard__main::-webkit-scrollbar-track,
+  .violetBoard__main::-webkit-scrollbar-track {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
