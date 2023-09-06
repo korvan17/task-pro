@@ -19,12 +19,21 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
+const persistedReducer = persistReducer(
+  {
+    key: 'root',
+    storage,
+  },
+  authReducer
+);
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducerBoards = persistReducer(
+  {
+    key: 'boards',
+    storage,
+  },
+  boardsReducer
+);
 
 export const store = configureStore({
   reducer: {
@@ -33,7 +42,7 @@ export const store = configureStore({
     columns: columnsReducer,
     cards: cardsReducer,
     displays: displayReducer,
-    boards: boardsReducer,
+    boards: persistedReducerBoards,
     modal: modalReducer,
   },
   middleware: getDefaultMiddleware =>

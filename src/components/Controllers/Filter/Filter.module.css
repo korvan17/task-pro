@@ -1,11 +1,5 @@
 .filtersContainer {
-  position: relative;
-}
-
-.filtersButtonContainer {
-  /* width: 75px;
-  height: 20px; */
-  /* outline: 1px solid blue; */
+  /* position: relative; */
 }
 
 .filtersButton {
@@ -14,11 +8,9 @@
   justify-content: flex-end;
   width: 80px;
   height: 20px;
-  /* align-items: center; */
   padding: 0;
   border: none;
   background: none;
-  /* color: rgba(22, 22, 22, 0.8); */
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -30,12 +22,11 @@
 .filtersButtonIcon {
   margin-right: 8px;
   stroke-width: 1.5px;
-  /* stroke: rgba(22, 22, 22, 0.8); */
 }
 
 .filtersChangerContainer {
   position: absolute;
-  right: 0;
+  right: 20px;
   padding: 24px;
   margin-top: 10px;
   width: 300px;
@@ -43,6 +34,18 @@
   border-radius: 8px;
   background: #fcfcfc;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+}
+
+@media screen and (min-width: 767px) {
+  .filtersChangerContainer {
+      right: 32px;
+  }
+}
+
+@media screen and (min-width: 1439px) {
+  .filtersChangerContainer {
+      right: 24px;
+    }
 }
 
 .filtersChangerContainerCloseButton {
@@ -82,7 +85,6 @@
   padding-top: 0.5px;
   margin-bottom: 14px;
   background-color: rgba(22, 22, 22, 0.1);
-  /* outline: 1px solid blue; */
 }
 
 .filterChangerTitleAndButtonContainer {
