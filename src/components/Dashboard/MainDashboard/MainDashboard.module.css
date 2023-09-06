@@ -188,11 +188,13 @@
 }
 .violetBoard__main::-webkit-scrollbar {
   width: 8px;
+
   /* Ширина полосы прокрутки */
 }
 
 .violetBoard__main::-webkit-scrollbar-thumb {
   background-color: #5255bc;
+
   /* Цвет полосы прокрутки */
   border-radius: 12px;
   /* Скругление углов полосы прокрутки */
@@ -202,6 +204,7 @@
   background-color: rgba(22, 22, 22, 0.1);
   /* Белый цвет фона трека полосы прокрутки */
   border-radius: 12px;
+
   /* Скругление углов трека полосы прокрутки */
 }
 
@@ -218,10 +221,16 @@
   .lightBoard__main,
   .violetBoard__main {
     padding: 0 32px 24px 32px;
-    margin-top: 26px;
+    margin-top: 12px;
   }
 }
-
+@media screen and (max-width: 768px) {
+  .board__main,
+  .lightBoard__main,
+  .violetBoard__main {
+    margin-top: 20px;
+  }
+}
 @media screen and (min-width: 1440px) {
   .board__main,
   .lightBoard__main,
