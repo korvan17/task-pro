@@ -21,6 +21,7 @@
 }
 
 .themeListContainer {
+  z-index: 9;
   position: absolute;
   height: 105px;
   width: 100px;

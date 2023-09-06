@@ -2,40 +2,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  /* padding: 14px; */
   width: 225px;
   height: 100vh;
   background-color: #121212;
-  transition: 500ms;
   transform: translateX(-100%);
-  /* overflow-y: auto;
-  overflow-x: hidden; */
+  transition: 500ms transform;
 }
-/* &::-webkit-scrollbar {
-    width: 8px;
-
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-
-  &::-webkit-scrollbar-thumb {
-    background: #bedbb0;
-    border-radius: 10px;
-    left: 0;
-    top: 0;
-    position: absolute;
-  }
-
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-} */
 
 @media screen and (min-width: 768px) {
   .sideBar {
@@ -48,16 +20,13 @@
     width: 260px;
     transform: none;
 
-    /* position: relative; */
   }
 }
 
 .openSideBar {
-  /* position: absolute; */
   min-height: 768px;
   z-index: 2;
 
-  /* display: inline-block; */
   position: absolute;
 
   display: flex;
@@ -65,7 +34,6 @@
   justify-content: space-between;
 
   top: 0;
-  /* padding: 14px; */
   width: 225px;
   height: 100vh;
   flex-shrink: 0;
@@ -102,6 +70,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+.header:hover, header:focus {
+  transform: translateX(5px);
 }
 
 .headerTitle {
@@ -163,7 +137,7 @@
   border: none;
   border-radius: 6px;
   background-color: #bedbb0;
-  transition: 250ms;
+  transition: background-color 0.3s ease;
 }
 
 .createBoardButton:hover {
@@ -180,8 +154,6 @@
 }
 .boardsList::-webkit-scrollbar {
   width: 2px;
-  /* right: 0;
-    left: auto; */
 }
 
 /* Фон для трека (полосы прокрутки) */
@@ -357,6 +329,7 @@
 }
 
 .taskProSpan {
+  cursor: 'pointer';
   color: #bedbb0;
 }
 
@@ -393,4 +366,16 @@
 .iconLogout {
   stroke: #bedbb0;
   fill: transparent;
+}
+
+.helpBtn,
+.logoutBtn {
+  transition: transform 0.25s ease;
+}
+
+.helpBtn:hover,
+.logoutBtn:hover,
+.helpBtn:focus,
+.logoutBtn:focus {
+  transform: translateX(5px);
 }
