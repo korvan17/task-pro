@@ -179,15 +179,15 @@
   overflow-y: auto;
 }
 .boardsList::-webkit-scrollbar {
-  width: 8px;
+  width: 2px;
   /* right: 0;
     left: auto; */
 }
 
 /* Фон для трека (полосы прокрутки) */
 .boardsList::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -222,7 +222,7 @@
 }
 
 .lightBoardsList::-webkit-scrollbar {
-  width: 8px;
+  width: 2px;
   /* Для перемещения ползунка слева используйте right вместо left */
   right: 0;
   left: auto; /* Уберите left */
@@ -230,7 +230,7 @@
 
 /* Фон для трека (полосы прокрутки) */
 .lightBoardsList::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -262,11 +262,11 @@
   /* transition: 300ms; */
 }
 .violetBoardsList::-webkit-scrollbar {
-  width: 8px;
+  width: 3px;
 }
 
 .violetBoardsList::-webkit-scrollbar {
-  width: 8px;
+  width: 3px;
   /* Для перемещения ползунка слева используйте right вместо left */
   right: 0;
   left: auto; /* Уберите left */
@@ -274,7 +274,7 @@
 
 /* Фон для трека (полосы прокрутки) */
 .violetBoardsList::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }

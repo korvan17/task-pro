@@ -76,6 +76,10 @@ export const light = {
     columnTitleColor: colors.blackColor,
     columnTitlePencilFill: colors.halfGrayColor,
     columnTitleTrashFill: colors.halfGrayColor,
+    aloneColumnButtonBackground: colors.whiteColor,
+    aloneColumnButtonTextColor: colors.blackColor,
+    aloneColumnButtonIconBackground: colors.blackColor,
+    aloneColumnButtonPlusFill: colors.whiteColor,
   },
   card: {
     background: colors.whiteColor,
@@ -172,6 +176,10 @@ export const dark = {
     columnTitleColor: colors.whiteColor,
     columnTitlePencilFill: colors.halfWhiteColor,
     columnTitleTrashFill: colors.halfWhiteColor,
+    aloneColumnButtonBackground: colors.secondBlackColor,
+    aloneColumnButtonTextColor: colors.whiteColor,
+    aloneColumnButtonIconBackground: colors.whiteColor,
+    aloneColumnButtonPlusFill: colors.secondBlackColor,
   },
   card: {
     background: colors.secondBlackColor,
@@ -268,6 +276,10 @@ export const violet = {
     columnTitleColor: colors.blackColor,
     columnTitlePencilFill: colors.halfGrayColor,
     columnTitleTrashFill: colors.halfGrayColor,
+    aloneColumnButtonBackground: colors.whiteColor,
+    aloneColumnButtonTextColor: colors.blackColor,
+    aloneColumnButtonIconBackground: colors.violetColor,
+    aloneColumnButtonPlusFill: colors.whiteColor,
   },
   card: {
     background: colors.whiteColor,

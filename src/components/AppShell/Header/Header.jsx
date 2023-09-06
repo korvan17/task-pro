@@ -69,23 +69,28 @@ export default function Header({ toggleMenu }) {
             onClick={toggleEditProfile}
             className={css.userBtn}
           >
-            <svg
-              className={css.userAvatart}
-              // className={css.menuIcon}
-              width="32"
-              height="32"
-            >
-              {user.avatar !== '' ? (
-                <use xlinkHref={`${user.avatarURL}`} />
-              ) : (
+            {user.avatarURL !== '' ? (
+              <img
+                src={user.avatarURL}
+                alt={user.name}
+                width="32"
+                height="32"
+              />
+            ) : (
+              <svg
+                className={css.userAvatart}
+                // className={css.menuIcon}
+                width="32"
+                height="32"
+              >
                 <use xlinkHref={`${sprite}#icon-user`} />
-              )}
-            </svg>
+              </svg>
+            )}
           </button>
         </div>
       </div>
       {showEditProfile && (
-        <BasicModal onClose={toggleEditProfile}>
+        <BasicModal onClose={toggleEditProfile} withoutWrpaper={true}>
           <EditProfile onClose={toggleEditProfile} />
         </BasicModal>
       )}

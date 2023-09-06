@@ -10,7 +10,11 @@ import { useTheme } from '@emotion/react';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default function BasicModal({ onClose, children }) {
+export default function BasicModal({
+  onClose,
+  children,
+  withoutWrpaper = false,
+}) {
   const theme = useTheme();
   useEffect(() => {
     const handleKeyDown = e => {
@@ -34,9 +38,16 @@ export default function BasicModal({ onClose, children }) {
 
   return createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div style={{ background: theme.popUp.background }} className={css.modal}>
-        {children}
-      </div>
+      {withoutWrpaper ? (
+        children
+      ) : (
+        <div
+          style={{ background: theme.popUp.background }}
+          className={css.modal}
+        >
+          {children}
+        </div>
+      )}
     </div>,
     modalRoot
   );

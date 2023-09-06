@@ -70,6 +70,7 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, { payload }) => {
         toast.success('Glad to have you back. Successful login! 🤩');
         state.user = payload.user;
+        state.user.avatarURL = payload.user.avatar;
         state.token = payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
@@ -90,7 +91,6 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
-        console.log(payload);
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
@@ -104,7 +104,7 @@ const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
         state.user.password = payload.password;
-        state.user.avatarURL = payload.avatarURL;
+        state.user.avatarURL = payload.avatar;
         state.isRefreshing = false;
       })
 
