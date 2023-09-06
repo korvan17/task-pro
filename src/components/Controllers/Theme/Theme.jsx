@@ -11,7 +11,7 @@ export default function Theme() {
   const selectedTheme = useSelector(getTheme);
   const dispatch = useDispatch();
   const themes = ['light', 'dark', 'violet'];
-  const [isThemeListVisible, setIsThemeListVisible] = useState(true);
+  const [isThemeListVisible, setIsThemeListVisible] = useState(false);
 
   const theme = useTheme();
 
