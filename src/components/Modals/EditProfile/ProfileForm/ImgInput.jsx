@@ -1,5 +1,4 @@
 import { useFormikContext } from 'formik';
-
 export default function ImageInput() {
   const { setFieldValue } = useFormikContext();
 
@@ -7,17 +6,19 @@ export default function ImageInput() {
     const file = e.target.files?.[0];
     if (file) {
       const res = await new Promise(resolve => {
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-          if (fileReader.readyState === 2) {
-            resolve(fileReader.result);
-          }
+        const reader = new FileReader();
+        reader.onload = e => {
+          resolve(e.target.result);
         };
-        fileReader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+        
       });
-      setFieldValue('avatar', res);
+      console.log(res)
+      setFieldValue('avatar', file);
+      setFieldValue('avatarURL', res);
     }
   };
+
   return (
     <input
       type="file"

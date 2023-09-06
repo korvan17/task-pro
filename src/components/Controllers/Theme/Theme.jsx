@@ -22,7 +22,6 @@ export default function Theme() {
   const hadleThemeSelect = newUserTheme => {
     dispatch(updateTheme(newUserTheme));
     toggleThemeList();
-    // console.log(newUserTheme);
   };
 
   return (
@@ -32,7 +31,12 @@ export default function Theme() {
         className={css.themeChangerButton}
         onClick={toggleThemeList}
       >
-        <h3 className={css.themeTitle}>Theme</h3>
+        <h3
+          style={{ color: theme.header.themeSelectorColor }}
+          className={css.themeTitle}
+        >
+          Theme
+        </h3>
         <svg
           style={{ stroke: theme.header.themeSelectorColor }}
           className={`${css.themeChangerIcon}`}
@@ -65,7 +69,6 @@ export default function Theme() {
                   }
                 }}
               >
-                {/* {themeName[0].toUpperCase() + themeName.slice(1)} */}
                 {themeName}
               </button>
             </li>

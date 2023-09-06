@@ -7,6 +7,7 @@ import {
   getBoardByID,
 } from './operations';
 import { toast } from 'react-toastify';
+import { addColumn } from '../columns/columnsOperations';
 
 const customArr = [deleteBoard, addBoard, fetchBoards, getBoardByID];
 
@@ -100,6 +101,11 @@ const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.currentBoard = action.payload;
+      })
+
+      .addCase(addColumn.pending, (state, action) => {
+        console.log('state.currentBoard', state.currentBoard);
+        console.log('action.payload', action.payload);
       })
 
       .addMatcher(isAnyOf(...fnStatus('pending')), handlePending)

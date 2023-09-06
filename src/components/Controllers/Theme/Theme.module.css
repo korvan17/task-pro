@@ -2,7 +2,6 @@
   position: 'relative';
   display: 'flex';
   flex-direction: column;
-  /* overflow: auto; */
 }
 
 .themeChangerButton {
@@ -24,7 +23,6 @@
 .themeListContainer {
   z-index: 9;
   position: absolute;
-  right: 50;
   height: 105px;
   width: 100px;
   margin-top: 10px;
@@ -32,17 +30,7 @@
   border: 1px solid #bedbb0;
   background: #151515;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
-  opacity: 1;
-  /* transform: translateY(-10px); */
-  /* visibility: hidden; */
-  /* transition: 0.3s; */
 }
-
-/* .themeListContainer.active { */
-/* transform: translateY(0); */
-/* opacity: 1; */
-/* visibility: visible; */
-/* } */
 
 .themeList {
   padding: 18px;
