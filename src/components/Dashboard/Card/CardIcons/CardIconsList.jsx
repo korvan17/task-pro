@@ -11,12 +11,14 @@ export default function CardIconsList({
   className,
   toggleModalCard,
   deleteCard,
+  columns
 }) {
   const theme = useTheme();
   return (
     <ul className={className}>
       <li className={css.iconButtonItem}>
         <CardMoveModal
+          columns={columns}
           svg={
             <use
               style={{ stroke: theme.card.iconsFill }}
