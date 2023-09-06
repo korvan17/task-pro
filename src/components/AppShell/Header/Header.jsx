@@ -90,7 +90,7 @@ export default function Header({ toggleMenu }) {
         </div>
       </div>
       {showEditProfile && (
-        <BasicModal onClose={toggleEditProfile}>
+        <BasicModal onClose={toggleEditProfile} withoutWrpaper={true}>
           <EditProfile onClose={toggleEditProfile} />
         </BasicModal>
       )}

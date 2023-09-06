@@ -42,7 +42,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
     setToken(state.auth.token);
-    
+
     await axios.post('/users/logout');
     unsetToken();
   } catch (error) {
@@ -110,13 +110,12 @@ export const updateUser = createAsyncThunk(
       const { data } = await axios.put('/users/update', credintials, {
         headers: {
           'Content-Type': 'multipart/form-data',
-        }
+        },
       });
 
       return data;
     } catch (error) {
       toast.error(error.response.data.message);
-      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

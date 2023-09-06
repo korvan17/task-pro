@@ -16,10 +16,10 @@ export default function EditProfile({ onClose }) {
   const handleFormSubmit = values => {
     dispatch(
       updateUser({
-        avatar: values.avatar,
+        avatar: values.avatar || undefined,
         name: values.name,
         email: values.email,
-        password: values.password,
+        password: values.password || undefined,
       })
     );
     onClose();
