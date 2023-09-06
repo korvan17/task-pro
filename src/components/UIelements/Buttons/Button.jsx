@@ -25,6 +25,7 @@ export default function Buttons({
   stylization = 'color',
   children,
   pushButton,
+  alone,
 }) {
   const theme = useTheme();
   const getBtnStyle = () => {
@@ -41,7 +42,13 @@ export default function Buttons({
   return (
     <button
       onClick={pushButton}
-      style={{ background: theme.popUp.buttonBackground }}
+      style={
+        alone
+          ? {
+              background: theme.mainDashBoard.aloneColumnButtonBackground,
+            }
+          : { background: theme.popUp.buttonBackground }
+      }
       className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}
     >

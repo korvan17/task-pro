@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 export default function FIlter() {
   const colors = [
-    { id: 1, priority: 'without', color: 'gray' },
+    { id: 1, priority: 'without', color: 'rgba(255, 255, 255, 0.30)' },
     { id: 2, priority: 'low', color: '#8FA1D0' },
     { id: 3, priority: 'medium', color: '#E09CB5' },
     { id: 4, priority: 'high', color: '#BEDBB0' },

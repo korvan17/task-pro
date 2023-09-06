@@ -10,20 +10,30 @@ export default function AddIconButton({
   children,
   className,
   pushButton,
+  alone = false,
 }) {
   const theme = useTheme();
   return (
     <Buttons
+      alone={alone}
       columnId={columnId}
       pushButton={pushButton}
       className={` ${className} ${children ? css.button : css.buttonNoTxt}`}
       buttonType={buttonType}
     >
       <svg
-        style={{
-          backgroundColor: theme.popUp.buttonIconBackground,
-          stroke: theme.popUp.buttonIconPlusFill,
-        }}
+        style={
+          alone
+            ? {
+                backgroundColor:
+                  theme.mainDashBoard.aloneColumnButtonIconBackground,
+                stroke: theme.mainDashBoard.aloneColumnButtonPlusFill,
+              }
+            : {
+                backgroundColor: theme.popUp.buttonIconBackground,
+                stroke: theme.popUp.buttonIconPlusFill,
+              }
+        }
         className={`${css.icon} ${!children && css.iconNoTxt}`}
         width={28}
         height={28}

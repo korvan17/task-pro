@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import css from './ColorPicker.module.css';
+import { useTheme } from '@emotion/react';
 
 const ColorPicker = ({
   onSelectedPriorityChange,
@@ -11,7 +12,7 @@ const ColorPicker = ({
     { id: 1, priority: 'low', color: '#8FA1D0' },
     { id: 2, priority: 'medium', color: '#E09CB5' },
     { id: 3, priority: 'high', color: '#BEDBB0' },
-    { id: 4, priority: 'without', color: '#1616164D' },
+    { id: 4, priority: 'without', color: 'rgba(255, 255, 255, 0.30)' },
   ];
 
   const foundColor = colors.find(color => color.priority === currentPriority);
@@ -19,6 +20,8 @@ const ColorPicker = ({
   const [selectedColor, setSelectedColor] = useState(
     currentPriority ? foundColor.color : defaultColor
   );
+
+  const theme = useTheme();
 
   const handleColorChange = color => {
     setSelectedColor(color.color);
@@ -28,7 +31,11 @@ const ColorPicker = ({
 
   return (
     <div className={css.colorPickerBlock}>
-      <label htmlFor="priority" className={css.labelTitle}>
+      <label
+        style={{ color: theme.popUp.labelColor }}
+        htmlFor="priority"
+        className={css.labelTitle}
+      >
         Label color
       </label>
       <div>
