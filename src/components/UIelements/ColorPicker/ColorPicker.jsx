@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import css from './ColorPicker.module.css';
 import { useTheme } from '@emotion/react';
+import { useSelector } from 'react-redux';
+import { getTheme } from 'redux/auth/authSelectors';
 
 const ColorPicker = ({
   onSelectedPriorityChange,
@@ -8,11 +10,20 @@ const ColorPicker = ({
   defaultColor,
   currentPriority,
 }) => {
+  const theme = useTheme();
+  const userTheme = useSelector(getTheme);
   const colors = [
     { id: 1, priority: 'low', color: '#8FA1D0' },
     { id: 2, priority: 'medium', color: '#E09CB5' },
     { id: 3, priority: 'high', color: '#BEDBB0' },
-    { id: 4, priority: 'without', color: 'rgba(255, 255, 255, 0.30)' },
+    {
+      id: 4,
+      priority: 'without',
+      color:
+        userTheme === 'dark'
+          ? 'rgba(255, 255, 255, 0.30)'
+          : 'rgba(22, 22, 22, 0.30)',
+    },
   ];
 
   const foundColor = colors.find(color => color.priority === currentPriority);
@@ -20,8 +31,6 @@ const ColorPicker = ({
   const [selectedColor, setSelectedColor] = useState(
     currentPriority ? foundColor.color : defaultColor
   );
-
-  const theme = useTheme();
 
   const handleColorChange = color => {
     setSelectedColor(color.color);
