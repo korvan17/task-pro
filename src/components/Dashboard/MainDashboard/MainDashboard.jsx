@@ -22,6 +22,7 @@ import {
 import { selectFilter, setFilter } from '../../../redux/filterSlice';
 
 import { getTheme } from 'redux/auth/authSelectors';
+import { selectDisplays } from '../../../redux/displayType/displaySelectors';
 
 export function MainDashboard() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ export function MainDashboard() {
   const theme = useTheme();
   const userTheme = useSelector(getTheme);
   const isFirstRender = useRef(true);
+  const getDisplay = useSelector(selectDisplays);
 
   useEffect(() => {
     if (isFirstRender.current === false) {
@@ -56,6 +58,7 @@ export function MainDashboard() {
     isLoadingColumns,
     isLoadingBoardUpdate,
     boardId,
+    getDisplay,
     dispatch,
   ]);
 
@@ -253,7 +256,7 @@ export function MainDashboard() {
             <span
               style={
                 board?.columns
-                  ? { color: theme.popUp.aloneColumnButtonTextColor }
+                  ? { color: theme.mainDashBoard.aloneColumnButtonTextColor }
                   : { color: theme.popUp.buttonTextColor }
               }
               className={css.btn__text}

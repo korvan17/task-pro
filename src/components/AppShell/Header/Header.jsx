@@ -69,7 +69,7 @@ export default function Header({ toggleMenu }) {
             onClick={toggleEditProfile}
             className={css.userBtn}
           >
-            {user.avatarURL !== '' ? (
+            {user.avatarURL ? (
               <img
                 src={user.avatarURL}
                 alt={user.name}
