@@ -6,6 +6,8 @@ import convertDate from 'utlis/convertDate';
 import { CardIconsList, DeadlineIcon } from './CardIcons';
 import CardAdditionInfList from './CardAdditionInfList/CardAdditionInfList';
 import { useTheme } from '@emotion/react';
+import { selectCurrentBoard } from 'redux/boards/selectors';
+import { useSelector } from 'react-redux';
 
 // ! set a constant later
 const MAX_DESC_VISIBLE_LEN = 86;
@@ -19,8 +21,16 @@ export default function Card({
   deadline,
   toggleModalCard,
   deleteCard,
+  cardsColumnId,
 }) {
   const [isDescHidden, setDescHidden] = useState('true');
+
+  const currentBoard = useSelector(selectCurrentBoard);
+  const currentBarardColumns = currentBoard.columns;
+  const columns = currentBarardColumns.map(el => ({
+    columnTitle: el.title,
+    columnId: el._id,
+  }));
 
   const theme = useTheme();
 
@@ -49,27 +59,25 @@ export default function Card({
     }
   };
 
-  // const priorityStyle = {
-  //   '--priority-color': getColor(),
-  // };
+  const priorityStyle = {
+    '--priority-color': getColor(),
+  };
 
   const currentDate = convertDate(new Date());
+  const date = new Date(deadline);
 
-  const isDeadlineToday = currentDate === deadline;
+  const convertedPropsDate = convertDate(date);
+
+  const isDeadlineToday = currentDate === convertedPropsDate;
 
   return (
-    <div
-      style={{ backgroundColor: theme.card.background }}
-      className={css.overWrapper}
-    >
+    <div style={priorityStyle} className={css.overWrapper}>
       <div
         style={{
           backgroundColor: theme.card.background,
-          borderLeft: `4px solid ${getColor()}`,
         }}
         className={css.wrapper}
       >
-        {/*  style={priorityStyle} */}
         <h4 style={{ color: theme.card.titleColor }} className={css.title}>
           {title}
         </h4>
@@ -89,12 +97,16 @@ export default function Card({
           style={{ borderTopColor: theme.card.separatorLineColor }}
           className={css.additionWrapper}
         >
-          <CardAdditionInfList deadline={deadline} priority={priority} />
+          <CardAdditionInfList
+            deadline={convertedPropsDate}
+            priority={priority}
+          />
 
           {/* icon-beel shows if deadline day is today */}
           {isDeadlineToday && <DeadlineIcon />}
 
           <CardIconsList
+            columns={columns}
             cardId={cardId}
             columnId={columnId}
             toggleModalCard={toggleModalCard}
@@ -102,6 +114,7 @@ export default function Card({
             className={`${css.iconButtsList} ${
               isDeadlineToday && css.iconButtsList_Deadline
             }`}
+            cardsColumnId={cardsColumnId}
           />
         </div>
       </div>

@@ -1,12 +1,32 @@
 import React, { useState, useRef } from 'react';
 import { Tooltip } from '@mui/material';
+import { useDispatch } from 'react-redux';
+
 import iconDefs from '../../../../icons/sprite.svg';
-
 import css from './CardMoveModal.module.css';
+import { moveCard } from 'redux/сard/сardOperations';
 
-export default function CardMoveModal({ svg, className, size }) {
+export default function CardMoveModal({
+  svg,
+  className,
+  size,
+  columns,
+  cardId,
+  cardsColumnId,
+}) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const tooltipTimeout = useRef(null);
+  const dispatch = useDispatch();
+
+  const onClickBtn = (cardId, toColumnId, toIndex) => {
+    dispatch(
+      moveCard({
+        cardId,
+        toColumnId,
+        toIndex,
+      })
+    );
+  };
 
   const openToolTip = () => {
     setTooltipOpen(true);
@@ -14,10 +34,6 @@ export default function CardMoveModal({ svg, className, size }) {
 
   const closeToolTip = () => {
     setTooltipOpen(false);
-  };
-
-  const handleMouseLeave = () => {
-    tooltipTimeout.current = setTimeout(closeToolTip, 3000);
   };
 
   const handleMouseEnter = () => {
@@ -31,18 +47,23 @@ export default function CardMoveModal({ svg, className, size }) {
     <Tooltip
       title={
         <div className={css.tooltip} onMouseEnter={handleTooltipMouseEnter}>
-          <button className={css.button}>
-            <span className={css.iconTxt}>In progress</span>
-            <svg className={css.icon} width={16} height={16}>
-              <use xlinkHref={`${iconDefs}#icon-move`} />
-            </svg>
-          </button>
-          <button className={css.button}>
-            <span className={css.iconTxt}>Done</span>
-            <svg className={css.icon} width={16} height={16}>
-              <use xlinkHref={`${iconDefs}#icon-move`} />
-            </svg>
-          </button>
+          {columns.map(({ columnTitle, columnId }) => {
+            if (columnId === cardsColumnId) {
+              return null;
+            }
+            return (
+              <button
+                key={columnId}
+                className={css.button}
+                onClick={() => onClickBtn(cardId, columnId, 0)}
+              >
+                <span className={css.iconTxt}>{columnTitle}</span>
+                <svg className={css.icon} width={16} height={16}>
+                  <use xlinkHref={`${iconDefs}#icon-move`} />
+                </svg>
+              </button>
+            );
+          })}
         </div>
       }
       componentsProps={{
@@ -61,7 +82,6 @@ export default function CardMoveModal({ svg, className, size }) {
         className={css.button}
         style={{ height: size }}
         onClick={openToolTip}
-        onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseEnter}
       >
         <svg className={className} width={size} height={size}>
