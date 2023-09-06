@@ -1,10 +1,18 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import css from './StartPageView.module.css';
 import svgSprite from '../../../icons/sprite.svg';
+import { isLoggedIn } from 'redux/auth/authSelectors';
 import UserImg from './UserImg/UserImg.js';
 
 function StartPageView() {
+  const isAuthorized = useSelector(isLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthorized) return navigate('/home');
+  }, [navigate, isAuthorized]);
+
   return (
     <div className={css.startPageSection}>
       <UserImg />
