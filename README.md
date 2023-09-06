@@ -61,7 +61,7 @@ To get started with TaskPro, follow these steps:
 
 For more detailed instructions, please refer to the project's documentation.
 
-##**Contributors**
+## **Contributors**
 
 - Ivan Korniienko - Frontend Developer (Team Lead Frontend)
 
