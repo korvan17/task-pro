@@ -71,13 +71,6 @@ function SideBar({
     toggleNeedHelpModal();
   };
 
-  // const handleBoardClick = boardId => {
-  //   setSelectedBoard(boardId);
-
-  //   console.log('handleBoardClick');
-  //   console.log(boardId);
-  // };
-
   const setScrollTheme = () => {
     switch (userTheme) {
       case 'light':
@@ -98,7 +91,12 @@ function SideBar({
       ref={menuRef}
     >
       <div className={css.HeaderNewBoardContainer}>
-        <div className={css.header}>
+        <div
+          className={css.header}
+          onClick={() => {
+            navigate('/home');
+          }}
+        >
           <svg
             style={{
               '--color1': theme.sidebar.logoFill,
@@ -107,9 +105,6 @@ function SideBar({
             }}
             width="32"
             height="32"
-            onClick={() => {
-              navigate('/home');
-            }}
           >
             <use xlinkHref={`${sprite}#icon-logo`} />
           </svg>
@@ -192,6 +187,9 @@ function SideBar({
                 color: theme.sidebar.needHelpSpanColor,
               }}
               className={css.taskProSpan}
+              onClick={() => {
+                navigate('/home');
+              }}
             >
               TaskPro
             </span>

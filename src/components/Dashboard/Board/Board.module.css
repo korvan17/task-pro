@@ -1,8 +1,7 @@
 /* dark */
 .board {
   display: flex;
-  /* position: absolute;
-  left: 0px; */
+
   gap: 43px;
   justify-content: space-between;
   width: 217px;
@@ -23,8 +22,6 @@
 /* light */
 .lightBoard {
   display: flex;
-  /* position: absolute;
-  left: 0px; */
   gap: 43px;
   justify-content: space-between;
   width: 217px;
