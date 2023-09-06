@@ -21,6 +21,6 @@
   stroke: rgb(82, 85, 188);
   stroke-width: 2px;
 
-  filter: drop-shadow(0 0 2px rgba(82, 85, 188, 0.5));
+  filter: drop-shadow(0 0 2px rgba(82, 85, 188, 0.3));
   cursor: auto;
 }
