@@ -47,7 +47,10 @@ export default function Buttons({
           ? {
               background: theme.mainDashBoard.aloneColumnButtonBackground,
             }
-          : { background: theme.popUp.buttonBackground }
+          : {
+              background: theme.popUp.buttonBackground,
+              color: theme.popUp.buttonTextColor,
+            }
       }
       className={`${css.button} ${getBtnStyle()} ${className ? className : ''}`}
       type={buttonType}
