@@ -142,7 +142,7 @@ export default function AddEditCard({ onClose }) {
           />
           <div>
             <span
-              style={{ color: theme.popUp.iconsTextColor }}
+              style={{ color: theme.popUp.labelColor }}
               className={css.calendarTitle}
             >
               Deadline
