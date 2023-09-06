@@ -212,11 +212,12 @@ export function MainDashboard() {
           </ul>
           <div>
             <AddIconButton
+              alone={true}
               pushButton={createColumn}
               className={css.btn__alonecolumn}
             >
               <span
-                style={{ color: theme.popUp.buttonTextColor }}
+                style={currentColumnId ?  { color: theme.popUp.aloneColumnButtonTextColor }:{ color: theme.popUp.buttonTextColor }}
                 className={css.btn__text}
               >
                 Add another column
@@ -240,6 +241,7 @@ export function MainDashboard() {
       ) : (
         <div className={setCardsScrollTheme()[1]}>
           <AddIconButton
+            alone={true}
             pushButton={createColumn}
             className={css.btn__alonecolumn}
           >
