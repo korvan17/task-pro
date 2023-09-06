@@ -12,7 +12,7 @@ const ColorPicker = ({
     { id: 1, priority: 'low', color: '#8FA1D0' },
     { id: 2, priority: 'medium', color: '#E09CB5' },
     { id: 3, priority: 'high', color: '#BEDBB0' },
-    { id: 4, priority: 'without', color: '#1616164D' },
+    { id: 4, priority: 'without', color: 'rgba(255, 255, 255, 0.30)' },
   ];
 
   const foundColor = colors.find(color => color.priority === currentPriority);
