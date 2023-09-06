@@ -253,7 +253,7 @@
 
 /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
 .violetBoardsList::-webkit-scrollbar-thumb {
-  background: #bedbb0;
+  background: #FFFFFF;
   border-radius: 10px; /* Закругление углов ползунка */
   right: 0;
   left: auto;

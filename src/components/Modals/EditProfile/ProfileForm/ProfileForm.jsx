@@ -38,7 +38,7 @@ export default function ProfileForm() {
               fileInput.click();
             }}
           >
-            <svg className={css.icon} width={10} height={10}>
+            <svg style={{}} className={css.icon} width={10} height={10}>
               <use xlinkHref={`${sprite}#icon-add`} />
             </svg>
           </Buttons>
