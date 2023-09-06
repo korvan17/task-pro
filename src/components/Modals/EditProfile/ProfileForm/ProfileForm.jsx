@@ -26,7 +26,7 @@ export default function ProfileForm() {
           <div className={css.imgWrapper}>
             <img
               src={values.avatarURL}
-              alt="user profile avatar"
+              alt=""
               className={css.userImg}
               width={68}
             />
