@@ -253,7 +253,7 @@ export function MainDashboard() {
             <span
               style={
                 board?.columns
-                  ? { color: theme.popUp.aloneColumnButtonTextColor }
+                  ? { color: theme.mainDashBoard.aloneColumnButtonTextColor }
                   : { color: theme.popUp.buttonTextColor }
               }
               className={css.btn__text}
