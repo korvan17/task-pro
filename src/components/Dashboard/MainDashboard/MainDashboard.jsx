@@ -218,7 +218,11 @@ export function MainDashboard() {
               className={css.btn__alonecolumn}
             >
               <span
-                style={currentColumnId ?  { color: theme.popUp.aloneColumnButtonTextColor }:{ color: theme.popUp.buttonTextColor }}
+                style={
+                  board?.columns
+                    ? { color: theme.mainDashBoard.aloneColumnButtonTextColor }
+                    : { color: theme.popUp.buttonTextColor }
+                }
                 className={css.btn__text}
               >
                 Add another column
@@ -247,7 +251,11 @@ export function MainDashboard() {
             className={css.btn__alonecolumn}
           >
             <span
-              style={{ color: theme.popUp.buttonTextColor }}
+              style={
+                board?.columns
+                  ? { color: theme.popUp.aloneColumnButtonTextColor }
+                  : { color: theme.popUp.buttonTextColor }
+              }
               className={css.btn__text}
             >
               Add another column
