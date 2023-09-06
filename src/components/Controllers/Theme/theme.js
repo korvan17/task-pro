@@ -114,6 +114,7 @@ export const light = {
     buttonIconPlusFill: colors.whiteColor,
     buttonTextColor: colors.blackColor,
     deadLineDateColor: colors.greenColor,
+    labelColor: 'rgba(22, 22, 22, 0.50)',
   },
 };
 
@@ -214,6 +215,7 @@ export const dark = {
     buttonIconPlusFill: colors.whiteColor,
     buttonTextColor: colors.blackColor,
     deadLineDateColor: colors.greenColor,
+    labelColor: "rgba(255, 255, 255, 0.50)"
   },
 };
 
@@ -314,5 +316,6 @@ export const violet = {
     buttonIconPlusFill: colors.blackColor,
     buttonTextColor: colors.whiteColor,
     deadLineDateColor: colors.violetColor,
+    labelColor: 'rgba(22, 22, 22, 0.50)',
   },
 };
