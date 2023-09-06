@@ -6,16 +6,25 @@ import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { selectFilter, setFilter } from '../../../redux/filterSlice';
 import { useSelector } from 'react-redux';
+import { getTheme } from 'redux/auth/authSelectors';
 
 export default function FIlter() {
+  const theme = useTheme();
+  const userTheme = useSelector(getTheme);
   const colors = [
-    { id: 1, priority: 'without', color: 'rgba(255, 255, 255, 0.30)' },
+    {
+      id: 1,
+      priority: 'without',
+      color:
+        userTheme === 'dark'
+          ? 'rgba(255, 255, 255, 0.30)'
+          : 'rgba(22, 22, 22, 0.30)',
+    },
     { id: 2, priority: 'low', color: '#8FA1D0' },
     { id: 3, priority: 'medium', color: '#E09CB5' },
     { id: 4, priority: 'high', color: '#BEDBB0' },
   ];
 
-  const theme = useTheme();
   const dispatch = useDispatch();
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
   const toggleFilters = () => {
