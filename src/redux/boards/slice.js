@@ -8,13 +8,7 @@ import {
 } from './operations';
 import { toast } from 'react-toastify';
 
-const customArr = [
-  updateBoardById,
-  deleteBoard,
-  addBoard,
-  fetchBoards,
-  getBoardByID,
-];
+const customArr = [deleteBoard, addBoard, fetchBoards, getBoardByID];
 
 const fnStatus = status => {
   return customArr.map(el => el[status]);
@@ -34,6 +28,7 @@ const handleRejected = (state, action) => {
 const boardsInitialState = {
   boards: [],
   isLoading: false,
+  isLoadingUpdate: false,
   error: null,
   currentBoard: null,
   currentBoardId: null,
@@ -80,12 +75,25 @@ const boardsSlice = createSlice({
       .addCase(updateBoardById.fulfilled, (state, action) => {
         toast.success('Board updated successfully. Changes saved! 👍');
         state.isLoading = false;
+        state.isLoadingUpdate = false;
         state.error = null;
         const index = state.boards.findIndex(
           board => board._id === action.payload
         );
 
         state.boards[index] = action.payload;
+      })
+
+      .addCase(updateBoardById.pending, state => {
+        state.isLoading = true;
+        state.isLoadingUpdate = true;
+      })
+
+      .addCase(updateBoardById.rejected, (state, action) => {
+        toast.error('Something went wrong. Please try again. 😐');
+        state.isLoading = false;
+        state.isLoadingUpdate = false;
+        state.error = action.payload;
       })
 
       .addCase(getBoardByID.fulfilled, (state, action) => {

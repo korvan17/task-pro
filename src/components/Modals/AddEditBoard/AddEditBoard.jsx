@@ -9,7 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addBoard, updateBoardById } from 'redux/boards/operations';
 import { useTheme } from '@emotion/react';
 import boardSchema from '../Schemas/boardSchema';
-import { selectCurrentBoard } from 'redux/boards/selectors';
+// import { selectCurrentBoard } from 'redux/boards/selectors';
+import { selectBoards } from '../../../redux/boards/selectors';
 
 export default function AddEditBoard({ onClose, boardId }) {
   const theme = useTheme();
@@ -17,7 +18,10 @@ export default function AddEditBoard({ onClose, boardId }) {
   const [icon, setIcon] = useState('icon-board-icon-1');
   const [background, setBackground] = useState('');
   const isEditing = useSelector(state => state.modal.isModalDisplayed);
-  const board = useSelector(selectCurrentBoard);
+  // const board = useSelector(selectCurrentBoard);
+  const boards = useSelector(selectBoards);
+
+  const board = boards.find(item => item._id === boardId);
 
   const handleSelectedIconChange = selectedIcon => {
     setIcon(selectedIcon);

@@ -8,23 +8,21 @@
   background-color: #121212;
   transition: 500ms;
   transform: translateX(-100%);
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  &::-webkit-scrollbar {
+  /* overflow-y: auto;
+  overflow-x: hidden; */
+}
+/* &::-webkit-scrollbar {
     width: 8px;
-    /* right: 50px;
-    left: 0; */
+
   }
 
-  /* Фон для трека (полосы прокрутки) */
   &::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     overflow: hidden;
   }
 
-  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+
   &::-webkit-scrollbar-thumb {
     background: #bedbb0;
     border-radius: 10px;
@@ -33,11 +31,11 @@
     position: absolute;
   }
 
-  /* Стиль ползунка при наведении */
+
   &::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.1);
   }
-}
+} */
 
 @media screen and (min-width: 768px) {
   .sideBar {
@@ -51,7 +49,6 @@
     transform: none;
 
     /* position: relative; */
-
   }
 }
 
@@ -175,37 +172,36 @@
 /* dark */
 .boardsList {
   color: white;
-  /* margin-bottom: auto; */
-  max-height: 100%;
-  /* max-height: calc(100% - 327px); */
-  /* max-height: calc(100%-122px); */
+  margin-bottom: auto;
+  left: 0px;
+  top: 212px;
+  height: 122px;
   overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-    /* right: 0;
+}
+.boardsList::-webkit-scrollbar {
+  width: 8px;
+  /* right: 0;
     left: auto; */
-  }
+}
 
-  /* Фон для трека (полосы прокрутки) */
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-    overflow: hidden;
-  }
+/* Фон для трека (полосы прокрутки) */
+.boardsList::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
-  &::-webkit-scrollbar-thumb {
-    background: #bedbb0;
-    border-radius: 10px;
+/* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+.boardsList::-webkit-scrollbar-thumb {
+  background: #bedbb0;
+  border-radius: 10px;
 
-    margin-right: 10px;
-  }
+  margin-right: 10px;
+}
 
-  /* Стиль ползунка при наведении */
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
+/* Стиль ползунка при наведении */
+.boardsList::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* light */
@@ -220,37 +216,36 @@
   height: 122px;
   overflow: auto;
   /* transition: 300ms; */
+}
+.lightBoardsList::-webkit-scrollbar {
+  width: 8px;
+}
 
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
+.lightBoardsList::-webkit-scrollbar {
+  width: 8px;
+  /* Для перемещения ползунка слева используйте right вместо left */
+  right: 0;
+  left: auto; /* Уберите left */
+}
 
-  &::-webkit-scrollbar {
-    width: 8px;
-    /* Для перемещения ползунка слева используйте right вместо left */
-    right: 0;
-    left: auto; /* Уберите left */
-  }
+/* Фон для трека (полосы прокрутки) */
+.lightBoardsList::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-  /* Фон для трека (полосы прокрутки) */
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-    overflow: hidden;
-  }
+/* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+.lightBoardsList::-webkit-scrollbar-thumb {
+  background: #bedbb0;
+  border-radius: 10px; /* Закругление углов ползунка */
+  right: 0;
+  left: auto;
+}
 
-  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
-  &::-webkit-scrollbar-thumb {
-    background: #bedbb0;
-    border-radius: 10px; /* Закругление углов ползунка */
-    right: 0;
-    left: auto;
-  }
-
-  /* Стиль ползунка при наведении */
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
+/* Стиль ползунка при наведении */
+.lightBoardsList::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* violet */
@@ -265,52 +260,53 @@
   height: 122px;
   overflow: auto;
   /* transition: 300ms; */
+}
+.violetBoardsList::-webkit-scrollbar {
+  width: 8px;
+}
 
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
+.violetBoardsList::-webkit-scrollbar {
+  width: 8px;
+  /* Для перемещения ползунка слева используйте right вместо left */
+  right: 0;
+  left: auto; /* Уберите left */
+}
 
-  &::-webkit-scrollbar {
-    width: 8px;
-    /* Для перемещения ползунка слева используйте right вместо left */
-    right: 0;
-    left: auto; /* Уберите left */
-  }
+/* Фон для трека (полосы прокрутки) */
+.violetBoardsList::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-  /* Фон для трека (полосы прокрутки) */
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-    overflow: hidden;
-  }
+/* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
+.violetBoardsList::-webkit-scrollbar-thumb {
+  background: #bedbb0;
+  border-radius: 10px; /* Закругление углов ползунка */
+  right: 0;
+  left: auto;
+}
 
-  /* Стиль ползунка (той части скроллбара, которую можно перетаскивать) */
-  &::-webkit-scrollbar-thumb {
-    background: #bedbb0;
-    border-radius: 10px; /* Закругление углов ползунка */
-    right: 0;
-    left: auto;
-  }
-
-  /* Стиль ползунка при наведении */
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
+/* Стиль ползунка при наведении */
+.violetBoardsList::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .boardsItem {
   padding: 20px 0 20px;
-
-  &:hover {
-    background-color: #1f1f1f;
-  }
+}
+.boardsItem:hover {
+  background-color: #1f1f1f;
 }
 
 .containerHelpLogout {
   /* bottom: 24px; */
+  position: fixed;
+  bottom: 0;
   margin: 40px 14px 24px 14px;
-
-  @media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 768px) {
+  .containerHelpLogout {
     margin: 40px 24px 24px 24px;
   }
 }
@@ -339,7 +335,7 @@
   width: 168px;
   height: 80px;
   flex-shrink: 0;
-  font-family: Poppins;
+
   color: #fff;
   font-size: 12px;
   font-style: normal;
