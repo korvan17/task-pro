@@ -30,6 +30,7 @@ export default function App() {
   const isBoardLoading = useSelector(selectIsLoading);
   const isCardLoading = useSelector(selectColumnsIsLoading);
   const isColumnLoading = useSelector(selectCardsIsLoading);
+  const isAuthLoading = useSelector(state => state.auth.isRefreshing);
   const [theme, setTheme] = useState(light);
 
   useEffect(() => {
@@ -52,7 +53,7 @@ export default function App() {
 
   return (
     <>
-      {(isBoardLoading || isCardLoading || isColumnLoading) && <Loader />}
+      {(isBoardLoading || isCardLoading || isColumnLoading || isAuthLoading) && <Loader />}
       <ThemeProviderMUI theme={createTheme({})}>
         <ThemeProvider theme={theme}>
           <Routes>
